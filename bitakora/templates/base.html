@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=0.6666" />
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style.css" media="screen" />
+    </head>
+
+    <body>
+        <header>
+            <div id="logo">
+                <a href="/" ><img src="{{STATIC_URL}}img/logo.png" alt="Logo" ></a>
+            </div>
+        </header>
+        <div id="container">
+        {% block body %}
+
+        {% endblock %}
+        </div>
+        <footer>
+            {% block footer%}
+                <p><a href="http://www.codesyntax.com">CodeSyntax</a>-ek garatua. Softwarea: <a href="https://www.djangoproject.com/">Django</a>.</p>
+            {% endblock %}
+        </footer>
+    </body>
+</html>
