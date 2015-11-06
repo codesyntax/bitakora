@@ -87,6 +87,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.flatpages',
     'bitakora',
+    'bitakora.base',
     'django.contrib.admin',
     'gunicorn',
 )
