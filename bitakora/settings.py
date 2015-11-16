@@ -86,9 +86,12 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.staticfiles',
     'django.contrib.flatpages',
-    'bitakora',
-    'bitakora.base',
     'django.contrib.admin',
+    'photologue',
+    'sortedm2m',
+    'bitakora',
+    'bitakora.accounts',
+    'bitakora.base',
     'gunicorn',
 )
 
@@ -100,6 +103,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
    "django.core.context_processors.static",
 )
 
+
+AUTH_USER_MODEL = "accounts.BitakoraUser"
 
 try:
    from tiny_mce_settings import *

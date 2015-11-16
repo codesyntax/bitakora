@@ -11,6 +11,10 @@ urlpatterns = patterns('',
     #Uncomment the line below and put the correct project name
     (r'^$','bitakora.views.index'),
 
+    url(r'^users$','django.contrib.auth.views.login', name='erabiltzailea_user_login'),
+    (r'^users/', include('cssocialuser.urls')),
+
+    url(r'^photologue/', include('photologue.urls', namespace='photologue')),
     (r'^admin/', include(admin.site.urls)),
 )
 

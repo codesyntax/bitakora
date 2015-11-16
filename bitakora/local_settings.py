@@ -4,7 +4,7 @@ DEBUG = True
 DATABASES = {
         'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'blogak',                      # Or path to database file if using sqlite3.
+        'NAME': 'bitakora',                      # Or path to database file if using sqlite3.
         'USER': 'root',                      # Not used with sqlite3.
         'PASSWORD': 'CodeSyntax',                  # Not used with sqlite3.
         'HOST': 'mysql.cs',                      # Set to empty string for localhost. Not used with sqlite3.
