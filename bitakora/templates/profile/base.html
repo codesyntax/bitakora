@@ -1,0 +1,31 @@
+{% extends "base/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans 'Edit profile' %} - {% endblock %}
+
+{% block header %}{% endblock %}
+
+{% block body %}
+<div class="col-sm-3">
+	<div class="row well">
+		<h1>{% trans "Settings" %}</h1>
+		<ul class="list-unstyled">
+			<li {% if tab == 'personal' %}class="selected">{% trans "User profile" %}{% else %}><a href="{% url 'edit_profile' %}">{% trans "User profile" %}</a>{% endif %}</li>
+			{% if user.get_blog %}<li {% if tab == 'blog' %}class="selected">{% trans "Blog" %}{% else %}><a href="{% url 'edit_blog' %}">{% trans "Blog" %}</a>{% endif %}</li>{% endif %}
+			<li {% if tab == 'pass' %}class="selected">{% trans "Chage password" %}{% else %}><a href="{% url 'edit_pass' %}">{% trans "Chage password" %}</a>{% endif %}</li>
+		</ul>
+	</div>
+
+	<div class="row">
+		{% if msg %}
+		<div class="alert alert-success" role="alert">
+		    <i class="glyphicon glyphicon-ok"></i> {{ msg }}
+		</div>
+		{% endif %}
+	</div>
+</div>
+
+{% block  container %}
+{% endblock %}
+
+{% endblock %}

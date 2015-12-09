@@ -1,0 +1,67 @@
+{% extends "profile/base.html" %}
+{% load i18n bootstrap %}
+
+{% block container %}
+
+<div class="col-sm-9">
+  <h2>{% trans "User profile" %}</h2>
+	<!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#personal" aria-controls="personal" role="tab" data-toggle="tab">{% trans "Your personal data" %}</a></li>
+    <li role="presentation"><a href="#image" aria-controls="image" role="tab" data-toggle="tab">{% trans "Profile image" %}</a></li>
+    <li role="presentation"><a href="#social" aria-controls="social" role="tab" data-toggle="tab">{% trans "Social networks" %}</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="personal">
+    	<form action="{{request.path}}" method="POST" ENCTYPE="multipart/form-data">
+		{% csrf_token %}
+		{{profileform|bootstrap}}
+		<input type="submit" class="btn btn-primary" name="personal" value="{% trans "Save" %}">
+		</form>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="image">
+    	<h4>{% trans "Change your photo" %}</h4>
+    	<div class="col-sm-4">
+			{% if user.photo %}
+			<img class="userlogged" src="{{user.photo.get_profile_medium_url}}" alt='{% trans "User's photo" %}" />
+			{% else %}
+			<p class="message">{% trans "You don't have a photo yet" %}</p>
+			{% endif %}
+		</div>
+		<div class="col-sm-6">
+	    	<form action="{{request.path}}" method="POST" ENCTYPE="multipart/form-data">
+			{% csrf_token %}
+			{{imageform|bootstrap}}
+			<input type="submit" class="btn btn-primary" name="image" value="{% trans "Save" %}">
+			</form>
+		</div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="social">
+    	<h4>Twitter</h4>
+		<div class="col-sm-12">
+		{% if user.twitter_id %}
+		{% trans "Twitter linked" %}: <a href="http://twitter.com/{{user.twitter_id}}">{{user.twitter_id}}</a>
+		{% else %}
+			<a rel="nofollow" href="{% url 'social:begin' 'twitter' %}{% if next %}?next={{next}}{% endif %}" class="col-sm-4 tw-share-btn">
+				<img src="{{STATIC_URL}}img/share/twitter_white.png" /><span> {% trans 'Link Twitter for this user' %}</span>
+			</a>
+		{% endif %}
+		</div>
+		<h4>Facebook</h4>
+		<div class="col-sm-12">
+		{% if user.facebook_id %}
+		{% trans "Facebook linked" %}: <a href="http://facebook.com/profile.php?id={{user.facebook_id}}">{{user.facebook_id}}</a>
+		{% else %}
+			<a rel="nofollow" href="{% url 'social:begin' 'facebook' %}{% if next %}?next={{next}}{% endif %}" class="col-sm-4 fb-share-btn">
+					<img src="{{STATIC_URL}}img/share/facebook_white.png" /><span> {% trans 'Link Facebook for this user' %}</span>
+			</a>
+		{% endif %}
+		</div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

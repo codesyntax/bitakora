@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load i18n bootstrap %}
+
+{% block header %}{% endblock %}
+
+{% block extrajs %}
+    <script type="text/javascript" src="{{STATIC_URL}}js/tinymce/tinymce.min.js"></script>
+{% endblock %}
+
+{% block body %}
+
+<h1>{% trans 'New blog' %}</h1>
+
+<form action="{% url 'new_blog' %}" role="form" method="POST" ENCTYPE="multipart/form-data">
+    {% csrf_token %}
+    {{ form|bootstrap }}
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">{% trans 'Submit' %}</button>
+    </div>
+</form>
+
+
+{% endblock %}

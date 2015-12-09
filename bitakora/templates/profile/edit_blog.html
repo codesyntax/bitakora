@@ -1,0 +1,16 @@
+{% extends "profile/base.html" %}
+{% load i18n bootstrap %}
+
+{% block container %}
+
+<div class="col-sm-9">
+	<h2>{% trans "Your blog data" %}</h2>
+	<form action="{{request.path}}" method="POST" ENCTYPE="multipart/form-data">
+	{% csrf_token %}
+	{{form|bootstrap}}
+	<input type="submit" class="btn btn-primary" value="{% trans "Save" %}">
+	</form>
+</div>
+
+
+{% endblock %}

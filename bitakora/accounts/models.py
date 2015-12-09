@@ -23,6 +23,13 @@ class BitakoraUser(CSAbstractSocialUser):
             except:
                 return None
 
+    def get_blog(self):
+        from bitakora.base.models import Blog
+        blogs = Blog.objects.filter(user=self)
+        try:
+            return blogs[0]
+        except:
+            return None
 
     def get_fullname(self):
         try:

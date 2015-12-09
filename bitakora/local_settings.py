@@ -12,7 +12,7 @@ DATABASES = {
     }
 }
 
-STATIC_ROOT = '/var/csmant/django/blogak/static'
-MEDIA_ROOT = '/var/csmant/django/blogak/media'
+STATIC_ROOT = '/var/csmant/django/bitakora/static'
+MEDIA_ROOT = '/var/csmant/django/bitakora/media'
 
 USE_X_FORWARDED_HOST = True

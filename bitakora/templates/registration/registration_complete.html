@@ -1,0 +1,17 @@
+{% extends "registration/base.html" %}
+{% load i18n %}
+	
+{% block body %}
+	<h1>{% trans 'Activate your account' %}</h1>
+	<div class="text-left">
+		<p>
+			{% trans 'We want to verify your email, so we send you to this address next steps to activate your account. Please, activate your account.' %}
+		</p>
+		<p><i class="glyphicon glyphicon-ok"></i> {% trans 'Check your email address.' %}</p>
+		<p><i class="glyphicon glyphicon-ok"></i> {% trans 'Remember:' %}</p>
+			<ul>
+				<li>{% trans 'Check your spam folder.' %}</li>
+				<li>{% trans "If you didn't receive any email, please, write to our administrators..." %}</li>
+			</ul>
+	</div>
+{% endblock %}

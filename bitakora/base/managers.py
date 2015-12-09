@@ -1,5 +1,6 @@
 from django.db.models import Manager
 from django.utils.timezone import now
+from django.db.models import Q
 
 class PublishedManager(Manager):
     """
@@ -7,15 +8,17 @@ class PublishedManager(Manager):
     publish date when the given user is not a staff member.
     """
 
-    def published(self, for_user=None):
+    def published(self, for_blog=None):
         """
         For non-staff users, return items with a published status and
         whose publish and expiry dates fall before and after the
         current date when specified.
         """
         from bitakora.base.models import CONTENT_STATUS_PUBLISHED
-        if for_user is not None and for_user.is_staff:
-            return self.all()
+        if for_blog:
+            return self.filter(Q(publish_date__lte=now()) | Q(publish_date__isnull=True),
+            Q(expiry_date__gte=now()) | Q(expiry_date__isnull=True),
+            Q(status=CONTENT_STATUS_PUBLISHED),Q(blog=for_blog))
         return self.filter(
             Q(publish_date__lte=now()) | Q(publish_date__isnull=True),
             Q(expiry_date__gte=now()) | Q(expiry_date__isnull=True),

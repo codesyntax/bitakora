@@ -1,0 +1,20 @@
+<div class="media">
+    {% if comment.user.get_blog %}
+    <a class="pull-left" href="{ url 'blog_index' comment.user.get_blog.slug %}">
+        <img class="media-object" src="{{comment.user.get_photo.get_profile_url}}" alt="{{comment.user.photo.caption}}">
+    </a>
+    {% else %}
+        <img class="pull-left media-object" src="{{comment.user.get_photo.get_profile_url}}" alt="{{comment.user.photo.caption}}">
+    {% endif %}
+    <div class="media-body">
+        <h4 class="media-heading">
+            {% if comment.user.get_blog %}
+                <a href="{% url 'blog_index' comment.user.get_blog.slug %}">{{comment.user.get_fullname}}</a>
+            {% else %}
+                {{comment.user.get_fullname}}
+            {% endif %}
+            <small>{{comment.publish_date}}</small>
+        </h4>
+        {% block text %}{{comment.text}}{% endblock %}
+    </div>
+</div>

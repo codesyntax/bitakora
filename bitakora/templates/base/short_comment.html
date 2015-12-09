@@ -1,0 +1,3 @@
+{% extends 'base/comment.html' %}
+
+{% block text %}{{comment.text|truncatechars:150}}{% endblock %}

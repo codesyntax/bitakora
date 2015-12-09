@@ -1,0 +1,55 @@
+{% extends "base/base.html" %}
+{% load i18n %}
+
+{% block body %}
+
+<div class="row text-center">
+	<h1>{{blog.name}}</h1>
+	{% if blog.tagline %}<span class="tagline">{{blog.tagline}}</span>{% endif %}
+</div>
+
+<div class="row">
+	<div class="col-md-8">
+		{% for article in blog.get_articles %}
+			{% include "base/article_list.html" with article=article %}
+		{% empty %}
+		<hr/>
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="alert alert-success" role="alert">
+					<strong>{% trans 'Well done!' %}</strong> {% trans 'Your blog was successfully created. Now you can start posting your stuff' %} <a href="{% url 'add_article' blog.slug %}">{% trans 'from here!' %}</a>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+	<div class="col-md-4 well">
+		<div class="row">
+			<div class="col-sm-12">
+				<img class="img-responsive img-thumbnail center-block" src="{{blog.user.get_photo.get_blog_user_url}}" alt="{{blog.user.photo.caption}}" />
+				<hr/>
+				<h4>{{blog.user.get_fullname}}</h4>
+				{% if blog.user.bio %}<p>{{blog.user.bio}}</p>{% endif %}
+				<p><a href="">Twitter</a> | <a href="">Facebook</a></p>
+			</div>
+		</div>
+		{% if blog.get_last_comments %}
+		<div class="row">
+			<div class="col-sm-12">
+				<h4>{% trans 'Last comments' %}</h4>
+				{% for comment in blog.get_last_comments %}
+					{% include 'base/short_comment.html' with comment=comment %}
+				{% endfor %}
+			</div>
+		</div>
+		{% endif %}
+		<div class="row">
+			<div class="col-sm-12">
+				<h4>{% trans 'Sindication' %}</h4>
+				<a href=""><img src="{{STATIC_URL}}img/rss.png"/></a>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

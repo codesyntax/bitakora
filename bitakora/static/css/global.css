@@ -9,19 +9,96 @@
  */
 
 body {
-    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    padding-top: 50px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
 
 footer {
     margin: 50px 0;
 }
 
+#maincontainer {
+    padding-top: 20px;
+}
+
+.header-image {
+    display: block;
+    width: 100%;
+    height: 400px;
+    text-align: center;
+    color: #fff;
+    background: url('/static/img/bitakora_header.jpg') no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    margin-bottom: 10px;
+}
+
+.header-image .container {
+    padding-top: 100px;
+}
+
+.header-image .close {
+    color: #000;
+    float: right;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1;
+    opacity: 0.5;
+    text-shadow: 0 1px 0 #fff;
+}
+
+.tw-share-btn {
+  background-color: #55acee;
+  color: #fff;
+}
+
+.tw-share-btn {
+  -moz-user-select: none;
+  background-color: #55acee;
+  color: #fff;
+  border-radius: 999em;
+  box-sizing: border-box;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Open Sans","Helvetica Neue",sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  height: 37px;
+  letter-spacing: 0;
+  padding: 0 16px;
+  text-align: center;
+  text-decoration: none;
+  text-rendering: optimizelegibility;
+  vertical-align: bottom;
+  white-space: nowrap;
+}
+
+.fb-share-btn {
+  -moz-user-select: none;
+  background-color: #3b5998;
+  color: #fff;
+  display: inline-block;
+  border-radius: 999em;
+  box-sizing: border-box;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Open Sans","Helvetica Neue",sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  height: 37px;
+  letter-spacing: 0;
+  padding: 0 16px;
+  text-align: center;
+  text-decoration: none;
+  text-rendering: optimizelegibility;
+  vertical-align: bottom;
+  white-space: nowrap;
+}
 
 
-
-
-
-
+.tab-content {
+  margin-top: 10px;
+  padding: 5px;
+}
 
 
 

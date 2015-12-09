@@ -1,22 +1,62 @@
 from models import *
-from django import forms
+from forms import *
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 
 
-
 class BlogAdmin(admin.ModelAdmin):
-    list_display = ('name',)
+    def admin_thumbnail(self,obj):
+        if obj.header_image:
+            return obj.header_image.admin_thumbnail()
+        return ''
+    admin_thumbnail.short_description = 'Thumbnail'
+    admin_thumbnail.allow_tags = True
+
+
+    list_display = ('name','user','template','admin_thumbnail')
     list_display_links = ('name',)
+    radio_fields = {"template": admin.HORIZONTAL}
     search_fields = ['name',]
     ordering = ('name',)
 
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('title','slug','blog')
+
+    def admin_thumbnail(self,obj):
+        if obj.featured_image:
+            return obj.featured_image.admin_thumbnail()
+        return ''
+    admin_thumbnail.short_description = 'Thumbnail'
+    admin_thumbnail.allow_tags = True
+
+
+    list_display = ('title','slug','blog','status','publish_date','expiry_date','admin_thumbnail')
     list_display_links = ('title',)
+    filter_horizontal = ("categories", "related_posts",)
+    list_filter = ("status","blog__name")
+    list_editable = ("status",)
+    radio_fields = {"status": admin.HORIZONTAL}
+    prepopulated_fields = {'slug':('title',)} 
+    form = ArticleAdminForm
+
     search_fields = ['title',]
     ordering = ('title',)
 
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('user','parent','text','publish_date')
+    list_display_links = ('user',)
+    search_fields = ['user__username', 'text']
+    ordering = ('-publish_date',)
+
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('title','slug')
+    list_display_links = ('title',)
+    prepopulated_fields = {'slug':('title',)} 
+    search_fields = ['title',]
+    ordering = ('title',)
+
+
 admin.site.register(Blog, BlogAdmin)
-admin.site.register(Article,ArticleAdmin)
+admin.site.register(Article, ArticleAdmin)
+admin.site.register(Comment, CommentAdmin)
+admin.site.register(Category, CategoryAdmin)

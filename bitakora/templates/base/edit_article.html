@@ -1,0 +1,6 @@
+{% extends "base/add_article.html" %}
+{% load i18n %}
+
+{% block bodytitle %}{% trans 'Edit article' %}{% endblock %}
+
+{% block form_url %}action="{% url 'edit_article' blog.slug article.slug %}"{% endblock %}

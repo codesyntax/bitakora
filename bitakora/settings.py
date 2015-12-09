@@ -87,11 +87,18 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.flatpages',
     'django.contrib.admin',
+    'voting',
+    'captcha',
     'photologue',
     'sortedm2m',
+    'tinymce',
+    'bootstrapform',
     'bitakora',
     'bitakora.accounts',
     'bitakora.base',
+    'bitakora.photologue_custom',
+    'social.apps.django_app.default',
+    'registration',
     'gunicorn',
 )
 
@@ -103,20 +110,44 @@ TEMPLATE_CONTEXT_PROCESSORS = (
    "django.core.context_processors.static",
 )
 
+ACCOUNT_ACTIVATION_DAYS = 5
 
 AUTH_USER_MODEL = "accounts.BitakoraUser"
+
+SECRET_KEY = '1569ac8rkf25@10mv*wgkg8n=4m1--rfqm3e+kwbda!xd(m!'
+
+RECAPTCHA_PUBLIC_KEY = '6LdEQRETAAAAAC2YaSIAyYkF5lpE5rzgY8Ku2wJu'
+RECAPTCHA_PRIVATE_KEY = '6LdEQRETAAAAAH2-ua8Lh3MntkOX8IpAbrW1nDSA'
+NOCAPTCHA = True
+
+AUTHENTICATION_BACKENDS = (
+    'social.backends.twitter.TwitterOAuth',
+    'social.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+SOCIAL_AUTH_PIPELINE = (
+    'social.pipeline.social_auth.social_details',
+    'social.pipeline.social_auth.social_uid',
+    'social.pipeline.social_auth.auth_allowed',
+    'social.pipeline.social_auth.social_user',
+    'social.pipeline.user.get_username',
+    'social.pipeline.social_auth.associate_by_email',
+    'social.pipeline.user.create_user',
+    'social.pipeline.social_auth.associate_user',
+    'social.pipeline.social_auth.load_extra_data',
+    'social.pipeline.user.user_details',
+    'cssocialuser.models.get_user_data',
+
+)
+
+TINYMCE_JS_URL = STATIC_URL + 'js/tinymce/tinymce.min.js'
+TINYMCE_JS_ROOT = STATIC_ROOT + 'js/tinymce/tinymce.min.js'
+
 
 try:
    from tiny_mce_settings import *
 except:
    pass
-
-
-SECRET_KEY = '1569ac8rkf25@10mv*wgkg8n=4m1--rfqm3e+kwbda!xd(m!'
-
-AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
-)
 
 try:
     from server_settings import *
