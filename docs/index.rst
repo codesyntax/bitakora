@@ -3,10 +3,16 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+####################################
 Welcome to Bitakora's documentation!
-====================================
+####################################
 
-Contents:
+Djngo Bitakora is an Open source blog community management system based on the django framework.
+
+Getting Started
+===============
+
+If you’re new to Bitakora, you may want to start with these documents to get you up and running:
 
 .. toctree::
    :maxdepth: 2
