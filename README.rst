@@ -2,6 +2,9 @@
 django Bitakora
 ###############
 
+.. image:: https://readthedocs.org/projects/django-bitakora/badge/?version=latest
+    :target: http://django-bitakora.readthedocs.org/en/latest/
+
 Open source blog community management system based on the django framework.
 
 ********
