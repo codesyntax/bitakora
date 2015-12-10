@@ -31,9 +31,9 @@ Documentation
 Please head over to our `documentation <http://django-bitakora.readthedocs.org/>`_ for all
 the details on how to install, extend and use the django Bitakora.
 
-********
-Tutorial
-********
+***********
+Quick start
+***********
 
 
 ******************
