@@ -24,8 +24,8 @@ Requirements
 
 Bitakora has a relatively easily-met set of requirements.
 
-    Python 2.7+
-    Django 1.8+
+* Python 2.7+
+* Django 1.8+
 
 
 Indices and tables
