@@ -19,6 +19,15 @@ If you’re new to Bitakora, you may want to start with these documents to get y
 
    introduction/index
 
+Requirements
+============
+
+Bitakora has a relatively easily-met set of requirements.
+
+    Python 2.7+
+    Django 1.8+
+
+
 Indices and tables
 ==================
 
