@@ -1,6 +1,6 @@
-###############
-django Bitakora
-###############
+########
+Bitakora
+########
 
 .. image:: https://readthedocs.org/projects/django-bitakora/badge/?version=latest
     :target: http://django-bitakora.readthedocs.org/en/latest/
@@ -22,14 +22,14 @@ Features
 Requirements
 ************
 
-django  requires Django 1.8, Bootstrap 3.2 and Python 2.7
+Bitakora requires Django 1.8, Bootstrap 3.2 and Python 2.7
 
 *************
 Documentation
 *************
 
 Please head over to our `documentation <http://django-bitakora.readthedocs.org/>`_ for all
-the details on how to install, extend and use the django Bitakora.
+the details on how to install, extend and use the Bitakora.
 
 ***********
 Quick start
