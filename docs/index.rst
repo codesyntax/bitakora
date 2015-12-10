@@ -7,7 +7,7 @@
 Welcome to Bitakora's documentation!
 ####################################
 
-Djngo Bitakora is an Open source blog community management system based on the django framework.
+Bitakora is an Open source blog community management system based on the django framework.
 
 Getting Started
 ===============
@@ -18,6 +18,20 @@ If you’re new to Bitakora, you may want to start with these documents to get y
    :maxdepth: 2
 
    introduction/index
+
+Screenshots
+===========
+
+Some eye candy images of the project:
+
+.. toctree::
+   :maxdepth: 2
+
+   screenshots/index
+
+.. note::
+
+    This documentation images represents Bitakora 1.x. Please, check the demo to see the last version look & feel
 
 Requirements
 ============
