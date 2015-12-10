@@ -1,4 +1,6 @@
 from django.db import models
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 from photologue.models import Photo
 from bitakora.base.managers import PublishedManager
 from bitakora.utils.models import get_user_model_name
@@ -12,6 +14,8 @@ DEFAULT_TEMPLATE = "one-page-wonder.css"
 TEMPLATE_CHOICES = (
     (DEFAULT_TEMPLATE, _("One page wonder")),
     ("clean-blog.css", _("Clean blog")),
+    ("old-style-blog.css", _("Old style")),
+    ("minimalist-blog.css", _("Minimalist")),
 )
 
 DEFAULT_LICENSE = "cc-by-sa"
@@ -134,7 +138,7 @@ class Article(models.Model):
     objects = PublishedManager()
 
     def get_comments(self):
-        return self.comments.all()
+        return self.comments.all().order_by("publish_date")
 
     def get_comments_count(self):
         return self.get_comments().count()
@@ -176,6 +180,9 @@ class Article(models.Model):
         """
         return self._get_next_or_previous_by_publish_date(False, **kwargs)
 
+    def get_absolute_url(self):
+        return reverse('article',kwargs={'blogslug': self.blog.slug, 'slug': self.slug})
+
     def __unicode__(self):
         return self.title
 
@@ -187,9 +194,15 @@ class Article(models.Model):
 
 class Comment(models.Model):
     user = models.ForeignKey(user_model_name, verbose_name=_("Author"),
-        related_name="%(class)ss")
+        related_name="%(class)ss",null=True,blank=True)
+
+    nickname = models.CharField(verbose_name=_('Nick name'),max_length=200,null=True,blank=True)
+    email = models.EmailField(verbose_name=_('Email'),null=True,blank=True)
+
     parent = models.ForeignKey(Article, null = True, blank=True, related_name='comments')
-    text = models.TextField(null=True,blank = True)
+    text = models.TextField(verbose_name=_('Text'), null=True,blank = True)
+
+    ip_address  = models.GenericIPAddressField(verbose_name=_('IP address'), blank=True, null=True)
 
     publish_date = models.DateTimeField(_("Publish date"),
         blank=True, null=True, db_index=True)

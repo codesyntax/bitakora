@@ -20,6 +20,8 @@ urlpatterns = patterns('',
     #Uncomment the line below and put the correct project name
     (r'^$','bitakora.views.index'),
     url(r'^category/(?P<slug>[\-\d\w]+)$','bitakora.views.category', name='category'),
+    url(r'^top_stories$', 'bitakora.views.top_stories', name='top_stories'),
+    url(r'^bookmarks$', 'bitakora.views.bookmarks', name='bookmarks'),
     url(r'^users$','django.contrib.auth.views.login', name='erabiltzailea_user_login'),
     url(r'^users/useroptions$','bitakora.views.useroptions', name='useroptions'),
     url(r'^users/edit-profile$','bitakora.accounts.views.edit_profile', name='edit_profile'),

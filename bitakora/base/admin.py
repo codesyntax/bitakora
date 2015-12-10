@@ -43,9 +43,9 @@ class ArticleAdmin(admin.ModelAdmin):
     ordering = ('title',)
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('user','parent','text','publish_date')
-    list_display_links = ('user',)
-    search_fields = ['user__username', 'text']
+    list_display = ('user','nickname','email','parent','text','publish_date')
+    list_display_links = ('user','user')
+    search_fields = ['user__username', 'nickname','text']
     ordering = ('-publish_date',)
 
 class CategoryAdmin(admin.ModelAdmin):

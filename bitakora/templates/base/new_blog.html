@@ -13,11 +13,35 @@
 
 <form action="{% url 'new_blog' %}" role="form" method="POST" ENCTYPE="multipart/form-data">
     {% csrf_token %}
-    {{ form|bootstrap }}
-    <div class="form-group">
-      <button type="submit" class="btn btn-primary">{% trans 'Submit' %}</button>
+    {% for field in form %}
+        {% if field.name != 'template' %}
+        <div class="col-sm-12">
+            {{field|bootstrap}}
+        </div>
+        {% else %}
+        <div class="col-sm-12">
+      		<div class="form-group">
+      			<label for="id_analytics_code" class="control-label  ">Template</label>
+      			<div class="">
+		            {% for radio in field %}
+		            <div class="col-sm-3">
+		            	<img class="img-responsive" src="{{STATIC_URL}}img/templates/{{radio.choice_label|slugify}}.png" />
+		            	<p>{{radio}}</p>
+		            </div>
+		            {% endfor %}
+		        </div>
+	        </div>
+	    </div>
+        {% endif %}
+    {% endfor %}
+    <div class="col-sm-12">
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">{% trans 'Submit' %}</button>
+      </div>
     </div>
 </form>
 
 
 {% endblock %}
+
+{% block sidebar %}{% endblock %}

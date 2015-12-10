@@ -7,8 +7,39 @@
 	<h2>{% trans "Your blog data" %}</h2>
 	<form action="{{request.path}}" method="POST" ENCTYPE="multipart/form-data">
 	{% csrf_token %}
-	{{form|bootstrap}}
-	<input type="submit" class="btn btn-primary" value="{% trans "Save" %}">
+	{% for field in form %}
+        {% if field.name == 'header_image' %}
+            <div class="col-sm-4">
+                <img class="img-responsive" src="{{blog.get_photo.get_related_url}}"/>
+            </div>
+            <div class="col-sm-8">
+            {{field|bootstrap}}
+            </div>
+        {% elif field.name == 'template' %}
+        <div class="col-sm-12">
+      		<div class="form-group">
+      			<label for="id_analytics_code" class="control-label ">Template</label>
+      			<div class="">
+		            {% for radio in field %}
+		            <div class="col-sm-3">
+		            	<img class="img-responsive" src="{{STATIC_URL}}img/templates/{{radio.choice_label|slugify}}.png" />
+		            	<p>{{radio}}</p>
+		            </div>
+		            {% endfor %}
+		        </div>
+	        </div>
+	    </div>
+	    {% else %}
+	    <div class="col-sm-12">
+            {{field|bootstrap}}
+        </div>
+        {% endif %}
+    {% endfor %}
+	<div class="col-sm-12">
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">{% trans 'Submit' %}</button>
+      </div>
+    </div>
 	</form>
 </div>
 

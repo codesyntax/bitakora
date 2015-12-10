@@ -4,8 +4,10 @@
 {% block body %}
 
 <div class="row text-center">
-	<h1>{{blog.name}}</h1>
-	{% if blog.tagline %}<span class="tagline">{{blog.tagline}}</span>{% endif %}
+	<div class="col-sm-12">
+		<h1>{{blog.name}}</h1>
+		{% if blog.tagline %}<span class="tagline">{{blog.tagline}}</span>{% endif %}
+	</div>
 </div>
 
 <div class="row">
@@ -30,7 +32,7 @@
 				<hr/>
 				<h4>{{blog.user.get_fullname}}</h4>
 				{% if blog.user.bio %}<p>{{blog.user.bio}}</p>{% endif %}
-				<p><a href="">Twitter</a> | <a href="">Facebook</a></p>
+				<p>{% if blog.user.twitter_id %}<a href="http://twitter.com/{{blog.user.twitter_id}}">Twitter</a>{% endif %} {% if blog.user.facebook_id %}<a href="http://facebook.com/{{blog.user.facebook_id}}">Facebook</a>{% endif %}</p>
 			</div>
 		</div>
 		{% if blog.get_last_comments %}
@@ -46,7 +48,7 @@
 		<div class="row">
 			<div class="col-sm-12">
 				<h4>{% trans 'Sindication' %}</h4>
-				<a href=""><img src="{{STATIC_URL}}img/rss.png"/></a>
+				<a href="{% url 'blog_rss' blog.slug %}"><img src="{{STATIC_URL}}img/rss.png"/></a>
 			</div>
 		</div>
 	</div>

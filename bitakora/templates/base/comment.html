@@ -1,19 +1,23 @@
-<div class="media">
+<div id="{{comment.id}}" class="media">
     {% if comment.user.get_blog %}
     <a class="pull-left" href="{ url 'blog_index' comment.user.get_blog.slug %}">
         <img class="media-object" src="{{comment.user.get_photo.get_profile_url}}" alt="{{comment.user.photo.caption}}">
     </a>
-    {% else %}
+    {% elif comment.user %}
         <img class="pull-left media-object" src="{{comment.user.get_photo.get_profile_url}}" alt="{{comment.user.photo.caption}}">
+    {% else %}
+        <img class="pull-left media-object" src="/media/photologue/photos/cache/no-profile-photo_ezdypGl_profile.png" alt="{{comment.nickname}}">
     {% endif %}
     <div class="media-body">
         <h4 class="media-heading">
             {% if comment.user.get_blog %}
                 <a href="{% url 'blog_index' comment.user.get_blog.slug %}">{{comment.user.get_fullname}}</a>
-            {% else %}
+            {% elif comment.user %}
                 {{comment.user.get_fullname}}
+            {% else %}
+                {{comment.nickname}}
             {% endif %}
-            <small>{{comment.publish_date}}</small>
+            <small>{{comment.publish_date}} <a href="#{{comment.id}}">#{{forloop.counter}}</a></small>
         </h4>
         {% block text %}{{comment.text}}{% endblock %}
     </div>

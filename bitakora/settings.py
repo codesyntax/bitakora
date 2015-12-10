@@ -92,10 +92,12 @@ INSTALLED_APPS = (
     'photologue',
     'sortedm2m',
     'tinymce',
+    'haystack',
     'bootstrapform',
     'bitakora',
     'bitakora.accounts',
     'bitakora.base',
+    'bitakora.rss',
     'bitakora.photologue_custom',
     'social.apps.django_app.default',
     'registration',
@@ -139,6 +141,14 @@ SOCIAL_AUTH_PIPELINE = (
     'cssocialuser.models.get_user_data',
 
 )
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': 'http://127.0.0.1:9200/',
+        'INDEX_NAME': 'haystack',
+    },
+}
 
 TINYMCE_JS_URL = STATIC_URL + 'js/tinymce/tinymce.min.js'
 TINYMCE_JS_ROOT = STATIC_ROOT + 'js/tinymce/tinymce.min.js'

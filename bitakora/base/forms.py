@@ -93,3 +93,16 @@ class CommentForm(forms.ModelForm):
         text = self.cleaned_data['text'].strip()
         if not text:
             raise forms.ValidationError(_('Empty comment. Please, write something!'))
+
+class AnonimousCommentForm(forms.ModelForm):
+    text = forms.CharField(label="", widget=forms.Textarea)
+    captcha = ReCaptchaField()
+
+    class Meta:
+        model = Comment
+        fields = ['nickname','email','text',]
+
+    def clean_body(self):
+        text = self.cleaned_data['text'].strip()
+        if not text:
+            raise forms.ValidationError(_('Empty comment. Please, write something!'))

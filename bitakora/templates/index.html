@@ -1,15 +1,30 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block body %}
 
 {% if category %}
 <div class="row">
-    <h2 class="page-header">{{category.title}}</h2>
+    <h2 class="page-header">{% trans 'Category' %}: <small>{{category.title}}</small></h2>
+</div>
+{% endif %}
+
+{% if section %}
+<div class="row">
+    <h2 class="page-header">{{section.1}}</h2>
 </div>
 {% endif %}
 
 {% for article in articles %}
     {% include "base/article_list.html" with article=article %}
+{% empty %}
+	{% if section.0 == 2 %}
+		{% if user.is_authenticated %}
+			<div class="alert alert-success" role="alert"><strong>{% trans 'Start bookmarking now!' %}</strong> {% blocktrans %}You only need to give a <i class="glyphicon glyphicon-thumbs-up"></i> to some stories{% endblocktrans %}</div>
+		{% else %}
+			<div class="alert alert-warning" role="alert"><strong>{% trans 'Sorry!' %}</strong> {% trans 'You must register in order to have your Bookmark section...' %} <a href="">{% trans 'Sign up' %}</a> now!</div>
+		{% endif %}
+	{% endif %}
 {% endfor %}
 
 {% endblock %}

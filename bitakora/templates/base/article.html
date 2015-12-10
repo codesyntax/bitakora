@@ -7,15 +7,15 @@
 
 {% block body %}
 
+{% score_for_object article as score %}
+
 <h1>{{article.title}}</h1>
 <div class="row">
     <div class="col-sm-4">
         <span><a href="{% url 'blog_index' article.blog.slug %}"><img class="img-responsive img-circle pull-left" src="{{article.blog.header_image.get_profile_url}}" alt="{{article.blog.header_image.caption}}"/></a></span> <span><a href="{% url 'blog_index' article.blog.slug %}">{{article.blog}}</a></span> | <span class="glyphicon glyphicon-time"></span> {{article.publish_date}}
     </div>
     <div class="col-sm-8 text-right">
-        {% for c in article.categories.all %}
-           <span class="label label-default">{{c.title}}</span>
-        {% endfor %}
+        {% if score.score > 0 %}<span class="label label-success">{{score.score}} <i class="glyphicon glyphicon-thumbs-up"></i></span>{% endif %}{% if article.get_comments_count %} <span class="label label-info">{{article.get_comments_count}} <i class="glyphicon glyphicon-comment"></i></span>{% endif %}
     </div>
     <div class="col-sm-12">
         <hr>
@@ -32,24 +32,30 @@
         <p class="lead">{{article.summary|safe}}</p>
         <p>{{article.text|safe}}</p>
         
-        {% vote_by_user user on article as vote %}
-        {% score_for_object article as score %}
-        <h4 id="score">{{score.score}} {% if vote %}<i class="glyphicon glyphicon-thumbs-up"></i>{% else %}<a id="upvote" href="#score"><i class="glyphicon glyphicon-thumbs-up"></i></a>{% endif %}</h4>
-        <script type="text/javascript">
-            $("#upvote").click(function(){
-                $.ajax({
-                    url: "{% url 'vote_on_object' article.id 'up' %}",
-                    type: "post",
-                    data:{csrfmiddlewaretoken: '{{ csrf_token }}',},
-                    dataType:"json",
-                    success: function(result){
-                        $("#score").html(result.score.score + ' <i class="glyphicon glyphicon-thumbs-up"></i>')
-                    },
-                    error: function(xhr) {
-                    }
-                });
-            });
-        </script>
+        <div class="row">
+            <div class="col-sm-4">
+                {% vote_by_user user on article as vote %}
+                <h4 id="score"> 
+                    {% if vote %}
+                    {{score.score}} <i class="glyphicon glyphicon-thumbs-up"></i>
+                    {% else %}
+                    {% if user.is_authenticated %}
+                    <form action="{% url 'vote_on_object' article.id 'up' %}" method="post" name="voting">
+                        {% csrf_token %}
+                        <a href="javascript:document.voting.submit();" name="submit">{% if score.score > 0 %}{{score.score}}{% else %}{% trans 'Like' %}{% endif %} <i class="glyphicon glyphicon-thumbs-up"></i></a>
+                    </form>
+                    {% else %}
+                    <a href="{% url 'cssocialuser_user_login' %}?next={{request.path}}">{% if score.score > 0 %}{{score.score}}{% else %}{% trans 'Like' %}{% endif %} <i class="glyphicon glyphicon-thumbs-up"></i></a>
+                    {% endif %}
+                {% endif %}
+                </h4>
+            </div>
+            <div class="col-sm-8 pull-right text-right">
+            {% for c in article.categories.all %}
+               <span class="label label-default">{{c.title}}</span>
+            {% endfor %}
+            </div>
+        </div>
     </div>
 </div>
 
@@ -91,7 +97,7 @@
 
     {% endif %}
 
-    {% if user.is_authenticated %}
+    <br>
     <div class="well">
         <h4>{% trans 'Leave a Comment:' %}</h4>
         <form action="{% url 'add_comment' blog.slug article.slug %}" method="post" role="form">
@@ -100,7 +106,6 @@
             <button type="submit" class="btn btn-primary">{% trans 'Submit' %}</button>
         </form>
     </div>
-    {% endif %}
     </div>
 </div>
 {% endif %}
