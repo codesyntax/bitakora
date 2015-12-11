@@ -21,21 +21,21 @@ def top_stories(request):
     articles = Article.objects.top_stories()
     comments = Comment.objects.all().order_by('-publish_date')[:10]
     categories = Category.objects.all()[:8]
-    return render_to_response('index.html', locals(), context_instance=RequestContext(request))
+    return render_to_response('index_no_header.html', locals(), context_instance=RequestContext(request))
 
 def bookmarks(request):
     section = SECTIONS[1]
     articles = Article.objects.bookmarks(user=request.user)
     comments = Comment.objects.all().order_by('-publish_date')[:10]
     categories = Category.objects.all()[:8]
-    return render_to_response('index.html', locals(), context_instance=RequestContext(request))
+    return render_to_response('index_no_header.html', locals(), context_instance=RequestContext(request))
 
 def category(request,slug):
     category = get_object_or_404(Category, slug=slug)
     articles = Article.objects.filter(categories=category)[:25]
     comments = Comment.objects.all().order_by('-publish_date')[:10]
     categories = Category.objects.all().exclude(slug=slug)[:8]
-    return render_to_response('index.html', locals(), context_instance=RequestContext(request))
+    return render_to_response('index_no_header.html', locals(), context_instance=RequestContext(request))
 
 def useroptions(request):
     url = request.GET.get('url','/')

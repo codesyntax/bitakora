@@ -1,15 +1,21 @@
 {% load voting_tags %}
 {% score_for_object article as score %}
+<div class="row">
+	<div class="col-sm-12">
+		<h2><a href="{% url 'article' article.blog.slug article.slug %}">{{article.title}}</a></h2>
+		<div class="pull-right">{% if score.score > 0 %}<span class="label label-success">{{score.score}} <i class="glyphicon glyphicon-thumbs-up"></i></span>{% endif %}{% if article.get_comments_count %} <span class="label label-info">{{article.get_comments_count}} <i class="glyphicon glyphicon-comment"></i></span>{% endif %}</div>
+		<div><span><a href="{% url 'blog_index' article.blog.slug %}"><img class="img-responsive img-circle pull-left" src="{{article.blog.header_image.get_profile_url}}" alt="{{article.blog.header_image.caption}}"/> {{article.blog}}</a> | <i class="glyphicon glyphicon-time"></i> {{article.publish_date}}</span></div>
+		<br/>
+	</div>
+</div>
 
-<h2><a href="{% url 'article' article.blog.slug article.slug %}">{{article.title}}</a></h2>
-<p class="pull-right">{% if score.score > 0 %}<span class="label label-success">{{score.score}} <i class="glyphicon glyphicon-thumbs-up"></i></span>{% endif %}{% if article.get_comments_count %} <span class="label label-info">{{article.get_comments_count}} <i class="glyphicon glyphicon-comment"></i></span>{% endif %}</p>
-<p><span><a href="{% url 'blog_index' article.blog.slug %}"><img class="img-responsive img-circle pull-left" src="{{article.blog.header_image.get_profile_url}}" alt="{{article.blog.header_image.caption}}"/></a></span> <span><a href="{% url 'blog_index' article.blog.slug %}">{{article.blog}}</a></span> | <span class="glyphicon glyphicon-time"></span> {{article.publish_date}}</p>
-<br/>
-
-{% if article.featured_image %}
-<img class="img-responsive" src="{{article.featured_image.get_home_url}}" alt="{{article.featured_image.caption}}">
-{% else %}
-<p>{{article.summary|safe}}</p>
-{% endif %}
-
+<div class="row">
+	<div class="col-sm-12">
+		{% if article.featured_image %}
+		<img class="img-responsive" src="{{article.featured_image.get_home_url}}" alt="{{article.featured_image.caption}}">
+		{% else %}
+		<p>{{article.summary|safe}}</p>
+		{% endif %}
+	</div>
+</div>
 <hr>

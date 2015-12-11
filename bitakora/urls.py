@@ -37,6 +37,8 @@ urlpatterns = patterns('',
     url(r'^ajax/get_categories$', DataGetCategories.as_view(), name='get_categories'),
     (r'^tinymce/', include('tinymce.urls')),
 
+    (r'^search/', include('haystack.urls')),
+
     (r'^', include('bitakora.base.urls')),
 )
 

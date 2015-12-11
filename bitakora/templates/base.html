@@ -72,9 +72,9 @@
                     </li>
                 </ul>
                 <ul id ="useroptions" class="nav navbar-nav navbar-right"></ul>
-                <form class="navbar-form navbar-right" role="search">
+                <form class="navbar-form navbar-right" role="search" action="/search/">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
+                        <input id="id_q" type="search" class="form-control" placeholder="{% trans 'Search' %}" name="q">
                     </div>
                 </form>
             </div>

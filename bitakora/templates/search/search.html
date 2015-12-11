@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load i18n bootstrap %}
+
+{% block header %}{% endblock %}
+
+{% block body %}
+    <h1>{% trans 'Search' %}</h1>
+
+    <form method="get" action=".">
+        <div class="row">
+            <div class="col-md-11">
+            {% for field in form %}
+                {% if field.name != 'models' %}
+                    <div class="form-group">
+                        <input id="id_q" class=" form-control" type="search" placeholder="{% trans 'Search something here...' %}" value="{{field.value}}" name="q">
+                    </div>
+                {% endif %}
+            {% endfor %}
+            </div>
+            <div class="col-md-1">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary pull-right">{% trans 'Search' %}</button>
+                </div>
+            </div>
+        </div>
+
+
+        {% if query %}
+            <h3>{% trans 'Results' %}</h3>
+
+            <div class="row">
+            {% for result in page.object_list %}
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-12">
+                            {% if result.object.featured_image %}
+                            <img class="img-responsive" src="{{result.object.featured_image.get_related_url}}" />
+                            {% endif %}
+                        </div>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h4><a href="{{ result.object.get_absolute_url }}">{{ result.object.title }}</a></h4>
+                                    <span><a href="{% url 'blog_index' result.object.blog.slug %}"><img class="img-circle" src="{{result.object.blog.get_photo.get_profile_url}}" /> {{result.object.blog.name}}</a></span> | <i class="glyphicon glyphicon-time"></i> {{result.object.publish_date}}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <p>{{result.object.summary|safe}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="col-sm-12">{% trans 'No results found.' %}</div>
+            {% endfor %}
+            </div>
+            {% if page.has_previous or page.has_next %}
+                <div class="row">
+                    {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; Previous{% if page.has_previous %}</a>{% endif %}
+                    |
+                    {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Next &raquo;{% if page.has_next %}</a>{% endif %}
+                </div>
+            {% endif %}
+        {% else %}
+            {# Show some example queries to run, maybe query syntax, something else? #}
+        {% endif %}
+    </form>
+{% endblock %}
+
+{% block sidebar %}{% endblock %}
