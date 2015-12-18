@@ -1,7 +1,37 @@
 {% extends "base/base.html" %}
 {% load i18n bootstrap voting_tags %}
 
-{% block title %}{{article.title}} - {% endblock %}
+{% block extracss %}
+    <link href="{{STATIC_URL}}js/lightbox/css/lightbox.css" rel="stylesheet">
+{% endblock %}
+
+{% block extrajs %}
+<script type="text/javascript">
+    function compare_scroll(div_top) {
+        if (div_top <= $(document).scrollTop()) {
+                $(".blog-brand").hide();
+                $(".social-buttons").fadeIn("slow");
+            }
+            else {
+                $(".social-buttons").hide();
+                $(".blog-brand").fadeIn("slow");
+            }
+    }
+
+    $(document).ready(function() {
+        var signature_div = $(".signature");
+        var div_top = signature_div.offset().top;
+
+        compare_scroll(div_top);
+
+        $(document).scroll(function() {
+            compare_scroll(div_top);
+        });
+    });
+</script>
+{% endblock %}
+
+{% block title %}{{article.title}} - {{blog.name}} - {% endblock %}
 
 {% block header %}{% endblock %}
 
@@ -9,10 +39,16 @@
 
 {% score_for_object article as score %}
 
+{% if draft_status %}
+    <div class="alert alert-warning" role="alert">{% blocktrans %}This post is still in <strong>Draft</strong> status{% endblocktrans %}</div>
+{% elif future_date %}
+    <div class="alert alert-warning" role="alert">{% blocktrans with date=article.publish_date %}This post has still a future date: <strong>{{date}}</strong>{% endblocktrans %}</div>
+{% endif %}
+
 <h1>{{article.title}}</h1>
 <div class="row">
-    <div class="col-sm-4">
-        <span><a href="{% url 'blog_index' article.blog.slug %}"><img class="img-responsive img-circle pull-left" src="{{article.blog.header_image.get_profile_url}}" alt="{{article.blog.header_image.caption}}"/></a></span> <span><a href="{% url 'blog_index' article.blog.slug %}">{{article.blog}}</a></span> | <span class="glyphicon glyphicon-time"></span> {{article.publish_date}}
+    <div class="col-sm-4 signature">
+        <span><a href="{% url 'blog_index' article.blog.slug %}"><img class="img-responsive img-circle pull-left" src="{{article.blog.get_photo.get_profile_url}}" alt="{{article.blog.header_image.caption}}"/></a></span> <span><a href="{% url 'blog_index' article.blog.slug %}">{{article.blog}}</a></span> | <span class="glyphicon glyphicon-time"></span> {{article.publish_date}}
     </div>
     <div class="col-sm-8 text-right">
         {% if score.score > 0 %}<span class="label label-success">{{score.score}} <i class="glyphicon glyphicon-thumbs-up"></i></span>{% endif %}{% if article.get_comments_count %} <span class="label label-info">{{article.get_comments_count}} <i class="glyphicon glyphicon-comment"></i></span>{% endif %}
@@ -25,11 +61,10 @@
 <div class="row">
     <div class="col-sm-12">
         {% if article.featured_image %}
-        <img class="img-responsive center-block" src="{{article.featured_image.get_home_url}}" alt=""/>
+        <a href="{{article.featured_image.get_display_url}}" data-lightbox="image-1" data-title="{{article.featured_image.title}}"><img class="img-responsive center-block" src="{{article.featured_image.get_home_url}}" alt="{{article.featured_image.title}}"/></a>
         <hr/>
         {% endif %}
 
-        <p class="lead">{{article.summary|safe}}</p>
         <p>{{article.text|safe}}</p>
         
         <div class="row">
@@ -110,4 +145,13 @@
 </div>
 {% endif %}
 
+{% endblock %}
+
+{% block footerjs %}
+    <script type="text/javascript" src="{{STATIC_URL}}js/lightbox/js/lightbox.js"></script>
+    <script type="text/javascript">
+        $(function () {
+          $('[data-toggle="popover"]').popover()
+        });
+    </script>
 {% endblock %}

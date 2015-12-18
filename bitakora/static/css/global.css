@@ -99,30 +99,103 @@ footer {
   margin-top: 10px;
   padding: 5px;
 }
+.signature{
+  line-height:30px;
+}
+.signature img{
+  margin-right:10px;
+}
 
+.navbar-nav > li > a.btn{
+    background-image: none;
+    border: 1px solid transparent !important;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block !important;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857 !important;
+    margin-bottom: 0;
+    padding: 6px 12px !important;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    margin-top:8px;
+    color:white !important;
+}
 
+.navbar-nav > li > a.btn:hover{
+  background-color:#333;
+}
+#useroptions > li > a {
+    padding-top: 10px;
+}
+#useroptions .btn-default{
+  background-color:#666;
+}
+.well h4{
+  font-size:22px;
+  border-bottom:1px dotted #ccc;
+  padding-bottom:5px;
+  margin-bottom:10px;
+  margin-top:20px;
+}
 
+h4.media-heading{
+  font-size:16px;
+  border:none;
+  padding:0;
+  margin:0;
+  font-weight:bold;
+}
 
+.social-buttons{
+  margin-top:5px;
+  margin-left:30px;
+}
+.social-buttons > div{
+  display:inline-block;
+  line-height:36px;
+  margin:0 10px;
+}
 
+.social-buttons > div a{
+  display:block;
+  width:34px;
+  text-indent:-1000px;
+  background-color:white;
+  opacity:0.1;
+}
+.tweet-this{
+  background: url("../img/icon_twitter.gif") no-repeat top left;
+}
+.facebook-this{
+  background: url("../img/icon_facebook.gif") no-repeat top left;
+}
+.gplus-this{
+  background: url("../img/icon_gplus.gif") no-repeat top left;
+}
+.social-buttons > div a:hover{
+  background-color:white;
+  opacity:0.2;
+}
+.blogtitle{
+  margin-bottom:20px;
+}
+.blogtitle h1{
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
+.blogtitle .tagline{
+  font-size:20px;
+  padding:20px;
+  display:inline-block;
+  border-top:1px solid #efefef;
+  border-bottom:1px solid #efefef;
+}
+.tw-share-btn, .fb-share-btn{
+    height: 25px;
+    margin-bottom:10px;
+}
 
 
 

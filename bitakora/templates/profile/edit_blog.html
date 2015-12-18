@@ -5,42 +5,61 @@
 
 <div class="col-sm-9">
 	<h2>{% trans "Your blog data" %}</h2>
-	<form action="{{request.path}}" method="POST" ENCTYPE="multipart/form-data">
-	{% csrf_token %}
-	{% for field in form %}
-        {% if field.name == 'header_image' %}
-            <div class="col-sm-4">
-                <img class="img-responsive" src="{{blog.get_photo.get_related_url}}"/>
+
+  <ul class="nav nav-tabs" role="tablist">
+    {% if user.get_blog %}<li role="presentation" class="active"><a href="#config" aria-controls="config" role="tab" data-toggle="tab">{% trans "Blog configuration" %}</a></li>{% endif %}
+    <li role="presentation" {% if not user.get_blog %}class="active"{% endif %}><a href="#import" aria-controls="import" role="tab" data-toggle="tab">{% trans "Import" %}</a></li>
+    {% if user.get_blog %}<li role="presentation"><a href="#export" aria-controls="export" role="tab" data-toggle="tab">{% trans "Export" %}</a></li>{% endif %}
+  </ul>
+
+
+  <div class="tab-content">
+      <div role="tabpanel" class="tab-pane {% if user.get_blog %}active{% endif %}" id="config">
+        	<form action="{{request.path}}" method="POST" ENCTYPE="multipart/form-data">
+        	{% csrf_token %}
+        	{% for field in form %}
+                {% if field.name == 'header_image' %}
+                    <div class="col-sm-4">
+                        <img class="img-responsive" src="{{blog.get_photo.get_related_url}}"/>
+                    </div>
+                    <div class="col-sm-8">
+                    {{field|bootstrap}}
+                    </div>
+                {% elif field.name == 'template' %}
+                <div class="col-sm-12">
+              		<div class="form-group">
+              			<label for="id_analytics_code" class="control-label ">Template</label>
+              			<div class="">
+        		            {% for radio in field %}
+        		            <div class="col-sm-3">
+        		            	<img class="img-responsive" src="{{STATIC_URL}}img/templates/{{radio.choice_label|slugify}}.png" />
+        		            	<p>{{radio}}</p>
+        		            </div>
+        		            {% endfor %}
+        		        </div>
+        	        </div>
+        	    </div>
+        	    {% else %}
+        	    <div class="col-sm-12">
+                    {{field|bootstrap}}
+                </div>
+                {% endif %}
+            {% endfor %}
+        	   <div class="col-sm-12">
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary">{% trans 'Submit' %}</button>
+              </div>
             </div>
-            <div class="col-sm-8">
-            {{field|bootstrap}}
-            </div>
-        {% elif field.name == 'template' %}
-        <div class="col-sm-12">
-      		<div class="form-group">
-      			<label for="id_analytics_code" class="control-label ">Template</label>
-      			<div class="">
-		            {% for radio in field %}
-		            <div class="col-sm-3">
-		            	<img class="img-responsive" src="{{STATIC_URL}}img/templates/{{radio.choice_label|slugify}}.png" />
-		            	<p>{{radio}}</p>
-		            </div>
-		            {% endfor %}
-		        </div>
-	        </div>
-	    </div>
-	    {% else %}
-	    <div class="col-sm-12">
-            {{field|bootstrap}}
-        </div>
-        {% endif %}
-    {% endfor %}
-	<div class="col-sm-12">
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">{% trans 'Submit' %}</button>
+        	</form>
       </div>
-    </div>
-	</form>
+      <div role="tabpanel" class="tab-pane {% if not user.get_blog %}active{% endif %}" id="import">
+          {% include 'base/import_new_blog.html' %}
+      </div>
+      <div role="tabpanel" class="tab-pane" id="export">
+          <p>{% trans 'Export your blog data to WordPress XML format' %}</p>
+          <button class="btn btn-default">{% trans 'Export your blog' %}</button>
+      </div>
+  </div>
 </div>
 
 

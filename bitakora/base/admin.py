@@ -43,9 +43,11 @@ class ArticleAdmin(admin.ModelAdmin):
     ordering = ('title',)
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('user','nickname','email','parent','text','publish_date')
+    list_display = ('user','nickname','email','parent','text','publish_date','status')
     list_display_links = ('user','user')
     search_fields = ['user__username', 'nickname','text']
+    list_editable = ("status",)
+    radio_fields = {"status": admin.HORIZONTAL}
     ordering = ('-publish_date',)
 
 class CategoryAdmin(admin.ModelAdmin):

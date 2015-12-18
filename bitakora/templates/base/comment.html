@@ -1,6 +1,9 @@
-<div id="{{comment.id}}" class="media">
+{% load i18n %}
+
+{% if comment.status == 1 or request.user == comment.parent.blog.user %}
+<div id="{{comment.id}}" class="media" {% if comment.status == 2 %}style="opacity: 0.5;"{% endif %}>
     {% if comment.user.get_blog %}
-    <a class="pull-left" href="{ url 'blog_index' comment.user.get_blog.slug %}">
+    <a class="pull-left" href="{ url 'blog_index' comment.user.get_blog.slug() %}">
         <img class="media-object" src="{{comment.user.get_photo.get_profile_url}}" alt="{{comment.user.photo.caption}}">
     </a>
     {% elif comment.user %}
@@ -18,7 +21,10 @@
                 {{comment.nickname}}
             {% endif %}
             <small>{{comment.publish_date}} <a href="#{{comment.id}}">#{{forloop.counter}}</a></small>
+            {% if blog.user == request.user %}<a tabindex="0" data-toggle="popover" data-container="body" data-trigger="focus" data-title="{% trans 'Comment status' %}" data-content="<ul class='list-unstyled'><li><a href='{% url 'change_comment_status' %}?comment_id={{comment.id}}&status=1&next={{request.path}}'>{% trans 'Visible' %}</a></li><li><a href='{% url 'change_comment_status' %}?comment_id={{comment.id}}&status=2&next={{request.path}}''>{% trans 'Visible only for admin' %}</a></li><li><a href='{% url 'change_comment_status' %}?comment_id={{comment.id}}&status=3&next={{request.path}}''>{% trans 'Delete' %}</a></li></ul>" data-placement="left" data-html="true" class="pull-right"><i class="glyphicon glyphicon-cog"></i></a>
+            {% endif %}
         </h4>
         {% block text %}{{comment.text}}{% endblock %}
     </div>
 </div>
+{% endif %}

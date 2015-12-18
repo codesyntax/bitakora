@@ -6,6 +6,8 @@ from bitakora.base.managers import PublishedManager
 from bitakora.utils.models import get_user_model_name
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
+from django.template.defaultfilters import removetags, striptags, truncatechars
+from datetime import datetime
 
 user_model_name = get_user_model_name()
 
@@ -59,10 +61,17 @@ class Blog(models.Model):
         from bitakora.base.models import Article
         return Article.objects.published(for_blog=self)
 
-    def get_last_comments(self):
+    def get_myposts(self):
+        from bitakora.base.models import Article
+        return Article.objects.filter(blog=self).order_by('-publish_date')
+
+    def get_comments(self):
         from bitakora.base.models import Comment
         articles = self.get_articles()
-        return Comment.objects.filter(parent__in=articles)[:5]
+        return Comment.objects.filter(parent__in=articles)
+
+    def get_last_comments(self):
+        return self.get_comments()[:5]
 
     def get_blog_template(self):
         return "%s/%s/%s" % ("base","css",self.template)
@@ -109,7 +118,6 @@ class Article(models.Model):
             help_text=_("Leave blank to have the URL auto-generated from "
                         "the title."))
 
-    summary = models.TextField(max_length=500, verbose_name=_('Summary'))
     text = models.TextField(verbose_name=_('Text'))
 
     blog = models.ForeignKey(Blog)
@@ -120,7 +128,7 @@ class Article(models.Model):
             "on the site."))
     publish_date = models.DateTimeField(_("Published from"),
         help_text=_("With Published chosen, won't be shown until this time"),
-        blank=True, null=True, db_index=True)
+        blank=True, null=True, db_index=True, default=datetime.now())
     expiry_date = models.DateTimeField(_("Expires on"),
         help_text=_("With Published chosen, won't be shown after this time"),
         blank=True, null=True)
@@ -136,6 +144,9 @@ class Article(models.Model):
                                  verbose_name=_("Related posts"), blank=True)
 
     objects = PublishedManager()
+
+    def get_summary(self):
+        return truncatechars(striptags(self.text), 600)
 
     def get_comments(self):
         return self.comments.all().order_by("publish_date")
@@ -191,6 +202,14 @@ class Article(models.Model):
         verbose_name_plural = _("Articles")
         ordering = ("-publish_date",)
 
+COMMENT_STATUS_VISIBLE = 1
+COMMENT_STATUS_VISIBLEADMIN = 2
+COMMENT_STATUS_NOTVISIBLE = 3
+COMMENT_STATUS_CHOICES = (
+    (COMMENT_STATUS_VISIBLE, _("Visible")),
+    (COMMENT_STATUS_VISIBLEADMIN, _("Visible only for the admin")),
+    (COMMENT_STATUS_NOTVISIBLE, _("Not visible")),
+)
 
 class Comment(models.Model):
     user = models.ForeignKey(user_model_name, verbose_name=_("Author"),
@@ -203,7 +222,8 @@ class Comment(models.Model):
     text = models.TextField(verbose_name=_('Text'), null=True,blank = True)
 
     ip_address  = models.GenericIPAddressField(verbose_name=_('IP address'), blank=True, null=True)
-
+    status = models.IntegerField(_("Status"),
+        choices=COMMENT_STATUS_CHOICES, default=COMMENT_STATUS_VISIBLE)
     publish_date = models.DateTimeField(_("Publish date"),
         blank=True, null=True, db_index=True)
 

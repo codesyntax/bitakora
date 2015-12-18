@@ -1,7 +1,8 @@
 {% extends "base.html" %}
-{% load i18n %}
+{% load i18n social_share %}
 
 {% block extracss %}
+<link href="{{STATIC_URL}}js/lightbox/css/lightbox.css" rel="stylesheet">
 <style type="text/css">
     {% include blog.get_blog_template with article=article %}
 </style>
@@ -19,17 +20,17 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                {% if not 'users' in request.path or user.get_blog %}<a class="navbar-brand" href="/"><strong>B</strong></a> <a class="navbar-brand" href="{% url 'blog_index' blog.slug %}">{{blog.name}}</a>{% else %}<a class="navbar-brand" href="/">Bitakora</a>{% endif %}
+                {% if not 'users' in request.path or user.get_blog %}<a class="navbar-brand" href="/"><strong>B</strong></a> <a class="navbar-brand blog-brand" href="{% url 'blog_index' blog.slug %}">{{blog.name}}</a>{% else %}<a class="navbar-brand" href="/">Bitakora</a>{% endif %}
+                <div class="social-buttons nav navbar-nav">
+                    {% if article %}
+                        {% post_to_twitter article.title article %}
+                        {% post_to_facebook article %}
+                        {% post_to_gplus article %}
+                    {% endif %}
+                </div>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    {% if article %}
-                    <li>
-                        <a href="#"><img src="{{STATIC_URL}}img/share/share_icons.png" height="35" /></a>
-                    </li>
-                    {% endif %}
-                </ul>
                 <ul id ="useroptions" class="nav navbar-nav navbar-right"></ul>
                 <form class="navbar-form navbar-right" role="search" action="/search/">
                     <div class="form-group">
@@ -78,12 +79,20 @@
         <!-- /.row -->
     </footer>
 
+    {% block footerjs %}
+        <script type="text/javascript" src="{{STATIC_URL}}js/lightbox/js/lightbox.js"></script>
+        <script type="text/javascript">
+        $(function () {
+          $('[data-toggle="popover"]').popover()
+        });
+    </script>
+    {% endblock %}
+
+    {% if blog.analytics_code %}
     <script type="text/javascript">
     {{blog.analytics_code}}
     </script>
-
-    {% block footerjs %}{% endblock %}
+    {% endif %}
 
 </div>
 {% endblock %}
-

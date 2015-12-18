@@ -4,7 +4,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from bitakora.views import DataGetCategories
 from bitakora.base.models import Article
 from voting.views import vote_on_object
-
+from django.contrib.flatpages import views
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -35,9 +35,12 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
 
     url(r'^ajax/get_categories$', DataGetCategories.as_view(), name='get_categories'),
+
     (r'^tinymce/', include('tinymce.urls')),
 
     (r'^search/', include('haystack.urls')),
+
+    url(r'^learn-more/$', views.flatpage, {'url': '/learn-more/'}, name='learn-more'),
 
     (r'^', include('bitakora.base.urls')),
 )

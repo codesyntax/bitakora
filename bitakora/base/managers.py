@@ -10,7 +10,7 @@ class PublishedManager(Manager):
     publish date when the given user is not a staff member.
     """
 
-    def published(self, for_blog=None):
+    def published(self, for_blog=None, for_slug=None):
         """
         For non-staff users, return items with a published status and
         whose publish and expiry dates fall before and after the

@@ -1,4 +1,3 @@
 {{ object.title }}
 {{ object.user.get_fullname }}
-{{ object.summary }}
 {{ object.text }}

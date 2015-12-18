@@ -19,7 +19,9 @@
     <link type="text/css" href="{{STATIC_URL}}css/global.css" rel="stylesheet">
 
     <!-- Personal Blog CSS -->
-    {% block extracss %}{% endblock %}
+    {% block extracss %}
+        <link href="{{STATIC_URL}}js/lightbox/css/lightbox.css" rel="stylesheet">
+    {% endblock %}
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -41,7 +43,9 @@
     </script>
 
 
-    {% block extrajs %}{% endblock %}
+    {% block extrajs %} 
+
+    {% endblock %}
 
 </head>
 
@@ -100,7 +104,7 @@
                 <h2>{% trans 'Bitakora is a community of readers and writers offering unique perspectives on ideas large and small' %}</h2>
                 <p>{% trans 'Sign up to read and interact with what matters most to you' %}</p>
                 <a class="btn btn-primary" href="{% url 'cssocialuser_user_login' %}?next=/">{% trans 'Get started' %}</a>
-                <a class="btn btn-default" href="">{% trans 'Learn more' %}</a>
+                <a class="btn btn-default" href="{% url 'learn-more' %}">{% trans 'Learn more' %}</a>
             </div>
         </div>
     </header>
@@ -160,6 +164,10 @@
 
         </div>
         <!-- /.row -->
+
+        {% block footerjs %}
+            <script type="text/javascript" src="{{STATIC_URL}}js/lightbox/js/lightbox.js"></script>
+        {% endblock %}
         
         {% block mainfooter %}
         <!-- Footer -->

@@ -1,0 +1,49 @@
+{% extends "base/base.html" %}
+{% load i18n bootstrap %}
+
+{% block header %}{% endblock %}
+
+{% block body %}
+
+<h1>{% block bodytitle %}{% trans 'Dashboard' %}{% endblock %}</h1>
+
+<h2>{% trans 'My articles' %}</h2>
+<table class="table table-striped">
+	<thead>
+		<th>{% trans 'Title' %}</th>
+		<th>{% trans 'Status' %}</th>
+		<th>{% trans 'Published from' %}</th>
+		<th>{% trans 'Thumbnail' %}</th>
+	</thead>
+	<tbody>
+		{% for post in blog.get_myposts %}
+		<tr>
+			<td><a href="{% url 'article' post.blog.slug post.slug %}">{{post.title}}</a></td>
+			<td>{{post.get_status_display}}</td>
+			<td>{{post.publish_date}}</td>
+			<td>{% if post.featured_image %}<img class="img-responsive" src="{{post.featured_image.get_admin_thumbnail_url}}">{% endif %}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+<h2>{% trans 'Comments' %}</h2>
+<table class="table table-striped">
+	<thead>
+		<th>{% trans 'Comment' %}</th>
+		<th>{% trans 'User' %}</th>
+		<th>{% trans 'Status' %}</th>
+		<th>{% trans 'Published date' %}</th>
+	</thead>
+	<tbody>
+		{% for comment in blog.get_comments %}
+		<tr>
+			<td><a href="{% url 'article' comment.parent.blog.slug comment.parent.slug %}#{{comment.id}}">{{comment.text|truncatechars:"100"}}</a></td>
+			<td>{{comment.user.get_fullname}}</td>
+			<td>{{comment.get_status_display}} <a tabindex="0" data-toggle="popover" data-container="body" data-trigger="focus" data-title="{% trans 'Comment status' %}" data-content="<ul class='list-unstyled'><li><a href='{% url 'change_comment_status' %}?comment_id={{comment.id}}&status=1&next={{request.path}}'>{% trans 'Visible' %}</a></li><li><a href='{% url 'change_comment_status' %}?comment_id={{comment.id}}&status=2&next={{request.path}}''>{% trans 'Visible only for admin' %}</a></li><li><a href='{% url 'change_comment_status' %}?comment_id={{comment.id}}&status=3&next={{request.path}}''>{% trans 'Delete' %}</a></li></ul>" data-placement="left" data-html="true"><i class="glyphicon glyphicon-cog"></i></a></td>
+			<td>{{comment.publish_date}}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% endblock %}

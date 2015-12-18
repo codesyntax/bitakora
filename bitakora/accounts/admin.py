@@ -20,7 +20,7 @@ class BitakoraUserAdmin(admin.ModelAdmin):
         return obj.get_fullname()
 
     list_display = ('fullname', 'username','get_email', 'date_joined','is_active', 'is_staff','admin_thumbnail')
-    list_display_links = ('fullname',)
+    list_display_links = ('fullname','username')
     ordering = ('-date_joined',)
     search_fields = ['email','username',]
     raw_id_fields = ('photo',)

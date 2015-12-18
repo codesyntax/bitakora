@@ -1,9 +1,14 @@
 from django.template import RequestContext
+from django.http import HttpResponse
 from django.shortcuts import render_to_response, get_object_or_404
 from bitakora.base.models import Article, Category, Blog, Comment
 from voting.models import Vote
+import json
 from django.views.generic import View
+from bitakora.utils.images import handle_uploaded_file
 from django.utils.translation import ugettext_lazy as _
+
+IMAGE_SIZE = 5242880
 
 SECTIONS = (
     (1, _('Top stories')),
@@ -12,21 +17,21 @@ SECTIONS = (
 
 def index(request):
     articles = Article.objects.published()[:25]
-    comments = Comment.objects.all().order_by('-publish_date')[:10]
+    comments = Comment.objects.filter(status=1).order_by('-publish_date')[:10]
     categories = Category.objects.all()[:8]
     return render_to_response('index.html', locals(), context_instance=RequestContext(request))
 
 def top_stories(request):
     section = SECTIONS[0]
     articles = Article.objects.top_stories()
-    comments = Comment.objects.all().order_by('-publish_date')[:10]
+    comments = Comment.objects.filter(status=1).order_by('-publish_date')[:10]
     categories = Category.objects.all()[:8]
     return render_to_response('index_no_header.html', locals(), context_instance=RequestContext(request))
 
 def bookmarks(request):
     section = SECTIONS[1]
     articles = Article.objects.bookmarks(user=request.user)
-    comments = Comment.objects.all().order_by('-publish_date')[:10]
+    comments = Comment.objects.filter(status=1).order_by('-publish_date')[:10]
     categories = Category.objects.all()[:8]
     return render_to_response('index_no_header.html', locals(), context_instance=RequestContext(request))
 

@@ -1,7 +1,7 @@
 from django.conf import settings
 from django import forms
 from photologue.models import Photo
-from bitakora.base.models import Article, Blog, Comment, Category, TEMPLATE_CHOICES, DEFAULT_TEMPLATE, LICENSE_CHOICES, DEFAULT_LICENSE
+from bitakora.base.models import *
 from tinymce.widgets import TinyMCE
 from captcha.fields import ReCaptchaField
 from django.utils.translation import ugettext_lazy as _
@@ -11,11 +11,11 @@ TINYMCE_DEFAULT_CONFIG = getattr(settings, 'TINYMCE_DEFAULT_CONFIG', {})
 
 class ArticleForm(forms.ModelForm):
     featured_image = forms.FileField(label=_('Header image'),help_text=_('Valid formats: jpg, png, gif.'),required=False)
-    summary = forms.CharField(label=_('Summary'),widget=TinyMCE(mce_attrs=TINYMCE_DEFAULT_CONFIG))
     text = forms.CharField(label=_('Text'),widget=TinyMCE(mce_attrs=TINYMCE_DEFAULT_CONFIG))
     categories = forms.ModelMultipleChoiceField(label=_('Categories'),widget=forms.SelectMultiple(attrs={'class':'chosen-category','data-placeholder':_('Choose categories')}),queryset=Category.objects.all(),required=False)
     related_posts = forms.ModelMultipleChoiceField(label=_('Related posts'),widget=forms.SelectMultiple(attrs={'class':'chosen-select','data-placeholder':_('Choose related posts')}),queryset=Article.objects.all(),required=False)
-    #captcha = ReCaptchaField()
+    status = forms.ChoiceField(widget=forms.RadioSelect, choices=CONTENT_STATUS_CHOICES,initial=CONTENT_STATUS_DRAFT)
+    captcha = ReCaptchaField()
 
     def clean_featured_image(self):
         try:
@@ -29,19 +29,20 @@ class ArticleForm(forms.ModelForm):
         if not valid:
             cleaned_data = self.cleaned_data
             data = dict(self.data).get('categories')
-            for i,cat in enumerate(data):
-                if Category.objects.filter(slug=slugify(cat)):
-                    data[i] = u"%s" % (Category.objects.get(slug=slugify(cat)).title)
-                elif not cat.isdigit():
-                    cat_obj = Category(title=cat,slug=slugify(cat))
-                    cat_obj.save()
-                    data[i] = u"%d" % (cat_obj.id)
-            
-            self.cleaned_data.update({
-                'categories': list(set(data)),
-            })
-            if 'categories' in self.errors:
-                self.errors.pop('categories')
+            if data:
+                for i,cat in enumerate(data):
+                    if Category.objects.filter(slug=slugify(cat)):
+                        data[i] = u"%s" % (Category.objects.get(slug=slugify(cat)).title)
+                    elif not cat.isdigit():
+                        cat_obj = Category(title=cat,slug=slugify(cat))
+                        cat_obj.save()
+                        data[i] = u"%d" % (cat_obj.id)
+                
+                self.cleaned_data.update({
+                    'categories': list(set(data)),
+                })
+                if 'categories' in self.errors:
+                    self.errors.pop('categories')
         valid = super(ArticleForm, self).is_valid()
         return valid
 
@@ -49,16 +50,15 @@ class ArticleForm(forms.ModelForm):
 
     class Meta:
         model = Article
-        fields = ['title', 'summary', 'text', 'featured_image', 'categories', 'related_posts', 'allow_comments']
+        fields = ['title', 'text', 'featured_image', 'categories', 'related_posts', 'status', 'publish_date', 'allow_comments']
 
 
 class ArticleAdminForm(forms.ModelForm):
-    summary = forms.CharField(label=_('Summary'),widget=TinyMCE(mce_attrs=TINYMCE_DEFAULT_CONFIG))
     text = forms.CharField(label=_('Text'),widget=TinyMCE(mce_attrs=TINYMCE_DEFAULT_CONFIG))
 
     class Meta:
         model = Article
-        fields = ['title', 'slug','summary', 'text', 'featured_image', 'blog','categories', 'related_posts', 'allow_comments','publish_date','expiry_date','status']
+        fields = ['title', 'slug', 'text', 'featured_image', 'blog','categories', 'related_posts', 'allow_comments','publish_date','expiry_date','status']
 
 
 class BlogForm(forms.ModelForm):

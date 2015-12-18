@@ -1,10 +1,12 @@
 {% extends "base/base.html" %}
 {% load i18n %}
 
+{% block title %}{{blog.name}} - {% endblock %}
+
 {% block body %}
 
 <div class="row text-center">
-	<div class="col-sm-12">
+	<div class="col-sm-12 blogtitle">
 		<h1>{{blog.name}}</h1>
 		{% if blog.tagline %}<span class="tagline">{{blog.tagline}}</span>{% endif %}
 	</div>

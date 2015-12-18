@@ -1,16 +1,24 @@
 {% load i18n %}
 
 {% if user.is_authenticated %}
+
+{% if user.get_blog %}
 <li>
-    {% if user.get_blog %}
-	<a class="btn btn-default" href="{% url 'add_article' user.get_blog.slug %}">{% trans 'Write a story' %}</a>
-    {% else %}
+	<a class="btn btn-primary" href="{% url 'add_article' user.get_blog.slug %}">{% trans 'Write a story' %}</a>
+</li>
+{% if article %}
+<li>
+    <a class="btn btn-default" href="{% url 'edit_article' user.get_blog.slug article.slug %}">{% trans 'Edit' %}</a>
+</li>
+{% endif %}
+<li>
+    <a class="btn btn-default" href="{% url 'my_posts' user.get_blog.slug  %}">{% trans 'Dashboard' %}</a>
+</li>
+{% else %}
+<li>
     <a class="btn btn-primary" href="{% url 'new_blog' %}">{% trans 'Create a blog' %}</a>
-    {% endif %}
 </li>
-<li>
-	{% if article %}<a class="btn btn-default" href="{% url 'edit_article' user.get_blog.slug article.slug %}">{% trans 'Edit' %}</a>{% endif %}
-</li>
+{% endif %}
 <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 		<img class="img-responsive img-circle pull-left" src="{{user.get_photo.get_profile_url}}" alt="{{user.photo.caption}}" />
@@ -21,10 +29,10 @@
         {% endif %}
         <li><a href="{% url 'cssocialuser_edit_profile' %}"><i class="glyphicon glyphicon-cog"></i> {% trans 'Settings' %}</a></li>
         <li role="separator" class="divider"></li>
-        <li><a href="{% url 'cssocialuser_logout' %}?next={{url}}"><i class="glyphicon glyphicon-off"></i> {% trans 'Logout' %}</a></li>
+        <li><a href="{% url 'cssocialuser_logout' %}?next=/"><i class="glyphicon glyphicon-off"></i> {% trans 'Logout' %}</a></li>
     </ul>
 </li>
-{%else%}
+{% elif not 'login' in url %}
 <li>
 	<a class="btn btn-primary" href="{% url 'cssocialuser_user_login' %}?next={{url}}">{% trans 'Sign in / Sign up' %}</a>
 </li>

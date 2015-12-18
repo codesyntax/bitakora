@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+
+{% block title %}{{ flatpage.title }} - {% endblock %}
+
+{% block header %}{% endblock %}
+
+{% block body %}
+
+<div class="row">
+    <h2 class="page-header">{{ flatpage.title }}</h2>
+</div>
+
+{{ flatpage.content|safe }}
+
+{% endblock %}
+
+{% block sidebar %}{% endblock %}

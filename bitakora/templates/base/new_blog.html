@@ -11,36 +11,47 @@
 
 <h1>{% trans 'New blog' %}</h1>
 
-<form action="{% url 'new_blog' %}" role="form" method="POST" ENCTYPE="multipart/form-data">
-    {% csrf_token %}
-    {% for field in form %}
-        {% if field.name != 'template' %}
-        <div class="col-sm-12">
-            {{field|bootstrap}}
-        </div>
-        {% else %}
-        <div class="col-sm-12">
-      		<div class="form-group">
-      			<label for="id_analytics_code" class="control-label  ">Template</label>
-      			<div class="">
-		            {% for radio in field %}
-		            <div class="col-sm-3">
-		            	<img class="img-responsive" src="{{STATIC_URL}}img/templates/{{radio.choice_label|slugify}}.png" />
-		            	<p>{{radio}}</p>
-		            </div>
-		            {% endfor %}
-		        </div>
-	        </div>
-	    </div>
-        {% endif %}
-    {% endfor %}
-    <div class="col-sm-12">
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">{% trans 'Submit' %}</button>
-      </div>
-    </div>
-</form>
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#new" aria-controls="new" role="tab" data-toggle="tab">{% trans "Create from scratch" %}</a></li>
+    <li role="presentation"><a href="#import" aria-controls="import" role="tab" data-toggle="tab">{% trans "Import from Wordpress" %}</a></li>
+  </ul>
 
+<div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="new">
+          <form action="{% url 'new_blog' %}" role="form" method="POST" ENCTYPE="multipart/form-data">
+              {% csrf_token %}
+              {% for field in form %}
+                  {% if field.name != 'template' %}
+                  <div class="col-sm-12">
+                      {{field|bootstrap}}
+                  </div>
+                  {% else %}
+                  <div class="col-sm-12">
+                		<div class="form-group">
+                			<label for="id_analytics_code" class="control-label  ">Template</label>
+                			<div class="">
+          		            {% for radio in field %}
+          		            <div class="col-sm-3">
+          		            	<img class="img-responsive" src="{{STATIC_URL}}img/templates/{{radio.choice_label|slugify}}.png" />
+          		            	<p>{{radio}}</p>
+          		            </div>
+          		            {% endfor %}
+          		        </div>
+          	        </div>
+          	    </div>
+                  {% endif %}
+              {% endfor %}
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary">{% trans 'Submit' %}</button>
+                </div>
+              </div>
+          </form>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="import">
+          {% include 'base/import_new_blog.html' %}
+      </div>
+</div>
 
 {% endblock %}
 

@@ -1,6 +1,7 @@
 from django.contrib.syndication.views import Feed
 from django.core.urlresolvers import reverse
 from bitakora.base.models import Article, Blog
+from django.template.defaultfilters import striptags
 from django.utils.translation import ugettext_lazy as _
 
 class BlogEntriesFeed(Feed):
@@ -30,7 +31,7 @@ class BlogEntriesFeed(Feed):
         return item.title
 
     def item_description(self, item):
-        return item.summary
+        return item.text
 
     def item_pubdate(self, item):
         return item.publish_date
