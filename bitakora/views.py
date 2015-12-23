@@ -18,7 +18,7 @@ SECTIONS = (
 def index(request):
     articles = Article.objects.published()[:25]
     comments = Comment.objects.filter(status=1).order_by('-publish_date')[:10]
-    categories = Category.objects.all()[:8]
+    categories = [cat for article in articles for cat in article.categories.all()][:8]
     return render_to_response('index.html', locals(), context_instance=RequestContext(request))
 
 def top_stories(request):

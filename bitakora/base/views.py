@@ -3,7 +3,7 @@ from django.http import Http404
 from django.shortcuts import render_to_response, get_object_or_404, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from bitakora.base.models import Article, Blog, Comment, CONTENT_STATUS_PUBLISHED
-from bitakora.base.forms import ArticleForm, BlogForm, CommentForm, AnonimousCommentForm
+from bitakora.base.forms import ArticleForm, BlogForm, CommentForm, AnonimousCommentForm, WPXMLForm
 from bitakora.utils.images import handle_uploaded_file
 from bitakora.utils.slug import time_slug_string
 from django.template.defaultfilters import slugify
@@ -35,6 +35,10 @@ def article(request,blogslug,slug):
 def my_posts(request,slug):
     blog = get_object_or_404(Blog, slug=slug)
     return render_to_response('base/dashboard.html', locals(), context_instance=RequestContext(request))
+
+def my_comments(request,slug):
+    blog = get_object_or_404(Blog, slug=slug)
+    return render_to_response('base/dashboard_comments.html', locals(), context_instance=RequestContext(request))
 
 @login_required(login_url='/users/login')
 def add_article(request,blogslug):
@@ -96,6 +100,7 @@ def new_blog(request):
             return HttpResponseRedirect(reverse('blog_index', kwargs={'slug': blog.slug}))
     else:
         form = BlogForm()
+        wp_form = WPXMLForm()
     return render_to_response('base/new_blog.html', locals(), context_instance=RequestContext(request))
 
 

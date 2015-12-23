@@ -106,3 +106,7 @@ class AnonimousCommentForm(forms.ModelForm):
         text = self.cleaned_data['text'].strip()
         if not text:
             raise forms.ValidationError(_('Empty comment. Please, write something!'))
+
+
+class WPXMLForm(forms.Form):
+    wp_xml = forms.FileField(label=_("Wordpress file"), help_text=_("Please, select your Wordpress XML file")) 

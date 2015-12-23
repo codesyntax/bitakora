@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.debug import sensitive_post_parameters
 from django.views.decorators.csrf import csrf_protect
 from bitakora.base.models import Blog
-from bitakora.base.forms import BlogFormNoCaptcha
+from bitakora.base.forms import BlogFormNoCaptcha, WPXMLForm
 from cssocialuser.forms import ProfileForm, ProfilePhotoForm
 from cssocialuser.views import password_change
 from bitakora.utils.images import handle_uploaded_file
@@ -63,6 +63,7 @@ def edit_blog(request):
             messages.add_message(request, messages.SUCCESS, msg, fail_silently=True)
     else:
         form = BlogFormNoCaptcha(instance=blog)
+        wp_form = WPXMLForm()
     return render_to_response('profile/edit_blog.html', locals(), context_instance=RequestContext(request))
 
 

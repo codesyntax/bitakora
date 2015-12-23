@@ -9,7 +9,7 @@
     {% elif comment.user %}
         <img class="pull-left media-object" src="{{comment.user.get_photo.get_profile_url}}" alt="{{comment.user.photo.caption}}">
     {% else %}
-        <img class="pull-left media-object" src="/media/photologue/photos/cache/no-profile-photo_ezdypGl_profile.png" alt="{{comment.nickname}}">
+        <img class="pull-left media-object" src="{{PROFILE_PHOTO_DEFAULT.get_profile_url}}" alt="{{comment.nickname}}" width="30">
     {% endif %}
     <div class="media-body">
         <h4 class="media-heading">
@@ -20,11 +20,11 @@
             {% else %}
                 {{comment.nickname}}
             {% endif %}
-            <small>{{comment.publish_date}} <a href="#{{comment.id}}">#{{forloop.counter}}</a></small>
+            <small>{{comment.publish_date}} <a href="{{comment.get_absolute_url}}#{{comment.id}}">#{{forloop.counter}}</a></small>
             {% if blog.user == request.user %}<a tabindex="0" data-toggle="popover" data-container="body" data-trigger="focus" data-title="{% trans 'Comment status' %}" data-content="<ul class='list-unstyled'><li><a href='{% url 'change_comment_status' %}?comment_id={{comment.id}}&status=1&next={{request.path}}'>{% trans 'Visible' %}</a></li><li><a href='{% url 'change_comment_status' %}?comment_id={{comment.id}}&status=2&next={{request.path}}''>{% trans 'Visible only for admin' %}</a></li><li><a href='{% url 'change_comment_status' %}?comment_id={{comment.id}}&status=3&next={{request.path}}''>{% trans 'Delete' %}</a></li></ul>" data-placement="left" data-html="true" class="pull-right"><i class="glyphicon glyphicon-cog"></i></a>
             {% endif %}
         </h4>
-        {% block text %}{{comment.text}}{% endblock %}
+        {% block text %}{{comment.text|safe}}{% endblock %}
     </div>
 </div>
 {% endif %}

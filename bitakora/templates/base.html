@@ -11,12 +11,18 @@
     <meta name="author" content="">
 
     <title>{% block title %}{% endblock %}Bitakora</title>
+    <link rel="shortcut icon" type="image/ico" href="{% if CUSTOM_FAVICON %}{{CUSTOM_FAVICON}}{% else %}{{STATIC_URL}}img/favicon.ico{% endif %}" />
 
     <!-- Bootstrap Core CSS -->
     <link type="text/css" href="{{STATIC_URL}}css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Kanit:400,300,500,600,700,800,700italic,600italic,500italic,400italic,300italic,800italic' rel='stylesheet' type='text/css'>
 
     <!-- Custom CSS -->
     <link type="text/css" href="{{STATIC_URL}}css/global.css" rel="stylesheet">
+
+    {% if CUSTOM_CSS %}
+    <link rel="stylesheet" type="text/css" href="{{CUSTOM_CSS}}">
+    {% endif %}
 
     <!-- Personal Blog CSS -->
     {% block extracss %}
@@ -63,7 +69,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">Bitakora</a>
+                <a class="navbar-brand" href="/">{% if CUSTOM_LOGO %}<img class="img-responsive" src="{{CUSTOM_LOGO}}" />{% else %}Bitakora{% endif %}</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

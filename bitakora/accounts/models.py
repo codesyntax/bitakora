@@ -6,7 +6,7 @@ from django.conf import settings
 from photologue.models import Photo
 from django.utils.translation import ugettext as _
 
-MEMBER_PHOTO_SLUG=getattr(settings,'PROFILE_PHOTO_DEFAULT_SLUG','no-profile-photo')
+PROFILE_PHOTO_DEFAULT=getattr(settings,'PROFILE_PHOTO_DEFAULT','')
 
 class BitakoraUser(CSAbstractSocialUser):
     last_updated = models.DateTimeField(auto_now_add=True,editable=False)
@@ -19,7 +19,7 @@ class BitakoraUser(CSAbstractSocialUser):
             return self.photo
         else:
             try:
-                return Photo.objects.get(slug=MEMBER_PHOTO_SLUG)
+                return Photo.objects.get(slug=PROFILE_PHOTO_DEFAULT)
             except:
                 return None
 

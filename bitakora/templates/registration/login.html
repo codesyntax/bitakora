@@ -28,8 +28,6 @@
 	</div>
 	<hr/>
 	<div class="row">
-		{% blocktrans %}
-		<div>If you sign up with Twitter or Facebook, we’ll start you off with a network by automatically importing any followers/followees or friends already on Bitakora. Also, we’ll never post to Twitter or Facebook without your permission. For more info, please see <a href="" class="link">Login FAQ</a>.</div>
-		{% endblocktrans %}
+		<div>{% trans 'If you sign up with Twitter or Facebook, we’ll start you off with a network by automatically importing any followers/followees or friends already on Bitakora. Also, we’ll never post to Twitter or Facebook without your permission. For more info, please see' %} <a href="{% url 'learn-more' %}" class="link">{% trans 'Login FAQ' %}</a>.</div>
 	</div>
 {% endblock %}

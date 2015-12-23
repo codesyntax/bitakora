@@ -1,6 +1,176 @@
 
 /*****blogak.eus***/
-
+/*font-family: 'Kanit', sans-serif;*/
+body{
+    color: rgba(0, 0, 0, 0.8);
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Open Sans","Helvetica Neue",sans-serif;
+    font-feature-settings: "liga";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.4;
+    text-rendering: optimizelegibility;
+}
 a{
-  color:#cc3333 !important;
+  color:#c00 !important;
+}
+h1, h2{
+    font-family: 'Kanit', sans-serif;    
+}
+h1{
+    font-weight:400;
+}
+h2{
+    font-weight:200;
+}
+.btn-primary {
+    background-color: #c00;
+    border-color: #aa2020;
+    color:white !important;
+}
+a.btn-primary:hover{
+    background-color: #aa2020;
+    border-color: #aa2020;  
+}
+.btn-default{
+    border:1px solid #c00;
+}
+.btn-default:hover{
+    background-color:#ffe5e5;
+    border:1px solid #c00;
+}
+.tw-share-btn, .fb-share-btn {
+    color:white !important;
+}
+/**/
+.tagline{
+    font-family: 'Kanit', sans-serif;    
+}
+.navbar-brand {
+    padding: 8px;
+}
+.navbar-nav a{
+    color:#9d9d9d !important;
+}
+.navbar-nav a:hover{
+    color:#c33 !important;
+}
+.header-image {
+   background: rgba(0, 0, 0, 0) url("/static/img/custom/blogak_header.jpg") no-repeat scroll center center / cover ;
+}
+.blog-brand{
+    padding:15px 0 0 15px;
+    color:white !important;
+    font-family: 'Kanit', sans-serif;
+}
+.blog-brand:hover{
+    color:#c33 !important;
+}
+.blog-brand::before{
+    content: " > ";
+    padding-right:5px;
+    font-size:14px;
+    line-height:20px;
+}
+/*postak*/
+
+h2.postlist{
+    font-family: georgia;
+    font-size:38px;
+    font-weight:bold;
+    letter-spacing: -0.003em;
+    line-height: 1;   
+}
+p.postlist{
+    font-family:georgia;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: -0.003em;
+    line-height: 1.58;
+}
+.signature{
+    font-size:14px;
+    color:#666;
+}
+/*eskuma*/
+.well {
+    background-color: #ffe5e5;
+    background-color:#efefef;
+    border: none;
+    border-radius:0;
+}
+.well h4 {
+    border-bottom: 1px solid #f5b6b6;
+    font-family: 'Kanit', sans-serif;
+    font-weight:200;
+}
+.well .media-body{
+    font-size:14px;
+}
+.well .media-body h4{
+    border:none;
+}
+.well .media img.pull-left{
+    border: 2px solid #f5b6b6;   
+    padding-right:0;
+    margin-right:10px;
+    border-radius:9999px;
+}
+.userpanel img{
+    border: 2px solid #f5b6b6;   
+    border-radius:9999px;
+}
+.userpanel hr{
+    border-top:1px solid #f5b6b6;
+    border-bottom:1px solid #f5b6b6;
+}
+.userpanel h4{
+    text-align:center;
+    border:none;
+    margin-top:0;
+}
+/*artikulua*/
+.articletext h1{
+    color: #333;
+    font-family: georgia;
+    font-size: 46px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1;
+}
+.articletext p{
+    font-family:georgia;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: -0.003em;
+    line-height: 1.6;
+    color:#333;
+}
+.articlefooter{
+    margin-top:20px;
+    border-top:1px solid #efefef;
+    margin-bottom:30px;
+}
+.label {
+    border-radius: 0.25em;
+    color: #fff;
+    display: inline;
+    font-size: 14px;
+    text-transform:uppercase;
+    font-weight: 200;
+    line-height: 1;
+    padding: 0 0.6em;
+    text-align: center;
+    vertical-align: baseline;
+    white-space: nowrap;
+    background-color:transparent;
+    border-right:1px solid #efefef;
+    border-left:1px solid #efefef;
+    border-radius:0;
+}
+footer{
+    font-size: 14px;
 }

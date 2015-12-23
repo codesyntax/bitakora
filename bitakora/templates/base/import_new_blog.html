@@ -1,4 +1,4 @@
-{% load i18n %}
+{% load i18n bootstrap %}
 
 <p>{% trans 'Import your blog data from WordPress XML' %}</p>
 <button class="btn btn-primary" data-toggle="modal" data-target="#importfile">{% trans 'Import your blog' %}</button>
@@ -11,7 +11,7 @@
 	            <h4 class="modal-title" id="catalogModalLabel">{% trans 'Import Wordpress XML' %}</h4>
 	        </div>
 	        <div class="modal-body col-sm-12">
-	            
+	            {{wp_form|bootstrap}}
 	        </div>
 	        <div class="modal-footer">
 	            <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>

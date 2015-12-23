@@ -35,6 +35,10 @@
 
 {% block header %}{% endblock %}
 
+{% block stripbody %}
+class="col-md-8 col-md-offset-2 articletext"
+{% endblock %}
+
 {% block body %}
 
 {% score_for_object article as score %}
@@ -47,10 +51,10 @@
 
 <h1>{{article.title}}</h1>
 <div class="row">
-    <div class="col-sm-4 signature">
+    <div class="col-sm-8 signature">
         <span><a href="{% url 'blog_index' article.blog.slug %}"><img class="img-responsive img-circle pull-left" src="{{article.blog.get_photo.get_profile_url}}" alt="{{article.blog.header_image.caption}}"/></a></span> <span><a href="{% url 'blog_index' article.blog.slug %}">{{article.blog}}</a></span> | <span class="glyphicon glyphicon-time"></span> {{article.publish_date}}
     </div>
-    <div class="col-sm-8 text-right">
+    <div class="col-sm-4 text-right">
         {% if score.score > 0 %}<span class="label label-success">{{score.score}} <i class="glyphicon glyphicon-thumbs-up"></i></span>{% endif %}{% if article.get_comments_count %} <span class="label label-info">{{article.get_comments_count}} <i class="glyphicon glyphicon-comment"></i></span>{% endif %}
     </div>
     <div class="col-sm-12">
@@ -67,7 +71,7 @@
 
         <p>{{article.text|safe}}</p>
         
-        <div class="row">
+        <div class="row articlefooter">
             <div class="col-sm-4">
                 {% vote_by_user user on article as vote %}
                 <h4 id="score"> 
@@ -87,7 +91,7 @@
             </div>
             <div class="col-sm-8 pull-right text-right">
             {% for c in article.categories.all %}
-               <span class="label label-default">{{c.title}}</span>
+               <span class="label label-default"><a href="{% url 'category' c.slug %}">{{c.title}}</a></span>
             {% endfor %}
             </div>
         </div>

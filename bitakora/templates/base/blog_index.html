@@ -1,5 +1,5 @@
 {% extends "base/base.html" %}
-{% load i18n %}
+{% load i18n pagination_tags %}
 
 {% block title %}{{blog.name}} - {% endblock %}
 
@@ -13,8 +13,9 @@
 </div>
 
 <div class="row">
-	<div class="col-md-8">
-		{% for article in blog.get_articles %}
+	<div class="col-md-7">
+		{% autopaginate blog.get_articles 10 as articles %}
+		{% for article in articles %}
 			{% include "base/article_list.html" with article=article %}
 		{% empty %}
 		<hr/>
@@ -26,19 +27,20 @@
 			</div>
 		</div>
 		{% endfor %}
+		{% paginate %}
 	</div>
-	<div class="col-md-4 well">
-		<div class="row">
+	<div class="col-md-offset-1 col-md-4">
+		<div class="row well userpanel">
 			<div class="col-sm-12">
 				<img class="img-responsive img-thumbnail center-block" src="{{blog.user.get_photo.get_blog_user_url}}" alt="{{blog.user.photo.caption}}" />
 				<hr/>
 				<h4>{{blog.user.get_fullname}}</h4>
-				{% if blog.user.bio %}<p>{{blog.user.bio}}</p>{% endif %}
+				{% if blog.user.bio %}<p>{{blog.user.bio|safe}}</p>{% endif %}
 				<p>{% if blog.user.twitter_id %}<a href="http://twitter.com/{{blog.user.twitter_id}}">Twitter</a>{% endif %} {% if blog.user.facebook_id %}<a href="http://facebook.com/{{blog.user.facebook_id}}">Facebook</a>{% endif %}</p>
 			</div>
 		</div>
 		{% if blog.get_last_comments %}
-		<div class="row">
+		<div class="row well">
 			<div class="col-sm-12">
 				<h4>{% trans 'Last comments' %}</h4>
 				{% for comment in blog.get_last_comments %}
@@ -47,7 +49,7 @@
 			</div>
 		</div>
 		{% endif %}
-		<div class="row">
+		<div class="row well">
 			<div class="col-sm-12">
 				<h4>{% trans 'Sindication' %}</h4>
 				<a href="{% url 'blog_rss' blog.slug %}"><img src="{{STATIC_URL}}img/rss.png"/></a>

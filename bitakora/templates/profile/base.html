@@ -12,7 +12,7 @@
 		<ul class="list-unstyled">
 			<li {% if tab == 'personal' %}class="selected">{% trans "User profile" %}{% else %}><a href="{% url 'edit_profile' %}">{% trans "User profile" %}</a>{% endif %}</li>
 			<li {% if tab == 'blog' %}class="selected">{% trans "Your Blog" %}{% else %}><a href="{% url 'edit_blog' %}">{% trans "Your Blog" %}</a>{% endif %}</li>
-			<li {% if tab == 'pass' %}class="selected">{% trans "Chage password" %}{% else %}><a href="{% url 'edit_pass' %}">{% trans "Chage password" %}</a>{% endif %}</li>
+			<li {% if tab == 'pass' %}class="selected">{% trans "Change password" %}{% else %}><a href="{% url 'edit_pass' %}">{% trans "Change password" %}</a>{% endif %}</li>
 		</ul>
 	</div>
 

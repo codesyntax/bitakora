@@ -7,7 +7,7 @@ from bitakora.utils.models import get_user_model_name
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 from django.template.defaultfilters import removetags, striptags, truncatechars
-from datetime import datetime
+from django.utils.timezone import now
 
 user_model_name = get_user_model_name()
 
@@ -31,7 +31,7 @@ BLOG_PHOTO_SLUG=getattr(settings,'BLOG_PHOTO_DEFAULT_SLUG','no-blog-photo')
 
 class Blog(models.Model):
     name = models.CharField(max_length=200, verbose_name=_('Name'))
-    slug = models.SlugField(_("URL"), max_length=2000, blank=True, null=True,
+    slug = models.SlugField(_("URL"), max_length=300, blank=True, null=True,
             help_text=_("Leave blank to have the URL auto-generated from "
                         "the title."))
     tagline = models.CharField(max_length=200, verbose_name=_('Tagline'),null=True,blank=True)
@@ -47,13 +47,23 @@ class Blog(models.Model):
     user = models.ForeignKey(user_model_name, verbose_name=_("Author"),
         related_name="%(class)ss")
 
+    def get_pattern(self,num=None):
+        if not num:
+            num = self.id
+        rnum = round(num / 2) % 10
+
+        if rnum in range(0,4):
+            return int(rnum)
+        else:
+            return self.get_pattern(rnum)
+
 
     def get_photo(self):
         if self.header_image:
             return self.header_image
         else:
             try:
-                return Photo.objects.get(slug=BLOG_PHOTO_SLUG)
+                return Photo.objects.get(slug=BLOG_PHOTO_SLUG+'-'+str(self.get_pattern()))
             except:
                 return None
 
@@ -128,7 +138,7 @@ class Article(models.Model):
             "on the site."))
     publish_date = models.DateTimeField(_("Published from"),
         help_text=_("With Published chosen, won't be shown until this time"),
-        blank=True, null=True, db_index=True, default=datetime.now())
+        blank=True, null=True, db_index=True, default=now())
     expiry_date = models.DateTimeField(_("Expires on"),
         help_text=_("With Published chosen, won't be shown after this time"),
         blank=True, null=True)
@@ -217,6 +227,7 @@ class Comment(models.Model):
 
     nickname = models.CharField(verbose_name=_('Nick name'),max_length=200,null=True,blank=True)
     email = models.EmailField(verbose_name=_('Email'),null=True,blank=True)
+    url = models.CharField(verbose_name=_('Url'),max_length=200,null=True,blank=True)
 
     parent = models.ForeignKey(Article, null = True, blank=True, related_name='comments')
     text = models.TextField(verbose_name=_('Text'), null=True,blank = True)
@@ -226,6 +237,10 @@ class Comment(models.Model):
         choices=COMMENT_STATUS_CHOICES, default=COMMENT_STATUS_VISIBLE)
     publish_date = models.DateTimeField(_("Publish date"),
         blank=True, null=True, db_index=True)
+
+
+    def get_absolute_url(self):
+        return reverse('article',kwargs={'blogslug': self.parent.blog.slug, 'slug': self.parent.slug})
 
     def __unicode__(self):
         return u"%s" % self.user
