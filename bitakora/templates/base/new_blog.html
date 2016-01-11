@@ -11,6 +11,12 @@
 
 <h1>{% trans 'New blog' %}</h1>
 
+{% if msg %}
+  <div class="alert alert-warning" role="alert">
+      <i class="glyphicon glyphicon-warning-sign"></i> {{ msg }}
+  </div>
+{% endif %}
+
 <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#new" aria-controls="new" role="tab" data-toggle="tab">{% trans "Create from scratch" %}</a></li>
     <li role="presentation"><a href="#import" aria-controls="import" role="tab" data-toggle="tab">{% trans "Import from Wordpress" %}</a></li>

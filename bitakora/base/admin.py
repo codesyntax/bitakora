@@ -29,16 +29,15 @@ class ArticleAdmin(admin.ModelAdmin):
     admin_thumbnail.short_description = 'Thumbnail'
     admin_thumbnail.allow_tags = True
 
-
+    form = ArticleAdminForm
     list_display = ('title','slug','blog','status','publish_date','expiry_date','admin_thumbnail')
     list_display_links = ('title',)
-    filter_horizontal = ("categories", "related_posts",)
-    list_filter = ("status","blog__name")
+    
+    list_filter = ("status",)
     list_editable = ("status",)
     radio_fields = {"status": admin.HORIZONTAL}
     prepopulated_fields = {'slug':('title',)} 
-    form = ArticleAdminForm
-
+    raw_id_fields = ('blog','featured_image',"related_posts",'categories')
     search_fields = ['title',]
     ordering = ('title',)
 

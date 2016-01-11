@@ -12,9 +12,9 @@ TINYMCE_DEFAULT_CONFIG = getattr(settings, 'TINYMCE_DEFAULT_CONFIG', {})
 class ArticleForm(forms.ModelForm):
     featured_image = forms.FileField(label=_('Header image'),help_text=_('Valid formats: jpg, png, gif.'),required=False)
     text = forms.CharField(label=_('Text'),widget=TinyMCE(mce_attrs=TINYMCE_DEFAULT_CONFIG))
-    categories = forms.ModelMultipleChoiceField(label=_('Categories'),widget=forms.SelectMultiple(attrs={'class':'chosen-category','data-placeholder':_('Choose categories')}),queryset=Category.objects.all(),required=False)
-    related_posts = forms.ModelMultipleChoiceField(label=_('Related posts'),widget=forms.SelectMultiple(attrs={'class':'chosen-select','data-placeholder':_('Choose related posts')}),queryset=Article.objects.all(),required=False)
-    status = forms.ChoiceField(widget=forms.RadioSelect, choices=CONTENT_STATUS_CHOICES,initial=CONTENT_STATUS_DRAFT)
+    categories = forms.CharField(label=_('Categories'), widget=forms.SelectMultiple(),required=False)
+    related_posts = forms.CharField(label=_('Related posts'), widget=forms.SelectMultiple(),required=False)
+    status = forms.ChoiceField(label=_('Status'), widget=forms.RadioSelect, choices=CONTENT_STATUS_CHOICES,initial=CONTENT_STATUS_DRAFT)
     captcha = ReCaptchaField()
 
     def clean_featured_image(self):
@@ -24,33 +24,33 @@ class ArticleForm(forms.ModelForm):
         except:
             return None
 
-    def is_valid(self):
-        valid = super(ArticleForm, self).is_valid()
-        if not valid:
-            cleaned_data = self.cleaned_data
-            data = dict(self.data).get('categories')
-            if data:
-                for i,cat in enumerate(data):
-                    if Category.objects.filter(slug=slugify(cat)):
-                        data[i] = u"%s" % (Category.objects.get(slug=slugify(cat)).title)
-                    elif not cat.isdigit():
-                        cat_obj = Category(title=cat,slug=slugify(cat))
-                        cat_obj.save()
-                        data[i] = u"%d" % (cat_obj.id)
-                
-                self.cleaned_data.update({
-                    'categories': list(set(data)),
-                })
-                if 'categories' in self.errors:
-                    self.errors.pop('categories')
-        valid = super(ArticleForm, self).is_valid()
-        return valid
+    def clean_categories(self):
+        if self.cleaned_data.get('categories'):
+            categories = self.cleaned_data['categories']
+            return map(int,eval(categories))
+        else:
+            return []
 
+    def clean_related_posts(self):
+        if self.cleaned_data.get('related_posts'):
+            posts = self.cleaned_data['related_posts']
+            return map(int,eval(posts))
+        else:
+            return []
 
+    def __init__(self, *args, **kwargs):
+        cat = kwargs.pop('cat', None)
+        rel = kwargs.pop('rel', None)
+        super(ArticleForm, self).__init__(*args, **kwargs)
+        if cat:
+            import pdb;pdb.set_trace()
+            self.fields['categories'].queryset = cat
+        if rel:
+            self.fields['related_posts'].queryset = rel
 
     class Meta:
         model = Article
-        fields = ['title', 'text', 'featured_image', 'categories', 'related_posts', 'status', 'publish_date', 'allow_comments']
+        fields = ['title', 'text', 'featured_image', 'status', 'categories','related_posts','publish_date', 'allow_comments']
 
 
 class ArticleAdminForm(forms.ModelForm):

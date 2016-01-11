@@ -2,10 +2,12 @@ from lxml import etree
 import sys
 from cStringIO import StringIO
 from django.template.defaultfilters import slugify
+from bitakora.utils.text import clean_html, make_responsive
 from bitakora.base.models import Article, Blog, Comment, Category, CONTENT_STATUS_DRAFT, COMMENT_STATUS_VISIBLEADMIN
 from datetime import datetime
+from os.path import basename, normpath
 
-def import_from_wp(file_content, user):
+def import_from_wp(file_content, user, debug=False):
     tree = etree.parse(StringIO(file_content))
     root = tree.getroot()
 
@@ -26,14 +28,17 @@ def import_from_wp(file_content, user):
             for art in blognode.findall('item'):
                 article = Article()
                 article.title = art.find('title').text and art.find('title').text[:200] or art.find('link').text[art.find('link').text.rfind('/')+1:200]
-                article.slug = art.find('link').text[art.find('link').text.rfind('/')+1:]
-                article.text = art.find('content:encoded', root.nsmap).text
+                article.slug = basename(normpath(art.find('link').text))
+                article.text = make_responsive(clean_html(art.find('content:encoded', root.nsmap).text))
                 article.publish_date = datetime.strptime(art.find('wp:post_date', root.nsmap).text, "%Y-%m-%d %H:%M:%S")
                 if art.find('wp:status', root.nsmap).text != 'publish':
                     article.status = CONTENT_STATUS_DRAFT
                 if art.find('wp:comment_status', root.nsmap).text != 'open':
                     article.allow_comments = False
                 article.blog = blog
+
+                if debug:
+                    print article.title
 
                 article.save()
 
@@ -51,12 +56,14 @@ def import_from_wp(file_content, user):
                     comment.save()
 
                 for cat in art.findall('category'):
-                    catdata = {
-                        'title': cat.text,
-                        'slug': slugify(cat.text),
-                    }
-                    category, created = Category.objects.get_or_create(**catdata)
-                    article.categories.add(category)
+                    if cat.text:
+                        catdata = {
+                            'title': cat.text,
+                            'slug': slugify(cat.text),
+                        }
+                        category, created = Category.objects.get_or_create(**catdata)
+                        article.categories.add(category)
+            return blog
     except Exception as e:
         raise Exception, "The code is buggy: %s" % e, sys.exc_info()[2]
 

@@ -42,6 +42,9 @@ urlpatterns = patterns('',
 
     url(r'^learn-more/$', views.flatpage, {'url': '/learn-more/'}, name='learn-more'),
 
+    url(r'^ajax/categories/', 'bitakora.views.get_categories', name='ajax_categories'),
+    url(r'^ajax/related_posts/', 'bitakora.views.get_related_posts', name='ajax_related_posts'),
+
     (r'^', include('bitakora.base.urls')),
 )
 

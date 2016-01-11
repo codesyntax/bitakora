@@ -5,18 +5,41 @@
 
 <div class="modal fade" id="importfile" tabindex="-1" role="dialog" aria-labelledby="importfileLabel" aria-hidden="true">
 	<div class="modal-dialog">
-	    <div class="modal-content">
-	        <div class="modal-header">
-	            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	            <h4 class="modal-title" id="catalogModalLabel">{% trans 'Import Wordpress XML' %}</h4>
-	        </div>
-	        <div class="modal-body col-sm-12">
-	            {{wp_form|bootstrap}}
-	        </div>
-	        <div class="modal-footer">
-	            <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
-	            <a href="#" class="btn btn-primary">{% trans 'Import' %}</a>
-	        </div>
-	    </div>
+		<form id="importForm" action="{% url 'import_blog' %}" role="form" method="POST" ENCTYPE="multipart/form-data">
+		    <div class="modal-content">
+		        <div class="modal-header">
+		            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		            <h4 class="modal-title" id="catalogModalLabel">{% trans 'Import Wordpress XML' %}</h4>
+		        </div>
+		        <div class="modal-body col-sm-12">
+		        	{% csrf_token %}
+		            {{wp_form|bootstrap}}
+		        </div>
+		        <div class="modal-footer">
+		            <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
+		            <a href="#" data-toggle="modal" data-target="#ModalSave" class="btn btn-primary">{% trans 'Import' %}</a>
+		        </div>
+		    </div>
+		</form>
 	</div>
+</div>
+
+<div class="modal fade" id="ModalSave" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">{% trans 'Import blog' %}</h4>
+            </div>
+            <div class="modal-body">
+            	<p><strong>{% trans 'IMPORTANT!!' %}</strong>
+                <p><strong>{% trans 'Are you sure you want to IMPORT this blog?' %}</strong></p>
+                <p>{% trans 'If you accept, your current blog data will be ENTIRELY REPLACED and you will LOSE ALL CURRENT DATA.' %}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
+                <input type="submit" value="{% trans 'Yes, I am sure' %}" class="btn btn-primary pull-right" name="confirm" onclick="$(importForm).submit()"/>
+            </div>
+        </div>
+    </div>
 </div>

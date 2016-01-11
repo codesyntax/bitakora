@@ -1,0 +1,645 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Blogak.eus\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-01-04 12:43+0100\n"
+"PO-Revision-Date: 2016-01-07 12:42+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"X-Generator: Poedit 1.8.2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: eu\n"
+
+#: accounts/admin.py:32
+msgid "Personal data"
+msgstr "Datu pertsonalak"
+
+#: accounts/admin.py:34
+msgid "Biography"
+msgstr "Biografia"
+
+#: accounts/admin.py:36 templates/profile/edit_personal.html:12
+msgid "Social networks"
+msgstr "Sare sozialak"
+
+#: accounts/admin.py:39
+msgid "Permissions"
+msgstr "Baimenak"
+
+#: accounts/views.py:29
+msgid "New user data saved"
+msgstr "Erabiltzailearen datuak gordeta"
+
+#: accounts/views.py:38
+msgid "New photo saved"
+msgstr "Irudi berria gordeta"
+
+#: accounts/views.py:62
+msgid "New blog data saved"
+msgstr "Blog berriaren datuak gordeta"
+
+#: base/forms.py:13 base/forms.py:65 base/forms.py:75
+msgid "Header image"
+msgstr "Goiburuko irudi nagusia"
+
+#: base/forms.py:13 base/forms.py:65 base/forms.py:75
+msgid "Valid formats: jpg, png, gif."
+msgstr "Onartutako formatuak: jpg, png, gif."
+
+#: base/forms.py:14 base/forms.py:57 base/models.py:131 base/models.py:233
+msgid "Text"
+msgstr "Testua"
+
+#: base/forms.py:15 base/models.py:110 base/models.py:146
+msgid "Categories"
+msgstr "Kategoriak"
+
+#: base/forms.py:15
+msgid "Choose categories"
+msgstr "Kategoriak aukeratu"
+
+#: base/forms.py:16 base/models.py:154 templates/base/article.html:104
+msgid "Related posts"
+msgstr "Antzeko artikuluak"
+
+#: base/forms.py:16
+msgid "Choose related posts"
+msgstr "Antzeko artikuluak aukeratu"
+
+#: base/forms.py:95 base/forms.py:108
+msgid "Empty comment. Please, write something!"
+msgstr "Iruzkina hutsik. Mesedez, idatzi zeozer!"
+
+#: base/forms.py:112
+msgid "Wordpress file"
+msgstr "WordPress fitxategia"
+
+#: base/forms.py:112
+msgid "Please, select your Wordpress XML file"
+msgstr "Mesedez, aukeratu WordPress XML fitxategia"
+
+#: base/models.py:17
+msgid "One page wonder"
+msgstr ""
+
+#: base/models.py:18
+msgid "Clean blog"
+msgstr "Bloga garbitu"
+
+#: base/models.py:19
+msgid "Old style"
+msgstr ""
+
+#: base/models.py:20
+msgid "Minimalist"
+msgstr "Minimalista"
+
+#: base/models.py:26
+msgid "CC-BY-SA"
+msgstr "CC-BY-SA"
+
+#: base/models.py:27
+msgid "Copyright"
+msgstr "Copyright"
+
+#: base/models.py:33 base/models.py:126
+msgid "Name"
+msgstr "Izena"
+
+#: base/models.py:34 base/models.py:101 base/models.py:127
+msgid "URL"
+msgstr ""
+
+#: base/models.py:35 base/models.py:102 base/models.py:128
+msgid "Leave blank to have the URL auto-generated from the title."
+msgstr ""
+"Hutsik lagatzen baduzu, URLa automatikoki sortuko da izenburuaren arabera."
+
+#: base/models.py:37
+msgid "Tagline"
+msgstr "Blogaren leloa"
+
+#: base/models.py:39
+msgid "Analytics code"
+msgstr "Estatistikak jasotzeko Analytics kodea (zuk lortu beharrekoa)"
+
+#: base/models.py:41
+msgid "Template"
+msgstr "Txantiloia"
+
+#: base/models.py:44
+msgid "License"
+msgstr "Lizentzia"
+
+#: base/models.py:47 base/models.py:225 photologue_custom/models.py:15
+msgid "Author"
+msgstr "Egilea"
+
+#: base/models.py:96
+msgid "Blog"
+msgstr "Bloga"
+
+#: base/models.py:97
+msgid "Blogs"
+msgstr "Blogak"
+
+#: base/models.py:100 templates/base/dashboard.html:20
+msgid "Title"
+msgstr "Izenburua"
+
+#: base/models.py:109 templates/index.html:8
+msgid "Category"
+msgstr "Kategoria"
+
+#: base/models.py:121
+msgid "Draft"
+msgstr "Zirriborroa"
+
+#: base/models.py:122
+msgid "Published"
+msgstr "Argitaratuta"
+
+#: base/models.py:135 base/models.py:236 templates/base/dashboard.html:21
+#: templates/base/dashboard_comments.html:22
+msgid "Status"
+msgstr "Egoera"
+
+#: base/models.py:137
+msgid "With Draft chosen, will only be shown for admin users on the site."
+msgstr "Zirriborro egoeran badago, administratzaileak bakarrik ikusiko du."
+
+#: base/models.py:139 templates/base/dashboard.html:22
+msgid "Published from"
+msgstr ""
+
+#: base/models.py:140
+msgid "With Published chosen, won't be shown until this time"
+msgstr ""
+
+#: base/models.py:142
+msgid "Expires on"
+msgstr "Amaiera data"
+
+#: base/models.py:143
+msgid "With Published chosen, won't be shown after this time"
+msgstr ""
+
+#: base/models.py:148
+msgid "Allow comments"
+msgstr "Komentarioak onartu"
+
+#: base/models.py:152
+msgid "Featured Image"
+msgstr "Nabarmendutako irudia"
+
+#: base/models.py:211
+msgid "Article"
+msgstr "Artikulua"
+
+#: base/models.py:212
+msgid "Articles"
+msgstr "Artikuluak"
+
+#: base/models.py:219 templates/base/comment.html:24
+#: templates/base/dashboard_comments.html:31
+msgid "Visible"
+msgstr "Ikusgai"
+
+#: base/models.py:220
+msgid "Visible only for the admin"
+msgstr "Administratzailearentzat ikusgai soilik"
+
+#: base/models.py:221
+msgid "Not visible"
+msgstr ""
+
+#: base/models.py:228
+msgid "Nick name"
+msgstr "Erabiltzaile izena"
+
+#: base/models.py:229
+msgid "Email"
+msgstr "Eposta"
+
+#: base/models.py:230
+msgid "Url"
+msgstr ""
+
+#: base/models.py:235
+msgid "IP address"
+msgstr "IP helbidea"
+
+#: base/models.py:238
+msgid "Publish date"
+msgstr "Argitaratze-data"
+
+#: base/models.py:249 templates/base/dashboard_comments.html:20
+msgid "Comment"
+msgstr "Iruzkina"
+
+#: base/models.py:250 templates/base/article.html:125
+#: templates/base/dashboard.html:12 templates/base/dashboard_comments.html:12
+msgid "Comments"
+msgstr "Iruzkinak"
+
+#: base/views.py:51 base/views.py:78
+msgid "Invalid image format. Please, change the format!"
+msgstr "Irudiaren formatua ez da egokia. Aldatu, mesedez."
+
+#: rss/feeds.py:13
+msgid " Articles"
+msgstr "Artikuluak"
+
+#: rss/feeds.py:19
+msgid " articles feed"
+msgstr "artikuluen jarioa"
+
+#: templates/base.html:87 templates/search/search.html:7
+#: templates/search/search.html.py:22
+msgid "Search"
+msgstr "Bilatu"
+
+#: templates/base.html:110
+msgid ""
+"Bitakora is a community of readers and writers offering unique perspectives "
+"on ideas large and small"
+msgstr "Bitakora idazle eta irakurle komunitatea da"
+
+#: templates/base.html:111
+msgid "Sign up to read and interact with what matters most to you"
+msgstr "Eman izena zure iritzia emateko edo bloga sortzeko"
+
+#: templates/base.html:112
+msgid "Get started"
+msgstr "Hasi"
+
+#: templates/base.html:113
+msgid "Learn more"
+msgstr "Gehiago ikasi"
+
+#: templates/base.html:162 templates/base/blog_index.html:45
+msgid "Last comments"
+msgstr "Azken iruzkinak"
+
+#: templates/base.html:185 templates/base/base.html:80
+msgid ""
+"Developed by <a href=\"http://www.codesyntax.com\">CodeSyntax</a>. Software: "
+"<a href=\"https://www.djangoproject.com/\">Django</a>."
+msgstr ""
+"<a href=\"http://www.codesyntax.com\">CodeSyntax</a>-ek garatuta. Softwarea: "
+"<a href=\"https://www.djangoproject.com/\">Django</a>."
+
+#: templates/base/add_article.html:22
+msgid "New article"
+msgstr "Artikulu berria"
+
+#: templates/base/add_article.html:56 templates/base/article.html:145
+#: templates/base/new_blog.html:46 templates/profile/edit_blog.html:50
+#: templates/profile/edit_pass.html:13
+msgid "Submit"
+msgstr "Bidali"
+
+#: templates/base/add_article.html:64
+msgid "Oops, nothing found. Press enter to add"
+msgstr "Ups! Emaitzarik ez! Sakatu \"enter\" zerbait gehitzeko"
+
+#: templates/base/add_article.html:65
+msgid "Oops, nothing found!"
+msgstr "Ups! Emaitzarik ez!"
+
+#: templates/base/article.html:47
+msgid "This post is still in <strong>Draft</strong> status"
+msgstr "Adi. Mezu hau oraindik <strong>Zirriborro</strong> egoeran dago"
+
+#: templates/base/article.html:49
+#, python-format
+msgid "This post has still a future date: <strong>%(date)s</strong>"
+msgstr "Adi. Mezu honen data etorkizunekoa da: <strong>%(date)s</strong>"
+
+#: templates/base/article.html:84 templates/base/article.html.py:87
+msgid "Like"
+msgstr "Gustuko"
+
+#: templates/base/article.html:141
+msgid "Leave a Comment:"
+msgstr "Utzi iruzkina:"
+
+#: templates/base/blog_index.html:25
+msgid "Well done!"
+msgstr "Ederto!"
+
+#: templates/base/blog_index.html:25
+msgid ""
+"Your blog was successfully created. Now you can start posting your stuff"
+msgstr "Zorionak! Bloga sortu duzu! Orain, badakizu: hasi idazten!"
+
+#: templates/base/blog_index.html:25
+msgid "from here!"
+msgstr "hemendik!"
+
+#: templates/base/blog_index.html:54
+msgid "Sindication"
+msgstr "Sindikazioa"
+
+#: templates/base/comment.html:24 templates/base/dashboard_comments.html:31
+msgid "Comment status"
+msgstr "Iruzkinaren egoera"
+
+#: templates/base/comment.html:24 templates/base/dashboard_comments.html:31
+msgid "Visible only for admin"
+msgstr "Administratzailearentzat ikusgai soilik"
+
+#: templates/base/comment.html:24 templates/base/dashboard_comments.html:31
+msgid "Delete"
+msgstr "Ezabatu"
+
+#: templates/base/dashboard.html:8 templates/base/dashboard_comments.html:8
+#: templates/useroptions.html:15
+msgid "Dashboard"
+msgstr ""
+
+#: templates/base/dashboard.html:11 templates/base/dashboard_comments.html:11
+msgid "My articles"
+msgstr "Nire artikuluak"
+
+#: templates/base/dashboard.html:23
+msgid "Thumbnail"
+msgstr ""
+
+#: templates/base/dashboard_comments.html:21
+msgid "User"
+msgstr "Erabiltzailea"
+
+#: templates/base/dashboard_comments.html:23
+msgid "Published date"
+msgstr "Argitaratze-data"
+
+#: templates/base/edit_article.html:4
+msgid "Edit article"
+msgstr "Artikulua editatu"
+
+#: templates/base/import_new_blog.html:3
+msgid "Import your blog data from WordPress XML"
+msgstr "Inportatu zure blogeko datuak WordPress-eko XMLa erabilita"
+
+#: templates/base/import_new_blog.html:4
+msgid "Import your blog"
+msgstr "Inportatu zure bloga"
+
+#: templates/base/import_new_blog.html:11
+msgid "Import Wordpress XML"
+msgstr "Inportatu Wordpresseko XMLa"
+
+#: templates/base/import_new_blog.html:17
+msgid "Close"
+msgstr "Itxi"
+
+#: templates/base/import_new_blog.html:18 templates/profile/edit_blog.html:11
+msgid "Import"
+msgstr "Inportatu"
+
+#: templates/base/new_blog.html:12
+msgid "New blog"
+msgstr "Blog berria"
+
+#: templates/base/new_blog.html:15
+msgid "Create from scratch"
+msgstr ""
+
+#: templates/base/new_blog.html:16
+msgid "Import from Wordpress"
+msgstr "Inportatu Wordpressetik"
+
+#: templates/index.html:23
+msgid "Start bookmarking now!"
+msgstr "Aukeratu gustukuak!"
+
+#: templates/index.html:23
+msgid ""
+"You only need to give a <i class=\"glyphicon glyphicon-thumbs-up\"></i> to "
+"some stories"
+msgstr ""
+
+#: templates/index.html:25
+msgid "Sorry!"
+msgstr "Zorri!"
+
+#: templates/index.html:25
+msgid "You must register in order to have your Bookmark section..."
+msgstr "Gustukoak aukeratu ahal izateko, izena eman behar duzu..."
+
+#: templates/index.html:25
+msgid "Sign up"
+msgstr "Eman izena"
+
+#: templates/profile/base.html:4
+msgid "Edit profile"
+msgstr "Profila editatu"
+
+#: templates/profile/base.html:11 templates/useroptions.html:30
+msgid "Settings"
+msgstr "Konfigurazioa"
+
+#: templates/profile/base.html:13 templates/profile/edit_personal.html:7
+msgid "User profile"
+msgstr "Erabiltzailearen profila"
+
+#: templates/profile/base.html:14
+msgid "Your Blog"
+msgstr "Zure bloga"
+
+#: templates/profile/base.html:15
+msgid "Change password"
+msgstr "Pasahitza aldatu"
+
+#: templates/profile/edit_blog.html:7
+msgid "Your blog data"
+msgstr "Zure blogeko datuak"
+
+#: templates/profile/edit_blog.html:10
+msgid "Blog configuration"
+msgstr "Blogaren konfigurazioa"
+
+#: templates/profile/edit_blog.html:12
+msgid "Export"
+msgstr "Exportatu"
+
+#: templates/profile/edit_blog.html:59
+msgid "Export your blog data to WordPress XML format"
+msgstr "Zure bloga exportatu WordPress XML formatura"
+
+#: templates/profile/edit_blog.html:60
+msgid "Export your blog"
+msgstr "Zure bloga exportatu"
+
+#: templates/profile/edit_pass.html:7
+msgid "Reset your password"
+msgstr "Pasahitza berrezarri"
+
+#: templates/profile/edit_pass.html:8
+msgid "Please write your email to reset your password"
+msgstr "Mesedez, idatzi zure helbide elektronikoa pasahitza berrezartzeko"
+
+#: templates/profile/edit_personal.html:10
+msgid "Your personal data"
+msgstr "Zure datu pertsonalak"
+
+#: templates/profile/edit_personal.html:11
+msgid "Profile image"
+msgstr "Profileko irudia"
+
+#: templates/profile/edit_personal.html:21
+#: templates/profile/edit_personal.html:37
+msgid "Save"
+msgstr "Gorde"
+
+#: templates/profile/edit_personal.html:25
+msgid "Change your photo"
+msgstr "Argazkia aldatu"
+
+#: templates/profile/edit_personal.html:28
+msgid "User's photo"
+msgstr "Erabiltzailearen irudia"
+
+#: templates/profile/edit_personal.html:30
+msgid "You don't have a photo yet"
+msgstr "Aizu. Oraindik ez duzu irudirik, e?"
+
+#: templates/profile/edit_personal.html:45
+msgid "Twitter linked"
+msgstr ""
+
+#: templates/profile/edit_personal.html:48
+msgid "Link Twitter for this user"
+msgstr ""
+
+#: templates/profile/edit_personal.html:55
+msgid "Facebook linked"
+msgstr "Facebook lotuta"
+
+#: templates/profile/edit_personal.html:58
+msgid "Link Facebook for this user"
+msgstr ""
+
+#: templates/registration/login.html:8 templates/registration/login.html:13
+msgid "Sign in with Twitter"
+msgstr "Sartu Twitter bidez"
+
+#: templates/registration/login.html:22
+msgid "Sign in"
+msgstr "Sartu"
+
+#: templates/registration/login.html:22
+msgid "or create an account"
+msgstr "edo sortu kontua"
+
+#: templates/registration/login.html:25
+msgid "Forgot your password?"
+msgstr "Pasahitza ahaztu duzu?"
+
+#: templates/registration/login.html:31
+msgid ""
+"If you sign up with Twitter or Facebook, we’ll start you off with a network "
+"by automatically importing any followers/followees or friends already on "
+"Bitakora. Also, we’ll never post to Twitter or Facebook without your "
+"permission. For more info, please see"
+msgstr ""
+
+#: templates/registration/login.html:31
+msgid "Login FAQ"
+msgstr ""
+
+#: templates/registration/registration_complete.html:5
+msgid "Activate your account"
+msgstr "Aktibatu zure kontua"
+
+#: templates/registration/registration_complete.html:8
+msgid ""
+"We want to verify your email, so we send you to this address next steps to "
+"activate your account. Please, activate your account."
+msgstr ""
+"Zure helbide elektronikoa konprobatu behar dugu. Mezu bat jasoko duzu zure "
+"kontua aktibatu ahal izateko. "
+
+#: templates/registration/registration_complete.html:10
+msgid "Check your email address."
+msgstr "Konfirmatu zure helbide elektronikoa."
+
+#: templates/registration/registration_complete.html:11
+msgid "Remember:"
+msgstr "Gogoratu:"
+
+#: templates/registration/registration_complete.html:13
+msgid "Check your spam folder."
+msgstr "Begiratu spam karpetan."
+
+#: templates/registration/registration_complete.html:14
+msgid "If you didn't receive any email, please, write to our administrators..."
+msgstr "Ez baduzu mezurik jasotzen, idatzi mesedez administratzaileari..."
+
+#: templates/registration/registration_form.html:11
+msgid "Create"
+msgstr "Sortu"
+
+#: templates/registration/registration_form.html:17
+msgid ""
+"\n"
+"\t\t<div>If you sign up with Twitter or Facebook, we’ll start you off with a "
+"network by automatically importing any followers/followees or friends "
+"already on Bitakora. Also, we’ll never post to Twitter or Facebook without "
+"your permission. For more info, please see <a href=\"\" class=\"link\">Login "
+"FAQ</a>.</div>\n"
+"\t\t"
+msgstr ""
+
+#: templates/search/search.html:15
+msgid "Search something here..."
+msgstr "Bilatu zeozer hemen..."
+
+#: templates/search/search.html:29
+msgid "Results"
+msgstr "Emaitzak"
+
+#: templates/search/search.html:56
+msgid "No results found."
+msgstr "Emaitzarik ez."
+
+#: templates/useroptions.html:7
+msgid "Write a story"
+msgstr "Idatzi"
+
+#: templates/useroptions.html:11
+msgid "Edit"
+msgstr "Editatu"
+
+#: templates/useroptions.html:19
+msgid "Create a blog"
+msgstr "Bloga sortu"
+
+#: templates/useroptions.html:28
+msgid "My blog"
+msgstr "Nire bloga"
+
+#: templates/useroptions.html:32
+msgid "Logout"
+msgstr ""
+
+#: templates/useroptions.html:37
+msgid "Sign in / Sign up"
+msgstr "Sartu / Izena eman"
+
+#: views.py:14
+msgid "Top stories"
+msgstr ""
+
+#: views.py:15
+msgid "Bookmarks"
+msgstr "Gustukoak"

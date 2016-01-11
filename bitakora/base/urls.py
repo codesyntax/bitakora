@@ -3,6 +3,7 @@ from bitakora.rss.feeds import BlogEntriesFeed
 
 urlpatterns = patterns('bitakora.base.views',
     url(r'^new-blog$', 'new_blog', name='new_blog'),
+    url(r'^new-blog/import$', 'import_blog', name='import_blog'),
     url(r'^change_comment_status$','change_comment_status', name='change_comment_status'),
     url(r'^(?P<slug>[\-\d\w]+)$', 'blog_index', name='blog_index'),
     url(r'^(?P<slug>[\-\d\w]+)/my-posts$', 'my_posts', name='my_posts'),

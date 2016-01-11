@@ -21,9 +21,15 @@
 		<hr/>
 		<div class="row">
 			<div class="col-sm-12">
+            {% if request.user == blog.user %}
 				<div class="alert alert-success" role="alert">
 					<strong>{% trans 'Well done!' %}</strong> {% trans 'Your blog was successfully created. Now you can start posting your stuff' %} <a href="{% url 'add_article' blog.slug %}">{% trans 'from here!' %}</a>
 				</div>
+            {% else %}
+                <div class="alert alert-warning" role="alert">
+                    <strong>{% trans 'Sorry...' %}</strong> {% trans 'This blog seems to be empty. Hopefully there will be some content in a short time!' %}
+                </div>
+            {% endif %}
 			</div>
 		</div>
 		{% endfor %}
@@ -39,6 +45,26 @@
 				<p>{% if blog.user.twitter_id %}<a href="http://twitter.com/{{blog.user.twitter_id}}">Twitter</a>{% endif %} {% if blog.user.facebook_id %}<a href="http://facebook.com/{{blog.user.facebook_id}}">Facebook</a>{% endif %}</p>
 			</div>
 		</div>
+
+        {% if categories %}
+		<div class="row well">
+            <div class="col-sm-12">
+            <h4>{% trans 'Blog Categories' %}</h4>
+            {% for cat in categories %}
+                {% if forloop.first or forloop.counter|divisibleby:5 %}
+                    <div class="col-lg-6">
+                        <ul class="list-unstyled">
+                {% endif %}
+                            <li><a href="{% url 'category' cat.slug %}">{{cat.title}}</a></li>
+                {% if forloop.last or forloop.counter|divisibleby:4 %}
+                        </ul>
+                    </div>
+                {% endif %}
+            {% endfor %}
+           	</div>
+        </div>
+        {% endif %}
+
 		{% if blog.get_last_comments %}
 		<div class="row well">
 			<div class="col-sm-12">

@@ -75,10 +75,10 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li {% if 'top_stories' in request.path %}class="active"{% endif %}>
-                        <a href="{% url 'top_stories' %}">Top stories</a>
+                        <a href="{% url 'top_stories' %}">{% trans 'Top stories' %}</a>
                     </li>
                     <li {% if 'bookmarks' in request.path %}class="active"{% endif %}>
-                        <a href="{% url 'bookmarks' %}">Bookmarks</a>
+                        <a href="{% url 'bookmarks' %}">{% trans 'Bookmarks' %}</a>
                     </li>
                 </ul>
                 <ul id ="useroptions" class="nav navbar-nav navbar-right"></ul>
@@ -106,7 +106,7 @@
                 </button>
             </div>
             <div class="container">
-                <h1>Move thinking forward</h1>
+                <h1>{% trans 'Move thinking forward' %}</h1>
                 <h2>{% trans 'Bitakora is a community of readers and writers offering unique perspectives on ideas large and small' %}</h2>
                 <p>{% trans 'Sign up to read and interact with what matters most to you' %}</p>
                 <a class="btn btn-primary" href="{% url 'cssocialuser_user_login' %}?next=/">{% trans 'Get started' %}</a>
@@ -140,7 +140,7 @@
 
                 <!-- Blog Categories Well -->
                 <div class="well">
-                    <h4>Blog Categories</h4>
+                    <h4>{% trans 'Blog Categories' %}</h4>
                     <div class="row">
                     {% for cat in categories %}
                         {% if forloop.first or forloop.counter|divisibleby:5 %}

@@ -161,8 +161,11 @@ class Article(models.Model):
     def get_comments(self):
         return self.comments.all().order_by("publish_date")
 
+    def get_visible_comments(self):
+        return self.comments.filter(status=COMMENT_STATUS_VISIBLE).order_by("publish_date")
+
     def get_comments_count(self):
-        return self.get_comments().count()
+        return self.get_visible_comments().count()
 
     def is_editable(self, request):
         """
@@ -227,7 +230,7 @@ class Comment(models.Model):
 
     nickname = models.CharField(verbose_name=_('Nick name'),max_length=200,null=True,blank=True)
     email = models.EmailField(verbose_name=_('Email'),null=True,blank=True)
-    url = models.CharField(verbose_name=_('Url'),max_length=200,null=True,blank=True)
+    url = models.CharField(verbose_name=_('Url'),max_length=300,null=True,blank=True)
 
     parent = models.ForeignKey(Article, null = True, blank=True, related_name='comments')
     text = models.TextField(verbose_name=_('Text'), null=True,blank = True)

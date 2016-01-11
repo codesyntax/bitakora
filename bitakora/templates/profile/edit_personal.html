@@ -24,8 +24,8 @@
     <div role="tabpanel" class="tab-pane" id="image">
     	<h4>{% trans "Change your photo" %}</h4>
     	<div class="col-sm-4">
-			{% if user.photo %}
-			<img class="userlogged" src="{{user.photo.get_profile_medium_url}}" alt='{% trans "User's photo" %}" />
+			{% if user.get_photo %}
+			<img  class="userlogged" src="{{user.get_photo.get_profile_medium_url}}" alt="{% trans "User's photo" %}" />
 			{% else %}
 			<p class="message">{% trans "You don't have a photo yet" %}</p>
 			{% endif %}

@@ -6,15 +6,19 @@ from bitakora.base.models import Article, Blog, Comment, CONTENT_STATUS_PUBLISHE
 from bitakora.base.forms import ArticleForm, BlogForm, CommentForm, AnonimousCommentForm, WPXMLForm
 from bitakora.utils.images import handle_uploaded_file
 from bitakora.utils.slug import time_slug_string
+from bitakora.utils.import_from_wp import import_from_wp
 from django.template.defaultfilters import slugify
 from django.core.urlresolvers import reverse
 from django.conf import settings
 from datetime import datetime
 from django import forms
+from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
 
 def blog_index(request,slug):
     blog = get_object_or_404(Blog, slug=slug)
+    articles = blog.get_articles()[:10]
+    categories = [cat for art in articles for cat in art.categories.all()][:8]
     return render_to_response('base/blog_index.html', locals(), context_instance=RequestContext(request))
 
 def article(request,blogslug,slug):
@@ -84,7 +88,7 @@ def edit_article(request,blogslug,slug):
             form.save_m2m()
             return HttpResponseRedirect(reverse('article', kwargs={'blogslug': blogslug,'slug': article.slug}))
     else:
-        form = ArticleForm(instance=article)
+        form = ArticleForm(cat=article.categories.all(),instance=article)
     return render_to_response('base/edit_article.html', locals(), context_instance=RequestContext(request))
 
 def new_blog(request):
@@ -100,6 +104,21 @@ def new_blog(request):
             return HttpResponseRedirect(reverse('blog_index', kwargs={'slug': blog.slug}))
     else:
         form = BlogForm()
+        wp_form = WPXMLForm()
+    return render_to_response('base/new_blog.html', locals(), context_instance=RequestContext(request))
+
+def import_blog(request):
+    form = BlogForm()
+    if request.method == 'POST':
+        wp_form = WPXMLForm(request.POST,request.FILES)
+        if wp_form.is_valid() and request.FILES:
+            try:
+                blog = import_from_wp(request.FILES['wp_xml'].read(), request.user)
+                return HttpResponseRedirect(reverse('blog_index', kwargs={'slug': blog.slug}))
+            except:
+                msg = _('Importation error. Please, check the XML file and try again.')
+                messages.add_message(request, messages.SUCCESS, msg, fail_silently=True) 
+    else:
         wp_form = WPXMLForm()
     return render_to_response('base/new_blog.html', locals(), context_instance=RequestContext(request))
 
@@ -124,12 +143,15 @@ def add_comment(request, blogslug, slug):
                 comment.ip_address = request.META.get("REMOTE_ADDR", None)
                 comment.publish_date = datetime.now()
                 comment.save()
+        
+        if form.is_valid:    
+            return HttpResponseRedirect(reverse('article', kwargs={'blogslug': blogslug,'slug': article.slug}))
     else:
         if user.is_authenticated():
             form = CommentForm()
         else:
             form = AnonimousCommentForm()
-    return HttpResponseRedirect(reverse('article', kwargs={'blogslug': blogslug,'slug': article.slug}))
+    return render_to_response('base/add_article.html', locals(), context_instance=RequestContext(request))
 
 
 def change_comment_status(request):
@@ -144,6 +166,6 @@ def change_comment_status(request):
                 cmt.save()
             else:
                 cmt.delete()
+        return HttpResponseRedirect(reverse('article', kwargs={'blogslug': cmt.parent.blog.slug,'slug': cmt.parent.slug}))
     if nexturl:
         return HttpResponseRedirect(nexturl)
-    return HttpResponseRedirect(reverse('article', kwargs={'blogslug': cmt.parent.blog.slug,'slug': cmt.parent.slug}))

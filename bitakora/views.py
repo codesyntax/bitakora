@@ -24,15 +24,19 @@ def index(request):
 def top_stories(request):
     section = SECTIONS[0]
     articles = Article.objects.top_stories()
+    last_articles = Article.objects.published()[:25]
     comments = Comment.objects.filter(status=1).order_by('-publish_date')[:10]
-    categories = Category.objects.all()[:8]
+    if last_articles:
+        categories = [cat for article in last_articles for cat in article.categories.all()][:8]
     return render_to_response('index_no_header.html', locals(), context_instance=RequestContext(request))
 
 def bookmarks(request):
     section = SECTIONS[1]
     articles = Article.objects.bookmarks(user=request.user)
+    last_articles = Article.objects.published()[:25]
     comments = Comment.objects.filter(status=1).order_by('-publish_date')[:10]
-    categories = Category.objects.all()[:8]
+    if last_articles:
+        categories = [cat for article in last_articles for cat in article.categories.all()][:8]
     return render_to_response('index_no_header.html', locals(), context_instance=RequestContext(request))
 
 def category(request,slug):
@@ -63,3 +67,25 @@ class DataGetCategories(View):
 
         return HttpResponse(
             json.dumps(data), content_type='application/json')
+
+def get_related_posts(request):
+    results = []
+    if request.is_ajax():
+        q = request.GET.get('term', '')
+        results = [{'text': art.title, 'id': art.id} for art in Article.objects.filter(title__icontains=q)]
+        data = json.dumps(results)
+    else:
+        data = []
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
+
+def get_categories(request):
+    results = []
+    if request.is_ajax():
+        q = request.GET.get('term', '')
+        results = [{'text': cat.title, 'id': cat.id} for cat in Category.objects.filter(title__icontains=q)]
+        data = json.dumps(results)
+    else:
+        data = []
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
