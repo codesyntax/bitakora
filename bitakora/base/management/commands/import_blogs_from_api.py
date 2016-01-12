@@ -40,16 +40,18 @@ def import_blogs_from_api(match_user=None, debug=False):
             print slugify(dataset['slug'])
 
             userdata = {
-                'username': slugify(dataset['slug']),
                 'fullname': dataset['title'],
                 'email': dataset['email'],
                 'bio': dataset['description'],
-                'password': pass_data.get(dataset['slug']) and make_password(pass_data[dataset['slug']]['password']) or make_password(dataset['slug']),
             }
-            if '{SSHA}' in userdata['password']:
+
+            password = pass_data.get(dataset['slug']) and pass_data[dataset['slug']]['password']) or dataset['slug']
+            if '{SSHA}' in password:
                 userdata['password'] = userdata['password'].replace("{SSHA}","")
+            else:
+                userdata['password'] = make_password(password)
             	
-            user, created = BitakoraUser.objects.get_or_create(**userdata)
+            user, created = BitakoraUser.objects.get_or_create(username=slugify(dataset['slug']), defaults=userdata)
 
             img_url = None
             for suffix in IMG_FORMATS:
