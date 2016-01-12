@@ -86,7 +86,7 @@ class Command(BaseCommand):
     def add_arguments(self, parser):
         parser.add_argument('-u','--username', type=str, help='import only this users blog')
         parser.add_argument('-o','--onlyone', action='store_true', help='import only this users blog')
-        parser.add_argument('-d','--debug', type=bool, help='debug mode on')
+        parser.add_argument('-d','--debug', action='store_true', help='debug mode on')
 
     def handle(self, *args, **options):
         import_blogs_from_api(**options)

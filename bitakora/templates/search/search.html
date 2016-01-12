@@ -41,7 +41,7 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <h4><a href="{{ result.object.get_absolute_url }}">{{ result.object.title }}</a></h4>
-                                    <span><a href="{% url 'blog_index' result.object.blog.slug %}"><img class="img-circle" src="{{result.object.blog.get_photo.get_profile_url}}" /> {{result.object.blog.name}}</a></span> | <i class="glyphicon glyphicon-time"></i> {{result.object.publish_date}}
+                                    <span><a href="{% url 'blog_index' result.object.blog.slug %}"><img class="img-circle" src="{{result.object.blog.user.get_photo.get_profile_url}}" alt="{{result.object.blog.user.get_photo.caption}}"/> {{result.object.blog.name}}</a></span> | <i class="glyphicon glyphicon-time"></i> {{result.object.publish_date}}
                                 </div>
                             </div>
                             <div class="row">
