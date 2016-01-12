@@ -26,6 +26,7 @@ setup(name='bitakora',
           'setuptools',
 	  'pytz',
           # -*- Extra requirements: -*-
+	  'cssocialuser',
       ],
       entry_points="""
       # -*- Entry points: -*-

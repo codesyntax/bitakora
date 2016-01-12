@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-12 11:55+0100\n"
+"POT-Creation-Date: 2016-01-12 12:33+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,6 +31,14 @@ msgstr ""
 
 #: accounts/admin.py:39
 msgid "Permissions"
+msgstr ""
+
+#: accounts/forms.py:17
+msgid "Please type your current password."
+msgstr ""
+
+#: accounts/forms.py:22
+msgid "The new passwords are not the same"
 msgstr ""
 
 #: accounts/views.py:29
@@ -71,6 +79,7 @@ msgid "Status"
 msgstr ""
 
 #: base/forms.py:72 base/forms.py:82 base/models.py:46
+#: templates/base/new_blog.html:37
 msgid "Template"
 msgstr ""
 
@@ -701,19 +710,12 @@ msgstr ""
 msgid "If you didn't receive any email, please, write to our administrators..."
 msgstr ""
 
-#: templates/registration/registration_form.html:11
-msgid "Create"
+#: templates/registration/registration_form.html:5
+msgid "Create an account"
 msgstr ""
 
-#: templates/registration/registration_form.html:17
-msgid ""
-"\n"
-"\t\t<div>If you sign up with Twitter or Facebook, we’ll start you off with a "
-"network by automatically importing any followers/followees or friends "
-"already on Bitakora. Also, we’ll never post to Twitter or Facebook without "
-"your permission. For more info, please see <a href=\"\" class=\"link\">Login "
-"FAQ</a>.</div>\n"
-"\t\t"
+#: templates/registration/registration_form.html:11
+msgid "Create"
 msgstr ""
 
 #: templates/search/search.html:15
