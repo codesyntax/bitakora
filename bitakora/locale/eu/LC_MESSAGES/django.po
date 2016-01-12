@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Blogak.eus\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-01-12 11:55+0100\n"
-"PO-Revision-Date: 2016-01-12 11:34+0100\n"
+"PO-Revision-Date: 2016-01-12 12:07+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: eu\n"
@@ -276,7 +276,7 @@ msgstr "Bilatu"
 
 #: templates/base.html:109
 msgid "Move thinking forward"
-msgstr "Blogak.eus - Euskaldunon blog komunitatea"
+msgstr "Euskal blogarion komunitatea"
 
 #: templates/base.html:110
 msgid ""
@@ -371,6 +371,7 @@ msgid ""
 "This blog seems to be empty. Hopefully there will be some content in a short "
 "time!"
 msgstr ""
+"Bloga hutsik dagoela dirudi. Ea laster argitaratzen den eduki apur bat...!"
 
 #: templates/base/blog_index.html:80
 msgid "Sindication"
@@ -479,6 +480,8 @@ msgid ""
 "You only need to give a <i class=\"glyphicon glyphicon-thumbs-up\"></i> to "
 "some stories"
 msgstr ""
+"You only need to give a <i class=\"glyphicon glyphicon-thumbs-up\"></i> to "
+"some stories"
 
 #: templates/index.html:25
 msgid "Sorry!"
@@ -486,7 +489,7 @@ msgstr "Zorri!"
 
 #: templates/index.html:25
 msgid "You must register in order to have your Bookmark section..."
-msgstr "Gustukoak aukeratu ahal izateko, izena eman behar duzu..."
+msgstr "Gustukoak aukeratu eta ikusi ahal izateko, izena eman behar duzu..."
 
 #: templates/index.html:25
 msgid "Sign up"
@@ -494,7 +497,7 @@ msgstr "Eman izena"
 
 #: templates/index.html:25
 msgid "now!"
-msgstr "oaintxe bertan!"
+msgstr "oaintxe bertantxe!"
 
 #: templates/profile/base.html:4
 msgid "Edit profile"
@@ -589,22 +592,22 @@ msgstr ""
 
 #: templates/registration/activation_email.txt:4
 msgid "Hello"
-msgstr ""
+msgstr "Epa"
 
 #: templates/registration/activation_email.txt:6
 #, python-format
 msgid "You have requested joining %(sitename)s."
-msgstr ""
+msgstr "%(sitename)s komunitateko kide izan nahi duzu, ezta?"
 
 #: templates/registration/activation_email.txt:8
 #, python-format
 msgid "Please click in this activation link before %(expirationdays)s days:"
-msgstr ""
+msgstr "Egin klik lotura honetan %(expirationdays)s egun baino lehenago:"
 
 #: templates/registration/activation_email.txt:12
 #, python-format
 msgid "The team at %(sitename)s."
-msgstr ""
+msgstr "%(sitename)s-eko lantaldea."
 
 #: templates/registration/activation_email_subject.txt:1
 msgid "Account activation on"
@@ -669,21 +672,21 @@ msgstr "Mesedez, idatzi zure helbide elektronikoa pasahitza berrezartzeko"
 msgid ""
 "You are receiving this email because you requested resetting the password at "
 "%(site_name)s."
-msgstr ""
+msgstr "%(site_name)s komunitateko pasahitza berrezarri nahi duzu, ezta?"
 
 #: templates/registration/password_reset_email.txt:7
 msgid "All you have to do is click in this link and set your new password:"
-msgstr ""
+msgstr "Klik egin lotura honetan, eta pasahitza berrezarri:"
 
 #: templates/registration/password_reset_email.txt:11
 #, python-format
 msgid "Remember that you used the username: %(username)s."
-msgstr ""
+msgstr "Ez ahaztu hauxe dela zure erabiltzaile izena: %(username)s."
 
 #: templates/registration/password_reset_email.txt:13
 #, python-format
 msgid "The team at %(site_name)s."
-msgstr ""
+msgstr "%(site_name)s komunitateko lantaldea."
 
 #: templates/registration/registration_complete.html:5
 msgid "Activate your account"
