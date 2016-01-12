@@ -166,6 +166,12 @@
                     <h4>{% trans 'Last comments' %}</h4>
                     {% for comment in comments %}
                         {% include 'base/short_comment.html' with comment=comment %}
+                    {% empty %}
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>{% trans 'No comments found yet...' %}</p>
+                        </div>
+                    </div>
                     {% endfor %}
                 </div>
 

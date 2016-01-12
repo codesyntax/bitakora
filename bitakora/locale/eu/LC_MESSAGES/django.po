@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Blogak.eus\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-12 14:10+0100\n"
+"POT-Creation-Date: 2016-01-12 14:12+0100\n"
 "PO-Revision-Date: 2016-01-12 12:07+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -325,7 +325,13 @@ msgstr "Ups! Emaitzarik ez! Ea beste zeozer bilatuta..."
 msgid "Last comments"
 msgstr "Azken iruzkinak"
 
-#: templates/base.html:189 templates/base/base.html:80
+#: templates/base.html:172
+#, fuzzy
+#| msgid "No results found."
+msgid "No comments found yet..."
+msgstr "Ups! Emaitzarik ez! Ea beste zeozer bilatuta..."
+
+#: templates/base.html:195 templates/base/base.html:80
 msgid ""
 "Developed by <a href=\"http://www.codesyntax.com\">CodeSyntax</a>. Software: "
 "<a href=\"https://www.djangoproject.com/\">Django</a>."
