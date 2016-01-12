@@ -5,6 +5,7 @@ from bitakora.utils.import_from_wp import import_from_wp
 from bitakora.utils.images import handle_url_file
 from django.contrib.auth.hashers import make_password
 from django.template.defaultfilters import slugify
+import argparse
 import json
 import urllib2
 import cStringIO
@@ -17,7 +18,7 @@ BLOGS_PASS_JSON_URL = 'http://blogak.com/000_user_api'
 def build_dict(seq, key):
     return dict((d[key], dict(d, index=i)) for (i, d) in enumerate(seq))
 
-def import_blogs_from_api(match_user=None, debug=False):
+def import_blogs_from_api(self, match_user=None, debug=False):
     request = urllib2.unquote(BLOGS_JSON_URL)
     pass_request = urllib2.unquote(BLOGS_PASS_JSON_URL)
     
@@ -82,5 +83,8 @@ def import_blogs_from_api(match_user=None, debug=False):
 class Command(BaseCommand):
     help = "Import blog from api"
 
+    def add_arguments(self, parser):
+        parser.add_argument('-u','--username', type=str, help='import only this users blog')
+
     def handle(self, *args, **options):
-        import_blogs_from_api()
+        import_blogs_from_api(options.get('username', None))
