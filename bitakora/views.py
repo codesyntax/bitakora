@@ -33,17 +33,18 @@ def top_stories(request):
 def bookmarks(request):
     section = SECTIONS[1]
     articles = Article.objects.bookmarks(user=request.user)
-    last_articles = Article.objects.published()[:25]
     comments = Comment.objects.filter(status=1).order_by('-publish_date')[:10]
-    if last_articles:
-        categories = [cat for article in last_articles for cat in article.categories.all()][:8]
+    if articles:
+        categories = [cat for article in articles for cat in article.categories.all()][:8]
     return render_to_response('index_no_header.html', locals(), context_instance=RequestContext(request))
 
 def category(request,slug):
     category = get_object_or_404(Category, slug=slug)
     articles = Article.objects.filter(categories=category)[:25]
     comments = Comment.objects.all().order_by('-publish_date')[:10]
-    categories = Category.objects.all().exclude(slug=slug)[:8]
+    last_articles = Article.objects.published()[:25]
+    if articles:
+        categories = [cat for article in last_articles for cat in article.categories.all()][:8]
     return render_to_response('index_no_header.html', locals(), context_instance=RequestContext(request))
 
 def useroptions(request):

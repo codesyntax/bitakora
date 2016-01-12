@@ -152,6 +152,10 @@
                                 </ul>
                             </div>
                         {% endif %}
+                    {% empty %}
+                        <div class="col-sm-12">
+                            <p>{% trans 'No categories found yet...' %}</p>
+                        </div>
                     {% endfor %}
                     </div>
                     <!-- /.row -->

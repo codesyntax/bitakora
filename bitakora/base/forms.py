@@ -30,8 +30,10 @@ class ArticleForm(forms.ModelForm):
             categories = self.cleaned_data['categories']
             cat_lst = []
             for cat in eval(categories):
-                if not isdigit(cat):
-                    cat_lst.append(Category(title=cat,slug=slugify(cat)))
+                if not cat.isdigit():
+                    cat_ob = Category(title=cat,slug=slugify(cat))
+                    cat_ob.save()
+                    cat_lst.append(cat_ob.id)
                 else:
                     cat_lst.append(int(cat))
             return cat_lst
@@ -50,7 +52,6 @@ class ArticleForm(forms.ModelForm):
         rel = kwargs.pop('rel', None)
         super(ArticleForm, self).__init__(*args, **kwargs)
         if cat:
-            import pdb;pdb.set_trace()
             self.fields['categories'].queryset = cat
         if rel:
             self.fields['related_posts'].queryset = rel
