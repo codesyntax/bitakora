@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-12 12:33+0100\n"
+"POT-Creation-Date: 2016-01-12 14:05+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,49 +53,57 @@ msgstr ""
 msgid "New blog data saved"
 msgstr ""
 
-#: base/forms.py:13 base/forms.py:71 base/forms.py:81
+#: base/forms.py:14 base/forms.py:73 base/forms.py:84
 msgid "Header image"
 msgstr ""
 
-#: base/forms.py:13 base/forms.py:71 base/forms.py:81
+#: base/forms.py:14 base/forms.py:73 base/forms.py:84
 msgid "Valid formats: jpg, png, gif."
 msgstr ""
 
-#: base/forms.py:14 base/forms.py:63 base/models.py:136 base/models.py:241
+#: base/forms.py:15 base/forms.py:65 base/models.py:136 base/models.py:241
 msgid "Text"
 msgstr ""
 
-#: base/forms.py:15 base/models.py:115 base/models.py:151
+#: base/forms.py:16 base/models.py:115 base/models.py:151
 msgid "Categories"
 msgstr ""
 
-#: base/forms.py:16 base/models.py:159 templates/base/article.html:107
+#: base/forms.py:17 base/models.py:159 templates/base/article.html:107
 msgid "Related posts"
 msgstr ""
 
-#: base/forms.py:17 base/models.py:140 base/models.py:244
+#: base/forms.py:18 base/models.py:140 base/models.py:244
 #: templates/base/dashboard.html:21 templates/base/dashboard_comments.html:22
 msgid "Status"
 msgstr ""
 
-#: base/forms.py:72 base/forms.py:82 base/models.py:46
+#: base/forms.py:74 base/forms.py:85 base/models.py:46
 #: templates/base/new_blog.html:37
 msgid "Template"
 msgstr ""
 
-#: base/forms.py:73 base/forms.py:83 base/models.py:49
+#: base/forms.py:75 base/forms.py:86 base/models.py:49
 msgid "License"
 msgstr ""
 
-#: base/forms.py:101 base/forms.py:114
+#: base/forms.py:76 base/forms.py:87 base/models.py:44
+msgid "Analytics code"
+msgstr ""
+
+#: base/forms.py:76 base/forms.py:87
+msgid "More information about "
+msgstr ""
+
+#: base/forms.py:105 base/forms.py:118
 msgid "Empty comment. Please, write something!"
 msgstr ""
 
-#: base/forms.py:118
+#: base/forms.py:122
 msgid "Wordpress file"
 msgstr ""
 
-#: base/forms.py:118
+#: base/forms.py:122
 msgid "Please, select your Wordpress XML file"
 msgstr ""
 
@@ -137,10 +145,6 @@ msgstr ""
 
 #: base/models.py:42
 msgid "Tagline"
-msgstr ""
-
-#: base/models.py:44
-msgid "Analytics code"
 msgstr ""
 
 #: base/models.py:52 base/models.py:233 photologue_custom/models.py:15
@@ -304,11 +308,15 @@ msgstr ""
 msgid "Blog Categories"
 msgstr ""
 
-#: templates/base.html:162 templates/base/blog_index.html:71
+#: templates/base.html:157
+msgid "No categories found yet..."
+msgstr ""
+
+#: templates/base.html:166 templates/base/blog_index.html:71
 msgid "Last comments"
 msgstr ""
 
-#: templates/base.html:185 templates/base/base.html:80
+#: templates/base.html:189 templates/base/base.html:80
 msgid ""
 "Developed by <a href=\"http://www.codesyntax.com\">CodeSyntax</a>. Software: "
 "<a href=\"https://www.djangoproject.com/\">Django</a>."
@@ -319,8 +327,8 @@ msgid "New article"
 msgstr ""
 
 #: templates/base/add_article.html:57 templates/base/article.html:148
-#: templates/base/new_blog.html:52 templates/profile/edit_blog.html:50
-#: templates/profile/edit_pass.html:13
+#: templates/base/new_blog.html:52 templates/contact_form/contact_form.html:12
+#: templates/profile/edit_blog.html:50 templates/profile/edit_pass.html:13
 #: templates/registration/password_reset_confirm.html:14
 #: templates/registration/password_reset_form.html:16
 msgid "Submit"
@@ -470,17 +478,38 @@ msgstr ""
 msgid "Import from Wordpress"
 msgstr ""
 
+#: templates/contact_form/contact_form.html:5
+msgid "Contact"
+msgstr ""
+
+#: templates/contact_form/contact_form.txt:4
+msgid "This message was send from"
+msgstr ""
+
+#: templates/contact_form/contact_form_sent.html:5
+msgid "Your message was sent"
+msgstr ""
+
+#: templates/contact_form/contact_form_sent.html:9
+msgid ""
+"We have sent your message to our administrators. Thank you for contacting us."
+msgstr ""
+
+#: templates/contact_form/contact_form_subject.txt:1
+msgid "Contact mail from"
+msgstr ""
+
 #: templates/index.html:23
 msgid "Start bookmarking now!"
 msgstr ""
 
-#: templates/index.html:23
+#: templates/index.html:23 templates/index.html.py:29
 msgid ""
 "You only need to give a <i class=\"glyphicon glyphicon-thumbs-up\"></i> to "
 "some stories"
 msgstr ""
 
-#: templates/index.html:25
+#: templates/index.html:25 templates/index.html.py:31
 msgid "Sorry!"
 msgstr ""
 
@@ -488,12 +517,20 @@ msgstr ""
 msgid "You must register in order to have your Bookmark section..."
 msgstr ""
 
-#: templates/index.html:25
+#: templates/index.html:25 templates/index.html.py:31
 msgid "Sign up"
 msgstr ""
 
-#: templates/index.html:25
+#: templates/index.html:25 templates/index.html.py:31
 msgid "now!"
+msgstr ""
+
+#: templates/index.html:29
+msgid "Start rating now!"
+msgstr ""
+
+#: templates/index.html:31
+msgid "You must register in order to rate the best stories..."
 msgstr ""
 
 #: templates/profile/base.html:4
@@ -706,8 +743,13 @@ msgstr ""
 msgid "Check your spam folder."
 msgstr ""
 
-#: templates/registration/registration_complete.html:14
-msgid "If you didn't receive any email, please, write to our administrators..."
+#: templates/registration/registration_complete.html:15
+#, python-format
+msgid ""
+"\n"
+"\t\t\t\t<li>If you didn't receive any email, please, write to our <a href="
+"\"%(contact_url)s\">administrators</a>...\"</li>\n"
+"\t\t\t\t"
 msgstr ""
 
 #: templates/registration/registration_form.html:5
