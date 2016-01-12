@@ -29,7 +29,6 @@ class ArticleAdmin(admin.ModelAdmin):
     admin_thumbnail.short_description = 'Thumbnail'
     admin_thumbnail.allow_tags = True
 
-    form = ArticleAdminForm
     list_display = ('title','slug','blog','status','publish_date','expiry_date','admin_thumbnail')
     list_display_links = ('title',)
     
