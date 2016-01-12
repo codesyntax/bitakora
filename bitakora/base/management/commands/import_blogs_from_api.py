@@ -18,7 +18,7 @@ BLOGS_PASS_JSON_URL = 'http://blogak.com/000_user_api'
 def build_dict(seq, key):
     return dict((d[key], dict(d, index=i)) for (i, d) in enumerate(seq))
 
-def import_blogs_from_api(match_user=None, debug=False):
+def import_blogs_from_api(username=None, onlyone=False, debug=False):
     request = urllib2.unquote(BLOGS_JSON_URL)
     pass_request = urllib2.unquote(BLOGS_PASS_JSON_URL)
     
@@ -29,11 +29,11 @@ def import_blogs_from_api(match_user=None, debug=False):
         pass_result = urllib2.urlopen(pass_request, timeout=5*60).read()
         pass_data = build_dict(eval(pass_result),key='blogs')
 
-        to_continue = match_user and True or False
+        to_continue = username and True or False
 
         for dataset in data:
 
-            if match_user == slugify(dataset['slug']):
+            if username == slugify(dataset['slug']):
                 to_continue = False
             elif to_continue:
                 continue    
@@ -72,7 +72,7 @@ def import_blogs_from_api(match_user=None, debug=False):
             blog_result = urllib2.urlopen(BLOGS_BASE+dataset['slug'].replace(" ","%20")+'/downloadWordPress',timeout=5*60).read()
             import_from_wp(blog_result,user, debug)
 
-            if match_user == slugify(dataset['slug']):
+            if onlyone:
                 break
 
     except Exception as e:
@@ -85,8 +85,8 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument('-u','--username', type=str, help='import only this users blog')
-        parser.add_argument('-b','--break', action='store_true', help='import only this users blog')
+        parser.add_argument('-o','--onlyone', action='store_true', help='import only this users blog')
         parser.add_argument('-d','--debug', type=bool, help='debug mode on')
 
     def handle(self, *args, **options):
-        import_blogs_from_api(match_user=options.get('username', None), debug=options.get('username', False))
+        import_blogs_from_api(**options)
