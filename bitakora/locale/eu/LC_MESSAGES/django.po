@@ -92,7 +92,7 @@ msgstr "Lizentzia"
 
 #: base/forms.py:76 base/forms.py:87 base/models.py:44
 msgid "Analytics code"
-msgstr "Estatistikak jasotzeko Analytics kodea (zuk lortu beharrekoa)"
+msgstr "Estatistikak jasotzeko Analytics kodea"
 
 #: base/forms.py:76 base/forms.py:87
 msgid "More information about "

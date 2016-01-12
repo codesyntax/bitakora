@@ -29,7 +29,13 @@
                     {% endif %}
                     </a> <a class="navbar-brand blog-brand" href="{% url 'blog_index' blog.slug %}">{{blog.name}}</a>
                 {% else %}
-                        <a class="navbar-brand" href="/">Bitakora</a>
+                        <a class="navbar-brand" href="/">
+                        {% if CUSTOM_MINILOGO %}
+                            <img class="img-responsive" src="{{CUSTOM_MINILOGO}}" />
+                        {% else %}
+                            Bitakora
+                        {% endif %}
+                        </a>
                 {% endif %}
                 <div class="social-buttons nav navbar-nav">
                     {% if article %}

@@ -1,0 +1,17 @@
+[
+  {
+    "fields":{
+      "registration_required":false,
+      "title":"Learn more",
+      "url":"/learn-more/",
+      "template_name":"",
+      "sites":[
+        1
+      ],
+      "content":"",
+      "enable_comments":false
+    },
+    "model":"flatpages.flatpage",
+    "pk":1
+  }
+]
