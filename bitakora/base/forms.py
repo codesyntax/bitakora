@@ -5,10 +5,11 @@ from bitakora.base.models import *
 from tinymce.widgets import TinyMCE
 from captcha.fields import ReCaptchaField
 from django.utils.translation import ugettext_lazy as _
+from django.utils.safestring import mark_safe
 from django.template.defaultfilters import slugify
 
 TINYMCE_DEFAULT_CONFIG = getattr(settings, 'TINYMCE_DEFAULT_CONFIG', {})
-
+GOOGLE_URL_HTML = "<a href='https://www.google.com/intl/es/analytics/features/index.html'>Google Analytics</a>"
 class ArticleForm(forms.ModelForm):
     featured_image = forms.FileField(label=_('Header image'),help_text=_('Valid formats: jpg, png, gif.'),required=False)
     text = forms.CharField(label=_('Text'),widget=TinyMCE(mce_attrs=TINYMCE_DEFAULT_CONFIG))
@@ -71,6 +72,7 @@ class BlogForm(forms.ModelForm):
     header_image = forms.ImageField(label=_('Header image'),help_text=_('Valid formats: jpg, png, gif.'),required=False)
     template = forms.ChoiceField(label=_('Template'), widget=forms.RadioSelect, choices=TEMPLATE_CHOICES,initial=DEFAULT_TEMPLATE)
     license = forms.ChoiceField(label=_('License'), widget=forms.RadioSelect, choices=LICENSE_CHOICES,initial=DEFAULT_LICENSE)
+    analytics_code = forms.CharField(label=_('Analytics code'), widget=forms.Textarea, help_text=mark_safe(_("More information about "+GOOGLE_URL_HTML+".")))
     captcha = ReCaptchaField()
 
     class Meta:
@@ -81,6 +83,7 @@ class BlogFormNoCaptcha(forms.ModelForm):
     header_image = forms.ImageField(label=_('Header image'),help_text=_('Valid formats: jpg, png, gif.'),required=False)
     template = forms.ChoiceField(label=_('Template'), widget=forms.RadioSelect, choices=TEMPLATE_CHOICES,initial=DEFAULT_TEMPLATE)
     license = forms.ChoiceField(label=_('License'), widget=forms.RadioSelect, choices=LICENSE_CHOICES,initial=DEFAULT_LICENSE)
+    analytics_code = forms.CharField(label=_('Analytics code'), widget=forms.Textarea, help_text=mark_safe(_("More information about "+GOOGLE_URL_HTML+".")))
     
     class Meta:
         model = Blog

@@ -11,7 +11,10 @@
 		<p><i class="glyphicon glyphicon-ok"></i> {% trans 'Remember:' %}</p>
 			<ul>
 				<li>{% trans 'Check your spam folder.' %}</li>
-				<li>{% trans "If you didn't receive any email, please, write to our administrators..." %}</li>
+				{% url 'contact_form' as contact_url %}
+				{% blocktrans %}
+				<li>If you didn't receive any email, please, write to our <a href="{{contact_url}}">administrators</a>..."</li>
+				{% endblocktrans %}
 			</ul>
 	</div>
 {% endblock %}

@@ -2,3 +2,4 @@ bitakora.egg-info/
 *.pyc
 local_settings.py
 server_settings.py
+*~

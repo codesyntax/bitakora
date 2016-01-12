@@ -4,6 +4,7 @@ import os
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 EMAIL_SUBJECT_PREFIX = '[bitakora]'
+DEFAULT_FROM_EMAIL = ''
 
 ADMINS = (
      ('Your-name', 'your-email@codesyntax.com'),
@@ -34,7 +35,6 @@ LANGUAGE_CODE = 'en'
 LANGUAGES = (
     ('en', 'English'),
 )
-
 
 SITE_ID = 1
 
@@ -104,6 +104,7 @@ INSTALLED_APPS = (
     'social.apps.django_app.default',
     'registration',
     'pagination',
+    'contact_form',
     'gunicorn',
 )
 

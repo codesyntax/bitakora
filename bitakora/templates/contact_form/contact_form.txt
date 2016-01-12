@@ -1,0 +1,9 @@
+{% load i18n %}
+{% load url from future %}
+
+{% trans "This message was send from" %} {{email}}:
+
+{{body}}
+
+--------
+{{name}}
