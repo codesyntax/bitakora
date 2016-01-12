@@ -18,7 +18,7 @@ BLOGS_PASS_JSON_URL = 'http://blogak.com/000_user_api'
 def build_dict(seq, key):
     return dict((d[key], dict(d, index=i)) for (i, d) in enumerate(seq))
 
-def import_blogs_from_api(self, match_user=None, debug=False):
+def import_blogs_from_api(match_user=None, debug=False):
     request = urllib2.unquote(BLOGS_JSON_URL)
     pass_request = urllib2.unquote(BLOGS_PASS_JSON_URL)
     
@@ -85,6 +85,7 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument('-u','--username', type=str, help='import only this users blog')
+        parser.add_argument('-d','--debug', type=bool, help='debug mode on')
 
     def handle(self, *args, **options):
-        import_blogs_from_api(options.get('username', None))
+        import_blogs_from_api(match_user=options.get('username', None), debug=options.get('username', False))
