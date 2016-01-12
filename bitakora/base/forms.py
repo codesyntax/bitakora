@@ -27,7 +27,13 @@ class ArticleForm(forms.ModelForm):
     def clean_categories(self):
         if self.cleaned_data.get('categories'):
             categories = self.cleaned_data['categories']
-            return map(int,eval(categories))
+            cat_lst = []
+            for cat in eval(categories):
+                if not isdigit(cat):
+                    cat_lst.append(Category(title=cat,slug=slugify(cat)))
+                else:
+                    cat_lst.append(int(cat))
+            return cat_lst
         else:
             return []
 

@@ -81,4 +81,4 @@ class Command(BaseCommand):
     help = "Import blog from api"
 
     def handle(self, *args, **options):
-        import_blogs_from_api("tuaregenlaguna2011")
+        import_blogs_from_api()

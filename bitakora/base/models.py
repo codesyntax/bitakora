@@ -6,8 +6,13 @@ from bitakora.base.managers import PublishedManager
 from bitakora.utils.models import get_user_model_name
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
+from datetime import datetime
 from django.template.defaultfilters import removetags, striptags, truncatechars
-from django.utils.timezone import now
+
+try:
+    from django.utils.timezone import now
+except ImportError:
+    now = datetime.now    
 
 user_model_name = get_user_model_name()
 
@@ -138,7 +143,7 @@ class Article(models.Model):
             "on the site."))
     publish_date = models.DateTimeField(_("Published from"),
         help_text=_("With Published chosen, won't be shown until this time"),
-        blank=True, null=True, db_index=True, default=now())
+        blank=True, null=True, db_index=True, default=now)
     expiry_date = models.DateTimeField(_("Expires on"),
         help_text=_("With Published chosen, won't be shown after this time"),
         blank=True, null=True)
