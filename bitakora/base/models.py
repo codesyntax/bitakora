@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from photologue.models import Photo
 from bitakora.base.managers import PublishedManager
 from bitakora.utils.models import get_user_model_name
+from bitakora.utils.text import make_responsive
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 from datetime import datetime
@@ -211,6 +212,10 @@ class Article(models.Model):
 
     def get_absolute_url(self):
         return reverse('article',kwargs={'blogslug': self.blog.slug, 'slug': self.slug})
+
+    def save(self, *args, **kwargs):
+        self.text = make_responsive(self.text)
+        super(Article, self).save(*args, **kwargs)
 
     def __unicode__(self):
         return self.title
