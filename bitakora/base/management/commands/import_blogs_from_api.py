@@ -69,6 +69,9 @@ def import_blogs_from_api(match_user=None, debug=False):
             blog_result = urllib2.urlopen(BLOGS_BASE+dataset['slug'].replace(" ","%20")+'/downloadWordPress',timeout=5*60).read()
             import_from_wp(blog_result,user, debug)
 
+            if match_user == slugify(dataset['slug']):
+                break
+
     except Exception as e:
         raise e
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-04 12:43+0100\n"
+"POT-Creation-Date: 2016-01-12 09:52+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,7 +53,7 @@ msgstr ""
 msgid "Valid formats: jpg, png, gif."
 msgstr ""
 
-#: base/forms.py:14 base/forms.py:57 base/models.py:131 base/models.py:233
+#: base/forms.py:14 base/forms.py:57 base/models.py:131 base/models.py:236
 msgid "Text"
 msgstr ""
 
@@ -61,16 +61,13 @@ msgstr ""
 msgid "Categories"
 msgstr ""
 
-#: base/forms.py:15
-msgid "Choose categories"
-msgstr ""
-
-#: base/forms.py:16 base/models.py:154 templates/base/article.html:104
+#: base/forms.py:16 base/models.py:154 templates/base/article.html:107
 msgid "Related posts"
 msgstr ""
 
-#: base/forms.py:16
-msgid "Choose related posts"
+#: base/forms.py:17 base/models.py:135 base/models.py:239
+#: templates/base/dashboard.html:21 templates/base/dashboard_comments.html:22
+msgid "Status"
 msgstr ""
 
 #: base/forms.py:95 base/forms.py:108
@@ -137,7 +134,7 @@ msgstr ""
 msgid "License"
 msgstr ""
 
-#: base/models.py:47 base/models.py:225 photologue_custom/models.py:15
+#: base/models.py:47 base/models.py:228 photologue_custom/models.py:15
 msgid "Author"
 msgstr ""
 
@@ -163,11 +160,6 @@ msgstr ""
 
 #: base/models.py:122
 msgid "Published"
-msgstr ""
-
-#: base/models.py:135 base/models.py:236 templates/base/dashboard.html:21
-#: templates/base/dashboard_comments.html:22
-msgid "Status"
 msgstr ""
 
 #: base/models.py:137
@@ -198,58 +190,62 @@ msgstr ""
 msgid "Featured Image"
 msgstr ""
 
-#: base/models.py:211
+#: base/models.py:214
 msgid "Article"
 msgstr ""
 
-#: base/models.py:212
+#: base/models.py:215
 msgid "Articles"
 msgstr ""
 
-#: base/models.py:219 templates/base/comment.html:24
+#: base/models.py:222 templates/base/comment.html:24
 #: templates/base/dashboard_comments.html:31
 msgid "Visible"
 msgstr ""
 
-#: base/models.py:220
+#: base/models.py:223
 msgid "Visible only for the admin"
 msgstr ""
 
-#: base/models.py:221
+#: base/models.py:224
 msgid "Not visible"
 msgstr ""
 
-#: base/models.py:228
+#: base/models.py:231
 msgid "Nick name"
 msgstr ""
 
-#: base/models.py:229
+#: base/models.py:232
 msgid "Email"
 msgstr ""
 
-#: base/models.py:230
+#: base/models.py:233
 msgid "Url"
 msgstr ""
 
-#: base/models.py:235
+#: base/models.py:238
 msgid "IP address"
 msgstr ""
 
-#: base/models.py:238
+#: base/models.py:241
 msgid "Publish date"
 msgstr ""
 
-#: base/models.py:249 templates/base/dashboard_comments.html:20
+#: base/models.py:252 templates/base/dashboard_comments.html:20
 msgid "Comment"
 msgstr ""
 
-#: base/models.py:250 templates/base/article.html:125
+#: base/models.py:253 templates/base/article.html:128
 #: templates/base/dashboard.html:12 templates/base/dashboard_comments.html:12
 msgid "Comments"
 msgstr ""
 
-#: base/views.py:51 base/views.py:78
+#: base/views.py:55 base/views.py:82
 msgid "Invalid image format. Please, change the format!"
+msgstr ""
+
+#: base/views.py:119
+msgid "Importation error. Please, check the XML file and try again."
 msgstr ""
 
 #: rss/feeds.py:13
@@ -260,9 +256,21 @@ msgstr ""
 msgid " articles feed"
 msgstr ""
 
+#: templates/base.html:78 views.py:14
+msgid "Top stories"
+msgstr ""
+
+#: templates/base.html:81 views.py:15
+msgid "Bookmarks"
+msgstr ""
+
 #: templates/base.html:87 templates/search/search.html:7
 #: templates/search/search.html.py:22
 msgid "Search"
+msgstr ""
+
+#: templates/base.html:109
+msgid "Move thinking forward"
 msgstr ""
 
 #: templates/base.html:110
@@ -283,7 +291,11 @@ msgstr ""
 msgid "Learn more"
 msgstr ""
 
-#: templates/base.html:162 templates/base/blog_index.html:45
+#: templates/base.html:143 templates/base/blog_index.html:52
+msgid "Blog Categories"
+msgstr ""
+
+#: templates/base.html:162 templates/base/blog_index.html:71
 msgid "Last comments"
 msgstr ""
 
@@ -293,22 +305,24 @@ msgid ""
 "<a href=\"https://www.djangoproject.com/\">Django</a>."
 msgstr ""
 
-#: templates/base/add_article.html:22
+#: templates/base/add_article.html:23
 msgid "New article"
 msgstr ""
 
-#: templates/base/add_article.html:56 templates/base/article.html:145
-#: templates/base/new_blog.html:46 templates/profile/edit_blog.html:50
+#: templates/base/add_article.html:57 templates/base/article.html:148
+#: templates/base/new_blog.html:52 templates/profile/edit_blog.html:50
 #: templates/profile/edit_pass.html:13
+#: templates/registration/password_reset_confirm.html:14
+#: templates/registration/password_reset_form.html:16
 msgid "Submit"
 msgstr ""
 
-#: templates/base/add_article.html:64
-msgid "Oops, nothing found. Press enter to add"
+#: templates/base/add_article.html:67
+msgid "Select or create new category"
 msgstr ""
 
-#: templates/base/add_article.html:65
-msgid "Oops, nothing found!"
+#: templates/base/add_article.html:82
+msgid "Select related articles"
 msgstr ""
 
 #: templates/base/article.html:47
@@ -320,28 +334,38 @@ msgstr ""
 msgid "This post has still a future date: <strong>%(date)s</strong>"
 msgstr ""
 
-#: templates/base/article.html:84 templates/base/article.html.py:87
+#: templates/base/article.html:87 templates/base/article.html.py:90
 msgid "Like"
 msgstr ""
 
-#: templates/base/article.html:141
+#: templates/base/article.html:144
 msgid "Leave a Comment:"
 msgstr ""
 
-#: templates/base/blog_index.html:25
+#: templates/base/blog_index.html:26
 msgid "Well done!"
 msgstr ""
 
-#: templates/base/blog_index.html:25
+#: templates/base/blog_index.html:26
 msgid ""
 "Your blog was successfully created. Now you can start posting your stuff"
 msgstr ""
 
-#: templates/base/blog_index.html:25
+#: templates/base/blog_index.html:26
 msgid "from here!"
 msgstr ""
 
-#: templates/base/blog_index.html:54
+#: templates/base/blog_index.html:30
+msgid "Sorry..."
+msgstr ""
+
+#: templates/base/blog_index.html:30
+msgid ""
+"This blog seems to be empty. Hopefully there will be some content in a short "
+"time!"
+msgstr ""
+
+#: templates/base/blog_index.html:80
 msgid "Sindication"
 msgstr ""
 
@@ -390,27 +414,50 @@ msgstr ""
 msgid "Import your blog"
 msgstr ""
 
-#: templates/base/import_new_blog.html:11
+#: templates/base/import_new_blog.html:12
 msgid "Import Wordpress XML"
 msgstr ""
 
-#: templates/base/import_new_blog.html:17
+#: templates/base/import_new_blog.html:19
+#: templates/base/import_new_blog.html:40
 msgid "Close"
 msgstr ""
 
-#: templates/base/import_new_blog.html:18 templates/profile/edit_blog.html:11
+#: templates/base/import_new_blog.html:20 templates/profile/edit_blog.html:11
 msgid "Import"
+msgstr ""
+
+#: templates/base/import_new_blog.html:32
+msgid "Import blog"
+msgstr ""
+
+#: templates/base/import_new_blog.html:35
+msgid "IMPORTANT!!"
+msgstr ""
+
+#: templates/base/import_new_blog.html:36
+msgid "Are you sure you want to IMPORT this blog?"
+msgstr ""
+
+#: templates/base/import_new_blog.html:37
+msgid ""
+"If you accept, your current blog data will be ENTIRELY REPLACED and you will "
+"LOSE ALL CURRENT DATA."
+msgstr ""
+
+#: templates/base/import_new_blog.html:41
+msgid "Yes, I am sure"
 msgstr ""
 
 #: templates/base/new_blog.html:12
 msgid "New blog"
 msgstr ""
 
-#: templates/base/new_blog.html:15
+#: templates/base/new_blog.html:21
 msgid "Create from scratch"
 msgstr ""
 
-#: templates/base/new_blog.html:16
+#: templates/base/new_blog.html:22
 msgid "Import from Wordpress"
 msgstr ""
 
@@ -434,6 +481,10 @@ msgstr ""
 
 #: templates/index.html:25
 msgid "Sign up"
+msgstr ""
+
+#: templates/index.html:25
+msgid "now!"
 msgstr ""
 
 #: templates/profile/base.html:4
@@ -477,10 +528,12 @@ msgid "Export your blog"
 msgstr ""
 
 #: templates/profile/edit_pass.html:7
+#: templates/registration/password_reset_form.html:5
 msgid "Reset your password"
 msgstr ""
 
 #: templates/profile/edit_pass.html:8
+#: templates/registration/password_reset_form.html:9
 msgid "Please write your email to reset your password"
 msgstr ""
 
@@ -525,6 +578,10 @@ msgstr ""
 msgid "Link Facebook for this user"
 msgstr ""
 
+#: templates/registration/login.html:5
+msgid "Sign in or create an account"
+msgstr ""
+
 #: templates/registration/login.html:8 templates/registration/login.html:13
 msgid "Sign in with Twitter"
 msgstr ""
@@ -551,6 +608,27 @@ msgstr ""
 
 #: templates/registration/login.html:31
 msgid "Login FAQ"
+msgstr ""
+
+#: templates/registration/password_reset_confirm.html:7
+msgid "New password"
+msgstr ""
+
+#: templates/registration/password_reset_confirm.html:10
+msgid "Please enter twice the new password"
+msgstr ""
+
+#: templates/registration/password_reset_confirm.html:19
+msgid "Password reset failed"
+msgstr ""
+
+#: templates/registration/password_reset_done.html:5
+msgid "Reset password"
+msgstr ""
+
+#: templates/registration/password_reset_done.html:9
+msgid ""
+"We have sent to your email the needed information to reset your password"
 msgstr ""
 
 #: templates/registration/registration_complete.html:5
@@ -628,12 +706,4 @@ msgstr ""
 
 #: templates/useroptions.html:37
 msgid "Sign in / Sign up"
-msgstr ""
-
-#: views.py:14
-msgid "Top stories"
-msgstr ""
-
-#: views.py:15
-msgid "Bookmarks"
 msgstr ""

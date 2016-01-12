@@ -30,9 +30,9 @@ DATETIME_FORMAT = 'Y-m-d H:i'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'eu'
+LANGUAGE_CODE = 'en'
 LANGUAGES = (
-    ('eu', 'Euskara'),
+    ('en', 'English'),
 )
 
 
