@@ -89,4 +89,6 @@ class Command(BaseCommand):
         parser.add_argument('-d','--debug', action='store_true', help='debug mode on')
 
     def handle(self, *args, **options):
-        import_blogs_from_api(**options)
+        import_blogs_from_api(username=options.get('username', None),
+                              onlyone=options.get('onlyone', False),
+                              debug=options.get('debug', False))
