@@ -30,8 +30,8 @@
                     </a> <a class="navbar-brand blog-brand" href="{% url 'blog_index' blog.slug %}">{{blog.name}}</a>
                 {% else %}
                         <a class="navbar-brand" href="/">
-                        {% if CUSTOM_MINILOGO %}
-                            <img class="img-responsive" src="{{CUSTOM_MINILOGO}}" />
+                        {% if CUSTOM_LOGO %}
+                            <img class="img-responsive" src="{{CUSTOM_LOGO}}" />
                         {% else %}
                             Bitakora
                         {% endif %}
