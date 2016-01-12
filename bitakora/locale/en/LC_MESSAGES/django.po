@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-12 09:52+0100\n"
+"POT-Creation-Date: 2016-01-12 11:55+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,197 +45,197 @@ msgstr ""
 msgid "New blog data saved"
 msgstr ""
 
-#: base/forms.py:13 base/forms.py:65 base/forms.py:75
+#: base/forms.py:13 base/forms.py:71 base/forms.py:81
 msgid "Header image"
 msgstr ""
 
-#: base/forms.py:13 base/forms.py:65 base/forms.py:75
+#: base/forms.py:13 base/forms.py:71 base/forms.py:81
 msgid "Valid formats: jpg, png, gif."
 msgstr ""
 
-#: base/forms.py:14 base/forms.py:57 base/models.py:131 base/models.py:236
+#: base/forms.py:14 base/forms.py:63 base/models.py:136 base/models.py:241
 msgid "Text"
 msgstr ""
 
-#: base/forms.py:15 base/models.py:110 base/models.py:146
+#: base/forms.py:15 base/models.py:115 base/models.py:151
 msgid "Categories"
 msgstr ""
 
-#: base/forms.py:16 base/models.py:154 templates/base/article.html:107
+#: base/forms.py:16 base/models.py:159 templates/base/article.html:107
 msgid "Related posts"
 msgstr ""
 
-#: base/forms.py:17 base/models.py:135 base/models.py:239
+#: base/forms.py:17 base/models.py:140 base/models.py:244
 #: templates/base/dashboard.html:21 templates/base/dashboard_comments.html:22
 msgid "Status"
 msgstr ""
 
-#: base/forms.py:95 base/forms.py:108
-msgid "Empty comment. Please, write something!"
-msgstr ""
-
-#: base/forms.py:112
-msgid "Wordpress file"
-msgstr ""
-
-#: base/forms.py:112
-msgid "Please, select your Wordpress XML file"
-msgstr ""
-
-#: base/models.py:17
-msgid "One page wonder"
-msgstr ""
-
-#: base/models.py:18
-msgid "Clean blog"
-msgstr ""
-
-#: base/models.py:19
-msgid "Old style"
-msgstr ""
-
-#: base/models.py:20
-msgid "Minimalist"
-msgstr ""
-
-#: base/models.py:26
-msgid "CC-BY-SA"
-msgstr ""
-
-#: base/models.py:27
-msgid "Copyright"
-msgstr ""
-
-#: base/models.py:33 base/models.py:126
-msgid "Name"
-msgstr ""
-
-#: base/models.py:34 base/models.py:101 base/models.py:127
-msgid "URL"
-msgstr ""
-
-#: base/models.py:35 base/models.py:102 base/models.py:128
-msgid "Leave blank to have the URL auto-generated from the title."
-msgstr ""
-
-#: base/models.py:37
-msgid "Tagline"
-msgstr ""
-
-#: base/models.py:39
-msgid "Analytics code"
-msgstr ""
-
-#: base/models.py:41
+#: base/forms.py:72 base/forms.py:82 base/models.py:46
 msgid "Template"
 msgstr ""
 
-#: base/models.py:44
+#: base/forms.py:73 base/forms.py:83 base/models.py:49
 msgid "License"
 msgstr ""
 
-#: base/models.py:47 base/models.py:228 photologue_custom/models.py:15
+#: base/forms.py:101 base/forms.py:114
+msgid "Empty comment. Please, write something!"
+msgstr ""
+
+#: base/forms.py:118
+msgid "Wordpress file"
+msgstr ""
+
+#: base/forms.py:118
+msgid "Please, select your Wordpress XML file"
+msgstr ""
+
+#: base/models.py:22
+msgid "One page wonder"
+msgstr ""
+
+#: base/models.py:23
+msgid "Clean blog"
+msgstr ""
+
+#: base/models.py:24
+msgid "Old style"
+msgstr ""
+
+#: base/models.py:25
+msgid "Minimalist"
+msgstr ""
+
+#: base/models.py:31
+msgid "CC-BY-SA"
+msgstr ""
+
+#: base/models.py:32
+msgid "Copyright"
+msgstr ""
+
+#: base/models.py:38
+msgid "Name"
+msgstr ""
+
+#: base/models.py:39 base/models.py:106 base/models.py:132
+msgid "URL"
+msgstr ""
+
+#: base/models.py:40 base/models.py:107 base/models.py:133
+msgid "Leave blank to have the URL auto-generated from the title."
+msgstr ""
+
+#: base/models.py:42
+msgid "Tagline"
+msgstr ""
+
+#: base/models.py:44
+msgid "Analytics code"
+msgstr ""
+
+#: base/models.py:52 base/models.py:233 photologue_custom/models.py:15
 msgid "Author"
 msgstr ""
 
-#: base/models.py:96
+#: base/models.py:101
 msgid "Blog"
 msgstr ""
 
-#: base/models.py:97
+#: base/models.py:102
 msgid "Blogs"
 msgstr ""
 
-#: base/models.py:100 templates/base/dashboard.html:20
+#: base/models.py:105 base/models.py:131 templates/base/dashboard.html:20
 msgid "Title"
 msgstr ""
 
-#: base/models.py:109 templates/index.html:8
+#: base/models.py:114 templates/index.html:8
 msgid "Category"
 msgstr ""
 
-#: base/models.py:121
+#: base/models.py:126
 msgid "Draft"
 msgstr ""
 
-#: base/models.py:122
+#: base/models.py:127
 msgid "Published"
 msgstr ""
 
-#: base/models.py:137
+#: base/models.py:142
 msgid "With Draft chosen, will only be shown for admin users on the site."
 msgstr ""
 
-#: base/models.py:139 templates/base/dashboard.html:22
+#: base/models.py:144 templates/base/dashboard.html:22
 msgid "Published from"
 msgstr ""
 
-#: base/models.py:140
+#: base/models.py:145
 msgid "With Published chosen, won't be shown until this time"
 msgstr ""
 
-#: base/models.py:142
+#: base/models.py:147
 msgid "Expires on"
 msgstr ""
 
-#: base/models.py:143
+#: base/models.py:148
 msgid "With Published chosen, won't be shown after this time"
 msgstr ""
 
-#: base/models.py:148
+#: base/models.py:153
 msgid "Allow comments"
 msgstr ""
 
-#: base/models.py:152
+#: base/models.py:157
 msgid "Featured Image"
 msgstr ""
 
-#: base/models.py:214
+#: base/models.py:219
 msgid "Article"
 msgstr ""
 
-#: base/models.py:215
+#: base/models.py:220
 msgid "Articles"
 msgstr ""
 
-#: base/models.py:222 templates/base/comment.html:24
+#: base/models.py:227 templates/base/comment.html:24
 #: templates/base/dashboard_comments.html:31
 msgid "Visible"
 msgstr ""
 
-#: base/models.py:223
+#: base/models.py:228
 msgid "Visible only for the admin"
 msgstr ""
 
-#: base/models.py:224
+#: base/models.py:229
 msgid "Not visible"
 msgstr ""
 
-#: base/models.py:231
+#: base/models.py:236
 msgid "Nick name"
 msgstr ""
 
-#: base/models.py:232
+#: base/models.py:237
 msgid "Email"
 msgstr ""
 
-#: base/models.py:233
+#: base/models.py:238
 msgid "Url"
 msgstr ""
 
-#: base/models.py:238
+#: base/models.py:243
 msgid "IP address"
 msgstr ""
 
-#: base/models.py:241
+#: base/models.py:246
 msgid "Publish date"
 msgstr ""
 
-#: base/models.py:252 templates/base/dashboard_comments.html:20
+#: base/models.py:257 templates/base/dashboard_comments.html:20
 msgid "Comment"
 msgstr ""
 
-#: base/models.py:253 templates/base/article.html:128
+#: base/models.py:258 templates/base/article.html:128
 #: templates/base/dashboard.html:12 templates/base/dashboard_comments.html:12
 msgid "Comments"
 msgstr ""
@@ -578,6 +578,29 @@ msgstr ""
 msgid "Link Facebook for this user"
 msgstr ""
 
+#: templates/registration/activation_email.txt:4
+msgid "Hello"
+msgstr ""
+
+#: templates/registration/activation_email.txt:6
+#, python-format
+msgid "You have requested joining %(sitename)s."
+msgstr ""
+
+#: templates/registration/activation_email.txt:8
+#, python-format
+msgid "Please click in this activation link before %(expirationdays)s days:"
+msgstr ""
+
+#: templates/registration/activation_email.txt:12
+#, python-format
+msgid "The team at %(sitename)s."
+msgstr ""
+
+#: templates/registration/activation_email_subject.txt:1
+msgid "Account activation on"
+msgstr ""
+
 #: templates/registration/login.html:5
 msgid "Sign in or create an account"
 msgstr ""
@@ -629,6 +652,27 @@ msgstr ""
 #: templates/registration/password_reset_done.html:9
 msgid ""
 "We have sent to your email the needed information to reset your password"
+msgstr ""
+
+#: templates/registration/password_reset_email.txt:5
+#, python-format
+msgid ""
+"You are receiving this email because you requested resetting the password at "
+"%(site_name)s."
+msgstr ""
+
+#: templates/registration/password_reset_email.txt:7
+msgid "All you have to do is click in this link and set your new password:"
+msgstr ""
+
+#: templates/registration/password_reset_email.txt:11
+#, python-format
+msgid "Remember that you used the username: %(username)s."
+msgstr ""
+
+#: templates/registration/password_reset_email.txt:13
+#, python-format
+msgid "The team at %(site_name)s."
 msgstr ""
 
 #: templates/registration/registration_complete.html:5

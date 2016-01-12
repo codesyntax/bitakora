@@ -128,7 +128,7 @@ CONTENT_STATUS_CHOICES = (
 )
 
 class Article(models.Model):
-    title = models.CharField(max_length=200, verbose_name=_('Name'))
+    title = models.CharField(max_length=200, verbose_name=_('Title'))
     slug = models.SlugField(_("URL"), max_length=2000, blank=True, null=True,
             help_text=_("Leave blank to have the URL auto-generated from "
                         "the title."))
