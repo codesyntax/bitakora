@@ -14,6 +14,10 @@ class BitakoraUser(CSAbstractSocialUser):
 
     objects = UserManager()
 
+    class Meta:
+        verbose_name = _('BitakoraUser')
+        verbose_name_plural = _('BitakoraUsers')
+
     def get_photo(self):
         if self.photo:
             return self.photo
