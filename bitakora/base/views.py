@@ -94,6 +94,7 @@ def edit_article(request,blogslug,slug):
 def new_blog(request):
     if request.method == 'POST':
         form = BlogForm(request.POST)
+        wp_form = WPXMLForm()
         if form.is_valid():
             blog = form.save(commit=False)
             blog.slug = slugify(request.user.username)

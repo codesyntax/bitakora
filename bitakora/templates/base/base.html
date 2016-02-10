@@ -39,6 +39,9 @@
                 {% endif %}
                 <div class="social-buttons nav navbar-nav">
                     {% if article %}
+                        <div class="whatsapp-this hidden-lg">
+                            <a href="whatsapp://send?text={{article.title}}%20{{request.build_absolute_uri}}">Post to Whatsapp</a>
+                        </div>
                         {% post_to_twitter article.title article %}
                         {% post_to_facebook article %}
                         {% post_to_gplus article %}
@@ -63,7 +66,9 @@
 {% block maincontainer %}
 
 {% block header %}
-<header class="header-image"></header>
+{% if blog.template == 'one-page-wonder.css' %}
+    <header class="header-image hidden-xs"></header>
+{% endif %}
 {% endblock %}
 
 <div class="container">

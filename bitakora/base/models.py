@@ -21,8 +21,6 @@ DEFAULT_TEMPLATE = "one-page-wonder.css"
 
 TEMPLATE_CHOICES = (
     (DEFAULT_TEMPLATE, _("One page wonder")),
-    ("clean-blog.css", _("Clean blog")),
-    ("old-style-blog.css", _("Old style")),
     ("minimalist-blog.css", _("Minimalist")),
 )
 
@@ -42,7 +40,7 @@ class Blog(models.Model):
                         "the title."))
     tagline = models.CharField(max_length=200, verbose_name=_('Tagline'),null=True,blank=True)
     header_image = models.ForeignKey(Photo,null=True,blank=True)
-    analytics_code = models.TextField(max_length=1000, verbose_name=_('Analytics code'),null=True,blank=True)
+    analytics_code = models.TextField(max_length=1000, verbose_name=_('Analytics code'), null=True, blank=True)
 
     template = models.CharField(_("Template"), max_length="200",
         choices=TEMPLATE_CHOICES, default=DEFAULT_TEMPLATE)

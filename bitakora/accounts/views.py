@@ -50,6 +50,7 @@ def edit_blog(request):
     msg = ''
     if request.method == 'POST':
         form = BlogFormNoCaptcha(request.POST)
+        wp_form = WPXMLForm()
         if form.is_valid():
             blog.name = form.cleaned_data.get('name')
             blog.tagline = form.cleaned_data.get('tagline')

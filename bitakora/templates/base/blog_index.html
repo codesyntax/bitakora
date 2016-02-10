@@ -5,12 +5,24 @@
 
 {% block body %}
 
+{% if blog.template == 'one-page-wonder.css' %}
 <div class="row text-center">
 	<div class="col-sm-12 blogtitle">
 		<h1>{{blog.name}}</h1>
 		{% if blog.tagline %}<span class="tagline">{{blog.tagline}}</span>{% endif %}
 	</div>
 </div>
+{% else %}
+<div class="row text-center">
+    <div class="col-sm-7 blogtitle">
+        <h1>{{blog.name}}</h1>
+        {% if blog.tagline %}<span class="tagline">{{blog.tagline}}</span>{% endif %}
+    </div>
+    <div class="col-md-offset-1 col-md-4">
+        <div class="header-image hidden-xs"></div>
+    </div>
+</div>
+{% endif %}
 
 <div class="row">
 	<div class="col-md-7">

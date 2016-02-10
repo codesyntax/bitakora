@@ -29,7 +29,7 @@ h2{
     border-color: #aa2020;
     color:white !important;
 }
-a.btn-primary:hover{
+.btn-primary:hover{
     background-color: #aa2020;
     border-color: #aa2020;  
 }
@@ -42,6 +42,9 @@ a.btn-primary:hover{
 }
 .tw-share-btn, .fb-share-btn {
     color:white !important;
+    border-radius:5px;
+    padding:5px 16px;
+    line-height:50px;
 }
 /**/
 .tagline{

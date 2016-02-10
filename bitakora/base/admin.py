@@ -38,7 +38,7 @@ class ArticleAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('title',)} 
     raw_id_fields = ('blog','featured_image',"related_posts",'categories')
     search_fields = ['title',]
-    ordering = ('title',)
+    ordering = ('-publish_date',)
 
 class CommentAdmin(admin.ModelAdmin):
     list_display = ('user','nickname','email','parent','text','publish_date','status')

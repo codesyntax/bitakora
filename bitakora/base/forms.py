@@ -16,7 +16,6 @@ class ArticleForm(forms.ModelForm):
     categories = forms.CharField(label=_('Categories'), widget=forms.SelectMultiple(),required=False)
     related_posts = forms.CharField(label=_('Related posts'), widget=forms.SelectMultiple(),required=False)
     status = forms.ChoiceField(label=_('Status'), widget=forms.RadioSelect, choices=CONTENT_STATUS_CHOICES,initial=CONTENT_STATUS_DRAFT)
-    captcha = ReCaptchaField()
 
     def clean_featured_image(self):
         try:
@@ -73,7 +72,7 @@ class BlogForm(forms.ModelForm):
     header_image = forms.ImageField(label=_('Header image'),help_text=_('Valid formats: jpg, png, gif.'),required=False)
     template = forms.ChoiceField(label=_('Template'), widget=forms.RadioSelect, choices=TEMPLATE_CHOICES,initial=DEFAULT_TEMPLATE)
     license = forms.ChoiceField(label=_('License'), widget=forms.RadioSelect, choices=LICENSE_CHOICES,initial=DEFAULT_LICENSE)
-    analytics_code = forms.CharField(label=_('Analytics code'), widget=forms.Textarea, help_text=mark_safe(_("More information about "+GOOGLE_URL_HTML+".")))
+    analytics_code = forms.CharField(label=_('Analytics code'), widget=forms.Textarea, help_text=mark_safe(_("More information about "+GOOGLE_URL_HTML+".")),required=False)
     captcha = ReCaptchaField()
 
     class Meta:
@@ -84,7 +83,7 @@ class BlogFormNoCaptcha(forms.ModelForm):
     header_image = forms.ImageField(label=_('Header image'),help_text=_('Valid formats: jpg, png, gif.'),required=False)
     template = forms.ChoiceField(label=_('Template'), widget=forms.RadioSelect, choices=TEMPLATE_CHOICES,initial=DEFAULT_TEMPLATE)
     license = forms.ChoiceField(label=_('License'), widget=forms.RadioSelect, choices=LICENSE_CHOICES,initial=DEFAULT_LICENSE)
-    analytics_code = forms.CharField(label=_('Analytics code'), widget=forms.Textarea, help_text=mark_safe(_("More information about "+GOOGLE_URL_HTML+".")))
+    analytics_code = forms.CharField(label=_('Analytics code'), widget=forms.Textarea, help_text=mark_safe(_("More information about "+GOOGLE_URL_HTML+".")),required=False)
     
     class Meta:
         model = Blog
@@ -93,7 +92,6 @@ class BlogFormNoCaptcha(forms.ModelForm):
     
 class CommentForm(forms.ModelForm):
     text = forms.CharField(label="", widget=forms.Textarea)
-    captcha = ReCaptchaField()
 
     class Meta:
         model = Comment
