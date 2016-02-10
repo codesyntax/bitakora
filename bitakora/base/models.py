@@ -42,10 +42,10 @@ class Blog(models.Model):
     header_image = models.ForeignKey(Photo,null=True,blank=True)
     analytics_code = models.TextField(max_length=1000, verbose_name=_('Analytics code'), null=True, blank=True)
 
-    template = models.CharField(_("Template"), max_length="200",
+    template = models.CharField(_("Template"), max_length=200,
         choices=TEMPLATE_CHOICES, default=DEFAULT_TEMPLATE)
 
-    license = models.CharField(_("License"), max_length="200",
+    license = models.CharField(_("License"), max_length=200,
         choices=LICENSE_CHOICES, default=DEFAULT_LICENSE)
 
     user = models.ForeignKey(user_model_name, verbose_name=_("Author"),
