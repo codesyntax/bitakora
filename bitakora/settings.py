@@ -105,7 +105,6 @@ INSTALLED_APPS = (
     'registration',
     'pagination',
     'contact_form',
-    'cssocialuser',
     'gunicorn',
 )
 

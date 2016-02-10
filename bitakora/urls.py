@@ -27,7 +27,7 @@ urlpatterns = patterns('',
     url(r'^users/edit-profile$','bitakora.accounts.views.edit_profile', name='edit_profile'),
     url(r'^users/edit-blog$','bitakora.accounts.views.edit_blog', name='edit_blog'),
     url(r'^users/edit-pass$','bitakora.accounts.views.edit_pass', name='edit_pass'),
-    (r'^/users/accounts$', include('registration.backends.default.urls')),
+    (r'^users/accounts', include('registration.backends.default.urls')),
     (r'^users/', include('cssocialuser.urls')),
 
     url(r'^voting/(?P<object_id>\d+)/(?P<direction>up|down|clear)?$', vote_on_object, article_dict, name="vote_on_object"),
