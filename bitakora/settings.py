@@ -89,6 +89,7 @@ INSTALLED_APPS = (
     'django.contrib.flatpages',
     'django.contrib.admin',
     'django_social_share',
+    'cssocialuser',
     'registration',
     'voting',
     'captcha',
