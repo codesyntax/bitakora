@@ -3,5 +3,5 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class BaseAppConfig(AppConfig):
-    name = 'base'
+    name = 'bitakora.base'
     verbose_name = _('Basic elements')
