@@ -89,6 +89,7 @@ INSTALLED_APPS = (
     'django.contrib.flatpages',
     'django.contrib.admin',
     'django_social_share',
+    'registration',
     'voting',
     'captcha',
     'photologue',
@@ -96,16 +97,15 @@ INSTALLED_APPS = (
     'tinymce',
     'haystack',
     'bootstrapform',
+    'social.apps.django_app.default',
+    'pagination',
+    'contact_form',
+    'gunicorn',
     'bitakora',
     'bitakora.accounts',
     'bitakora.base',
     'bitakora.rss',
     'bitakora.photologue_custom',
-    'social.apps.django_app.default',
-    'registration',
-    'pagination',
-    'contact_form',
-    'gunicorn',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
