@@ -12,8 +12,6 @@ class BitakoraUser(CSAbstractSocialUser):
     last_updated = models.DateTimeField(auto_now_add=True,editable=False)
     date_joined = models.DateTimeField(auto_now_add=True,editable=False,null=True,blank=True)
 
-    objects = UserManager()
-
     class Meta:
         verbose_name = _('BitakoraUser')
         verbose_name_plural = _('BitakoraUsers')
