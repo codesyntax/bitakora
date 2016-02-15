@@ -91,6 +91,7 @@ def edit_article(request,blogslug,slug):
         form = ArticleForm(cat=article.categories.all(),instance=article)
     return render_to_response('base/edit_article.html', locals(), context_instance=RequestContext(request))
 
+@login_required(login_url='/users/login')
 def new_blog(request):
     if request.method == 'POST':
         form = BlogForm(request.POST)
@@ -108,6 +109,7 @@ def new_blog(request):
         wp_form = WPXMLForm()
     return render_to_response('base/new_blog.html', locals(), context_instance=RequestContext(request))
 
+@login_required(login_url='/users/login')
 def import_blog(request):
     form = BlogForm()
     if request.method == 'POST':

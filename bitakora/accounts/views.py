@@ -7,7 +7,7 @@ from django.views.decorators.csrf import csrf_protect
 from bitakora.base.models import Blog
 from bitakora.base.forms import BlogFormNoCaptcha, WPXMLForm
 from cssocialuser.forms import ProfileForm, ProfilePhotoForm
-from cssocialuser.views import password_change
+from django.contrib.auth.views import password_change, password_change_done
 from bitakora.utils.images import handle_uploaded_file
 from django.core.urlresolvers import reverse
 from django.conf import settings
@@ -70,4 +70,8 @@ def edit_blog(request):
 
 @login_required
 def edit_pass(request):
-    return password_change(request,extra_context={'blog': request.user.get_blog()})
+    return password_change(request,post_change_redirect="/users/accounts/password/change/done/",extra_context={'blog': request.user.get_blog()})
+
+@login_required
+def pass_done(request):
+    return password_change_done(request,extra_context={'blog': request.user.get_blog()})

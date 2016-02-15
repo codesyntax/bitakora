@@ -44,7 +44,11 @@ h2{
     color:white !important;
     border-radius:5px;
     padding:5px 16px;
-    line-height:50px;
+    line-height:25px;
+    margin-bottom:10px;
+    height:35px;
+    clear:both;
+    display:inline-block;
 }
 /**/
 .tagline{
@@ -174,6 +178,32 @@ p.postlist{
     border-left:1px solid #efefef;
     border-radius:0;
 }
+/*******eskuman headerra*/
+.left-header{
+    position:relative;
+
+}
+.left-header .clear-opacity{
+    position:absolute;
+    top:150px;
+    background: url("../img/white80.png");
+}
+
+.clear-opacity h1{
+    margin-bottom:0;
+    border-top:1px solid white;
+    border-bottom:1px solid white;
+}
+
+.left-header .tagline{
+    display:block;
+    text-align:center;
+    width:100%;
+    padding:10px;
+}
+
+
+
 footer{
     font-size: 14px;
 }

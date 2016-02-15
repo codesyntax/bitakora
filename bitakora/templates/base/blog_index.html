@@ -5,21 +5,18 @@
 
 {% block body %}
 
-{% if blog.template == 'one-page-wonder.css' %}
+{% if blog.template == 'one-page-wonder.css' and flavour != "mobile" %}
 <div class="row text-center">
 	<div class="col-sm-12 blogtitle">
 		<h1>{{blog.name}}</h1>
 		{% if blog.tagline %}<span class="tagline">{{blog.tagline}}</span>{% endif %}
 	</div>
 </div>
-{% else %}
+{% elif flavour == "mobile" %}
 <div class="row text-center">
-    <div class="col-sm-7 blogtitle">
+    <div class="col-sm-12 blogtitle">
         <h1>{{blog.name}}</h1>
         {% if blog.tagline %}<span class="tagline">{{blog.tagline}}</span>{% endif %}
-    </div>
-    <div class="col-md-offset-1 col-md-4">
-        <div class="header-image hidden-xs"></div>
     </div>
 </div>
 {% endif %}
@@ -48,6 +45,19 @@
 		{% paginate %}
 	</div>
 	<div class="col-md-offset-1 col-md-4">
+
+    {% if blog.template != 'one-page-wonder.css' and flavour != "mobile" %}
+        <div class="left-header row text-center">
+            <div class="col-sm-12">
+                <div class="clear-opacity">
+                    <h1>{{blog.name}}</h1>
+                    {% if blog.tagline %}<span class="tagline">{{blog.tagline}}</span>{% endif %}
+                </div>
+            </div>
+            <div class="header-image"></div>
+        </div>
+    {% endif %}
+
 		<div class="row well userpanel">
 			<div class="col-sm-12">
 				<img class="img-responsive img-thumbnail center-block" src="{{blog.user.get_photo.get_blog_user_url}}" alt="{{blog.user.photo.caption}}" />

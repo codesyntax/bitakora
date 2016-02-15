@@ -58,6 +58,7 @@ MEDIA_ROOT = '/django/bitakora/media'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
+    'django_mobile.loader.Loader',
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
 )
@@ -68,7 +69,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'pagination.middleware.PaginationMiddleware',
+    'pagination_bootstrap.middleware.PaginationMiddleware',
+    'django_mobile.middleware.MobileDetectionMiddleware',
+    'django_mobile.middleware.SetFlavourMiddleware',
     )
 
 ROOT_URLCONF = 'bitakora.urls'
@@ -91,7 +94,6 @@ INSTALLED_APPS = (
     'django_social_share',
     'social.apps.django_app.default',
     'registration',
-    'cssocialuser',
     'voting',
     'captcha',
     'photologue',
@@ -99,13 +101,14 @@ INSTALLED_APPS = (
     'tinymce',
     'haystack',
     'bootstrapform',
-    'pagination',
+    'pagination_bootstrap',
     'contact_form',
     'gunicorn',
     'bitakora',
     'bitakora.accounts',
     'bitakora.base',
     'bitakora.rss',
+    'django_mobile',
     'bitakora.photologue_custom',
 )
 
@@ -117,6 +120,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
    "django.core.context_processors.media",
    "django.core.context_processors.static",
    "bitakora.context_processors.bitakora_custom",
+   "django_mobile.context_processors.flavour",
 )
 
 ACCOUNT_ACTIVATION_DAYS = 5
@@ -133,6 +137,19 @@ AUTHENTICATION_BACKENDS = (
     'social.backends.twitter.TwitterOAuth',
     'social.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_PIPELINE = (
+    'social.pipeline.social_auth.social_details',
+    'social.pipeline.social_auth.social_uid',
+    'social.pipeline.social_auth.auth_allowed',
+    'social.pipeline.social_auth.social_user',
+    'social.pipeline.user.get_username',
+    'social.pipeline.user.create_user',
+    'cssocialuser.models.get_user_data',
+    'social.pipeline.social_auth.associate_user',
+    'social.pipeline.social_auth.load_extra_data',
+    'social.pipeline.user.user_details',
 )
 
 HAYSTACK_CONNECTIONS = {

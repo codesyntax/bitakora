@@ -3,6 +3,7 @@ from forms import *
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
+from tinymce.widgets import TinyMCE
 
 
 class BlogAdmin(admin.ModelAdmin):
@@ -56,7 +57,17 @@ class CategoryAdmin(admin.ModelAdmin):
     ordering = ('title',)
 
 
+class TinyMCEArticleAdmin(ArticleAdmin):
+    def formfield_for_dbfield(self, db_field, **kwargs):
+        if db_field.name in ('text', ):  
+            return db_field.formfield(widget=TinyMCE(
+                attrs={'cols': 80, 'rows': 30},
+                mce_attrs = settings.TINYMCE_DEFAULT_CONFIG,
+            ))
+        return super(TinyMCEArticleAdmin, self).formfield_for_dbfield(db_field, **kwargs)
+
+
 admin.site.register(Blog, BlogAdmin)
-admin.site.register(Article, ArticleAdmin)
+admin.site.register(Article, TinyMCEArticleAdmin)
 admin.site.register(Comment, CommentAdmin)
 admin.site.register(Category, CategoryAdmin)
