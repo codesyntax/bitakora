@@ -93,7 +93,8 @@ def edit_article(request,blogslug,slug):
             if form.cleaned_data['send_notification']:
                 send_mail(_('New article to publish'), _('%s wants to publish this article: http://%s%s') % (article.blog.user.get_fullname, Site.objects.get_current().domain, article.get_absolute_url()), settings.DEFAULT_FROM_EMAIL, [settings.BITAKORA_SEND_MAIL], fail_silently=False)
             return HttpResponseRedirect(reverse('article', kwargs={'blogslug': blogslug,'slug': article.slug}))
-    form = ArticleForm(cat=article.categories.all(),rel=article.related_posts.all(),instance=article)
+    else:
+        form = ArticleForm(cat=article.categories.all(),rel=article.related_posts.all(),instance=article)
     return render_to_response('base/edit_article.html', locals(), context_instance=RequestContext(request))
 
 @login_required(login_url='/users/login')
