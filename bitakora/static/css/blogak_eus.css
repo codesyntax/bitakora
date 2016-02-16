@@ -187,12 +187,16 @@ p.postlist{
     position:absolute;
     top:150px;
     background: url("../img/white80.png");
+    padding:20px;
+    left:4%;
+    right:4%;
 }
 
 .clear-opacity h1{
     margin-bottom:0;
     border-top:1px solid white;
     border-bottom:1px solid white;
+    text-align:center;
 }
 
 .left-header .tagline{

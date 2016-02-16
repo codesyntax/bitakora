@@ -19,6 +19,7 @@ class BlogAdmin(admin.ModelAdmin):
     list_display_links = ('name',)
     radio_fields = {"template": admin.HORIZONTAL}
     search_fields = ['name',]
+    raw_id_fields = ('user',)
     ordering = ('name',)
 
 class ArticleAdmin(admin.ModelAdmin):
@@ -30,6 +31,7 @@ class ArticleAdmin(admin.ModelAdmin):
     admin_thumbnail.short_description = 'Thumbnail'
     admin_thumbnail.allow_tags = True
 
+    form = ArticleAdminForm
     list_display = ('title','slug','blog','status','publish_date','expiry_date','admin_thumbnail')
     list_display_links = ('title',)
     
@@ -40,6 +42,18 @@ class ArticleAdmin(admin.ModelAdmin):
     raw_id_fields = ('blog','featured_image',"related_posts",'categories')
     search_fields = ['title',]
     ordering = ('-publish_date',)
+
+    fieldsets = (
+        ('Basic data', {
+            'fields': ('title', 'slug','text','featured_image', 'categories','blog')
+        }),
+        ('Publication data', {
+            'fields': ('publish_date', 'expiry_date', 'status')
+        }),
+        ('Extra data', {
+            'fields': ('related_posts', 'allow_comments')
+        })
+    )
 
 class CommentAdmin(admin.ModelAdmin):
     list_display = ('user','nickname','email','parent','text','publish_date','status')
@@ -57,17 +71,7 @@ class CategoryAdmin(admin.ModelAdmin):
     ordering = ('title',)
 
 
-class TinyMCEArticleAdmin(ArticleAdmin):
-    def formfield_for_dbfield(self, db_field, **kwargs):
-        if db_field.name in ('text', ):  
-            return db_field.formfield(widget=TinyMCE(
-                attrs={'cols': 80, 'rows': 30},
-                mce_attrs = settings.TINYMCE_DEFAULT_CONFIG,
-            ))
-        return super(TinyMCEArticleAdmin, self).formfield_for_dbfield(db_field, **kwargs)
-
-
 admin.site.register(Blog, BlogAdmin)
-admin.site.register(Article, TinyMCEArticleAdmin)
+admin.site.register(Article, ArticleAdmin)
 admin.site.register(Comment, CommentAdmin)
 admin.site.register(Category, CategoryAdmin)

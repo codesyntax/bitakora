@@ -1,4 +1,5 @@
 from django.conf import settings
+import ast
 from django import forms
 from photologue.models import Photo
 from bitakora.base.models import *
@@ -13,9 +14,10 @@ GOOGLE_URL_HTML = "<a href='https://www.google.com/intl/es/analytics/features/in
 class ArticleForm(forms.ModelForm):
     featured_image = forms.FileField(label=_('Header image'),help_text=_('Valid formats: jpg, png, gif.'),required=False)
     text = forms.CharField(label=_('Text'),widget=TinyMCE(mce_attrs=TINYMCE_DEFAULT_CONFIG))
-    categories = forms.CharField(label=_('Categories'), widget=forms.SelectMultiple(),required=False)
+    categories = forms.CharField(label=_('Categories'),widget=forms.SelectMultiple(), required=False)
     related_posts = forms.CharField(label=_('Related posts'), widget=forms.SelectMultiple(),required=False)
     status = forms.ChoiceField(label=_('Status'), widget=forms.RadioSelect, choices=CONTENT_STATUS_CHOICES,initial=CONTENT_STATUS_DRAFT)
+    send_notification = forms.BooleanField(label=_('Send notification'), initial=False, required=False)
 
     def clean_featured_image(self):
         try:
@@ -28,7 +30,7 @@ class ArticleForm(forms.ModelForm):
         if self.cleaned_data.get('categories'):
             categories = self.cleaned_data['categories']
             cat_lst = []
-            for cat in eval(categories):
+            for cat in ast.literal_eval(categories):
                 if not cat.isdigit():
                     cat_ob = Category(title=cat,slug=slugify(cat))
                     cat_ob.save()
@@ -42,7 +44,7 @@ class ArticleForm(forms.ModelForm):
     def clean_related_posts(self):
         if self.cleaned_data.get('related_posts'):
             posts = self.cleaned_data['related_posts']
-            return map(int,eval(posts))
+            return map(int,ast.literal_eval(posts))
         else:
             return []
 
@@ -51,9 +53,9 @@ class ArticleForm(forms.ModelForm):
         rel = kwargs.pop('rel', None)
         super(ArticleForm, self).__init__(*args, **kwargs)
         if cat:
-            self.fields['categories'].queryset = cat
+            self.fields['categories'].widget.choices = [(c.id,c.title) for c in cat]
         if rel:
-            self.fields['related_posts'].queryset = rel
+            self.fields['related_posts'].widget.choices = [(r.id,r.title) for r in rel]
 
     class Meta:
         model = Article
@@ -61,11 +63,11 @@ class ArticleForm(forms.ModelForm):
 
 
 class ArticleAdminForm(forms.ModelForm):
-    text = forms.CharField(label=_('Text'),widget=TinyMCE(mce_attrs=TINYMCE_DEFAULT_CONFIG))
+    #text = forms.CharField(label=_('Text'),widget=TinyMCE(mce_attrs=TINYMCE_DEFAULT_CONFIG))
 
     class Meta:
         model = Article
-        fields = ['title', 'slug', 'text', 'featured_image', 'blog','categories', 'related_posts', 'allow_comments','publish_date','expiry_date','status']
+        fields = "__all__"
 
 
 class BlogForm(forms.ModelForm):

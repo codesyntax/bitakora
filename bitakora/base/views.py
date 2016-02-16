@@ -13,6 +13,8 @@ from django.conf import settings
 from datetime import datetime
 from django import forms
 from django.contrib import messages
+from django.core.mail import send_mail
+from django.contrib.sites.models import Site
 from django.utils.translation import ugettext_lazy as _
 
 def blog_index(request,slug):
@@ -65,6 +67,8 @@ def add_article(request,blogslug):
             article.blog = blog
             article.save()
             form.save_m2m()
+            if form.cleaned_data['send_notification']:
+                send_mail(_('New article to publish'), _('%s wants to publish this article: http://%s%s') % (article.blog.user.get_fullname, Site.objects.get_current().domain, article.get_absolute_url()), settings.DEFAULT_FROM_EMAIL, [settings.BITAKORA_SEND_MAIL], fail_silently=False)
             return HttpResponseRedirect(reverse('article', kwargs={'blogslug': blogslug,'slug': article.slug}))
     else:
         form = ArticleForm()
@@ -86,9 +90,11 @@ def edit_article(request,blogslug,slug):
                 article.featured_image = handle_uploaded_file(request.FILES['featured_image'], request.user)
             article.save()
             form.save_m2m()
+            if form.cleaned_data['send_notification']:
+                send_mail(_('New article to publish'), _('%s wants to publish this article: http://%s%s') % (article.blog.user.get_fullname, Site.objects.get_current().domain, article.get_absolute_url()), settings.DEFAULT_FROM_EMAIL, [settings.BITAKORA_SEND_MAIL], fail_silently=False)
             return HttpResponseRedirect(reverse('article', kwargs={'blogslug': blogslug,'slug': article.slug}))
     else:
-        form = ArticleForm(cat=article.categories.all(),instance=article)
+        form = ArticleForm(cat=article.categories.all(),rel=article.related_posts.all(),instance=article)
     return render_to_response('base/edit_article.html', locals(), context_instance=RequestContext(request))
 
 @login_required(login_url='/users/login')
