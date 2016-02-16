@@ -2,7 +2,7 @@ from django.template import RequestContext
 from django.http import Http404
 from django.shortcuts import render_to_response, get_object_or_404, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-from bitakora.base.models import Article, Blog, Comment, CONTENT_STATUS_PUBLISHED
+from bitakora.base.models import Article, Blog, Category, Comment, CONTENT_STATUS_PUBLISHED
 from bitakora.base.forms import ArticleForm, BlogForm, CommentForm, AnonimousCommentForm, WPXMLForm
 from bitakora.utils.images import handle_uploaded_file
 from bitakora.utils.slug import time_slug_string
@@ -93,6 +93,9 @@ def edit_article(request,blogslug,slug):
             if form.cleaned_data['send_notification']:
                 send_mail(_('New article to publish'), _('%s wants to publish this article: http://%s%s') % (article.blog.user.get_fullname, Site.objects.get_current().domain, article.get_absolute_url()), settings.DEFAULT_FROM_EMAIL, [settings.BITAKORA_SEND_MAIL], fail_silently=False)
             return HttpResponseRedirect(reverse('article', kwargs={'blogslug': blogslug,'slug': article.slug}))
+        else:
+            form.fields['categories'].widget.choices = [(c.id,c.title) for c in Category.objects.filter(id__in=form.cleaned_data['categories'])]
+            form.fields['related_posts'].widget.choices = [(r.id,r.title) for r in Article.objects.filter(id__in=form.cleaned_data['related_posts'])]
     else:
         form = ArticleForm(cat=article.categories.all(),rel=article.related_posts.all(),instance=article)
     return render_to_response('base/edit_article.html', locals(), context_instance=RequestContext(request))
