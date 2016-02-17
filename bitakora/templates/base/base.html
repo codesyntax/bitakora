@@ -39,12 +39,14 @@
                 {% endif %}
                 <div class="social-buttons nav navbar-nav">
                     {% if article %}
+                        {% post_to_twitter article.title article %}
+                        {% post_to_facebook article %}
                         <div class="whatsapp-this hidden-lg">
                             <a href="whatsapp://send?text={{article.title}}%20{{request.build_absolute_uri}}">Post to Whatsapp</a>
                         </div>
-                        {% post_to_twitter article.title article %}
-                        {% post_to_facebook article %}
-                        {% post_to_gplus article %}
+                        <div class="telegram-this hidden-lg">
+                            <a href="tg://msg?text={{article.title}}%20{{request.build_absolute_uri}}">Post to Telegram</a>
+                        </div>
                     {% endif %}
                 </div>
             </div>
