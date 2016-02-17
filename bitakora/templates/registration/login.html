@@ -13,21 +13,18 @@
 				<img src="{{STATIC_URL}}img/share/facebook_white.png" /><span> {% trans 'Sign in with Facebook' %}</span>
 		</a>
 	</div>
-	<hr/>
 	<div class="row">
-		<div class="col-sm-4 col-sm-offset-4 text-left">
+		<div class="col-sm-6 col-sm-offset-3 text-left">
+			<hr/>
 			<form method="post" action="{% url 'auth_login' %}">
 			    {% csrf_token %}
 				{{form|bootstrap}}
-				<input type="submit" value="{% trans "Sign in" %}" class="btn btn-primary" /> <a href="{% url "registration_register" %}"> {% trans 'or create an account' %}</a>
 				<input type="hidden" name="next" value="{{next}}" />
-				<br/>
-				<a href="{% url "auth_password_reset" %}">{% trans 'Forgot your password?' %}</a>
+				<input type="submit" value="{% trans "Sign in" %}" class="btn btn-primary btn-lg" /> <a class="forgot-pass" href="{% url "auth_password_reset" %}">{% trans 'Forgot your password?' %}</a>
+				<hr/>
+				<p><a class="btn btn-default btn-lg" href="{% url "registration_register" %}"> {% trans 'Create new account' %}</a></p>
+				{% trans 'Any problem?' %} <a href="{% url 'contact_form' %}" class="link">{% trans 'Contact us' %}</a>.
 			</form>
 		</div>
-	</div>
-	<hr/>
-	<div class="row">
-		<div>{% trans 'If you sign up with Twitter or Facebook, we’ll start you off with a network by automatically importing any followers/followees or friends already on Bitakora. Also, we’ll never post to Twitter or Facebook without your permission. For more info, please see' %} <a href="{% url 'about' %}" class="link">{% trans 'Login FAQ' %}</a>.</div>
 	</div>
 {% endblock %}

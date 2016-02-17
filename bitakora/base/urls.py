@@ -12,5 +12,6 @@ urlpatterns = patterns('bitakora.base.views',
     url(r'^(?P<blogslug>[\-\d\w]+)/rss$', BlogEntriesFeed(), name="blog_rss"),
     url(r'^(?P<blogslug>[\-\d\w]+)/(?P<slug>[\-\d\w]+)$','article', name='article'),
     url(r'^(?P<blogslug>[\-\d\w]+)/(?P<slug>[\-\d\w]+)/edit-article$','edit_article', name='edit_article'),
+    url(r'^(?P<blogslug>[\-\d\w]+)/(?P<slug>[\-\d\w]+)/delete-article$','delete_article', name='delete_article'),
     url(r'^(?P<blogslug>[\-\d\w]+)/(?P<slug>[\-\d\w]+)/add-comment$','add_comment', name='add_comment'),
 )

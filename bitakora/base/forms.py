@@ -16,7 +16,7 @@ class ArticleForm(forms.ModelForm):
     text = forms.CharField(label=_('Text'),widget=TinyMCE(mce_attrs=TINYMCE_DEFAULT_CONFIG))
     categories = forms.CharField(label=_('Categories'),widget=forms.SelectMultiple(), required=False)
     related_posts = forms.CharField(label=_('Related posts'), widget=forms.SelectMultiple(),required=False)
-    status = forms.ChoiceField(label=_('Status'), widget=forms.RadioSelect, choices=CONTENT_STATUS_CHOICES,initial=CONTENT_STATUS_DRAFT)
+    status = forms.ChoiceField(label=_('Status'), widget=forms.RadioSelect, choices=CONTENT_STATUS_CHOICES,initial=CONTENT_STATUS_PUBLISHED)
     send_notification = forms.BooleanField(label=_('Send notification'), initial=False, required=False)
 
     def clean_featured_image(self):
@@ -32,7 +32,11 @@ class ArticleForm(forms.ModelForm):
             cat_lst = []
             for cat in ast.literal_eval(categories):
                 if not cat.isdigit():
-                    cat_ob = Category(title=cat,slug=slugify(cat))
+                    cat_name = slugify(cat)
+                    cat_qty = Category.objects.filter(slug__icontains=cat_name).count()
+                    if cat_qty:
+                        cat_name += '-%s' % (str(cat_qty+1))
+                    cat_ob = Category(title=cat,slug=cat_name)
                     cat_ob.save()
                     cat_lst.append(cat_ob.id)
                 else:

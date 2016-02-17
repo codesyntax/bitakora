@@ -156,7 +156,7 @@ h4.media-heading{
 .social-buttons > div{
   display:inline-block;
   line-height:36px;
-  margin:0 10px;
+  margin:0 7px;
 }
 
 .social-buttons > div a{
@@ -171,6 +171,12 @@ h4.media-heading{
 }
 .facebook-this{
   background: url("../img/icon_facebook.gif") no-repeat top left;
+}
+.whatsapp-this{
+  background: url("../img/icon_whatsapp.gif") no-repeat top left;
+}
+.telegram-this{
+  background: url("../img/icon_telegram.gif") no-repeat top left;
 }
 .gplus-this{
   background: url("../img/icon_gplus.gif") no-repeat top left;

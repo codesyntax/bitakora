@@ -10,6 +10,10 @@
 <li>
     <a class="btn btn-default" href="{% url 'edit_article' user.get_blog.slug article.slug %}">{% trans 'Edit' %}</a>
 </li>
+<li>
+    <a class="btn btn-default" href="#delete" data-toggle="modal" data-target="#ModalDelete">{% trans 'Delete' %}</a>
+</li>
+
 {% endif %}
 <li>
     <a class="btn btn-default" href="{% url 'my_posts' user.get_blog.slug  %}">{% trans 'Dashboard' %}</a>

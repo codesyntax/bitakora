@@ -31,3 +31,13 @@ def handle_url_file(url,author):
     extra.author = author
     extra.save()
     return photo
+
+def get_pattern(user,num=None):
+    if not num:
+        num = user.id
+    rnum = round(num / 2) % 10
+
+    if rnum in range(0,4):
+        return int(rnum)
+    else:
+        return get_pattern(rnum)

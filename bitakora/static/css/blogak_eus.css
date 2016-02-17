@@ -80,6 +80,29 @@ h2{
     font-size:14px;
     line-height:20px;
 }
+/***/
+.headline p{
+    margin-bottom:20px;
+}
+
+/***/
+#useroptions li{
+    margin-left:10px;
+}
+.forgot-pass{
+    font-size:16px;
+
+}
+/*gehitu bloga**/
+
+label[for=id_template_0], label[for=id_template_1]{
+    font-size:14px;
+    font-weight:normal;
+}
+#new .form-group{
+    margin-top:20px;
+}
+
 /*postak*/
 
 h2.postlist{
@@ -158,6 +181,7 @@ p.postlist{
     letter-spacing: -0.003em;
     line-height: 1.6;
     color:#333;
+    margin-bottom:20px;
 }
 .articlefooter{
     margin-top:20px;

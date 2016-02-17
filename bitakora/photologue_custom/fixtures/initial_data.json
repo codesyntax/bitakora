@@ -78,5 +78,21 @@
     },
     "model":"photologue.photosize",
     "pk":8
+  },
+  {
+    "fields":{
+      "name":"configuration",
+      "watermark":null,
+      "increment_count":false,
+      "effect":null,
+      "crop":true,
+      "height":300,
+      "width":1900,
+      "upscale":false,
+      "pre_cache":true,
+      "quality":70
+    },
+    "model":"photologue.photosize",
+    "pk":9
   }
 ]

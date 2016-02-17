@@ -1,4 +1,5 @@
 from cssocialuser.models import CSAbstractSocialUser
+from bitakora.utils.images import get_pattern
 from django.db import models
 from django.core.mail import send_mail
 from django.conf import settings
@@ -6,6 +7,7 @@ from photologue.models import Photo
 from django.utils.translation import ugettext as _
 
 PROFILE_PHOTO_DEFAULT=getattr(settings,'PROFILE_PHOTO_DEFAULT','')
+BLOG_PHOTO_SLUG=getattr(settings,'BLOG_PHOTO_DEFAULT_SLUG','no-blog-photo')
 
 class BitakoraUser(CSAbstractSocialUser):
     last_updated = models.DateTimeField(auto_now_add=True,editable=False)
@@ -47,3 +49,9 @@ class BitakoraUser(CSAbstractSocialUser):
         Sends an email to this User.
         """
         send_mail(subject, message, from_email, [self.email], **kwargs)
+
+    def get_blog_photo(self):
+        try:
+            return Photo.objects.get(slug=BLOG_PHOTO_SLUG+'-'+str(get_pattern(self)))
+        except:
+            return None

@@ -5,6 +5,7 @@ from photologue.models import Photo
 from bitakora.base.managers import PublishedManager
 from bitakora.utils.models import get_user_model_name
 from bitakora.utils.text import make_responsive
+from bitakora.utils.images import get_pattern
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 from datetime import datetime
@@ -51,23 +52,12 @@ class Blog(models.Model):
     user = models.ForeignKey(user_model_name, verbose_name=_("Author"),
         related_name="%(class)ss")
 
-    def get_pattern(self,num=None):
-        if not num:
-            num = self.id
-        rnum = round(num / 2) % 10
-
-        if rnum in range(0,4):
-            return int(rnum)
-        else:
-            return self.get_pattern(rnum)
-
-
     def get_photo(self):
         if self.header_image:
             return self.header_image
         else:
             try:
-                return Photo.objects.get(slug=BLOG_PHOTO_SLUG+'-'+str(self.get_pattern()))
+                return Photo.objects.get(slug=BLOG_PHOTO_SLUG+'-'+str(get_pattern(self.user)))
             except:
                 return None
 

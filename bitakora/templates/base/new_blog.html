@@ -3,6 +3,10 @@
 
 {% block header %}{% endblock %}
 
+{% block extracss %}
+    <link href="{{STATIC_URL}}js/lightbox/css/lightbox.css" rel="stylesheet">
+{% endblock %}
+
 {% block extrajs %}
     <script type="text/javascript" src="{{STATIC_URL}}js/tinymce/tinymce.min.js"></script>
 {% endblock %}
@@ -23,42 +27,71 @@
   </ul>
 
 <div class="tab-content">
-      <div role="tabpanel" class="tab-pane active" id="new">
-          <form action="{% url 'new_blog' %}" role="form" method="POST" ENCTYPE="multipart/form-data">
-              {% csrf_token %}
-              {% for field in form %}
-                  {% if field.name != 'template' %}
-                  <div class="col-sm-12">
-                      {{field|bootstrap}}
-                  </div>
-                  {% else %}
-                  <div class="col-sm-12">
-                		<div class="form-group">
-                			<label for="id_analytics_code" class="control-label  ">{% trans 'Template' %}</label>
-                			<div class="">
-          		            {% for radio in field %}
-          		            <div class="col-sm-3">
-          		            	<img class="img-responsive" src="{{STATIC_URL}}img/templates/{{radio.choice_label|slugify}}.png" />
-          		            	<p>{{radio}}</p>
-          		            </div>
-          		            {% endfor %}
-          		        </div>
-          	        </div>
-          	    </div>
-                  {% endif %}
-              {% endfor %}
-              <div class="col-sm-12">
-                <div class="form-group">
-                  <button type="submit" class="btn btn-primary">{% trans 'Submit' %}</button>
-                </div>
+    <div role="tabpanel" class="tab-pane active" id="new">
+        <form action="{% url 'new_blog' %}" role="form" method="POST" ENCTYPE="multipart/form-data">
+            {% csrf_token %}
+            {% for field in form %}
+                {% if field.name == 'header_image' %}
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="id_header_image" class="control-label ">{{field.label_tag}}</label>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <a href="{{user.get_blog_photo.get_configuration_url}}" data-lightbox="image-1" data-title="{% trans 'Header image' %}">
+                                        <img class="img-responsive" src="{{user.get_blog_photo.get_configuration_url}}"/>
+                                    </a>
+                                </div>
+                                <div class="col-sm-12">
+                                  <p>{% trans 'This is your default header image. If you want to change it, select from your file system with the button below:' %}</p>
+                                  <p>{{field}}</p>
+                                  <p>{% trans 'Recommended sizes:' %}</p>
+                                  <ul>
+                                      <li>{% trans '1900x300px (horizontal)' %}</li>
+                                      <li>{% trans '390x400px (vertical)' %}</li>
+                                  </ul>
+                                  <p>{{field.help_text}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% elif field.name == 'template' %}
+                    <div class="col-sm-12">
+                    		<div class="form-group">
+                      			<label for="id_analytics_code" class="control-label  ">{% trans 'Template' %}</label>
+                      			<div class="row">
+                		            {% for radio in field %}
+                		            <div class="col-sm-3">
+                                    <a href="{{STATIC_URL}}img/templates/{{radio.choice_label|slugify}}.gif" data-lightbox="image-1" data-title="{{radio.choice_label}}">
+                  		            	    <img class="img-responsive" src="{{STATIC_URL}}img/templates/{{radio.choice_label|slugify}}.gif" />
+                                    </a>
+                  		            	<p>{{radio}}</p>
+                		            </div>
+                		            {% endfor %}
+                		        </div>
+              	        </div>
+            	      </div>
+                {% else %}
+                    <div class="col-sm-12">
+                        {{field|bootstrap}}
+                    </div>
+                {% endif %}
+            {% endfor %}
+            <div class="col-sm-12">
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary">{% trans 'Submit' %}</button>
               </div>
-          </form>
-      </div>
-      <div role="tabpanel" class="tab-pane" id="import">
-          {% include 'base/import_new_blog.html' %}
-      </div>
+            </div>
+        </form>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="import">
+        {% include 'base/import_new_blog.html' %}
+    </div>
 </div>
 
 {% endblock %}
 
 {% block sidebar %}{% endblock %}
+
+{% block footerjs %}
+    <script type="text/javascript" src="{{STATIC_URL}}js/lightbox/js/lightbox.js"></script>
+{% endblock %}

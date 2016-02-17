@@ -1,6 +1,10 @@
 {% extends "profile/base.html" %}
 {% load i18n bootstrap %}
 
+{% block extracss %}
+    <link href="{{STATIC_URL}}js/lightbox/css/lightbox.css" rel="stylesheet">
+{% endblock %}
+
 {% block container %}
 
 <div class="col-sm-9">
@@ -19,21 +23,39 @@
         	{% csrf_token %}
         	{% for field in form %}
                 {% if field.name == 'header_image' %}
-                    <div class="col-sm-4">
-                        <img class="img-responsive" src="{{blog.get_photo.get_related_url}}"/>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for="id_header_image" class="control-label ">{{field.label_tag}}</label>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <a href="{{blog.get_photo.get_configuration_url}}" data-lightbox="image-1" data-title="{% trans 'Header image' %}">
+                                    <img class="img-responsive" src="{{blog.get_photo.get_configuration_url}}"/>
+                                </a>
+                            </div>
+                            <div class="col-sm-12">
+                              <p>{% trans 'This is your default header image. If you want to change it, select from your file system with the button below:' %}</p>
+                              <p>{{field}}</p>
+                              <p>{% trans 'Recommended sizes:' %}</p>
+                              <ul>
+                                  <li>{% trans '1900x300px (horizontal)' %}</li>
+                                  <li>{% trans '390x400px (vertical)' %}</li>
+                              </ul>
+                              <p>{{field.help_text}}</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-sm-8">
-                    {{field|bootstrap}}
-                    </div>
+                </div>
                 {% elif field.name == 'template' %}
                 <div class="col-sm-12">
               		<div class="form-group">
               			<label for="id_analytics_code" class="control-label ">{% trans 'Template' %}</label>
-              			<div class="">
+              			<div class="row">
         		            {% for radio in field %}
         		            <div class="col-sm-3">
-        		            	<img class="img-responsive" src="{{STATIC_URL}}img/templates/{{radio.choice_label|slugify}}.gif" />
-        		            	<p>{{radio}}</p>
+                            <a href="{{STATIC_URL}}img/templates/{{radio.choice_label|slugify}}.gif" data-lightbox="image-1" data-title="{{radio.choice_label}}">
+          		            	    <img class="img-responsive" src="{{STATIC_URL}}img/templates/{{radio.choice_label|slugify}}.gif" />
+                            </a>
+          		            	<p>{{radio}}</p>
         		            </div>
         		            {% endfor %}
         		        </div>
@@ -63,4 +85,8 @@
 </div>
 
 
+{% endblock %}
+
+{% block footerjs %}
+    <script type="text/javascript" src="{{STATIC_URL}}js/lightbox/js/lightbox.js"></script>
 {% endblock %}

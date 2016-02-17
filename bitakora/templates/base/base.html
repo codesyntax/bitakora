@@ -33,7 +33,7 @@
                         {% if CUSTOM_LOGO %}
                             <img class="img-responsive" src="{{CUSTOM_LOGO}}" />
                         {% else %}
-                            Bitakora
+                            {% trans 'Bitakora' %}
                         {% endif %}
                         </a>
                 {% endif %}
@@ -95,7 +95,7 @@
             </div>
             {% if blog %}
             <div class="col-sm-2">
-                <p><img class="img-responsive" src="{{STATIC_URL}}img/{{blog.license}}.png" /></p>
+                <p><a href="{% url 'about' %}#license"><img class="img-responsive" src="{{STATIC_URL}}img/{{blog.license}}.png" /></a></p>
             </div>
             {% endif %}
         </div>

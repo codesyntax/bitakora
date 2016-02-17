@@ -67,7 +67,6 @@ def edit_blog(request):
         wp_form = WPXMLForm()
     return render_to_response('profile/edit_blog.html', locals(), context_instance=RequestContext(request))
 
-
 @login_required
 def edit_pass(request):
     return password_change(request,post_change_redirect="/users/accounts/password/change/done/",extra_context={'blog': request.user.get_blog()})

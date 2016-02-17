@@ -1,5 +1,6 @@
 from django.conf import settings
 from photologue.models import Photo
+from django.contrib.sites.shortcuts import get_current_site
 
 BITAKORA_CUSTOM_LOGO = getattr(settings, 'BITAKORA_CUSTOM_LOGO', '')
 BITAKORA_CUSTOM_CSS = getattr(settings, 'BITAKORA_CUSTOM_CSS', '')
@@ -18,4 +19,5 @@ def bitakora_custom(request):
         'CUSTOM_MINILOGO': BITAKORA_CUSTOM_MINILOGO,
         'CUSTOM_CSS': BITAKORA_CUSTOM_CSS,
         'PROFILE_PHOTO_DEFAULT': photo,
+        'HOST': get_current_site(request),
     }

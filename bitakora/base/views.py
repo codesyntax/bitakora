@@ -101,6 +101,13 @@ def edit_article(request,blogslug,slug):
     return render_to_response('base/edit_article.html', locals(), context_instance=RequestContext(request))
 
 @login_required(login_url='/users/login')
+def delete_article(request,blogslug,slug):
+    article = get_object_or_404(Article, blog__slug=blogslug,slug=slug,blog__user=request.user)
+    blog = article.blog
+    article.delete()
+    return HttpResponseRedirect(reverse('blog_index', kwargs={'slug': blog.slug}))
+    
+@login_required(login_url='/users/login')
 def new_blog(request):
     if request.method == 'POST':
         form = BlogForm(request.POST)
