@@ -39,7 +39,7 @@
                 {% endif %}
                 <div class="social-buttons nav navbar-nav">
                     {% if article %}
-                        <div class="twitter-this">
+                        <div class="tweet-this">
                             <a href="https://twitter.com/intent/tweet?url={{HOST}}{{article.get_absolute_url|urlencode}}&amp;text={{article.title|urlencode}}{% if article.blog.user.twitter_id %}&via={{article.blog.user.twitter_id}}{% endif %}" target="_blank">Post to Twitter</a>
                         </div>
                         <div class="facebook-this">
