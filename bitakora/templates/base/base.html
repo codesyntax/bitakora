@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n social_share %}
+{% load i18n %}
 
 {% block extracss %}
 <link href="{{STATIC_URL}}js/lightbox/css/lightbox.css" rel="stylesheet">
@@ -39,8 +39,12 @@
                 {% endif %}
                 <div class="social-buttons nav navbar-nav">
                     {% if article %}
-                        {% post_to_twitter article.title article %}
-                        {% post_to_facebook article %}
+                        <div class="twitter-this">
+                            <a href="https://twitter.com/intent/tweet?url={{HOST}}{{article.get_absolute_url|urlencode}}&amp;text={{article.title|urlencode}}{% if article.blog.user.twitter_id %}&via={{article.blog.user.twitter_id}}{% endif %}" target="_blank"></a>
+                        </div>
+                        <div class="facebook-this">
+                            <a href="http://www.facebook.com/share.php?u={{HOST}}{{article.get_absolute_url|urlencode}}" target="_blank"></a>
+                        </div>
                         <div class="whatsapp-this hidden-lg">
                             <a href="whatsapp://send?text={{article.title}}%20{{request.build_absolute_uri}}">Post to Whatsapp</a>
                         </div>
