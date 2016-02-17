@@ -10,7 +10,7 @@
 	</div>
 	<div class="row">
 		<a rel="nofollow" href="{% url 'social:begin' 'facebook' %}{% if next %}?next={{next}}{% endif %}" class="fb-share-btn">
-				<img src="{{STATIC_URL}}img/share/facebook_white.png" /><span> {% trans 'Sign in with Twitter' %}</span>
+				<img src="{{STATIC_URL}}img/share/facebook_white.png" /><span> {% trans 'Sign in with Facebook' %}</span>
 		</a>
 	</div>
 	<hr/>
@@ -28,6 +28,6 @@
 	</div>
 	<hr/>
 	<div class="row">
-		<div>{% trans 'If you sign up with Twitter or Facebook, we’ll start you off with a network by automatically importing any followers/followees or friends already on Bitakora. Also, we’ll never post to Twitter or Facebook without your permission. For more info, please see' %} <a href="{% url 'learn-more' %}" class="link">{% trans 'Login FAQ' %}</a>.</div>
+		<div>{% trans 'If you sign up with Twitter or Facebook, we’ll start you off with a network by automatically importing any followers/followees or friends already on Bitakora. Also, we’ll never post to Twitter or Facebook without your permission. For more info, please see' %} <a href="{% url 'about' %}" class="link">{% trans 'Login FAQ' %}</a>.</div>
 	</div>
 {% endblock %}

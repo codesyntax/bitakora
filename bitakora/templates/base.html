@@ -110,8 +110,8 @@
                 <h1>{% trans 'Move thinking forward' %}</h1>
                 <h2>{% trans 'Bitakora is a community of readers and writers offering unique perspectives on ideas large and small' %}</h2>
                 <p>{% trans 'Sign up to read and interact with what matters most to you' %}</p>
-                <a class="btn btn-primary" href="{% url 'cssocialuser_user_login' %}?next=/">{% trans 'Get started' %}</a>
-                <a class="btn btn-default" href="{% url 'learn-more' %}">{% trans 'Learn more' %}</a>
+                <a class="btn btn-primary btn-lg" href="{% url 'cssocialuser_user_login' %}?next=/">{% trans 'Get started' %}</a>
+                <a class="btn btn-default btn-lg" href="{% url 'about' %}">{% trans 'Learn more' %}</a>
             </div>
         </div>
     </header>
@@ -191,10 +191,13 @@
         <hr>
         <footer>
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-6 col-xs-12">
                     {% block footer%}
-                        <p>{% blocktrans %}Developed by <a href="http://www.codesyntax.com">CodeSyntax</a>. Software: <a href="https://www.djangoproject.com/">Django</a>.{% endblocktrans %}</p>
+                        <p><a href="{% url 'contact_form' %}">{% trans 'Contact us' %}</a> | {% blocktrans %}Developed by <a href="http://www.codesyntax.com">CodeSyntax</a>. Software: <a href="https://www.djangoproject.com/">Django</a>.{% endblocktrans %}</p>
                     {% endblock %}
+                </div>
+                <div class="col-lg-6 col-xs-12 text-right">
+                    {% include 'sponsors.html' %}
                 </div>
             </div>
             <!-- /.row -->

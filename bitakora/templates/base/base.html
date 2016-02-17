@@ -21,13 +21,13 @@
                     <span class="icon-bar"></span>
                 </button>
                 {% if not 'users' in request.path or user.get_blog %}
-                    <a class="navbar-brand" href="/">
+                    <a class="navbar-brand" href="/" title="{% trans 'Bitakora home page' %}">
                     {% if CUSTOM_MINILOGO %}
                         <img class="img-responsive" src="{{CUSTOM_MINILOGO}}" />
                     {% else %}
                         <strong>B</strong></a>
                     {% endif %}
-                    </a> <a class="navbar-brand blog-brand" href="{% url 'blog_index' blog.slug %}">{{blog.name}}</a>
+                    </a> <a class="navbar-brand blog-brand" href="{% url 'blog_index' blog.slug %}" title="{{blog.name}}">{{blog.name}}</a>
                 {% else %}
                         <a class="navbar-brand" href="/">
                         {% if CUSTOM_LOGO %}

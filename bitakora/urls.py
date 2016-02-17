@@ -41,7 +41,7 @@ urlpatterns = patterns('',
 
     (r'^search/', include('haystack.urls')),
 
-    url(r'^learn-more/$', views.flatpage, {'url': '/learn-more/'}, name='learn-more'),
+    url(r'^about/$', views.flatpage, {'url': '/about/'}, name='about'),
 
     url(r'^ajax/categories/', 'bitakora.views.get_categories', name='ajax_categories'),
     url(r'^ajax/related_posts/', 'bitakora.views.get_related_posts', name='ajax_related_posts'),

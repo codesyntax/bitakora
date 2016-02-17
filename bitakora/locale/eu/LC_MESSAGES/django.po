@@ -124,7 +124,7 @@ msgstr "Old style"
 
 #: base/models.py:25
 msgid "Minimalist"
-msgstr "Minimalista"
+msgstr "Minimalist"
 
 #: base/models.py:31
 msgid "CC-BY-SA"

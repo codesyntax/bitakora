@@ -2,8 +2,8 @@
   {
     "fields":{
       "registration_required":false,
-      "title":"Learn more",
-      "url":"/learn-more/",
+      "title":"About",
+      "url":"/about/",
       "template_name":"",
       "sites":[
         1

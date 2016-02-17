@@ -89,6 +89,9 @@ h2.postlist{
     letter-spacing: -0.003em;
     line-height: 1;   
 }
+h2.postlist a{
+    color:#333 !important;
+}
 p.postlist{
     font-family:georgia;
     font-size: 21px;
@@ -177,6 +180,18 @@ p.postlist{
     border-right:1px solid #efefef;
     border-left:1px solid #efefef;
     border-radius:0;
+}
+
+
+.pagination{
+    font-size:12px;
+}
+.pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover {
+    background-color: #cc0000;
+    border-color: #cc0000;
+    color: white !important;
+    cursor: default;
+    z-index: 2;
 }
 /*******eskuman headerra*/
 .left-header{
