@@ -8,8 +8,10 @@
     <meta name="twitter:site" content="@BlogakEus" />
     <meta name="twitter:title" content="{{article.title}}" />
     <meta name="twitter:description" content="{{article.get_summary|striptags}}" />
+    {% if article.featured_image %}
     <meta name="twitter:image" content="{{article.featured_image.get_display_url}}" />
-
+    {% endif %}
+    
     <meta property="og:title" content="{{article.title}}" />
     <meta property="og:description" content="{{article.get_summary|striptags}}" />
     {% if article.featured_image %}

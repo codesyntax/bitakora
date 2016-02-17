@@ -105,89 +105,90 @@
 
     {% block maincontainer %}
 
-    {% block header %}
-    {% if not user.is_authenticated %}
-    <header class="header-image">
-        <div class="headline">
-            <div class="col-sm-12">
-                <button type="button" class="close" aria-label="Close">
-                    <p style="color:#fff;"><strong>&times;</strong></p>
-                </button>
-            </div>
-            <div class="container">
-                <h1>{% trans 'Move thinking forward' %}</h1>
-                <h2>{% trans 'Bitakora is a community of readers and writers offering unique perspectives on ideas large and small' %}</h2>
-                <p>{% trans 'Sign up to read and interact with what matters most to you' %}</p>
-                <a class="btn btn-primary btn-lg" href="{% url 'cssocialuser_user_login' %}?next=/">{% trans 'Get started' %}</a>
-                <a class="btn btn-default btn-lg" href="{% url 'about' %}">{% trans 'Learn more' %}</a>
-            </div>
-        </div>
-    </header>
-    <script type="text/javascript">
-        $(".close").click(function() {
-            $(".header-image").hide();
-        });
-    </script>
-    {% endif %}
-    
-    <!-- Page Content -->
-    <div id="maincontainer" class="container">
+        {% block header %}
+            {% if not user.is_authenticated %}
+            <header class="header-image">
+                <div class="headline">
+                    <div class="col-sm-12">
+                        <button type="button" class="close" aria-label="Close">
+                            <p style="color:#fff;"><strong>&times;</strong></p>
+                        </button>
+                    </div>
+                    <div class="container">
+                        <h1>{% trans 'Move thinking forward' %}</h1>
+                        <h2>{% trans 'Bitakora is a community of readers and writers offering unique perspectives on ideas large and small' %}</h2>
+                        <p>{% trans 'Sign up to read and interact with what matters most to you' %}</p>
+                        <a class="btn btn-primary btn-lg" href="{% url 'cssocialuser_user_login' %}?next=/">{% trans 'Get started' %}</a>
+                        <a class="btn btn-default btn-lg" href="{% url 'about' %}">{% trans 'Learn more' %}</a>
+                    </div>
+                </div>
+            </header>
+            <script type="text/javascript">
+                $(".close").click(function() {
+                    $(".header-image").hide();
+                });
+            </script>
+            {% endif %}
+        {% endblock %}
+        
+        <!-- Page Content -->
+        <div id="maincontainer" class="container">
 
-        <div class="row">
+            <div class="row">
 
-            <!-- Blog Post Content Column -->
-            <div class="col-md-8">
-                {% block body %}
+                <!-- Blog Post Content Column -->
+                <div class="col-md-8">
+                    {% block body %}
 
-                {% endblock %}
-            </div>
+                    {% endblock %}
+                </div>
 
-            <!-- Blog Sidebar Widgets Column -->
-            <div class="col-md-4">
-                {% block sidebar %}
+                <!-- Blog Sidebar Widgets Column -->
+                <div class="col-md-4">
+                    {% block sidebar %}
 
-                <!-- Blog Categories Well -->
-                <div class="well">
-                    <h4>{% trans 'Blog Categories' %}</h4>
-                    <div class="row">
-                    {% for cat in categories %}
-                        {% if forloop.first or forloop.counter|divisibleby:5 %}
-                            <div class="col-lg-6">
-                                <ul class="list-unstyled">
-                        {% endif %}
-                                    <li><a href="{% url 'category' cat.slug %}">{{cat.title}}</a></li>
-                        {% if forloop.last or forloop.counter|divisibleby:4 %}
-                                </ul>
+                    <!-- Blog Categories Well -->
+                    <div class="well">
+                        <h4>{% trans 'Blog Categories' %}</h4>
+                        <div class="row">
+                        {% for cat in categories %}
+                            {% if forloop.first or forloop.counter|divisibleby:5 %}
+                                <div class="col-lg-6">
+                                    <ul class="list-unstyled">
+                            {% endif %}
+                                        <li><a href="{% url 'category' cat.slug %}">{{cat.title}}</a></li>
+                            {% if forloop.last or forloop.counter|divisibleby:4 %}
+                                    </ul>
+                                </div>
+                            {% endif %}
+                        {% empty %}
+                            <div class="col-sm-12">
+                                <p>{% trans 'No categories found yet...' %}</p>
                             </div>
-                        {% endif %}
-                    {% empty %}
-                        <div class="col-sm-12">
-                            <p>{% trans 'No categories found yet...' %}</p>
+                        {% endfor %}
                         </div>
-                    {% endfor %}
+                        <!-- /.row -->
                     </div>
-                    <!-- /.row -->
+
+                    <!-- Side Widget Well -->
+                    <div class="well">
+                        <h4>{% trans 'Last comments' %}</h4>
+                        {% for comment in comments %}
+                            {% include 'base/short_comment.html' with comment=comment %}
+                        {% empty %}
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p>{% trans 'No comments found yet...' %}</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    {% endblock %}
                 </div>
 
-                <!-- Side Widget Well -->
-                <div class="well">
-                    <h4>{% trans 'Last comments' %}</h4>
-                    {% for comment in comments %}
-                        {% include 'base/short_comment.html' with comment=comment %}
-                    {% empty %}
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <p>{% trans 'No comments found yet...' %}</p>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-
-                {% endblock %}
             </div>
-
-        </div>
-        <!-- /.row -->
+            <!-- /.row -->
         {% endblock %}
 
         {% block footerjs %}
@@ -214,8 +215,6 @@
 
     </div>
     <!-- /.container -->
-
-    {% endblock %}
 </body>
 
 </html>
