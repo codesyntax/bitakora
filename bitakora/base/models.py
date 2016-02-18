@@ -1,7 +1,9 @@
 from django.db import models
+from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from photologue.models import Photo
+from django.contrib.sites.models import Site
 from bitakora.base.managers import PublishedManager
 from bitakora.utils.models import get_user_model_name
 from bitakora.utils.text import make_responsive
@@ -141,11 +143,12 @@ class Article(models.Model):
                                         blank=True, related_name="blogposts")
     allow_comments = models.BooleanField(verbose_name=_("Allow comments"),
                                          default=True)
-    # comments = CommentsField(verbose_name=_("Comments"))
-    # rating = RatingField(verbose_name=_("Rating"))
+    
     featured_image = models.ForeignKey(Photo,verbose_name=_("Featured Image"), null=True, blank=True)
     related_posts = models.ManyToManyField("self",
                                  verbose_name=_("Related posts"), blank=True)
+
+    shared = models.BooleanField(default=False)
 
     objects = PublishedManager()
 
@@ -197,6 +200,12 @@ class Article(models.Model):
         Retrieves previous object by publish date.
         """
         return self._get_next_or_previous_by_publish_date(False, **kwargs)
+
+    def getTweetText(self):
+        current_site = Site.objects.get_current()
+        if self.blog.user.twitter_id:
+            return "%s: %s %s%s @%s" % (self.blog.name, self.title, current_site, self.get_absolute_url, self.blog.user.twitter_id)
+        return "%s: %s %s%s" % (self.blog.name, self.title, current_site, self.get_absolute_url)
 
     def get_absolute_url(self):
         return reverse('article',kwargs={'blogslug': self.blog.slug, 'slug': self.slug})

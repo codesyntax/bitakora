@@ -16,6 +16,7 @@ from django.contrib import messages
 from django.core.mail import send_mail
 from django.contrib.sites.models import Site
 from django.utils.translation import ugettext_lazy as _
+from django.db.models.signals import post_save
 
 def blog_index(request,slug):
     blog = get_object_or_404(Blog, slug=slug)

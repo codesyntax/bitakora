@@ -32,7 +32,7 @@ class ArticleAdmin(admin.ModelAdmin):
     admin_thumbnail.allow_tags = True
 
     form = ArticleAdminForm
-    list_display = ('title','slug','blog','status','publish_date','expiry_date','admin_thumbnail')
+    list_display = ('title','slug','blog','status','publish_date','expiry_date','shared','admin_thumbnail')
     list_display_links = ('title',)
     
     list_filter = ("status",)
@@ -51,7 +51,7 @@ class ArticleAdmin(admin.ModelAdmin):
             'fields': ('publish_date', 'expiry_date', 'status')
         }),
         ('Extra data', {
-            'fields': ('related_posts', 'allow_comments')
+            'fields': ('related_posts', 'allow_comments','shared')
         })
     )
 

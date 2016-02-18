@@ -12,7 +12,7 @@ from django.template.defaultfilters import slugify
 TINYMCE_DEFAULT_CONFIG = getattr(settings, 'TINYMCE_DEFAULT_CONFIG', {})
 GOOGLE_URL_HTML = "<a href='https://www.google.com/intl/es/analytics/features/index.html'>Google Analytics</a>"
 class ArticleForm(forms.ModelForm):
-    featured_image = forms.FileField(label=_('Header image'),help_text=_('Valid formats: jpg, png, gif.'),required=False)
+    featured_image = forms.FileField(label=_('Featured image'),help_text=_('Valid formats: jpg, png, gif.'),required=False)
     text = forms.CharField(label=_('Text'),widget=TinyMCE(mce_attrs=TINYMCE_DEFAULT_CONFIG))
     categories = forms.CharField(label=_('Categories'),widget=forms.SelectMultiple(), required=False)
     related_posts = forms.CharField(label=_('Related posts'), widget=forms.SelectMultiple(),required=False)

@@ -40,6 +40,7 @@ def import_from_wp(file_content, user, debug=False):
                 if debug:
                     print article.title
 
+                article.shared = True
                 article.save()
 
                 for cmt in art.findall('wp:comment', root.nsmap):
