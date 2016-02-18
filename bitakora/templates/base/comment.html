@@ -3,8 +3,8 @@
 {% if comment.status == 1 or request.user == comment.parent.blog.user %}
 <div id="{{comment.id}}" class="media" {% if comment.status == 2 %}style="opacity: 0.5;"{% endif %}>
     {% if comment.user.get_blog %}
-    <a class="pull-left" href="{ url 'blog_index' comment.user.get_blog.slug() %}">
-        <img class="media-object" src="{{comment.user.get_photo.get_profile_url}}" alt="{{comment.user.photo.caption}}">
+    <a href="{ url 'blog_index' comment.user.get_blog.slug %}">
+        <img class="pull-left media-object" src="{{comment.user.get_photo.get_profile_url}}" alt="{{comment.user.photo.caption}}">
     </a>
     {% elif comment.user %}
         <img class="pull-left media-object" src="{{comment.user.get_photo.get_profile_url}}" alt="{{comment.user.photo.caption}}">

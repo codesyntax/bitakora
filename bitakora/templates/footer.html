@@ -1,0 +1,14 @@
+{% load i18n %}
+
+<footer>
+    <div class="row">
+        <div class="col-lg-6 col-xs-12">
+            {% block footer%}
+                <p><a href="{% url 'contact_form' %}">{% trans 'Contact us' %}</a> | {% blocktrans %}Developed by <a href="http://www.codesyntax.com">CodeSyntax</a>. Software: <a href="https://www.djangoproject.com/">Django</a>.{% endblocktrans %}</p>
+            {% endblock %}
+        </div>
+        <div class="col-lg-6 col-xs-12 text-right">
+            {% include 'sponsors.html' %}
+        </div>
+    </div>
+</footer>

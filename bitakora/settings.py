@@ -164,14 +164,19 @@ TINYMCE_JS_URL = STATIC_URL + 'js/tinymce/tinymce.min.js'
 TINYMCE_JS_ROOT = STATIC_ROOT + 'js/tinymce/tinymce.min.js'
 
 try:
-   from tiny_mce_settings import *
-except:
-   pass
-
-try:
     from server_settings import *
 except:
     pass
+
+try:
+    from bitakora.s3storage.settings_s3boto import *
+except:
+    pass
+
+try:
+   from tiny_mce_settings import *
+except:
+   pass
 
 try:
     from local_settings import *
