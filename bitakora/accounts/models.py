@@ -1,4 +1,5 @@
 from cssocialuser.models import CSAbstractSocialUser
+from django.contrib.auth.models import UserManager
 from bitakora.utils.images import get_pattern
 from django.db import models
 from django.core.mail import send_mail
@@ -16,6 +17,8 @@ class BitakoraUser(CSAbstractSocialUser):
     class Meta:
         verbose_name = _('BitakoraUser')
         verbose_name_plural = _('BitakoraUsers')
+
+    objects = UserManager()
 
     def get_photo(self):
         if self.photo:

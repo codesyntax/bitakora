@@ -40,4 +40,4 @@ def get_pattern(user,num=None):
     if rnum in range(0,4):
         return int(rnum)
     else:
-        return get_pattern(rnum)
+        return get_pattern(user,num=rnum)

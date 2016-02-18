@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-12 14:12+0100\n"
+"POT-Creation-Date: 2016-02-18 15:29+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,20 +17,24 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: accounts/admin.py:32
+#: accounts/admin.py:71
 msgid "Personal data"
 msgstr ""
 
-#: accounts/admin.py:34
+#: accounts/admin.py:73
 msgid "Biography"
 msgstr ""
 
-#: accounts/admin.py:36 templates/profile/edit_personal.html:12
+#: accounts/admin.py:75 templates/profile/edit_personal.html.py:12
 msgid "Social networks"
 msgstr ""
 
-#: accounts/admin.py:39
+#: accounts/admin.py:78
 msgid "Permissions"
+msgstr ""
+
+#: accounts/apps.py:7
+msgid "User management"
 msgstr ""
 
 #: accounts/forms.py:17
@@ -41,6 +45,14 @@ msgstr ""
 msgid "The new passwords are not the same"
 msgstr ""
 
+#: accounts/models.py:18
+msgid "BitakoraUser"
+msgstr ""
+
+#: accounts/models.py:19
+msgid "BitakoraUsers"
+msgstr ""
+
 #: accounts/views.py:29
 msgid "New user data saved"
 msgstr ""
@@ -49,215 +61,232 @@ msgstr ""
 msgid "New photo saved"
 msgstr ""
 
-#: accounts/views.py:62
+#: accounts/views.py:63
 msgid "New blog data saved"
 msgstr ""
 
-#: base/forms.py:14 base/forms.py:73 base/forms.py:84
-msgid "Header image"
+#: base/apps.py:7
+msgid "Basic elements"
 msgstr ""
 
-#: base/forms.py:14 base/forms.py:73 base/forms.py:84
+#: base/forms.py:13
+msgid ""
+"More information about  <a href='https://www.google.com/intl/es/analytics/"
+"features/index.html'>Google Analytics</a>."
+msgstr ""
+
+#: base/forms.py:16
+msgid "Featured image"
+msgstr ""
+
+#: base/forms.py:16 base/forms.py:79 base/forms.py:90
 msgid "Valid formats: jpg, png, gif."
 msgstr ""
 
-#: base/forms.py:15 base/forms.py:65 base/models.py:136 base/models.py:241
+#: base/forms.py:17 base/models.py:127 base/models.py:243
 msgid "Text"
 msgstr ""
 
-#: base/forms.py:16 base/models.py:115 base/models.py:151
+#: base/forms.py:18 base/models.py:106 base/models.py:142
 msgid "Categories"
 msgstr ""
 
-#: base/forms.py:17 base/models.py:159 templates/base/article.html:107
+#: base/forms.py:19 base/models.py:149 templates/base/article.html.py:121
 msgid "Related posts"
 msgstr ""
 
-#: base/forms.py:18 base/models.py:140 base/models.py:244
+#: base/forms.py:20 base/models.py:131 base/models.py:246
 #: templates/base/dashboard.html:21 templates/base/dashboard_comments.html:22
 msgid "Status"
 msgstr ""
 
-#: base/forms.py:74 base/forms.py:85 base/models.py:46
-#: templates/base/new_blog.html:37
+#: base/forms.py:21
+msgid "Send notification"
+msgstr ""
+
+#: base/forms.py:79 base/forms.py:90 templates/base/new_blog.html.py:40
+#: templates/profile/edit_blog.html:31
+msgid "Header image"
+msgstr ""
+
+#: base/forms.py:80 base/forms.py:91 base/models.py:48
+#: templates/base/new_blog.html:60 templates/profile/edit_blog.html.py:51
 msgid "Template"
 msgstr ""
 
-#: base/forms.py:75 base/forms.py:86 base/models.py:49
+#: base/forms.py:81 base/forms.py:92 base/models.py:51
+#: templates/base/new_blog.html:76 templates/profile/edit_blog.html.py:67
 msgid "License"
 msgstr ""
 
-#: base/forms.py:76 base/forms.py:87 base/models.py:44
+#: base/forms.py:82 base/forms.py:93 base/models.py:46
 msgid "Analytics code"
 msgstr ""
 
-#: base/forms.py:76 base/forms.py:87
-msgid "More information about "
-msgstr ""
-
-#: base/forms.py:105 base/forms.py:118
+#: base/forms.py:110 base/forms.py:123
 msgid "Empty comment. Please, write something!"
 msgstr ""
 
-#: base/forms.py:122
+#: base/forms.py:127
 msgid "Wordpress file"
 msgstr ""
 
-#: base/forms.py:122
+#: base/forms.py:127
 msgid "Please, select your Wordpress XML file"
 msgstr ""
 
-#: base/models.py:22
+#: base/models.py:26
 msgid "One page wonder"
 msgstr ""
 
-#: base/models.py:23
-msgid "Clean blog"
-msgstr ""
-
-#: base/models.py:24
-msgid "Old style"
-msgstr ""
-
-#: base/models.py:25
+#: base/models.py:27
 msgid "Minimalist"
 msgstr ""
 
-#: base/models.py:31
+#: base/models.py:33
 msgid "CC-BY-SA"
 msgstr ""
 
-#: base/models.py:32
+#: base/models.py:34
 msgid "Copyright"
 msgstr ""
 
-#: base/models.py:38
+#: base/models.py:40
 msgid "Name"
 msgstr ""
 
-#: base/models.py:39 base/models.py:106 base/models.py:132
+#: base/models.py:41 base/models.py:97 base/models.py:123
 msgid "URL"
 msgstr ""
 
-#: base/models.py:40 base/models.py:107 base/models.py:133
+#: base/models.py:42 base/models.py:98 base/models.py:124
 msgid "Leave blank to have the URL auto-generated from the title."
 msgstr ""
 
-#: base/models.py:42
+#: base/models.py:44
 msgid "Tagline"
 msgstr ""
 
-#: base/models.py:52 base/models.py:233 photologue_custom/models.py:15
+#: base/models.py:54 base/models.py:235 photologue_custom/models.py:15
 msgid "Author"
 msgstr ""
 
-#: base/models.py:101
+#: base/models.py:92 templates/footer.html.py:9
 msgid "Blog"
 msgstr ""
 
-#: base/models.py:102
+#: base/models.py:93
 msgid "Blogs"
 msgstr ""
 
-#: base/models.py:105 base/models.py:131 templates/base/dashboard.html:20
+#: base/models.py:96 base/models.py:122 templates/base/dashboard.html.py:20
 msgid "Title"
 msgstr ""
 
-#: base/models.py:114 templates/index.html:8
+#: base/models.py:105 templates/index.html.py:8
 msgid "Category"
 msgstr ""
 
-#: base/models.py:126
+#: base/models.py:117
 msgid "Draft"
 msgstr ""
 
-#: base/models.py:127
+#: base/models.py:118
 msgid "Published"
 msgstr ""
 
-#: base/models.py:142
+#: base/models.py:133
 msgid "With Draft chosen, will only be shown for admin users on the site."
 msgstr ""
 
-#: base/models.py:144 templates/base/dashboard.html:22
+#: base/models.py:135 templates/base/dashboard.html.py:22
 msgid "Published from"
 msgstr ""
 
-#: base/models.py:145
+#: base/models.py:136
 msgid "With Published chosen, won't be shown until this time"
 msgstr ""
 
-#: base/models.py:147
+#: base/models.py:138
 msgid "Expires on"
 msgstr ""
 
-#: base/models.py:148
+#: base/models.py:139
 msgid "With Published chosen, won't be shown after this time"
 msgstr ""
 
-#: base/models.py:153
+#: base/models.py:144
 msgid "Allow comments"
 msgstr ""
 
-#: base/models.py:157
+#: base/models.py:147
 msgid "Featured Image"
 msgstr ""
 
-#: base/models.py:219
+#: base/models.py:221
 msgid "Article"
 msgstr ""
 
-#: base/models.py:220
+#: base/models.py:222
 msgid "Articles"
 msgstr ""
 
-#: base/models.py:227 templates/base/comment.html:24
+#: base/models.py:229 templates/base/comment.html.py:24
 #: templates/base/dashboard_comments.html:31
 msgid "Visible"
 msgstr ""
 
-#: base/models.py:228
+#: base/models.py:230
 msgid "Visible only for the admin"
 msgstr ""
 
-#: base/models.py:229
+#: base/models.py:231
 msgid "Not visible"
 msgstr ""
 
-#: base/models.py:236
+#: base/models.py:238
 msgid "Nick name"
 msgstr ""
 
-#: base/models.py:237
+#: base/models.py:239
 msgid "Email"
 msgstr ""
 
-#: base/models.py:238
+#: base/models.py:240
 msgid "Url"
 msgstr ""
 
-#: base/models.py:243
+#: base/models.py:245
 msgid "IP address"
 msgstr ""
 
-#: base/models.py:246
+#: base/models.py:248
 msgid "Publish date"
 msgstr ""
 
-#: base/models.py:257 templates/base/dashboard_comments.html:20
+#: base/models.py:259 templates/base/dashboard_comments.html.py:20
 msgid "Comment"
 msgstr ""
 
-#: base/models.py:258 templates/base/article.html:128
+#: base/models.py:260 templates/base/article.html.py:150
 #: templates/base/dashboard.html:12 templates/base/dashboard_comments.html:12
 msgid "Comments"
 msgstr ""
 
-#: base/views.py:55 base/views.py:82
+#: base/views.py:58 base/views.py:87
 msgid "Invalid image format. Please, change the format!"
 msgstr ""
 
-#: base/views.py:119
+#: base/views.py:72 base/views.py:95
+msgid "New article to publish"
+msgstr ""
+
+#: base/views.py:72 base/views.py:95
+#, python-format
+msgid "%s wants to publish this article: http://%s%s"
+msgstr ""
+
+#: base/views.py:139
 msgid "Importation error. Please, check the XML file and try again."
 msgstr ""
 
@@ -269,70 +298,80 @@ msgstr ""
 msgid " articles feed"
 msgstr ""
 
-#: templates/base.html:78 views.py:14
+#: templates/base.html:13 templates/base.html.py:81 templates/base/base.html:36
+msgid "Bitakora"
+msgstr ""
+
+#: templates/base.html:54
+msgid "We use Cookies but we dont keep your personal data."
+msgstr ""
+
+#: templates/base.html:54
+msgid "I agree"
+msgstr ""
+
+#: templates/base.html:54
+msgid "Informazio gehiago"
+msgstr ""
+
+#: templates/base.html:87 views.py:14
 msgid "Top stories"
 msgstr ""
 
-#: templates/base.html:81 views.py:15
+#: templates/base.html:90 views.py:15
 msgid "Bookmarks"
 msgstr ""
 
-#: templates/base.html:87 templates/search/search.html:7
-#: templates/search/search.html.py:22
+#: templates/base.html:96 templates/base/base.html.py:62
+#: templates/search/search.html:7 templates/search/search.html.py:22
 msgid "Search"
 msgstr ""
 
-#: templates/base.html:109
+#: templates/base.html:118
 msgid "Move thinking forward"
 msgstr ""
 
-#: templates/base.html:110
+#: templates/base.html:119
 msgid ""
 "Bitakora is a community of readers and writers offering unique perspectives "
 "on ideas large and small"
 msgstr ""
 
-#: templates/base.html:111
+#: templates/base.html:120
 msgid "Sign up to read and interact with what matters most to you"
 msgstr ""
 
-#: templates/base.html:112
+#: templates/base.html:121
 msgid "Get started"
 msgstr ""
 
-#: templates/base.html:113
+#: templates/base.html:122
 msgid "Learn more"
 msgstr ""
 
-#: templates/base.html:143 templates/base/blog_index.html:52
+#: templates/base.html:151 templates/base/blog_index.html.py:77
 msgid "Blog Categories"
 msgstr ""
 
-#: templates/base.html:157
+#: templates/base.html:165
 msgid "No categories found yet..."
 msgstr ""
 
-#: templates/base.html:166 templates/base/blog_index.html:71
+#: templates/base.html:174 templates/base/blog_index.html.py:96
 msgid "Last comments"
 msgstr ""
 
-#: templates/base.html:172
+#: templates/base.html:180
 msgid "No comments found yet..."
-msgstr ""
-
-#: templates/base.html:195 templates/base/base.html:80
-msgid ""
-"Developed by <a href=\"http://www.codesyntax.com\">CodeSyntax</a>. Software: "
-"<a href=\"https://www.djangoproject.com/\">Django</a>."
 msgstr ""
 
 #: templates/base/add_article.html:23
 msgid "New article"
 msgstr ""
 
-#: templates/base/add_article.html:57 templates/base/article.html:148
-#: templates/base/new_blog.html:52 templates/contact_form/contact_form.html:12
-#: templates/profile/edit_blog.html:50 templates/profile/edit_pass.html:13
+#: templates/base/add_article.html:57 templates/base/article.html.py:170
+#: templates/base/new_blog.html:94 templates/contact_form/contact_form.html:12
+#: templates/profile/edit_blog.html:85 templates/profile/edit_pass.html:13
 #: templates/registration/password_reset_confirm.html:14
 #: templates/registration/password_reset_form.html:16
 msgid "Submit"
@@ -346,47 +385,82 @@ msgstr ""
 msgid "Select related articles"
 msgstr ""
 
-#: templates/base/article.html:47
+#: templates/base/article.html:61
 msgid "This post is still in <strong>Draft</strong> status"
 msgstr ""
 
-#: templates/base/article.html:49
+#: templates/base/article.html:63
 #, python-format
 msgid "This post has still a future date: <strong>%(date)s</strong>"
 msgstr ""
 
-#: templates/base/article.html:87 templates/base/article.html.py:90
+#: templates/base/article.html:101 templates/base/article.html.py:104
 msgid "Like"
 msgstr ""
 
-#: templates/base/article.html:144
+#: templates/base/article.html:166
 msgid "Leave a Comment:"
 msgstr ""
 
-#: templates/base/blog_index.html:26
+#: templates/base/article.html:183
+msgid "Delete article"
+msgstr ""
+
+#: templates/base/article.html:186 templates/base/import_new_blog.html.py:35
+msgid "IMPORTANT!!"
+msgstr ""
+
+#: templates/base/article.html:187
+msgid "Are you sure you want to DELETE this article?"
+msgstr ""
+
+#: templates/base/article.html:188
+msgid "If you accept, this article will be DELETED irreversibly"
+msgstr ""
+
+#: templates/base/article.html:191 templates/base/import_new_blog.html.py:19
+#: templates/base/import_new_blog.html:40
+msgid "Close"
+msgstr ""
+
+#: templates/base/article.html:192 templates/base/import_new_blog.html.py:41
+msgid "Yes, I am sure"
+msgstr ""
+
+#: templates/base/base.html:24
+msgid "Bitakora home page"
+msgstr ""
+
+#: templates/base/base.html:97 templates/footer.html.py:17
+msgid ""
+"Developed by <a href=\"http://www.codesyntax.com\">CodeSyntax</a>. Software: "
+"<a href=\"https://www.djangoproject.com/\">Django</a>."
+msgstr ""
+
+#: templates/base/blog_index.html:35
 msgid "Well done!"
 msgstr ""
 
-#: templates/base/blog_index.html:26
+#: templates/base/blog_index.html:35
 msgid ""
 "Your blog was successfully created. Now you can start posting your stuff"
 msgstr ""
 
-#: templates/base/blog_index.html:26
+#: templates/base/blog_index.html:35
 msgid "from here!"
 msgstr ""
 
-#: templates/base/blog_index.html:30
+#: templates/base/blog_index.html:39
 msgid "Sorry..."
 msgstr ""
 
-#: templates/base/blog_index.html:30
+#: templates/base/blog_index.html:39
 msgid ""
 "This blog seems to be empty. Hopefully there will be some content in a short "
 "time!"
 msgstr ""
 
-#: templates/base/blog_index.html:80
+#: templates/base/blog_index.html:105
 msgid "Sindication"
 msgstr ""
 
@@ -399,11 +473,12 @@ msgid "Visible only for admin"
 msgstr ""
 
 #: templates/base/comment.html:24 templates/base/dashboard_comments.html:31
+#: templates/useroptions.html:14
 msgid "Delete"
 msgstr ""
 
 #: templates/base/dashboard.html:8 templates/base/dashboard_comments.html:8
-#: templates/useroptions.html:15
+#: templates/useroptions.html.py:19
 msgid "Dashboard"
 msgstr ""
 
@@ -439,21 +514,12 @@ msgstr ""
 msgid "Import Wordpress XML"
 msgstr ""
 
-#: templates/base/import_new_blog.html:19
-#: templates/base/import_new_blog.html:40
-msgid "Close"
-msgstr ""
-
-#: templates/base/import_new_blog.html:20 templates/profile/edit_blog.html:11
+#: templates/base/import_new_blog.html:20 templates/profile/edit_blog.html:15
 msgid "Import"
 msgstr ""
 
 #: templates/base/import_new_blog.html:32
 msgid "Import blog"
-msgstr ""
-
-#: templates/base/import_new_blog.html:35
-msgid "IMPORTANT!!"
 msgstr ""
 
 #: templates/base/import_new_blog.html:36
@@ -466,20 +532,34 @@ msgid ""
 "LOSE ALL CURRENT DATA."
 msgstr ""
 
-#: templates/base/import_new_blog.html:41
-msgid "Yes, I am sure"
-msgstr ""
-
-#: templates/base/new_blog.html:12
+#: templates/base/new_blog.html:16
 msgid "New blog"
 msgstr ""
 
-#: templates/base/new_blog.html:21
+#: templates/base/new_blog.html:25
 msgid "Create from scratch"
 msgstr ""
 
-#: templates/base/new_blog.html:22
+#: templates/base/new_blog.html:26
 msgid "Import from Wordpress"
+msgstr ""
+
+#: templates/base/new_blog.html:45 templates/profile/edit_blog.html.py:36
+msgid ""
+"This is your default header image. If you want to change it, select from "
+"your file system with the button below:"
+msgstr ""
+
+#: templates/base/new_blog.html:47 templates/profile/edit_blog.html.py:38
+msgid "Recommended sizes:"
+msgstr ""
+
+#: templates/base/new_blog.html:49 templates/profile/edit_blog.html.py:40
+msgid "1900x300px (horizontal)"
+msgstr ""
+
+#: templates/base/new_blog.html:50 templates/profile/edit_blog.html.py:41
+msgid "390x400px (vertical)"
 msgstr ""
 
 #: templates/contact_form/contact_form.html:5
@@ -501,6 +581,14 @@ msgstr ""
 
 #: templates/contact_form/contact_form_subject.txt:1
 msgid "Contact mail from"
+msgstr ""
+
+#: templates/footer.html:7 templates/registration/login.html.py:26
+msgid "Contact us"
+msgstr ""
+
+#: templates/footer.html:8
+msgid "About"
 msgstr ""
 
 #: templates/index.html:23
@@ -549,11 +637,11 @@ msgstr ""
 msgid "Edit profile"
 msgstr ""
 
-#: templates/profile/base.html:11 templates/useroptions.html:30
+#: templates/profile/base.html:11 templates/useroptions.html.py:34
 msgid "Settings"
 msgstr ""
 
-#: templates/profile/base.html:13 templates/profile/edit_personal.html:7
+#: templates/profile/base.html:13 templates/profile/edit_personal.html.py:7
 msgid "User profile"
 msgstr ""
 
@@ -561,27 +649,27 @@ msgstr ""
 msgid "Your Blog"
 msgstr ""
 
-#: templates/profile/base.html:15
-msgid "Change password"
-msgstr ""
-
-#: templates/profile/edit_blog.html:7
+#: templates/profile/edit_blog.html:11
 msgid "Your blog data"
 msgstr ""
 
-#: templates/profile/edit_blog.html:10
+#: templates/profile/edit_blog.html:14
 msgid "Blog configuration"
 msgstr ""
 
-#: templates/profile/edit_blog.html:12
+#: templates/profile/edit_blog.html:16
 msgid "Export"
 msgstr ""
 
-#: templates/profile/edit_blog.html:59
+#: templates/profile/edit_blog.html:71
+msgid "What is CC-BY-SA license?"
+msgstr ""
+
+#: templates/profile/edit_blog.html:94
 msgid "Export your blog data to WordPress XML format"
 msgstr ""
 
-#: templates/profile/edit_blog.html:60
+#: templates/profile/edit_blog.html:95
 msgid "Export your blog"
 msgstr ""
 
@@ -636,21 +724,21 @@ msgstr ""
 msgid "Link Facebook for this user"
 msgstr ""
 
-#: templates/registration/activation_email.txt:4
+#: templates/registration/activation_email.txt:3
 msgid "Hello"
 msgstr ""
 
-#: templates/registration/activation_email.txt:6
+#: templates/registration/activation_email.txt:5
 #, python-format
 msgid "You have requested joining %(sitename)s."
 msgstr ""
 
-#: templates/registration/activation_email.txt:8
+#: templates/registration/activation_email.txt:7
 #, python-format
 msgid "Please click in this activation link before %(expirationdays)s days:"
 msgstr ""
 
-#: templates/registration/activation_email.txt:12
+#: templates/registration/activation_email.txt:11
 #, python-format
 msgid "The team at %(sitename)s."
 msgstr ""
@@ -663,32 +751,56 @@ msgstr ""
 msgid "Sign in or create an account"
 msgstr ""
 
-#: templates/registration/login.html:8 templates/registration/login.html:13
+#: templates/registration/login.html:8
 msgid "Sign in with Twitter"
 msgstr ""
 
-#: templates/registration/login.html:22
+#: templates/registration/login.html:13
+msgid "Sign in with Facebook"
+msgstr ""
+
+#: templates/registration/login.html:23
 msgid "Sign in"
 msgstr ""
 
-#: templates/registration/login.html:22
-msgid "or create an account"
-msgstr ""
-
-#: templates/registration/login.html:25
+#: templates/registration/login.html:23
 msgid "Forgot your password?"
 msgstr ""
 
-#: templates/registration/login.html:31
-msgid ""
-"If you sign up with Twitter or Facebook, we’ll start you off with a network "
-"by automatically importing any followers/followees or friends already on "
-"Bitakora. Also, we’ll never post to Twitter or Facebook without your "
-"permission. For more info, please see"
+#: templates/registration/login.html:25
+msgid "Create new account"
 msgstr ""
 
-#: templates/registration/login.html:31
-msgid "Login FAQ"
+#: templates/registration/login.html:26
+msgid "Any problem?"
+msgstr ""
+
+#: templates/registration/password_change_done.html:4
+#: templates/registration/password_change_done.html:7
+msgid "Password changed"
+msgstr ""
+
+#: templates/registration/password_change_done.html:9
+msgid "Password successfully changed!"
+msgstr ""
+
+#: templates/registration/password_change_form.html:4
+#: templates/registration/password_change_form.html:8
+#: templates/registration/password_change_form.html:12
+msgid "Change password"
+msgstr ""
+
+#: templates/registration/password_reset_complete.html:4
+msgid "Password reset complete"
+msgstr ""
+
+#: templates/registration/password_reset_complete.html:9
+msgid "Your password has been reset!"
+msgstr ""
+
+#: templates/registration/password_reset_complete.html:11
+#, python-format
+msgid "You may now <a href=\"%(login_url)s?next=/\">log in</a>"
 msgstr ""
 
 #: templates/registration/password_reset_confirm.html:7
@@ -710,6 +822,39 @@ msgstr ""
 #: templates/registration/password_reset_done.html:9
 msgid ""
 "We have sent to your email the needed information to reset your password"
+msgstr ""
+
+#: templates/registration/password_reset_email.html:3
+msgid "Greetings"
+msgstr ""
+
+#: templates/registration/password_reset_email.html:5
+#, python-format
+msgid ""
+"\n"
+"You are receiving this email because you (or someone pretending to be you)\n"
+"requested that your password be reset on the %(domain)s site. If you do not\n"
+"wish to reset your password, please ignore this message.\n"
+msgstr ""
+
+#: templates/registration/password_reset_email.html:11
+msgid ""
+"\n"
+"To reset your password, please click the following link, or copy and paste "
+"it\n"
+"into your web browser:\n"
+msgstr ""
+
+#: templates/registration/password_reset_email.html:18
+msgid "Your username, in case you've forgotten:"
+msgstr ""
+
+#: templates/registration/password_reset_email.html:21
+msgid "Best regards"
+msgstr ""
+
+#: templates/registration/password_reset_email.html:22
+msgid "Management"
 msgstr ""
 
 #: templates/registration/password_reset_email.txt:5
@@ -792,18 +937,22 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: templates/useroptions.html:19
+#: templates/useroptions.html:23
 msgid "Create a blog"
 msgstr ""
 
-#: templates/useroptions.html:28
-msgid "My blog"
+#: templates/useroptions.html:27
+msgid "User options"
 msgstr ""
 
 #: templates/useroptions.html:32
+msgid "My blog"
+msgstr ""
+
+#: templates/useroptions.html:36
 msgid "Logout"
 msgstr ""
 
-#: templates/useroptions.html:37
+#: templates/useroptions.html:41
 msgid "Sign in / Sign up"
 msgstr ""

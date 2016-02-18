@@ -105,7 +105,6 @@ class="col-md-8 col-md-offset-2 articletext"
                     {% endif %}
                 {% endif %}
                 </h4>
-                {% include 'social_buttons.html' %}
             </div>
             <div class="col-sm-8 pull-right text-right">
             {% for c in article.categories.all %}
@@ -117,14 +116,14 @@ class="col-md-8 col-md-offset-2 articletext"
 </div>
 
 {% if article.related_posts.all  %}
-<div class="row">
+<div class="row related-posts">
     <div class="col-lg-12">
         <h2 class="page-header">{% trans 'Related posts' %}</h2>
     </div>
 
     {% for related in article.related_posts.all %}
     <div class="col-lg-12">
-        <ul class="list-unstyled">
+        <ul>
             <li><a href="{% url 'article' related.blog.slug related.slug %}">{{related.title}}</a></li>
         </ul>
     </div>
@@ -145,7 +144,7 @@ class="col-md-8 col-md-offset-2 articletext"
 
 
 {% if article.allow_comments %}
-<div class="row">
+<div class="row comments">
     <div class="col-lg-12">
         <h2 class="page-header">{% trans 'Comments' %}</h2>
     </div>
@@ -174,7 +173,7 @@ class="col-md-8 col-md-offset-2 articletext"
 </div>
 {% endif %}
 
-{% if user.is_authenticated %}
+{% if user.is_authenticated and user.get_blog %}
 <div class="modal fade" id="ModalDelete" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

@@ -4,10 +4,13 @@ from django.forms import ModelForm
 from django import forms
 from django.utils.translation import ugettext as _
 from models import BitakoraUser
+from django.contrib.auth.forms import ReadOnlyPasswordHashField
+
 
 class MyUserChangeForm(UserChangeForm):
     class Meta(UserChangeForm.Meta):
         model = BitakoraUser
+        fields = ('username','password')
 
 class MyUserCreationForm(ModelForm):
     """A form for creating new users. Includes all the required
@@ -17,7 +20,7 @@ class MyUserCreationForm(ModelForm):
 
     class Meta:
         model = BitakoraUser
-        fields = '__all__'
+        fields = ('username','password1','password2')
 
     def clean_password2(self):
         # Check that the two password entries match
@@ -53,6 +56,8 @@ class BitakoraUserAdmin(admin.ModelAdmin):
         return obj.get_fullname()
 
     form = MyUserChangeForm
+    add_form = MyUserCreationForm
+
     list_display = ('fullname', 'username','get_email', 'date_joined','is_active', 'is_staff','admin_thumbnail')
     list_display_links = ('fullname','username')
     ordering = ('-date_joined',)
@@ -74,5 +79,22 @@ class BitakoraUserAdmin(admin.ModelAdmin):
                                        'groups', 'user_permissions','last_login'),
                             'classes': ['collapse',],}),
     )
+
+    add_fieldsets = (
+        (None, {
+            'classes': ('wide',),
+            'fields': ('username', 'password1', 'password2')}
+        ),
+    )
+
+    def get_form(self, request, obj=None, **kwargs):
+        """
+        Use special form during user creation
+        """
+        defaults = {}
+        if obj is None:
+            defaults['form'] = self.add_form
+        defaults.update(kwargs)
+        return super(BitakoraUserAdmin, self).get_form(request, obj, **defaults)
 
 admin.site.register(BitakoraUser, BitakoraUserAdmin)
