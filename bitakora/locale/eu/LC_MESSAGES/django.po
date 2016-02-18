@@ -735,7 +735,7 @@ msgstr "Pasahitza berrezarri"
 #: templates/registration/password_reset_done.html:9
 msgid ""
 "We have sent to your email the needed information to reset your password"
-msgstr "Mesedez, idatzi zure helbide elektronikoa pasahitza berrezartzeko"
+msgstr "Zure epostara mezu bat bidali dugu pasahitza berrezartzeko pausuak adieraziz"
 
 #: templates/registration/password_reset_email.txt:5
 #, python-format
