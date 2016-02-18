@@ -17,7 +17,6 @@ article_dict = {
 
 
 urlpatterns = patterns('',
-    #Uncomment the line below and put the correct project name
     (r'^$','bitakora.views.index'),
     url(r'^category/(?P<slug>[\-\d\w]+)$','bitakora.views.category', name='category'),
     url(r'^top_stories$', 'bitakora.views.top_stories', name='top_stories'),
@@ -33,6 +32,7 @@ urlpatterns = patterns('',
 
     url(r'^voting/(?P<object_id>\d+)/(?P<direction>up|down|clear)?$', vote_on_object, article_dict, name="vote_on_object"),
     url(r'^photologue/', include('photologue.urls', namespace='photologue')),
+    
     (r'^admin/', include(admin.site.urls)),
 
     url(r'^ajax/get_categories$', DataGetCategories.as_view(), name='get_categories'),

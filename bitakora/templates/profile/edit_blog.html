@@ -61,6 +61,19 @@
         		        </div>
         	        </div>
         	    </div>
+              {% elif field.name == 'license' %}
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for="id_license" class="control-label  ">{% trans 'License' %}</label>
+                        <ul>
+                            {% for radio in field %}
+                            <li class="list-unstyled">
+                                {{radio}} {% if radio.choice_label == 'CC-BY-SA' %}(<a href="{% url 'about' %}#license">{% trans 'What is CC-BY-SA license?' %}</a>){% endif %}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
         	    {% else %}
         	    <div class="col-sm-12">
                     {{field|bootstrap}}

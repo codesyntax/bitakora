@@ -64,7 +64,10 @@
 				<hr/>
 				<h4>{{blog.user.get_fullname}}</h4>
 				{% if blog.user.bio %}<p>{{blog.user.bio|safe}}</p>{% endif %}
-				<p>{% if blog.user.twitter_id %}<a href="http://twitter.com/{{blog.user.twitter_id}}">Twitter</a>{% endif %} {% if blog.user.facebook_id %}<a href="http://facebook.com/{{blog.user.facebook_id}}">Facebook</a>{% endif %}</p>
+				<p>
+                    {% if blog.user.twitter_id %}<a href="http://twitter.com/{{blog.user.twitter_id}}"><img src="{{STATIC_URL}}img/share/twitter_icon.png"/></a>{% endif %}
+                    {% if blog.user.facebook_id %}<a href="http://facebook.com/{{blog.user.facebook_id}}"><img src="{{STATIC_URL}}img/share/facebook_icon.png"/></a>{% endif %}
+                </p>
 			</div>
 		</div>
 

@@ -22,7 +22,12 @@ h1{
     font-weight:400;
 }
 h2{
-    font-weight:200;
+    font-weight:400;
+    font-size:40px;
+}
+h3{
+    font-size:30px;
+    font-weight:600;
 }
 .btn-primary {
     background-color: #c00;
@@ -127,6 +132,18 @@ p.postlist{
     font-size:14px;
     color:#666;
 }
+.related-posts ul{
+    list-style:none;    
+}
+.related-posts li{
+    background: url("/static/img/related_li.gif") no-repeat 0 8px;
+    padding-left:35px;
+    list-style:none;
+}
+.comments .media-object{
+    border-radius:50%;
+    margin-right:10px;
+}
 /*eskuma*/
 .well {
     background-color: #ffe5e5;
@@ -135,7 +152,7 @@ p.postlist{
     border-radius:0;
 }
 .well h4 {
-    border-bottom: 1px solid #f5b6b6;
+    border-bottom: 1px solid white;
     font-family: 'Kanit', sans-serif;
     font-weight:200;
 }
@@ -145,19 +162,18 @@ p.postlist{
 .well .media-body h4{
     border:none;
 }
-.well .media img.pull-left{
-    border: 2px solid #f5b6b6;   
+.well .media img.pull-left{   
     padding-right:0;
     margin-right:10px;
     border-radius:9999px;
 }
-.userpanel img{
-    border: 2px solid #f5b6b6;   
+.userpanel img.img-thumbnail{
+    border: 2px solid #666;   
     border-radius:9999px;
 }
 .userpanel hr{
-    border-top:1px solid #f5b6b6;
-    border-bottom:1px solid #f5b6b6;
+    border-top:1px solid #666;
+    border-bottom:1px solid white;
 }
 .userpanel h4{
     text-align:center;
@@ -173,7 +189,7 @@ p.postlist{
     font-weight: 600;
     line-height: 1;
 }
-.articletext p{
+.articletext p, .articletext ul, .articletext ol{
     font-family:georgia;
     font-size: 22px;
     font-style: normal;
@@ -249,4 +265,23 @@ p.postlist{
 
 footer{
     font-size: 14px;
+    padding:20px;
+    background-color:#efefef;
+    margin: 20px 0 0 0;
+}
+footer .footer-actions{
+    text-align:left;
+}
+
+footer .footer-actions a{
+    color:#333 !important;
+    margin:0 10px;
+    text-transform:uppercase;
+}
+footer .footer-actions a:first-child{
+    margin-left:0;
+}
+footer iframe{
+    margin-top:30px;
+    margin-bottom:30px;
 }
