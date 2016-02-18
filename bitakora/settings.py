@@ -163,8 +163,6 @@ ALLOWED_HOSTS = ("127.0.0.1", "beta.blogak.eus","blogak.eus","www.blogak.eus")
 TINYMCE_JS_URL = STATIC_URL + 'js/tinymce/tinymce.min.js'
 TINYMCE_JS_ROOT = STATIC_ROOT + 'js/tinymce/tinymce.min.js'
 
-INCLUDE_AUTH_URLS = False
-
 try:
     from server_settings import *
 except:
