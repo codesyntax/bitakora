@@ -68,7 +68,7 @@ def add_article(request,blogslug):
             article.save()
             form.save_m2m()
             if form.cleaned_data['send_notification']:
-                send_mail(_('New article to publish'), _('%s wants to publish this article: http://%s%s') % (article.blog.user.get_fullname, Site.objects.get_current().domain, article.get_absolute_url()), settings.DEFAULT_FROM_EMAIL, [settings.BITAKORA_SEND_MAIL], fail_silently=False)
+                send_mail(_('New article to publish'), _('%s wants to publish this article: http://%s%s') % (article.blog.user.get_fullname(), Site.objects.get_current().domain, article.get_absolute_url()), settings.DEFAULT_FROM_EMAIL, [settings.BITAKORA_SEND_MAIL], fail_silently=False)
             return HttpResponseRedirect(reverse('article', kwargs={'blogslug': blogslug,'slug': article.slug}))
     else:
         form = ArticleForm()
@@ -91,7 +91,7 @@ def edit_article(request,blogslug,slug):
             article.save()
             form.save_m2m()
             if form.cleaned_data['send_notification']:
-                send_mail(_('New article to publish'), _('%s wants to publish this article: http://%s%s') % (article.blog.user.get_fullname, Site.objects.get_current().domain, article.get_absolute_url()), settings.DEFAULT_FROM_EMAIL, [settings.BITAKORA_SEND_MAIL], fail_silently=False)
+                send_mail(_('New article to publish'), _('%s wants to publish this article: http://%s%s') % (article.blog.user.get_fullname(), Site.objects.get_current().domain, article.get_absolute_url()), settings.DEFAULT_FROM_EMAIL, [settings.BITAKORA_SEND_MAIL], fail_silently=False)
             return HttpResponseRedirect(reverse('article', kwargs={'blogslug': blogslug,'slug': article.slug}))
         else:
             form.fields['categories'].widget.choices = [(c.id,c.title) for c in Category.objects.filter(id__in=form.cleaned_data['categories'])]
