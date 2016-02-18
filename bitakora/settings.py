@@ -169,6 +169,7 @@ except:
     pass
 
 try:
+    pass
     #from bitakora.s3storage.settings_s3boto import *
 except:
     pass
