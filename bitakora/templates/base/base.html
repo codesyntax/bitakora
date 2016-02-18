@@ -40,10 +40,10 @@
                 <div class="social-buttons nav navbar-nav">
                     {% if article %}
                         <div class="tweet-this">
-                            <a href="https://twitter.com/intent/tweet?url={{HOST}}{{article.get_absolute_url|urlencode}}&amp;text={{article.title|urlencode}}{% if article.blog.user.twitter_id %}&via={{article.blog.user.twitter_id}}{% endif %}" target="_blank">Post to Twitter</a>
+                            <a href="https://twitter.com/intent/tweet?url=http://{{HOST}}{{article.get_absolute_url|urlencode}}&amp;text={{article.title|urlencode}}{% if article.blog.user.twitter_id %}&via={{article.blog.user.twitter_id}}{% endif %}" target="_blank">Post to Twitter</a>
                         </div>
                         <div class="facebook-this">
-                            <a href="http://www.facebook.com/share.php?u={{HOST}}{{article.get_absolute_url|urlencode}}" target="_blank">Post to Facebook</a>
+                            <a href="http://www.facebook.com/share.php?u=http://{{HOST}}{{article.get_absolute_url|urlencode}}" target="_blank">Post to Facebook</a>
                         </div>
                         <div class="whatsapp-this hidden-lg">
                             <a href="whatsapp://send?text={{article.title}}%20{{request.build_absolute_uri}}">Post to Whatsapp</a>
