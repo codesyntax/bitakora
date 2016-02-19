@@ -180,6 +180,9 @@ p.postlist{
     border:none;
     margin-top:0;
 }
+ul.config-list li{
+    margin:20px 0 20px 0;
+}
 /*artikulua*/
 .articletext h1{
     color: #333;
@@ -284,4 +287,23 @@ footer .footer-actions a:first-child{
 footer iframe{
     margin-top:30px;
     margin-bottom:30px;
+}
+
+
+@media only screen and (max-width: 550px) {
+    h1{
+        font-size:36px !important;
+    }
+    h2{
+        font-size:30px !important;
+    }
+    h2.postlist{
+        font-size:30px !important;
+    }
+    .dropdown-menu.pull-right{
+        float:left !important;
+    }
+    .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:focus, .navbar-inverse .navbar-nav > .open > a:hover {
+        background-color: #222;
+    }
 }
