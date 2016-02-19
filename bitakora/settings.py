@@ -158,6 +158,8 @@ HAYSTACK_CONNECTIONS = {
     },
 }
 
+SESSION_COOKIE_AGE = 63000000
+
 ALLOWED_HOSTS = ("127.0.0.1", "beta.blogak.eus","blogak.eus","www.blogak.eus")
 
 TINYMCE_JS_URL = STATIC_URL + 'js/tinymce/tinymce.min.js'
