@@ -8,3 +8,8 @@ AWS_STORAGE_BUCKET_NAME = 'media.blogak.eus'
 AWS_S3_CUSTOM_DOMAIN= 'media.blogak.eus'
 MEDIA_URL = 'http://%s/media/' % AWS_STORAGE_BUCKET_NAME
 STATIC_URL = 'http://%s/static/' % AWS_STORAGE_BUCKET_NAME
+
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
+if hasattr(ssl, '_create_unverified_context'):
+   ssl._create_default_https_context = ssl._create_unverified_context
