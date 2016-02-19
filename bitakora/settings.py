@@ -96,6 +96,7 @@ INSTALLED_APPS = (
     'sortedm2m',
     'photologue',
     'registration',
+    'cssocialuser',
     'voting',
     'captcha',
     'tinymce',
@@ -171,8 +172,7 @@ except:
     pass
 
 try:
-    pass
-    #from bitakora.s3storage.settings_s3boto import *
+    from bitakora.s3storage.settings_s3boto import *
 except:
     pass
 
