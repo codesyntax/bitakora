@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-18 15:29+0100\n"
+"POT-Creation-Date: 2016-02-19 12:02+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -83,19 +83,19 @@ msgstr ""
 msgid "Valid formats: jpg, png, gif."
 msgstr ""
 
-#: base/forms.py:17 base/models.py:127 base/models.py:243
+#: base/forms.py:17 base/models.py:130 base/models.py:262
 msgid "Text"
 msgstr ""
 
-#: base/forms.py:18 base/models.py:106 base/models.py:142
+#: base/forms.py:18 base/models.py:109 base/models.py:145
 msgid "Categories"
 msgstr ""
 
-#: base/forms.py:19 base/models.py:149 templates/base/article.html.py:121
+#: base/forms.py:19 base/models.py:152 templates/base/article.html.py:121
 msgid "Related posts"
 msgstr ""
 
-#: base/forms.py:20 base/models.py:131 base/models.py:246
+#: base/forms.py:20 base/models.py:134 base/models.py:265
 #: templates/base/dashboard.html:21 templates/base/dashboard_comments.html:22
 msgid "Status"
 msgstr ""
@@ -109,17 +109,17 @@ msgstr ""
 msgid "Header image"
 msgstr ""
 
-#: base/forms.py:80 base/forms.py:91 base/models.py:48
+#: base/forms.py:80 base/forms.py:91 base/models.py:51
 #: templates/base/new_blog.html:60 templates/profile/edit_blog.html.py:51
 msgid "Template"
 msgstr ""
 
-#: base/forms.py:81 base/forms.py:92 base/models.py:51
+#: base/forms.py:81 base/forms.py:92 base/models.py:54
 #: templates/base/new_blog.html:76 templates/profile/edit_blog.html.py:67
 msgid "License"
 msgstr ""
 
-#: base/forms.py:82 base/forms.py:93 base/models.py:46
+#: base/forms.py:82 base/forms.py:93 base/models.py:49
 msgid "Analytics code"
 msgstr ""
 
@@ -135,140 +135,140 @@ msgstr ""
 msgid "Please, select your Wordpress XML file"
 msgstr ""
 
-#: base/models.py:26
+#: base/models.py:29
 msgid "One page wonder"
 msgstr ""
 
-#: base/models.py:27
+#: base/models.py:30
 msgid "Minimalist"
 msgstr ""
 
-#: base/models.py:33
+#: base/models.py:36
 msgid "CC-BY-SA"
 msgstr ""
 
-#: base/models.py:34
+#: base/models.py:37
 msgid "Copyright"
 msgstr ""
 
-#: base/models.py:40
+#: base/models.py:43
 msgid "Name"
 msgstr ""
 
-#: base/models.py:41 base/models.py:97 base/models.py:123
+#: base/models.py:44 base/models.py:100 base/models.py:126
 msgid "URL"
 msgstr ""
 
-#: base/models.py:42 base/models.py:98 base/models.py:124
+#: base/models.py:45 base/models.py:101 base/models.py:127
 msgid "Leave blank to have the URL auto-generated from the title."
 msgstr ""
 
-#: base/models.py:44
+#: base/models.py:47
 msgid "Tagline"
 msgstr ""
 
-#: base/models.py:54 base/models.py:235 photologue_custom/models.py:15
+#: base/models.py:57 base/models.py:254 photologue_custom/models.py:15
 msgid "Author"
 msgstr ""
 
-#: base/models.py:92 templates/footer.html.py:9
+#: base/models.py:95 templates/footer.html.py:9
 msgid "Blog"
 msgstr ""
 
-#: base/models.py:93
+#: base/models.py:96
 msgid "Blogs"
 msgstr ""
 
-#: base/models.py:96 base/models.py:122 templates/base/dashboard.html.py:20
+#: base/models.py:99 base/models.py:125 templates/base/dashboard.html.py:20
 msgid "Title"
 msgstr ""
 
-#: base/models.py:105 templates/index.html.py:8
+#: base/models.py:108 templates/index.html.py:8
 msgid "Category"
 msgstr ""
 
-#: base/models.py:117
+#: base/models.py:120
 msgid "Draft"
 msgstr ""
 
-#: base/models.py:118
+#: base/models.py:121
 msgid "Published"
 msgstr ""
 
-#: base/models.py:133
+#: base/models.py:136
 msgid "With Draft chosen, will only be shown for admin users on the site."
 msgstr ""
 
-#: base/models.py:135 templates/base/dashboard.html.py:22
+#: base/models.py:138 templates/base/dashboard.html.py:22
 msgid "Published from"
 msgstr ""
 
-#: base/models.py:136
+#: base/models.py:139
 msgid "With Published chosen, won't be shown until this time"
 msgstr ""
 
-#: base/models.py:138
+#: base/models.py:141
 msgid "Expires on"
 msgstr ""
 
-#: base/models.py:139
+#: base/models.py:142
 msgid "With Published chosen, won't be shown after this time"
 msgstr ""
 
-#: base/models.py:144
+#: base/models.py:147
 msgid "Allow comments"
 msgstr ""
 
-#: base/models.py:147
+#: base/models.py:150
 msgid "Featured Image"
 msgstr ""
 
-#: base/models.py:221
+#: base/models.py:240
 msgid "Article"
 msgstr ""
 
-#: base/models.py:222
+#: base/models.py:241
 msgid "Articles"
 msgstr ""
 
-#: base/models.py:229 templates/base/comment.html.py:24
+#: base/models.py:248 templates/base/comment.html.py:24
 #: templates/base/dashboard_comments.html:31
 msgid "Visible"
 msgstr ""
 
-#: base/models.py:230
+#: base/models.py:249
 msgid "Visible only for the admin"
 msgstr ""
 
-#: base/models.py:231
+#: base/models.py:250
 msgid "Not visible"
 msgstr ""
 
-#: base/models.py:238
+#: base/models.py:257
 msgid "Nick name"
 msgstr ""
 
-#: base/models.py:239
+#: base/models.py:258
 msgid "Email"
 msgstr ""
 
-#: base/models.py:240
+#: base/models.py:259
 msgid "Url"
 msgstr ""
 
-#: base/models.py:245
+#: base/models.py:264
 msgid "IP address"
 msgstr ""
 
-#: base/models.py:248
+#: base/models.py:267
 msgid "Publish date"
 msgstr ""
 
-#: base/models.py:259 templates/base/dashboard_comments.html.py:20
+#: base/models.py:278 templates/base/dashboard_comments.html.py:20
 msgid "Comment"
 msgstr ""
 
-#: base/models.py:260 templates/base/article.html.py:150
+#: base/models.py:279 templates/base/article.html.py:150
 #: templates/base/dashboard.html:12 templates/base/dashboard_comments.html:12
 msgid "Comments"
 msgstr ""
@@ -431,10 +431,12 @@ msgstr ""
 msgid "Bitakora home page"
 msgstr ""
 
-#: templates/base/base.html:97 templates/footer.html.py:17
+#: templates/base/base.html:98 templates/footer.html.py:18
+#, python-format
 msgid ""
 "Developed by <a href=\"http://www.codesyntax.com\">CodeSyntax</a>. Software: "
-"<a href=\"https://www.djangoproject.com/\">Django</a>."
+"<a href=\"%(footer_about)s#bitakora\">Bitakora</a> that is based on <a href="
+"\"https://www.djangoproject.com/\">Django</a> framework."
 msgstr ""
 
 #: templates/base/blog_index.html:35
@@ -562,6 +564,10 @@ msgstr ""
 msgid "390x400px (vertical)"
 msgstr ""
 
+#: templates/base/new_blog.html:80 templates/profile/edit_blog.html.py:71
+msgid "What is CC-BY-SA license?"
+msgstr ""
+
 #: templates/contact_form/contact_form.html:5
 msgid "Contact"
 msgstr ""
@@ -659,10 +665,6 @@ msgstr ""
 
 #: templates/profile/edit_blog.html:16
 msgid "Export"
-msgstr ""
-
-#: templates/profile/edit_blog.html:71
-msgid "What is CC-BY-SA license?"
 msgstr ""
 
 #: templates/profile/edit_blog.html:94

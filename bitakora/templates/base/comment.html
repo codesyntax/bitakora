@@ -9,7 +9,7 @@
     {% elif comment.user %}
         <img class="pull-left media-object" src="{{comment.user.get_photo.get_profile_url}}" alt="{{comment.user.photo.caption}}">
     {% else %}
-        <img class="pull-left media-object" src="{{PROFILE_PHOTO_DEFAULT.get_profile_url}}" alt="{{comment.nickname}}" width="30">
+        <img class="pull-left media-object" src="{{PROFILE_PHOTO_DEFAULT.get_profile_url}}" alt="{{comment.nickname}}">
     {% endif %}
     <div class="media-body">
         <h4 class="media-heading">
