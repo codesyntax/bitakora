@@ -3,6 +3,8 @@ from django.utils.timezone import now
 from django.db.models import Q, Sum
 from django.contrib.contenttypes.models import ContentType
 from datetime import datetime
+from datetime import timedelta
+from itertools import chain
 
 class PublishedManager(Manager):
     """
@@ -27,13 +29,14 @@ class PublishedManager(Manager):
             Q(status=CONTENT_STATUS_PUBLISHED))
 
 
-    def top_stories(self, limit=25):
-        from voting.models import Vote
+    def top_stories(self, limit=20):
         from bitakora.base.models import Article
-        ctype = ContentType.objects.get_for_model(Article)
-        results = Vote.objects.filter(content_type=ctype,time_stamp__lt=datetime.now()).values('object_id').annotate(score=Sum('vote'))
-        results = results.order_by('-score')
-        return [Article.objects.get(pk=item['object_id']) for item in results[:limit]]
+        from bitakora.base.models import CONTENT_STATUS_PUBLISHED
+
+        now = datetime.now()
+        month_ago = now - timedelta(days=30)
+        last_articles = Article.objects.filter(Q(publish_date__lte=now) & Q(publish_date__gte=month_ago) & Q(status=CONTENT_STATUS_PUBLISHED))
+        return sorted(last_articles, key = lambda art: (art.get_reverse_rating(), art.get_reverse_timestamp()))
 
     def bookmarks(self, user, limit=25):
         from voting.models import Vote

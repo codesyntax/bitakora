@@ -1,3 +1,4 @@
+import time
 from django.db import models
 from django.conf import settings
 from django.core.urlresolvers import reverse
@@ -12,6 +13,8 @@ from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 from datetime import datetime
 from django.template.defaultfilters import removetags, striptags, truncatechars
+from voting.models import Vote
+from django.contrib.contenttypes.models import ContentType
 
 try:
     from django.utils.timezone import now
@@ -213,6 +216,22 @@ class Article(models.Model):
     def save(self, *args, **kwargs):
         self.text = make_responsive(self.text)
         super(Article, self).save(*args, **kwargs)
+
+    def get_rating(self):
+        ctype = ContentType.objects.get_for_model(self)
+        votes = Vote.objects.filter(object_id=self.id, content_type=ctype).count()
+        comments = self.get_comments_count()
+        return votes + comments
+
+    def get_reverse_rating(self):
+        return self.get_rating() * -1
+
+    def get_timestamp(self):
+        dtt = self.publish_date.timetuple()
+        return time.mktime(dtt)
+
+    def get_reverse_timestamp(self):
+        return self.get_timestamp() * -1
 
     def __unicode__(self):
         return self.title
