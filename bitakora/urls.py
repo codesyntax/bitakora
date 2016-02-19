@@ -32,8 +32,6 @@ urlpatterns = patterns('',
 
     url(r'^voting/(?P<object_id>\d+)/(?P<direction>up|down|clear)?$', vote_on_object, article_dict, name="vote_on_object"),
     url(r'^photologue/', include('photologue.urls', namespace='photologue')),
-    
-    (r'^admin/', include(admin.site.urls)),
 
     url(r'^ajax/get_categories$', DataGetCategories.as_view(), name='get_categories'),
 
@@ -42,11 +40,12 @@ urlpatterns = patterns('',
     (r'^search/', include('haystack.urls')),
 
     url(r'^about/$', views.flatpage, {'url': '/about/'}, name='about'),
+    url(r'^contact/', include('contact_form.urls')),
+
+    (r'^admin/', include(admin.site.urls)),
 
     url(r'^ajax/categories/', 'bitakora.views.get_categories', name='ajax_categories'),
     url(r'^ajax/related_posts/', 'bitakora.views.get_related_posts', name='ajax_related_posts'),
-
-    url(r'^contact/', include('contact_form.urls')),
 
     (r'^', include('bitakora.base.urls')),
 )
