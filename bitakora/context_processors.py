@@ -6,6 +6,7 @@ BITAKORA_CUSTOM_LOGO = getattr(settings, 'BITAKORA_CUSTOM_LOGO', '')
 BITAKORA_CUSTOM_CSS = getattr(settings, 'BITAKORA_CUSTOM_CSS', '')
 BITAKORA_CUSTOM_MINILOGO = getattr(settings, 'BITAKORA_CUSTOM_MINILOGO', '')
 BITAKORA_CUSTOM_FAVICON = getattr(settings, 'BITAKORA_CUSTOM_FAVICON', '')
+BITAKORA_GA = getattr(settings, 'BITAKORA_GA', '')
 PROFILE_PHOTO_DEFAULT = getattr(settings, 'PROFILE_PHOTO_DEFAULT', '')
 
 def bitakora_custom(request):
@@ -18,6 +19,7 @@ def bitakora_custom(request):
         'CUSTOM_LOGO': BITAKORA_CUSTOM_LOGO,
         'CUSTOM_MINILOGO': BITAKORA_CUSTOM_MINILOGO,
         'CUSTOM_CSS': BITAKORA_CUSTOM_CSS,
+        'ANALYTICS_ID': BITAKORA_GA,
         'PROFILE_PHOTO_DEFAULT': photo,
         'HOST': get_current_site(request),
     }
