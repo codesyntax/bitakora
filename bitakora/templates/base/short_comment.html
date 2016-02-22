@@ -1,5 +1,5 @@
 {% extends 'base/comment.html' %}
 
 {% block text %}
-<a href="{% url 'article' comment.parent.blog.slug comment.parent.slug %}#{{comment.id}}">{{comment.text|safe|truncatechars:150}}</a>
+<a href="{% url 'article' comment.parent.blog.slug comment.parent.slug %}#{{comment.id}}">{{comment.text|striptags|truncatechars:150}}</a>
 {% endblock %}
