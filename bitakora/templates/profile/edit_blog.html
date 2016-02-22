@@ -13,7 +13,7 @@
   <ul class="nav nav-tabs" role="tablist">
     {% if user.get_blog %}<li role="presentation" class="active"><a href="#config" aria-controls="config" role="tab" data-toggle="tab">{% trans "Blog configuration" %}</a></li>{% endif %}
     <li role="presentation" {% if not user.get_blog %}class="active"{% endif %}><a href="#import" aria-controls="import" role="tab" data-toggle="tab">{% trans "Import" %}</a></li>
-    {% if user.get_blog %}<li role="presentation"><a href="#export" aria-controls="export" role="tab" data-toggle="tab">{% trans "Export" %}</a></li>{% endif %}
+    {% comment %}{% if user.get_blog %}<li role="presentation"><a href="#export" aria-controls="export" role="tab" data-toggle="tab">{% trans "Export" %}</a></li>{% endif %}{% endcomment %}
   </ul>
 
 

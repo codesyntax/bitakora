@@ -307,7 +307,7 @@ msgstr "artikuluen jarioa"
 
 #: templates/base.html:13 templates/base.html.py:81 templates/base/base.html:36
 msgid "Bitakora"
-msgstr "Blogak"
+msgstr "Blogak.eus - Bloga euskaraz sortzeko zerbitzua"
 
 #: templates/base.html:54
 msgid "We use Cookies but we dont keep your personal data."
