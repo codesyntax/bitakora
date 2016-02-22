@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Blogak.eus\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-19 12:02+0100\n"
+"POT-Creation-Date: 2016-02-22 12:04+0100\n"
 "PO-Revision-Date: 2016-01-12 12:07+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -225,8 +225,6 @@ msgid "Allow comments"
 msgstr "Komentarioak onartu"
 
 #: base/models.py:150
-#, fuzzy
-#| msgid "Featured image"
 msgid "Featured Image"
 msgstr "Albistearen irudi nagusia"
 
@@ -309,7 +307,7 @@ msgstr "artikuluen jarioa"
 
 #: templates/base.html:13 templates/base.html.py:81 templates/base/base.html:36
 msgid "Bitakora"
-msgstr "Bitakora"
+msgstr "Blogak"
 
 #: templates/base.html:54
 msgid "We use Cookies but we dont keep your personal data."
@@ -610,7 +608,7 @@ msgstr ""
 msgid "Contact mail from"
 msgstr "Mezua hemendik"
 
-#: templates/footer.html:7 templates/registration/login.html.py:26
+#: templates/footer.html:7 templates/registration/login.html.py:29
 msgid "Contact us"
 msgstr "Jarri harremanetan"
 
@@ -733,19 +731,11 @@ msgstr "Erabiltzailearen irudia"
 msgid "You don't have a photo yet"
 msgstr "Aizu. Oraindik ez duzu irudirik, e?"
 
-#: templates/profile/edit_personal.html:45
-msgid "Twitter linked"
-msgstr "Twitter lotuta"
-
-#: templates/profile/edit_personal.html:48
+#: templates/profile/edit_personal.html:50
 msgid "Link Twitter for this user"
 msgstr "Lotu Twitter"
 
-#: templates/profile/edit_personal.html:55
-msgid "Facebook linked"
-msgstr "Facebook lotuta"
-
-#: templates/profile/edit_personal.html:58
+#: templates/profile/edit_personal.html:62
 msgid "Link Facebook for this user"
 msgstr "Lotu Facebook"
 
@@ -785,18 +775,18 @@ msgid "Sign in with Facebook"
 msgstr "Facebook bidez"
 
 #: templates/registration/login.html:23
-msgid "Sign in"
+msgid "Sign in "
 msgstr "Sartu"
 
-#: templates/registration/login.html:23
+#: templates/registration/login.html:25
 msgid "Forgot your password?"
 msgstr "Pasahitza ahaztu duzu?"
 
-#: templates/registration/login.html:25
+#: templates/registration/login.html:28
 msgid "Create new account"
 msgstr "Sortu kontu berria"
 
-#: templates/registration/login.html:26
+#: templates/registration/login.html:29
 msgid "Any problem?"
 msgstr "Arazoren bat?"
 
@@ -997,6 +987,3 @@ msgstr "Sartu / Izena eman"
 
 msgid "Enter the same password as before, for verification."
 msgstr "Sartu aurreko pasahitz bera baieztapenerako."
-
-msgid "Username"
-msgstr "Erabiltzailea"
