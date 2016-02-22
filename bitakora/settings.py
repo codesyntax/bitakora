@@ -128,6 +128,8 @@ ACCOUNT_ACTIVATION_DAYS = 5
 
 AUTH_USER_MODEL = "accounts.BitakoraUser"
 
+REGISTRATION_FORM = 'bitakora.accounts.forms.RegistrationForm'
+
 SECRET_KEY = ''
 
 RECAPTCHA_PUBLIC_KEY = ''
@@ -171,10 +173,10 @@ try:
 except:
     pass
 
-try:
-    from bitakora.s3storage.settings_s3boto import *
-except:
-    pass
+# try:
+#     from bitakora.s3storage.settings_s3boto import *
+# except:
+#     pass
 
 try:
    from tiny_mce_settings import *

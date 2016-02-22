@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-19 12:02+0100\n"
+"POT-Creation-Date: 2016-02-22 12:04+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -589,7 +589,7 @@ msgstr ""
 msgid "Contact mail from"
 msgstr ""
 
-#: templates/footer.html:7 templates/registration/login.html.py:26
+#: templates/footer.html:7 templates/registration/login.html.py:29
 msgid "Contact us"
 msgstr ""
 
@@ -710,19 +710,11 @@ msgstr ""
 msgid "You don't have a photo yet"
 msgstr ""
 
-#: templates/profile/edit_personal.html:45
-msgid "Twitter linked"
-msgstr ""
-
-#: templates/profile/edit_personal.html:48
+#: templates/profile/edit_personal.html:50
 msgid "Link Twitter for this user"
 msgstr ""
 
-#: templates/profile/edit_personal.html:55
-msgid "Facebook linked"
-msgstr ""
-
-#: templates/profile/edit_personal.html:58
+#: templates/profile/edit_personal.html:62
 msgid "Link Facebook for this user"
 msgstr ""
 
@@ -762,18 +754,18 @@ msgid "Sign in with Facebook"
 msgstr ""
 
 #: templates/registration/login.html:23
-msgid "Sign in"
-msgstr ""
-
-#: templates/registration/login.html:23
-msgid "Forgot your password?"
+msgid "Sign in "
 msgstr ""
 
 #: templates/registration/login.html:25
+msgid "Forgot your password?"
+msgstr ""
+
+#: templates/registration/login.html:28
 msgid "Create new account"
 msgstr ""
 
-#: templates/registration/login.html:26
+#: templates/registration/login.html:29
 msgid "Any problem?"
 msgstr ""
 
