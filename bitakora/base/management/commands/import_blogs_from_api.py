@@ -46,9 +46,9 @@ def import_blogs_from_api(username=None, onlyone=False, debug=False):
                 'bio': dataset['description'],
             }
 
-            password = pass_data.get(dataset['slug']) and pass_data[dataset['slug']].get('password', dataset['slug']) or dataset['slug']
+            password = pass_data.get(dataset['slug']) and pass_data[dataset['slug']]['password'] or dataset['slug']
             if '{SSHA}' in password:
-                userdata['password'] = userdata['password'].replace("{SSHA}","")
+                userdata['password'] = password.replace("{SSHA}","")
             else:
                 userdata['password'] = make_password(password)
             	
