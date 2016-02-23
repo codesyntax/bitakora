@@ -174,7 +174,7 @@ except:
     pass
 
 try:
-    #from bitakora.s3storage.settings_s3boto import *
+    from bitakora.s3storage.settings_s3boto import *
     pass
 except:
     pass
