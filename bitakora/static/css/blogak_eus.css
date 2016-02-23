@@ -20,6 +20,7 @@ h1, h2{
 }
 h1{
     font-weight:400;
+    font-size:46px;
 }
 h2{
     font-weight:400;
@@ -90,8 +91,21 @@ h3{
     line-height:20px;
 }
 /***/
+.headline h1{
+    padding-bottom:0px;
+    font-size:38px;
+    text-transform:uppercase;
+}
+.headline h2{
+    border-top:1px dotted #CA5F5D;
+
+    font-size:28px;
+    padding-top:10px;
+    margin-top:10px;
+}
 .headline p{
     margin-bottom:20px;
+    font-size:24px;
 }
 
 /***/
@@ -151,6 +165,15 @@ p.postlist{
     border-radius:50%;
     margin-right:10px;
     padding:0;
+}
+/***/
+
+.anchor {
+    margin-top:-50px;
+    padding-top:50px;
+}
+.media.anchor:first-child{
+    margin-top:-50px;    
 }
 /*eskuma*/
 .well {
@@ -324,4 +347,7 @@ footer iframe{
     footer .text-right{
         text-align:left !important;
       }
+    .header-image .container {
+        padding-top:40px;
+    }
 }
