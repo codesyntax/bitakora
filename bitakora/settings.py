@@ -174,17 +174,17 @@ except:
     pass
 
 try:
-    from bitakora.s3storage.settings_s3boto import *
-    pass
-except:
-    pass
-
-try:
    from tiny_mce_settings import *
 except:
    pass
 
 try:
     from local_settings import *
+except:
+    pass
+
+try:
+    if not DEBUG:
+        from bitakora.s3storage.settings_s3boto import *
 except:
     pass
