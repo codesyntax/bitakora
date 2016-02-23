@@ -2,6 +2,7 @@
 {% load i18n bootstrap voting_tags %}
 
 {% block extracss %}
+    <link rel="alternate" type="application/atom+xml" title="{{blog.name}} RSS" href="http://{{HOST}}{% url 'blog_index' blog.slug %}/rss" />
     <link href="{{STATIC_URL}}js/lightbox/css/lightbox.css" rel="stylesheet">
 
     <meta name="twitter:card" content="summary" />
