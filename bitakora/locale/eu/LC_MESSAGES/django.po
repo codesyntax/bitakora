@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Blogak.eus\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-22 12:04+0100\n"
+"POT-Creation-Date: 2016-02-23 12:43+0100\n"
 "PO-Revision-Date: 2016-01-12 12:07+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -38,13 +38,36 @@ msgstr "Baimenak"
 msgid "User management"
 msgstr "Erabiltzaile kudeaketa"
 
-#: accounts/forms.py:17
+#: accounts/forms.py:19
 msgid "Please type your current password."
 msgstr "Idatzi zure oraingo pasahitza mesedez."
 
-#: accounts/forms.py:22
+#: accounts/forms.py:24
 msgid "The new passwords are not the same"
 msgstr "Pasahitzak ez dira berdinak"
+
+#: accounts/forms.py:31
+#, fuzzy
+#| msgid "User management"
+msgid "Username"
+msgstr "Erabiltzaile kudeaketa"
+
+#: accounts/forms.py:32
+#, fuzzy
+#| msgid "Email"
+msgid "E-mail"
+msgstr "Eposta"
+
+#: accounts/forms.py:45
+msgid ""
+"This username contains spaces. Please, register an username without spaces."
+msgstr ""
+
+#: accounts/forms.py:54
+msgid ""
+"This email address is already in use. Please supply a different email "
+"address."
+msgstr ""
 
 #: accounts/models.py:18
 msgid "BitakoraUser"
@@ -108,17 +131,17 @@ msgid "Send notification"
 msgstr "Sustatun ere argitaratu nahi dut"
 
 #: base/forms.py:79 base/forms.py:90 templates/base/new_blog.html.py:40
-#: templates/profile/edit_blog.html:31
+#: templates/profile/edit_blog.html:32
 msgid "Header image"
 msgstr "Goiburuko irudi nagusia"
 
 #: base/forms.py:80 base/forms.py:91 base/models.py:51
-#: templates/base/new_blog.html:60 templates/profile/edit_blog.html.py:51
+#: templates/base/new_blog.html:60 templates/profile/edit_blog.html.py:52
 msgid "Template"
 msgstr "Txantiloia"
 
 #: base/forms.py:81 base/forms.py:92 base/models.py:54
-#: templates/base/new_blog.html:76 templates/profile/edit_blog.html.py:67
+#: templates/base/new_blog.html:76 templates/profile/edit_blog.html.py:68
 msgid "License"
 msgstr "Lizentzia"
 
@@ -236,7 +259,7 @@ msgstr "Artikulua"
 msgid "Articles"
 msgstr "Artikuluak"
 
-#: base/models.py:248 templates/base/comment.html.py:24
+#: base/models.py:248 templates/base/comment.html.py:25
 #: templates/base/dashboard_comments.html:31
 msgid "Visible"
 msgstr "Ikusgai"
@@ -304,6 +327,22 @@ msgstr "Artikuluak"
 #: rss/feeds.py:19
 msgid " articles feed"
 msgstr "artikuluen jarioa"
+
+#: templates/404.html:4 templates/404.html.py:9
+msgid "This page does not exist!"
+msgstr ""
+
+#: templates/500.html:4 templates/500.html.py:9
+#, fuzzy
+#| msgid "Search something here..."
+msgid "Something went wrong..."
+msgstr "Bilatu zeozer hemen..."
+
+#: templates/500.html:11
+msgid ""
+"The server has some errors this moment. Probably we are maintaining it... "
+"Please, <a href=\"{{contact_url}}\">contact us</a> for more information."
+msgstr ""
 
 #: templates/base.html:13 templates/base.html.py:81 templates/base/base.html:36
 msgid "Bitakora"
@@ -380,7 +419,7 @@ msgstr "Artikulu berria"
 
 #: templates/base/add_article.html:57 templates/base/article.html.py:170
 #: templates/base/new_blog.html:94 templates/contact_form/contact_form.html:12
-#: templates/profile/edit_blog.html:85 templates/profile/edit_pass.html:13
+#: templates/profile/edit_blog.html:86 templates/profile/edit_pass.html:13
 #: templates/registration/password_reset_confirm.html:14
 #: templates/registration/password_reset_form.html:16
 msgid "Submit"
@@ -479,15 +518,15 @@ msgstr ""
 msgid "Sindication"
 msgstr "Sindikazioa"
 
-#: templates/base/comment.html:24 templates/base/dashboard_comments.html:31
+#: templates/base/comment.html:25 templates/base/dashboard_comments.html:31
 msgid "Comment status"
 msgstr "Iruzkinaren egoera"
 
-#: templates/base/comment.html:24 templates/base/dashboard_comments.html:31
+#: templates/base/comment.html:25 templates/base/dashboard_comments.html:31
 msgid "Visible only for admin"
 msgstr "Administratzailearentzat ikusgai soilik"
 
-#: templates/base/comment.html:24 templates/base/dashboard_comments.html:31
+#: templates/base/comment.html:25 templates/base/dashboard_comments.html:31
 #: templates/useroptions.html:14
 msgid "Delete"
 msgstr "Ezabatu"
@@ -561,7 +600,7 @@ msgstr "Hutsetik sortu"
 msgid "Import from Wordpress"
 msgstr "Wordpressetik inportatu"
 
-#: templates/base/new_blog.html:45 templates/profile/edit_blog.html.py:36
+#: templates/base/new_blog.html:45 templates/profile/edit_blog.html.py:37
 msgid ""
 "This is your default header image. If you want to change it, select from "
 "your file system with the button below:"
@@ -569,19 +608,19 @@ msgstr ""
 "Hauxe da zure blogeko goiburuko irudia. Aldatu nahi baduzu, igo berria zure "
 "ordenagailutik:"
 
-#: templates/base/new_blog.html:47 templates/profile/edit_blog.html.py:38
+#: templates/base/new_blog.html:47 templates/profile/edit_blog.html.py:39
 msgid "Recommended sizes:"
 msgstr "Gomendatutako neurriak:"
 
-#: templates/base/new_blog.html:49 templates/profile/edit_blog.html.py:40
+#: templates/base/new_blog.html:49 templates/profile/edit_blog.html.py:41
 msgid "1900x300px (horizontal)"
 msgstr "1900*300px (txantiloi horizontalentzat)"
 
-#: templates/base/new_blog.html:50 templates/profile/edit_blog.html.py:41
+#: templates/base/new_blog.html:50 templates/profile/edit_blog.html.py:42
 msgid "390x400px (vertical)"
 msgstr "390*400px (txantiloi bertikalentzat)"
 
-#: templates/base/new_blog.html:80 templates/profile/edit_blog.html.py:71
+#: templates/base/new_blog.html:80 templates/profile/edit_blog.html.py:72
 msgid "What is CC-BY-SA license?"
 msgstr "Zer da CC-BY-SA lizentzia?"
 
@@ -684,15 +723,11 @@ msgstr "Zure blogeko datuak"
 msgid "Blog configuration"
 msgstr "Blogaren konfigurazioa"
 
-#: templates/profile/edit_blog.html:16
-msgid "Export"
-msgstr "Exportatu"
-
-#: templates/profile/edit_blog.html:94
+#: templates/profile/edit_blog.html:95
 msgid "Export your blog data to WordPress XML format"
 msgstr "Zure bloga exportatu WordPress XML formatura"
 
-#: templates/profile/edit_blog.html:95
+#: templates/profile/edit_blog.html:96
 msgid "Export your blog"
 msgstr "Zure bloga exportatu"
 
@@ -738,6 +773,55 @@ msgstr "Lotu Twitter"
 #: templates/profile/edit_personal.html:62
 msgid "Link Facebook for this user"
 msgstr "Lotu Facebook"
+
+#: templates/registration/activation_email.html:6
+msgid "registration"
+msgstr ""
+
+#: templates/registration/activation_email.html:11
+#, python-format
+msgid ""
+"\n"
+"    You (or someone pretending to be you) have asked to register an account "
+"at\n"
+"    %(site_name)s.  If this wasn't you, please ignore this email\n"
+"    and your address will be removed from our records.\n"
+"    "
+msgstr ""
+"\n"
+"    Zu (edo zu izan nahi duen norbait) %(site_name)s gunean kontu bat "
+"at\n"
+"    sortzeko eskaera egin du.  Eskaera zuk egin ez baduzu, ahaztu eposta hau\n"
+"    eta zure helbidea ezabatuko dugu gure datu basetik.\n"
+"    "
+
+
+#: templates/registration/activation_email.html:18
+#, python-format
+msgid ""
+"\n"
+"    To activate this account, please click the following link within the "
+"next\n"
+"    %(expiration_days)s days:\n"
+"    "
+msgstr ""
+"\n"
+"    Kontu hau aktibatzeko, mesedez egin klik hurrengo loturan \n"
+"    %(expiration_days)s egun baino lehen:\n"
+"    "
+
+#: templates/registration/activation_email.html:30
+#, python-format
+msgid ""
+"\n"
+"    Sincerely,\n"
+"    %(site_name)s Management\n"
+"    "
+msgstr ""
+"\n"
+"    Agur bero bat,\n"
+"    %(site_name)s\n"
+"    "
 
 #: templates/registration/activation_email.txt:3
 msgid "Hello"
@@ -985,5 +1069,8 @@ msgstr "Irten"
 msgid "Sign in / Sign up"
 msgstr "Sartu / Izena eman"
 
-msgid "Enter the same password as before, for verification."
-msgstr "Sartu aurreko pasahitz bera baieztapenerako."
+#~ msgid "Export"
+#~ msgstr "Exportatu"
+
+#~ msgid "Enter the same password as before, for verification."
+#~ msgstr "Sartu aurreko pasahitz bera baieztapenerako."

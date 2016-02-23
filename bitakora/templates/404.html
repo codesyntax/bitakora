@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
 {% block title %}
-    Error 404 - blogak
+    Error 404 - {% trans 'This page does not exist!' %}
 {% endblock %}
 
 {% block body %}
 
-        <h1>blogak - Error 404</h1>
+        <h1>{% trans 'This page does not exist!' %}</h1>
 
-        <p><a href="/">Home</a></p>
+        <p>Please, try again with diffent address or go <a href="/">home</a>.</p>
 
 {% endblock %}

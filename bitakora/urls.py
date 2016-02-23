@@ -1,4 +1,5 @@
 from django.conf.urls import patterns, url, include
+from django.views.generic.base import RedirectView
 from django.views.generic import TemplateView
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from bitakora.views import DataGetCategories
@@ -27,6 +28,7 @@ urlpatterns = patterns('',
     url(r'^users/edit-blog$','bitakora.accounts.views.edit_blog', name='edit_blog'),
     url(r'^users/accounts/password/change/$','bitakora.accounts.views.edit_pass', name='pasahitza_aldatu'),
     url(r'^users/accounts/password/change/done/$','bitakora.accounts.views.pass_done', name='pasahitza_aldatuta'),
+    url(r'^accounts/profile/$', RedirectView.as_view(url='/users/edit-profile', permanent=False), name='users_profile'),
     (r'^users/accounts', include('registration.backends.default.urls')),
     (r'^users/', include('cssocialuser.urls')),
 

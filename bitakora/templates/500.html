@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
 {% block title %}
-    Error 500 - blogak
+    Error 500 - {% trans 'Something went wrong...' %}
 {% endblock %}
 
 {% block body %}
 
-        <h1>blogak - Error 500</h1>
-
-        <p><a href="/">Home</a></p>
+        <h1>{% trans 'Something went wrong...' %}</h1>
+        {% url 'contact_form' as contact_url %}
+        <p>{% trans 'The server has some errors this moment. Probably we are maintaining it... Please, <a href="{{contact_url}}">contact us</a> for more information.' %}</p>
 
 {% endblock %}
