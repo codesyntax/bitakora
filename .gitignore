@@ -3,3 +3,4 @@ bitakora.egg-info/
 local_settings.py
 server_settings.py
 *~
+settings_s3boto.py
