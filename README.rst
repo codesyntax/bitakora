@@ -22,7 +22,7 @@ Features
 Requirements
 ************
 
-Bitakora requires Django 1.8, Bootstrap 3.2 and Python 2.7
+Bitakora requires Django 1.9, Bootstrap 3.2 and Python 2.7
 
 *************
 Documentation
