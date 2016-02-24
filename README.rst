@@ -35,6 +35,16 @@ the details on how to install, extend and use the Bitakora.
 Quick start
 ***********
 
+*******
+Licence
+*******
+
+Bitakora is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Read more at `Bitakora licence <docs/index.rst#license>`_.
 
 ******************
 Commercial support
