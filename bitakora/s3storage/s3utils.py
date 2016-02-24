@@ -1,4 +1,6 @@
 from storages.backends.s3boto import S3BotoStorage
-    
-StaticS3BotoStorage = lambda: S3BotoStorage(location='static')
+from django.conf import settings
+
+if not settings.DEBUG:
+    StaticS3BotoStorage = lambda: S3BotoStorage(location='static')
 MediaS3BotoStorage = lambda: S3BotoStorage(location='media')
