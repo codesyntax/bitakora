@@ -84,7 +84,7 @@ def get_categories(request):
     results = []
     if request.is_ajax():
         q = request.GET.get('term', '')
-        results = [{'text': cat.title, 'id': cat.id} for cat in Category.objects.filter(title__icontains=q)]
+        results = [{'text': cat.title, 'id': cat.id} for cat in Category.objects.filter(title__istartswith=q)]
         data = json.dumps(results)
     else:
         data = []
