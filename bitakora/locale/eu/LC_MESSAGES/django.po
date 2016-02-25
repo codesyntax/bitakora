@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Blogak.eus\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-23 12:43+0100\n"
+"POT-Creation-Date: 2016-02-25 09:32+0100\n"
 "PO-Revision-Date: 2016-01-12 12:07+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -47,27 +47,25 @@ msgid "The new passwords are not the same"
 msgstr "Pasahitzak ez dira berdinak"
 
 #: accounts/forms.py:31
-#, fuzzy
-#| msgid "User management"
 msgid "Username"
-msgstr "Erabiltzaile kudeaketa"
+msgstr "Erabiltzaile izena"
 
 #: accounts/forms.py:32
-#, fuzzy
-#| msgid "Email"
 msgid "E-mail"
-msgstr "Eposta"
+msgstr "E-posta"
 
 #: accounts/forms.py:45
 msgid ""
 "This username contains spaces. Please, register an username without spaces."
 msgstr ""
+"Erabiltzaile izen honek hutsuneak ditu. Mesedez erregistratu hutsunerik gabeko erabiltzailea."
 
 #: accounts/forms.py:54
 msgid ""
 "This email address is already in use. Please supply a different email "
 "address."
-msgstr ""
+msgstr "Eposta hau dagoeneko erregistratuta dago. Mesedez sartu beste eposta "
+"helbide bat."
 
 #: accounts/models.py:18
 msgid "BitakoraUser"
@@ -117,7 +115,7 @@ msgstr "Testua"
 msgid "Categories"
 msgstr "Kategoriak"
 
-#: base/forms.py:19 base/models.py:152 templates/base/article.html.py:121
+#: base/forms.py:19 base/models.py:152 templates/base/article.html.py:122
 msgid "Related posts"
 msgstr "Antzeko artikuluak"
 
@@ -259,7 +257,7 @@ msgstr "Artikulua"
 msgid "Articles"
 msgstr "Artikuluak"
 
-#: base/models.py:248 templates/base/comment.html.py:25
+#: base/models.py:248 templates/base/comment.html.py:24
 #: templates/base/dashboard_comments.html:31
 msgid "Visible"
 msgstr "Ikusgai"
@@ -296,7 +294,7 @@ msgstr "Argitaratze-data"
 msgid "Comment"
 msgstr "Iruzkina"
 
-#: base/models.py:279 templates/base/article.html.py:150
+#: base/models.py:279 templates/base/article.html.py:151
 #: templates/base/dashboard.html:12 templates/base/dashboard_comments.html:12
 msgid "Comments"
 msgstr "Iruzkinak"
@@ -328,23 +326,27 @@ msgstr "Artikuluak"
 msgid " articles feed"
 msgstr "artikuluen jarioa"
 
-#: templates/404.html:4 templates/404.html.py:9
+#: templates/404.html:5 templates/404.html.py:10
 msgid "This page does not exist!"
-msgstr ""
+msgstr "Orrialde hau ez da existitzen!"
 
-#: templates/500.html:4 templates/500.html.py:9
-#, fuzzy
-#| msgid "Search something here..."
+#: templates/404.html:12
+msgid "Please, try again with diffent address or go <a href=\"/\">home</a>."
+msgstr "Mesedez, saiatu beste helbide batekin edo joan <a href=\"/\">sarrerara</a>."
+
+#: templates/500.html:5 templates/500.html.py:10
 msgid "Something went wrong..."
-msgstr "Bilatu zeozer hemen..."
+msgstr "Zerbait gaizki irten da..."
 
-#: templates/500.html:11
+#: templates/500.html:12
 msgid ""
 "The server has some errors this moment. Probably we are maintaining it... "
 "Please, <a href=\"{{contact_url}}\">contact us</a> for more information."
 msgstr ""
+"Zerbitzariak zenbait errore ditu une honetan. Ziurrenik mantenimentu lanetan gabiltza... "
+"Mesedez, <a href=\"{{contact_url}}\">jarri harremanetan gurekin</a> informazio gehiagorako."
 
-#: templates/base.html:13 templates/base.html.py:81 templates/base/base.html:36
+#: templates/base.html:13 templates/base.html.py:81 templates/base/base.html:37
 msgid "Bitakora"
 msgstr "Blogak.eus - Bloga euskaraz sortzeko zerbitzua"
 
@@ -370,7 +372,7 @@ msgstr "Pil-pilean"
 msgid "Bookmarks"
 msgstr "Gustukoak"
 
-#: templates/base.html:96 templates/base/base.html.py:62
+#: templates/base.html:96 templates/base/base.html.py:63
 #: templates/search/search.html:7 templates/search/search.html.py:22
 msgid "Search"
 msgstr "Bilatu"
@@ -417,7 +419,7 @@ msgstr "Ez da iruzkinik aurkitu..."
 msgid "New article"
 msgstr "Artikulu berria"
 
-#: templates/base/add_article.html:57 templates/base/article.html.py:170
+#: templates/base/add_article.html:57 templates/base/article.html.py:171
 #: templates/base/new_blog.html:94 templates/contact_form/contact_form.html:12
 #: templates/profile/edit_blog.html:86 templates/profile/edit_pass.html:13
 #: templates/registration/password_reset_confirm.html:14
@@ -433,53 +435,53 @@ msgstr "Aukeratu edo sortu kategoria bat"
 msgid "Select related articles"
 msgstr "Aukeratu erlazionatutako artikuluak (hasi izenburua idazten...)"
 
-#: templates/base/article.html:61
+#: templates/base/article.html:62
 msgid "This post is still in <strong>Draft</strong> status"
 msgstr "Adi. Mezu hau oraindik <strong>Zirriborro</strong> egoeran dago"
 
-#: templates/base/article.html:63
+#: templates/base/article.html:64
 #, python-format
 msgid "This post has still a future date: <strong>%(date)s</strong>"
 msgstr "Adi. Mezu honen data etorkizunekoa da: <strong>%(date)s</strong>"
 
-#: templates/base/article.html:101 templates/base/article.html.py:104
+#: templates/base/article.html:102 templates/base/article.html.py:105
 msgid "Like"
 msgstr "Datsegit"
 
-#: templates/base/article.html:166
+#: templates/base/article.html:167
 msgid "Leave a Comment:"
 msgstr "Utzi iruzkina:"
 
-#: templates/base/article.html:183
+#: templates/base/article.html:184
 msgid "Delete article"
 msgstr "Artikulua ezabatu"
 
-#: templates/base/article.html:186 templates/base/import_new_blog.html.py:35
+#: templates/base/article.html:187 templates/base/import_new_blog.html.py:35
 msgid "IMPORTANT!!"
 msgstr "Adi!! Garrantzitsua!!"
 
-#: templates/base/article.html:187
+#: templates/base/article.html:188
 msgid "Are you sure you want to DELETE this article?"
 msgstr "Ziur artikulua EZABATU nahi duzula? Ziur-ziur?"
 
-#: templates/base/article.html:188
+#: templates/base/article.html:189
 msgid "If you accept, this article will be DELETED irreversibly"
 msgstr "Onartzen baduzu, artikulua betirako ezabatuko da"
 
-#: templates/base/article.html:191 templates/base/import_new_blog.html.py:19
+#: templates/base/article.html:192 templates/base/import_new_blog.html.py:19
 #: templates/base/import_new_blog.html:40
 msgid "Close"
 msgstr "Itxi"
 
-#: templates/base/article.html:192 templates/base/import_new_blog.html.py:41
+#: templates/base/article.html:193 templates/base/import_new_blog.html.py:41
 msgid "Yes, I am sure"
 msgstr "Bai, ziur nago"
 
-#: templates/base/base.html:24
+#: templates/base/base.html:25
 msgid "Bitakora home page"
 msgstr "Bitakora hasiera-orria"
 
-#: templates/base/base.html:98 templates/footer.html.py:18
+#: templates/base/base.html:99 templates/footer.html.py:18
 #, python-format
 msgid ""
 "Developed by <a href=\"http://www.codesyntax.com\">CodeSyntax</a>. Software: "
@@ -518,15 +520,15 @@ msgstr ""
 msgid "Sindication"
 msgstr "Sindikazioa"
 
-#: templates/base/comment.html:25 templates/base/dashboard_comments.html:31
+#: templates/base/comment.html:24 templates/base/dashboard_comments.html:31
 msgid "Comment status"
 msgstr "Iruzkinaren egoera"
 
-#: templates/base/comment.html:25 templates/base/dashboard_comments.html:31
+#: templates/base/comment.html:24 templates/base/dashboard_comments.html:31
 msgid "Visible only for admin"
 msgstr "Administratzailearentzat ikusgai soilik"
 
-#: templates/base/comment.html:25 templates/base/dashboard_comments.html:31
+#: templates/base/comment.html:24 templates/base/dashboard_comments.html:31
 #: templates/useroptions.html:14
 msgid "Delete"
 msgstr "Ezabatu"
@@ -789,12 +791,11 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"    Zu (edo zu izan nahi duen norbait) %(site_name)s gunean kontu bat "
-"\n"
-"    sortzeko eskaera egin du.  Eskaera zuk egin ez baduzu, ahaztu eposta hau\n"
+"    Zu (edo zu izan nahi duen norbait) %(site_name)s gunean kontu bat \n"
+"    sortzeko eskaera egin du.  Eskaera zuk egin ez baduzu, ahaztu eposta "
+"hau\n"
 "    eta zure helbidea ezabatuko dugu gure datu basetik.\n"
 "    "
-
 
 #: templates/registration/activation_email.html:18
 #, python-format
