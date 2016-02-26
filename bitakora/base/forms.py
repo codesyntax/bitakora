@@ -84,7 +84,7 @@ class BlogForm(forms.ModelForm):
 
     class Meta:
         model = Blog
-        fields = ['name', 'tagline', 'header_image','template','license','analytics_code']
+        fields = ['name', 'tagline', 'header_image','template','license','custom_html','analytics_code']
 
 class BlogFormNoCaptcha(forms.ModelForm):
     header_image = forms.ImageField(label=_('Header image'),help_text=_('Valid formats: jpg, png, gif.'),required=False)
@@ -94,7 +94,7 @@ class BlogFormNoCaptcha(forms.ModelForm):
     
     class Meta:
         model = Blog
-        fields = ['name', 'tagline', 'header_image','template','license','analytics_code']
+        fields = ['name', 'tagline', 'header_image','template','license','custom_html','analytics_code']
 
     
 class CommentForm(forms.ModelForm):

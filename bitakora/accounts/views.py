@@ -58,6 +58,7 @@ def edit_blog(request):
                 blog.header_image = handle_uploaded_file(request.FILES['header_image'], user)
             blog.license = form.cleaned_data.get('license')
             blog.analytics_code = form.cleaned_data.get('analytics_code')
+            blog.custom_html = form.cleaned_data.get('custom_html')
             blog.template = form.cleaned_data.get('template')
             blog.save()
             msg = _('New blog data saved')

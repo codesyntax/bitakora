@@ -90,6 +90,14 @@
         </div>
         {% endif %}
 
+        {% if blog.custom_html %}
+        <div class="row well">
+            <div class="col-sm-12">
+                {{blog.custom_html|safe}}
+            </div>
+        </div>
+        {% endif %}
+
 		{% if blog.get_last_comments %}
 		<div class="row well">
 			<div class="col-sm-12">
