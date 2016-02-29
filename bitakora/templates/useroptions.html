@@ -15,6 +15,7 @@
 </li>
 
 {% endif %}
+
 <li>
     <a class="btn btn-default" href="{% url 'my_posts' user.get_blog.slug  %}">{% trans 'Dashboard' %}</a>
 </li>
@@ -29,7 +30,7 @@
     </a>
     <ul class="dropdown-menu pull-right">
         {% if user.get_blog %}
-        <li><a href="{% url 'blog_index' user.get_blog.slug %}"><i class="glyphicon glyphicon-home"></i> {% trans 'My blog' %}</a></li>
+            <li><a href="/{{user.get_blog.slug}}"><i class="glyphicon glyphicon-home"></i> {% trans 'My blog' %}</a></li>
         {% endif %}
         <li><a href="{% url 'cssocialuser_edit_profile' %}"><i class="glyphicon glyphicon-cog"></i> {% trans 'Settings' %}</a></li>
         <li role="separator" class="divider"></li>
