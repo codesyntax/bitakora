@@ -79,7 +79,7 @@ class BlogForm(forms.ModelForm):
     header_image = forms.ImageField(label=_('Header image'),help_text=_('Valid formats: jpg, png, gif.'),required=False)
     template = forms.ChoiceField(label=_('Template'), widget=forms.RadioSelect, choices=TEMPLATE_CHOICES,initial=DEFAULT_TEMPLATE)
     license = forms.ChoiceField(label=_('License'), widget=forms.RadioSelect, choices=LICENSE_CHOICES,initial=DEFAULT_LICENSE)
-    custom_html = forms.ChoiceField(label=_("Custom HTML"), help_text=_('Sidebar extra HTML information'))
+    custom_html = forms.CharField(label=_("Custom HTML"),widget=TinyMCE(mce_attrs=TINYMCE_DEFAULT_CONFIG), help_text=_('Sidebar extra HTML information'))
     analytics_code = forms.CharField(label=_('Analytics code'), widget=forms.Textarea, help_text=GOOGLE_URL_HTML,required=False)
     captcha = ReCaptchaField()
 
@@ -91,7 +91,7 @@ class BlogFormNoCaptcha(forms.ModelForm):
     header_image = forms.ImageField(label=_('Header image'),help_text=_('Valid formats: jpg, png, gif.'),required=False)
     template = forms.ChoiceField(label=_('Template'), widget=forms.RadioSelect, choices=TEMPLATE_CHOICES,initial=DEFAULT_TEMPLATE)
     license = forms.ChoiceField(label=_('License'), widget=forms.RadioSelect, choices=LICENSE_CHOICES,initial=DEFAULT_LICENSE)
-    custom_html = forms.ChoiceField(label=_("Custom HTML"), help_text=_('Sidebar extra HTML information'))
+    custom_html = forms.CharField(label=_("Custom HTML"),widget=TinyMCE(mce_attrs=TINYMCE_DEFAULT_CONFIG), help_text=_('Sidebar extra HTML information'))
     analytics_code = forms.CharField(label=_('Analytics code'), widget=forms.Textarea, help_text=GOOGLE_URL_HTML,required=False)
     
     class Meta:
