@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-26 17:20+0100\n"
+"POT-Creation-Date: 2016-02-29 11:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -98,7 +98,7 @@ msgstr ""
 msgid "Featured image"
 msgstr ""
 
-#: base/forms.py:16 base/forms.py:79 base/forms.py:90
+#: base/forms.py:16 base/forms.py:79 base/forms.py:91
 msgid "Valid formats: jpg, png, gif."
 msgstr ""
 
@@ -123,34 +123,42 @@ msgstr ""
 msgid "Send notification"
 msgstr ""
 
-#: base/forms.py:79 base/forms.py:90 templates/base/new_blog.html.py:40
-#: templates/profile/edit_blog.html:32
+#: base/forms.py:79 base/forms.py:91 templates/base/new_blog.html.py:40
+#: templates/profile/edit_blog.html:36
 msgid "Header image"
 msgstr ""
 
-#: base/forms.py:80 base/forms.py:91 base/models.py:52
-#: templates/base/new_blog.html:60 templates/profile/edit_blog.html.py:52
+#: base/forms.py:80 base/forms.py:92 base/models.py:52
+#: templates/base/new_blog.html:60 templates/profile/edit_blog.html.py:56
 msgid "Template"
 msgstr ""
 
-#: base/forms.py:81 base/forms.py:92 base/models.py:55
-#: templates/base/new_blog.html:76 templates/profile/edit_blog.html.py:68
+#: base/forms.py:81 base/forms.py:93 base/models.py:55
+#: templates/base/new_blog.html:76 templates/profile/edit_blog.html.py:72
 msgid "License"
 msgstr ""
 
-#: base/forms.py:82 base/forms.py:93 base/models.py:50
+#: base/forms.py:82 base/forms.py:94 base/models.py:49
+msgid "Custom HTML"
+msgstr ""
+
+#: base/forms.py:82 base/forms.py:94
+msgid "Sidebar extra HTML information"
+msgstr ""
+
+#: base/forms.py:83 base/forms.py:95 base/models.py:50
 msgid "Analytics code"
 msgstr ""
 
-#: base/forms.py:110 base/forms.py:123
+#: base/forms.py:112 base/forms.py:125
 msgid "Empty comment. Please, write something!"
 msgstr ""
 
-#: base/forms.py:127
+#: base/forms.py:129
 msgid "Wordpress file"
 msgstr ""
 
-#: base/forms.py:127
+#: base/forms.py:129
 msgid "Please, select your Wordpress XML file"
 msgstr ""
 
@@ -184,10 +192,6 @@ msgstr ""
 
 #: base/models.py:47
 msgid "Tagline"
-msgstr ""
-
-#: base/models.py:49
-msgid "Custom HTML"
 msgstr ""
 
 #: base/models.py:58 base/models.py:255 photologue_custom/models.py:15
@@ -339,7 +343,7 @@ msgid ""
 "Please, <a href=\"{{contact_url}}\">contact us</a> for more information."
 msgstr ""
 
-#: templates/base.html:13 templates/base.html.py:94 templates/base/base.html:37
+#: templates/base.html:13 templates/base.html.py:94 templates/base/base.html:39
 msgid "Bitakora"
 msgstr ""
 
@@ -363,7 +367,7 @@ msgstr ""
 msgid "Bookmarks"
 msgstr ""
 
-#: templates/base.html:109 templates/base/base.html.py:63
+#: templates/base.html:109 templates/base/base.html.py:65
 #: templates/search/search.html:7 templates/search/search.html.py:22
 msgid "Search"
 msgstr ""
@@ -412,7 +416,7 @@ msgstr ""
 
 #: templates/base/add_article.html:57 templates/base/article.html.py:171
 #: templates/base/new_blog.html:94 templates/contact_form/contact_form.html:12
-#: templates/profile/edit_blog.html:86 templates/profile/edit_pass.html:13
+#: templates/profile/edit_blog.html:90 templates/profile/edit_pass.html:13
 #: templates/registration/password_reset_confirm.html:14
 #: templates/registration/password_reset_form.html:16
 msgid "Submit"
@@ -468,11 +472,11 @@ msgstr ""
 msgid "Yes, I am sure"
 msgstr ""
 
-#: templates/base/base.html:25
+#: templates/base/base.html:27
 msgid "Bitakora home page"
 msgstr ""
 
-#: templates/base/base.html:99 templates/footer.html.py:18
+#: templates/base/base.html:101 templates/footer.html.py:18
 #, python-format
 msgid ""
 "Developed by <a href=\"http://www.codesyntax.com\">CodeSyntax</a>. Software: "
@@ -521,7 +525,7 @@ msgid "Delete"
 msgstr ""
 
 #: templates/base/dashboard.html:8 templates/base/dashboard_comments.html:8
-#: templates/useroptions.html.py:19
+#: templates/useroptions.html.py:20
 msgid "Dashboard"
 msgstr ""
 
@@ -557,7 +561,7 @@ msgstr ""
 msgid "Import Wordpress XML"
 msgstr ""
 
-#: templates/base/import_new_blog.html:20 templates/profile/edit_blog.html:15
+#: templates/base/import_new_blog.html:20 templates/profile/edit_blog.html:19
 msgid "Import"
 msgstr ""
 
@@ -587,25 +591,25 @@ msgstr ""
 msgid "Import from Wordpress"
 msgstr ""
 
-#: templates/base/new_blog.html:45 templates/profile/edit_blog.html.py:37
+#: templates/base/new_blog.html:45 templates/profile/edit_blog.html.py:41
 msgid ""
 "This is your default header image. If you want to change it, select from "
 "your file system with the button below:"
 msgstr ""
 
-#: templates/base/new_blog.html:47 templates/profile/edit_blog.html.py:39
+#: templates/base/new_blog.html:47 templates/profile/edit_blog.html.py:43
 msgid "Recommended sizes:"
 msgstr ""
 
-#: templates/base/new_blog.html:49 templates/profile/edit_blog.html.py:41
+#: templates/base/new_blog.html:49 templates/profile/edit_blog.html.py:45
 msgid "1900x300px (horizontal)"
 msgstr ""
 
-#: templates/base/new_blog.html:50 templates/profile/edit_blog.html.py:42
+#: templates/base/new_blog.html:50 templates/profile/edit_blog.html.py:46
 msgid "390x400px (vertical)"
 msgstr ""
 
-#: templates/base/new_blog.html:80 templates/profile/edit_blog.html.py:72
+#: templates/base/new_blog.html:80 templates/profile/edit_blog.html.py:76
 msgid "What is CC-BY-SA license?"
 msgstr ""
 
@@ -684,7 +688,7 @@ msgstr ""
 msgid "Edit profile"
 msgstr ""
 
-#: templates/profile/base.html:11 templates/useroptions.html.py:34
+#: templates/profile/base.html:11 templates/useroptions.html.py:35
 msgid "Settings"
 msgstr ""
 
@@ -696,19 +700,19 @@ msgstr ""
 msgid "Your Blog"
 msgstr ""
 
-#: templates/profile/edit_blog.html:11
+#: templates/profile/edit_blog.html:15
 msgid "Your blog data"
 msgstr ""
 
-#: templates/profile/edit_blog.html:14
+#: templates/profile/edit_blog.html:18
 msgid "Blog configuration"
 msgstr ""
 
-#: templates/profile/edit_blog.html:95
+#: templates/profile/edit_blog.html:99
 msgid "Export your blog data to WordPress XML format"
 msgstr ""
 
-#: templates/profile/edit_blog.html:96
+#: templates/profile/edit_blog.html:100
 msgid "Export your blog"
 msgstr ""
 
@@ -1002,22 +1006,22 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: templates/useroptions.html:23
+#: templates/useroptions.html:24
 msgid "Create a blog"
 msgstr ""
 
-#: templates/useroptions.html:27
+#: templates/useroptions.html:28
 msgid "User options"
 msgstr ""
 
-#: templates/useroptions.html:32
+#: templates/useroptions.html:33
 msgid "My blog"
 msgstr ""
 
-#: templates/useroptions.html:36
+#: templates/useroptions.html:37
 msgid "Logout"
 msgstr ""
 
-#: templates/useroptions.html:41
+#: templates/useroptions.html:42
 msgid "Sign in / Sign up"
 msgstr ""

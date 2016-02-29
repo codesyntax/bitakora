@@ -2,7 +2,9 @@
 {% load i18n %}
 
 {% block extracss %}
+{% if user.get_blog %}
 <link rel="alternate" type="application/atom+xml" title="{{blog.name}} RSS" href="http://{{HOST}}{% url 'blog_index' blog.slug %}/rss" />
+{% endif %}
 <link href="{{STATIC_URL}}js/lightbox/css/lightbox.css" rel="stylesheet">
 <style type="text/css">
     {% include blog.get_blog_template with article=article %}
