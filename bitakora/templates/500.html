@@ -8,8 +8,7 @@
 {% block body %}
 
         <h1>{% trans 'Something went wrong...' %}</h1>
-        {% url 'contact_form' as contact_url %}
-        <p>{% trans 'The server has some errors this moment. Probably we are maintaining it... Please, <a href="{{contact_url}}">contact us</a> for more information.' %}</p>
+        <p>{% trans 'The server has some errors this moment. Probably we are maintaining it...' %}</p>
 
 {% endblock %}
 

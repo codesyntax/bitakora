@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Blogak.eus\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-29 11:24+0100\n"
+"POT-Creation-Date: 2016-03-04 14:43+0100\n"
 "PO-Revision-Date: 2016-01-12 12:07+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -151,7 +151,9 @@ msgstr "HTML pertsonalizatua"
 
 #: base/forms.py:82 base/forms.py:94
 msgid "Sidebar extra HTML information"
-msgstr "Eskuineko zutabean zure informazio gehigarria  sartzeko aukera (loturak, widgetak, bannerrak,...)."
+msgstr ""
+"Eskuineko zutabean zure informazio gehigarria  sartzeko aukera (loturak, "
+"widgetak, bannerrak,...)."
 
 #: base/forms.py:83 base/forms.py:95 base/models.py:50
 msgid "Analytics code"
@@ -349,10 +351,13 @@ msgstr ""
 msgid "Something went wrong..."
 msgstr "Zerbait gaizki irten da..."
 
-#: templates/500.html:12
+#: templates/500.html:11
+#, fuzzy
+#| msgid ""
+#| "The server has some errors this moment. Probably we are maintaining it... "
+#| "Please, <a href=\"{{contact_url}}\">contact us</a> for more information."
 msgid ""
-"The server has some errors this moment. Probably we are maintaining it... "
-"Please, <a href=\"{{contact_url}}\">contact us</a> for more information."
+"The server has some errors this moment. Probably we are maintaining it..."
 msgstr ""
 "Zerbitzariak zenbait errore ditu une honetan. Ziurrenik mantenimentu lanetan "
 "gabiltza... Mesedez, <a href=\"{{contact_url}}\">jarri harremanetan gurekin</"
@@ -642,7 +647,7 @@ msgstr "Zer da CC-BY-SA lizentzia?"
 msgid "Contact"
 msgstr "Harremanetarako"
 
-#: templates/contact_form/contact_form.txt:4
+#: templates/contact_form/contact_form.txt:3
 msgid "This message was send from"
 msgstr "Mezu hau hemendik bialdu da:"
 
@@ -1082,8 +1087,5 @@ msgstr "Irten"
 msgid "Sign in / Sign up"
 msgstr "Sartu / Izena eman"
 
-#~ msgid "Export"
-#~ msgstr "Exportatu"
-
-msgid "Enter the same password as before, for verification."
-msgstr "Sartu aurreko pasahitz bera baieztapenerako."
+#~ msgid "Enter the same password as before, for verification."
+#~ msgstr "Sartu aurreko pasahitz bera baieztapenerako."

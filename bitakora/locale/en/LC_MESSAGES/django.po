@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-29 11:24+0100\n"
+"POT-Creation-Date: 2016-03-04 14:43+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -337,10 +337,9 @@ msgstr ""
 msgid "Something went wrong..."
 msgstr ""
 
-#: templates/500.html:12
+#: templates/500.html:11
 msgid ""
-"The server has some errors this moment. Probably we are maintaining it... "
-"Please, <a href=\"{{contact_url}}\">contact us</a> for more information."
+"The server has some errors this moment. Probably we are maintaining it..."
 msgstr ""
 
 #: templates/base.html:13 templates/base.html.py:94 templates/base/base.html:39
@@ -617,7 +616,7 @@ msgstr ""
 msgid "Contact"
 msgstr ""
 
-#: templates/contact_form/contact_form.txt:4
+#: templates/contact_form/contact_form.txt:3
 msgid "This message was send from"
 msgstr ""
 
