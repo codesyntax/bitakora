@@ -8,6 +8,7 @@ BITAKORA_CUSTOM_MINILOGO = getattr(settings, 'BITAKORA_CUSTOM_MINILOGO', '')
 BITAKORA_CUSTOM_FAVICON = getattr(settings, 'BITAKORA_CUSTOM_FAVICON', '')
 BITAKORA_GA = getattr(settings, 'BITAKORA_GA', '')
 PROFILE_PHOTO_DEFAULT = getattr(settings, 'PROFILE_PHOTO_DEFAULT', '')
+LANGUAGE_CODE = getattr(settings, 'LANGUAGE_CODE', '')
 
 def bitakora_custom(request):
     try:
@@ -22,4 +23,5 @@ def bitakora_custom(request):
         'ANALYTICS_ID': BITAKORA_GA,
         'PROFILE_PHOTO_DEFAULT': photo,
         'HOST': get_current_site(request),
+        'LANGUAGE_CODE': LANGUAGE_CODE,
     }
