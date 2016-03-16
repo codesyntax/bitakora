@@ -7,12 +7,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="{% block metadesc %}{% trans 'Move thinking forward' %}.{% trans 'Bitakora is a community of readers and writers offering unique perspectives on ideas large and small' %}.{% trans 'Sign up to read and interact with what matters most to you' %}{% endblock %}">
+    <meta name="author" content="{% trans 'Bitakora' %}">
 
     <title>{% block title %}{% endblock %}{% trans 'Bitakora' %}</title>
     <link rel="shortcut icon" type="image/ico" href="{% if CUSTOM_FAVICON %}{{CUSTOM_FAVICON}}{% else %}{{STATIC_URL}}img/favicon.ico{% endif %}" />
-    <link rel="apple-touch-icon" href="">
+    {% if CUSTOM_MINILOGO %}
+    <link rel="apple-touch-icon" href="{{CUSTOM_MINILOGO}}">
+    {% endif %}
 
     <!-- Bootstrap Core CSS -->
     <link type="text/css" href="{{STATIC_URL}}css/bootstrap.min.css" rel="stylesheet">

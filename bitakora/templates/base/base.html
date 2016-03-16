@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load i18n %}
 
+{% block metadesc %}{{blog.name}}.{% if blog.tagline %} {{blog.tagline}}{% endif %}{% endblock %}
+
 {% block extracss %}
 {% if user.get_blog %}
 <link rel="alternate" type="application/atom+xml" title="{{blog.name}} RSS" href="http://{{HOST}}{% url 'blog_index' blog.slug %}/rss" />
