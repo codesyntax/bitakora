@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block metadesc %}{{blog.name}}.{% if blog.tagline %} {{blog.tagline}}{% endif %}.{% if blog.user.bio %} {{blog.user.bio|striptags|truncatechars:200}}{% endif %}{% endblock %}
+{% block metadesc %}{{blog.name}}.{% if blog.tagline %} {{blog.tagline}}.{% endif %}{% if blog.user.bio %} {{blog.user.bio|striptags|truncatechars:200}}{% endif %}{% endblock %}
 
 {% block extracss %}
 {% if user.get_blog %}
