@@ -4,32 +4,32 @@
 
 <head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="{% block metadesc %}{% trans 'Move thinking forward' %}.{% trans 'Bitakora is a community of readers and writers offering unique perspectives on ideas large and small' %}.{% trans 'Sign up to read and interact with what matters most to you' %}{% endblock %}">
-    <meta name="author" content="{% trans 'Bitakora' %}">
+    <meta name="author" content="{% trans 'Bitakora' %}" />
 
-    <title>{% block title %}{% endblock %}{% trans 'Bitakora' %}</title>
+    <title>{% block title %}{% trans 'Bitakora' %} - {% trans 'Bitakora slogan' %}{% endblock %}</title>
     <link rel="shortcut icon" type="image/ico" href="{% if CUSTOM_FAVICON %}{{CUSTOM_FAVICON}}{% else %}{{STATIC_URL}}img/favicon.ico{% endif %}" />
     {% if CUSTOM_MINILOGO %}
-    <link rel="apple-touch-icon" href="{{CUSTOM_MINILOGO}}">
+    <link rel="apple-touch-icon" href="{{CUSTOM_MINILOGO}}" />
     {% endif %}
 
     <!-- Bootstrap Core CSS -->
-    <link type="text/css" href="{{STATIC_URL}}css/bootstrap.min.css" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Kanit:400,300,500,600,700,800,700italic,600italic,500italic,400italic,300italic,800italic' rel='stylesheet' type='text/css'>
+    <link type="text/css" href="{{STATIC_URL}}css/bootstrap.min.css" rel="stylesheet" />
+    <link href='https://fonts.googleapis.com/css?family=Kanit:400,300,500,600,700,800,700italic,600italic,500italic,400italic,300italic,800italic' rel='stylesheet' type='text/css' />
 
     <!-- Custom CSS -->
     <link type="text/css" href="{{STATIC_URL}}css/global.css" rel="stylesheet">
 
     {% if CUSTOM_CSS %}
-    <link rel="stylesheet" type="text/css" href="{{CUSTOM_CSS}}">
+    <link rel="stylesheet" type="text/css" href="{{CUSTOM_CSS}}" />
     {% endif %}
 
     <!-- Personal Blog CSS -->
     {% block extracss %}
-        <link href="{{STATIC_URL}}js/lightbox/css/lightbox.css" rel="stylesheet">
+        <link href="{{STATIC_URL}}js/lightbox/css/lightbox.css" rel="stylesheet" />
     {% endblock %}
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

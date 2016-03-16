@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-04 14:43+0100\n"
+"POT-Creation-Date: 2016-03-16 12:13+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -342,70 +342,75 @@ msgid ""
 "The server has some errors this moment. Probably we are maintaining it..."
 msgstr ""
 
-#: templates/base.html:13 templates/base.html.py:94 templates/base/base.html:39
-msgid "Bitakora"
-msgstr ""
-
-#: templates/base.html:54
-msgid "We use Cookies but we dont keep your personal data."
-msgstr ""
-
-#: templates/base.html:54
-msgid "I agree"
-msgstr ""
-
-#: templates/base.html:54
-msgid "Informazio gehiago"
-msgstr ""
-
-#: templates/base.html:100 views.py:14
-msgid "Top stories"
-msgstr ""
-
-#: templates/base.html:103 views.py:15
-msgid "Bookmarks"
-msgstr ""
-
-#: templates/base.html:109 templates/base/base.html.py:65
-#: templates/search/search.html:7 templates/search/search.html.py:22
-msgid "Search"
-msgstr ""
-
-#: templates/base.html:131
+#: templates/base.html:10 templates/base.html.py:133
 msgid "Move thinking forward"
 msgstr ""
 
-#: templates/base.html:132
+#: templates/base.html:10 templates/base.html.py:134
 msgid ""
 "Bitakora is a community of readers and writers offering unique perspectives "
 "on ideas large and small"
 msgstr ""
 
-#: templates/base.html:133
+#: templates/base.html:10 templates/base.html.py:135
 msgid "Sign up to read and interact with what matters most to you"
 msgstr ""
 
-#: templates/base.html:134
+#: templates/base.html:11 templates/base.html.py:13 templates/base.html:96
+#: templates/base/base.html.py:41 templates/base/blog_index.html:4
+msgid "Bitakora"
+msgstr ""
+
+#: templates/base.html:13
+msgid "Bitakora slogan"
+msgstr ""
+
+#: templates/base.html:56
+msgid "We use Cookies but we dont keep your personal data."
+msgstr ""
+
+#: templates/base.html:56
+msgid "I agree"
+msgstr ""
+
+#: templates/base.html:56
+msgid "Informazio gehiago"
+msgstr ""
+
+#: templates/base.html:102 views.py:14
+msgid "Top stories"
+msgstr ""
+
+#: templates/base.html:105 views.py:15
+msgid "Bookmarks"
+msgstr ""
+
+#: templates/base.html:111 templates/base/base.html.py:67
+#: templates/search/search.html:7 templates/search/search.html.py:22
+msgid "Search"
+msgstr ""
+
+#: templates/base.html:136
 msgid "Get started"
 msgstr ""
 
-#: templates/base.html:135
+#: templates/base.html:137
 msgid "Learn more"
 msgstr ""
 
-#: templates/base.html:164 templates/base/blog_index.html.py:77
+#: templates/base.html:166 templates/base/blog_index.html.py:77
 msgid "Blog Categories"
 msgstr ""
 
-#: templates/base.html:178
+#: templates/base.html:180
 msgid "No categories found yet..."
 msgstr ""
 
-#: templates/base.html:187 templates/base/blog_index.html.py:104
+#: templates/base.html:189 templates/base/blog_index.html.py:104
 msgid "Last comments"
 msgstr ""
 
-#: templates/base.html:193
+#: templates/base.html:195
 msgid "No comments found yet..."
 msgstr ""
 
@@ -471,11 +476,11 @@ msgstr ""
 msgid "Yes, I am sure"
 msgstr ""
 
-#: templates/base/base.html:27
+#: templates/base/base.html:29
 msgid "Bitakora home page"
 msgstr ""
 
-#: templates/base/base.html:101 templates/footer.html.py:18
+#: templates/base/base.html:103
 #, python-format
 msgid ""
 "Developed by <a href=\"http://www.codesyntax.com\">CodeSyntax</a>. Software: "
@@ -639,6 +644,15 @@ msgstr ""
 
 #: templates/footer.html:8
 msgid "About"
+msgstr ""
+
+#: templates/footer.html:18
+#, python-format
+msgid ""
+"Developed by <a href=\"http://www.codesyntax.com\" rel=\"nofollow"
+"\">CodeSyntax</a>. Software: <a href=\"%(footer_about)s#bitakora\">Bitakora</"
+"a> that is based on <a href=\"https://www.djangoproject.com/\" rel=\"nofollow"
+"\">Django</a> framework."
 msgstr ""
 
 #: templates/index.html:23
@@ -820,10 +834,12 @@ msgid "Sign in or create an account"
 msgstr ""
 
 #: templates/registration/login.html:8
+#: templates/registration/registration_form.html:8
 msgid "Sign in with Twitter"
 msgstr ""
 
 #: templates/registration/login.html:13
+#: templates/registration/registration_form.html:13
 msgid "Sign in with Facebook"
 msgstr ""
 
@@ -981,7 +997,7 @@ msgstr ""
 msgid "Create an account"
 msgstr ""
 
-#: templates/registration/registration_form.html:11
+#: templates/registration/registration_form.html:21
 msgid "Create"
 msgstr ""
 
