@@ -5,6 +5,10 @@
     <link rel="alternate" type="application/atom+xml" title="{{blog.name}} RSS" href="http://{{HOST}}{% url 'blog_index' blog.slug %}/feed.xml" />
     <link href="{{STATIC_URL}}js/lightbox/css/lightbox.css" rel="stylesheet">
 
+    {% if article.categories.all %}
+    <meta name="keywords" content="{% for c in article.categories.all %}{{c.title}}{% if not forloop.last %}, {% endif %}{% endfor %}" />
+    {% endif %}
+
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@BlogakEus" />
     <meta name="twitter:title" content="{{article.title}}" />
