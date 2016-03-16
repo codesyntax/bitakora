@@ -4,6 +4,16 @@
 {% block body %}
 	<h3>{% trans 'Create an account' %}</h3>
 	<div class="row">
+		<a rel="nofollow" href="{% url 'social:begin' 'twitter' %}{% if next %}?next={{next}}{% endif %}" class="tw-share-btn">
+			<img src="{{STATIC_URL}}img/share/twitter_white.png" /><span> {% trans 'Sign in with Twitter' %}</span>
+		</a>
+	</div>
+	<div class="row">
+		<a rel="nofollow" href="{% url 'social:begin' 'facebook' %}{% if next %}?next={{next}}{% endif %}" class="fb-share-btn">
+				<img src="{{STATIC_URL}}img/share/facebook_white.png" /><span> {% trans 'Sign in with Facebook' %}</span>
+		</a>
+	</div>
+	<div class="row">
 		<div class="col-sm-4 col-sm-offset-4 text-left">
 			<form method="post" action="{{request.path}}">
 			    {% csrf_token %}
