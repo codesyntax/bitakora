@@ -1,4 +1,5 @@
 from django.conf.urls import patterns, url, include
+from django.http import HttpResponse
 from django.views.generic.base import RedirectView
 from django.views.generic import TemplateView
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -19,6 +20,7 @@ article_dict = {
 
 urlpatterns = patterns('',
     (r'^$','bitakora.views.index'),
+    (r'^robots.txt$', lambda r: HttpResponse("User-agent: *\nDisallow: ", content_type="text/plain")),
     url(r'^category/(?P<slug>[\-\d\w]+)$','bitakora.views.category', name='category'),
     url(r'^top_stories$', 'bitakora.views.top_stories', name='top_stories'),
     url(r'^bookmarks$', 'bitakora.views.bookmarks', name='bookmarks'),
