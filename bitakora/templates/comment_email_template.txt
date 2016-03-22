@@ -1,10 +1,9 @@
 {% load i18n %}
 
-{% trans 'From' %}: {{from_email}}
-
 {% trans 'Comment author' %}: {{from_user}}
 {% trans 'Author email' %}: {{from_email}}
 {% trans 'Author URL' %}: {{url|default_if_none:""}}
 {% trans 'Comment address' %}: {{comment_url}}
+
 {% trans 'Comment body' %}:
 {{comment_body|safe|striptags}}
