@@ -2,6 +2,7 @@ import time
 from django.db import models
 from django.conf import settings
 from django.core.urlresolvers import reverse
+from django.db.models.signals import post_save
 from django.http import HttpResponseRedirect
 from photologue.models import Photo
 from django.contrib.sites.models import Site
@@ -15,6 +16,8 @@ from datetime import datetime
 from django.template.defaultfilters import removetags, striptags, truncatechars
 from voting.models import Vote
 from django.contrib.contenttypes.models import ContentType
+from django.template.loader import get_template
+from django.template import Context
 
 try:
     from django.utils.timezone import now
@@ -279,3 +282,26 @@ class Comment(models.Model):
         verbose_name = _("Comment")
         verbose_name_plural = _("Comments")
         ordering = ("-publish_date",)
+
+
+def send_comment_email(sender,instance,**kwargs):
+    if kwargs['created'] and instance.email != instance.parent.blog.user.email:
+        context_dict = {}
+        if instance.user:
+            context_dict['from_user'] = instance.user.get_fullname()
+            context_dict['url'] = instance.user.get_absolute_url()
+        else:
+            context_dict['from_user'] = instance.nickname
+            context_dict['url'] = instance.url
+        context_dict['from_email'] = instance.email
+        context_dict['to_email'] = instance.parent.blog.user.email
+        context_dict['comment_url'] = instance.get_absolute_url()
+        context_dict['comment_body'] = instance.text
+
+        template = get_template("comment_email_template.txt")
+        context = Context(context_dict)
+        message  = template.render(context)
+
+        send_mail("[%s] - %s" % (_("Bitakora"), _("New comment")), message, settings.DEFAULT_FROM_EMAIL, [to_email])
+
+post_save.connect(send_comment_email, sender=Comment)

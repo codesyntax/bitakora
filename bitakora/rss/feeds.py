@@ -10,13 +10,13 @@ class BlogEntriesFeed(Feed):
         return Blog.objects.get(slug=blogslug)
 
     def title(self, obj):
-        return _(obj.name+" Articles")
+        return obj.name
 
     def link(self, obj):
-        return "/%s/rss" % (obj.name)
+        return "/%s/feed.xml" % (obj.name)
 
     def description(self, obj):
-        return _(obj.name+" articles feed")
+        return "%s %s" % (obj.name, _("articles feed"))
 
     def author_name(self, obj):
         return obj.user.get_fullname()
