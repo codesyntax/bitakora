@@ -18,6 +18,7 @@ from voting.models import Vote
 from django.contrib.contenttypes.models import ContentType
 from django.template.loader import get_template
 from django.template import Context
+from django.core.mail import send_mail
 
 try:
     from django.utils.timezone import now
