@@ -19,6 +19,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.template.loader import get_template
 from django.template import Context
 from django.core.mail import send_mail
+from django.contrib.sites.models import Site
 
 try:
     from django.utils.timezone import now
@@ -290,7 +291,7 @@ def send_comment_email(sender,instance,**kwargs):
         context_dict = {}
         if instance.user:
             context_dict['from_user'] = instance.user.get_fullname()
-            context_dict['url'] = instance.user.get_absolute_url()
+            context_dict['url'] = "http://%s%s" % (Site.objects.get_current().domain,instance.user.get_absolute_url())
         else:
             context_dict['from_user'] = instance.nickname
             context_dict['url'] = instance.url
