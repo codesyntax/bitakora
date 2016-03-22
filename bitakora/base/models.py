@@ -303,6 +303,6 @@ def send_comment_email(sender,instance,**kwargs):
         context = Context(context_dict)
         message  = template.render(context)
 
-        send_mail("[%s] - %s" % (_("Bitakora"), _("New comment")), message, settings.DEFAULT_FROM_EMAIL, [to_email])
+        send_mail("[%s] - %s" % (_("Bitakora"), _("New comment")), message, settings.DEFAULT_FROM_EMAIL, [context_dict['to_email']])
 
 post_save.connect(send_comment_email, sender=Comment)
