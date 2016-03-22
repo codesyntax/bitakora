@@ -297,7 +297,7 @@ def send_comment_email(sender,instance,**kwargs):
             context_dict['url'] = instance.url
         context_dict['from_email'] = instance.email
         context_dict['to_email'] = instance.parent.blog.user.email
-        context_dict['comment_url'] = instance.get_absolute_url()
+        context_dict['comment_url'] = "http://%s%s" % (Site.objects.get_current().domain,instance.get_absolute_url())
         context_dict['comment_body'] = instance.text
 
         template = get_template("comment_email_template.txt")
