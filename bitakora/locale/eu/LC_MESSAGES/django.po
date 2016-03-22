@@ -1127,5 +1127,5 @@ msgstr "Irten"
 msgid "Sign in / Sign up"
 msgstr "Sartu / Izena eman"
 
-#~ msgid "Enter the same password as before, for verification."
-#~ msgstr "Sartu aurreko pasahitz bera baieztapenerako."
+msgid "Enter the same password as before, for verification."
+msgstr "Sartu aurreko pasahitz bera baieztapenerako."
