@@ -15,7 +15,17 @@ body {
 footer {
     margin: 50px 0;
 }
-
+iframe{
+  max-width:100%;
+}
+object{
+  max-width:100%;
+  height:auto;
+}
+embed{
+  max-width:100%; 
+  height:auto;
+}
 #maincontainer {
     padding-top: 20px;
 }

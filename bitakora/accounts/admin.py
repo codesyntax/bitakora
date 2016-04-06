@@ -4,10 +4,16 @@ from django.forms import ModelForm
 from django import forms
 from django.utils.translation import ugettext as _
 from models import BitakoraUser
+from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
 
 class MyUserChangeForm(UserChangeForm):
+    password = ReadOnlyPasswordHashField(label= ("Password"),
+        help_text= ("Raw passwords are not stored, so there is no way to see "
+                    "this user's password, but you can change the password "
+                    "using <a href=\"../password/\">this form</a>."))
+
     class Meta(UserChangeForm.Meta):
         model = BitakoraUser
         fields = ('username','password')
@@ -20,7 +26,7 @@ class MyUserCreationForm(ModelForm):
 
     class Meta:
         model = BitakoraUser
-        fields = ('username','password1','password2')
+        fields = ['username','password1','password2']
 
     def clean_password2(self):
         # Check that the two password entries match
@@ -38,7 +44,7 @@ class MyUserCreationForm(ModelForm):
             user.save()
         return user
 
-class BitakoraUserAdmin(admin.ModelAdmin):
+class BitakoraUserAdmin(UserAdmin):
     def admin_thumbnail(self,obj):
         if obj.photo:
             return obj.photo.admin_thumbnail()
@@ -56,7 +62,9 @@ class BitakoraUserAdmin(admin.ModelAdmin):
         return obj.get_fullname()
 
     form = MyUserChangeForm
+    change_user_password_template = None
     add_form = MyUserCreationForm
+    change_password_form = AdminPasswordChangeForm
 
     list_display = ('fullname', 'username','get_email', 'date_joined','is_active', 'is_staff','admin_thumbnail')
     list_display_links = ('fullname','username')
