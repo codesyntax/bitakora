@@ -12,9 +12,9 @@
     <meta name="author" content="{% trans 'Bitakora' %}" />
 
     <title>{% block title %}{% trans 'Bitakora' %} - {% trans 'Bitakora slogan' %}{% endblock %}</title>
-    <link rel="shortcut icon" type="image/ico" href="{% if CUSTOM_FAVICON %}{{CUSTOM_FAVICON}}{% else %}{{STATIC_URL}}img/favicon.ico{% endif %}" />
+    <link rel="shortcut icon" type="image/ico" href="{% if CUSTOM_FAVICON %}{{STATIC_URL}}{{CUSTOM_FAVICON}}{% else %}{{STATIC_URL}}img/favicon.ico{% endif %}" />
     {% if CUSTOM_MINILOGO %}
-    <link rel="apple-touch-icon" href="{{CUSTOM_MINILOGO}}" />
+    <link rel="apple-touch-icon" href="{{STATIC_URL}}{{CUSTOM_MINILOGO}}" />
     {% endif %}
 
     <!-- Bootstrap Core CSS -->
@@ -25,7 +25,7 @@
     <link type="text/css" href="{{STATIC_URL}}css/global.css" rel="stylesheet">
 
     {% if CUSTOM_CSS %}
-    <link rel="stylesheet" type="text/css" href="{{CUSTOM_CSS}}" />
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}{{CUSTOM_CSS}}" />
     {% endif %}
 
     <!-- Personal Blog CSS -->
@@ -94,7 +94,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">{% if CUSTOM_LOGO %}<img class="img-responsive" src="{{CUSTOM_LOGO}}" />{% else %}{% trans 'Bitakora' %}{% endif %}</a>
+                <a class="navbar-brand" href="/">{% if CUSTOM_LOGO %}<img class="img-responsive" src="{{STATIC_URL}}{{CUSTOM_LOGO}}" />{% else %}{% trans 'Bitakora' %}{% endif %}</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

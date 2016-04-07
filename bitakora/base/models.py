@@ -76,6 +76,11 @@ class Blog(models.Model):
         from bitakora.base.models import Article
         return Article.objects.published(for_blog=self)
 
+    def get_articles_months(self):
+        from bitakora.base.models import Article, CONTENT_STATUS_PUBLISHED
+        month_list = Article.objects.filter(blog=self,status=CONTENT_STATUS_PUBLISHED).dates('publish_date','month',order='DESC')
+        return month_list
+
     def get_myposts(self):
         from bitakora.base.models import Article
         return Article.objects.filter(blog=self).order_by('-publish_date')

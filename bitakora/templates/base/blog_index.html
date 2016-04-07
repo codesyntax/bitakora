@@ -22,7 +22,10 @@
 {% endif %}
 
 <div class="row">
-	<div class="col-md-7">
+
+    <div class="col-md-7">
+        {% block blogcontent %}
+
 		{% autopaginate blog.get_articles 10 as articles %}
 		{% for article in articles %}
 			{% include "base/article_list.html" with article=article %}
@@ -43,7 +46,10 @@
 		</div>
 		{% endfor %}
 		{% paginate %}
+
+        {% endblock %}
 	</div>
+
 	<div class="col-md-offset-1 col-md-4">
 
     {% if blog.template != 'one-page-wonder.css' and flavour != "mobile" %}
@@ -110,8 +116,11 @@
 		{% endif %}
 		<div class="row well">
 			<div class="col-sm-12">
-				<h4>{% trans 'Sindication' %}</h4>
-				<a href="{% url 'blog_rss' blog.slug %}"><img src="{{STATIC_URL}}img/rss.png"/></a>
+				<h4>{% trans 'Contents' %}</h4>
+                <ul class="list-unstyled">
+                    <li><a href="{% url 'blog_archive' blog.slug %}">{% trans 'Archive' %}</a></li>
+                    <li><a href="{% url 'blog_rss' blog.slug %}"><img src="{{STATIC_URL}}img/rss.png"/></a></li>
+                </ul>
 			</div>
 		</div>
 	</div>

@@ -1,0 +1,24 @@
+{% extends "base/blog_index.html" %}
+{% load i18n l10n pagination_tags humanize %}
+
+{% block title %}{% trans 'Archive' %} - {{blog.name}} - {% trans 'Bitakora' %}{% endblock %}
+
+{% block blogcontent %}
+
+<h2>{% trans 'Archive' %}</h2>
+<ul>
+    {% for date in blog.get_articles_months %}
+    <li>
+        <h4>{{date|date:"F"}}, {{date.year}}</h4>
+        <ul class="list-unstyled">
+            {% for art in articles %}
+            {% if art.publish_date.year == date.year and art.publish_date.month == date.month %}
+            <li><a href="{{art.get_absolute_url}}">{{art.title}}</a> ({{art.publish_date|date:"Y-m-d"}})</li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

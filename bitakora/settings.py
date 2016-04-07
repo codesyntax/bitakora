@@ -90,6 +90,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.staticfiles',
     'django.contrib.flatpages',
+    'django.contrib.humanize',
     'django.contrib.admin',
     'django_social_share',
     'social.apps.django_app.default',
@@ -165,18 +166,10 @@ SESSION_COOKIE_AGE = 63000000
 
 ALLOWED_HOSTS = ("127.0.0.1", "beta.blogak.eus","blogak.eus","www.blogak.eus")
 
-TINYMCE_JS_URL = STATIC_URL + 'js/tinymce/tinymce.min.js'
-TINYMCE_JS_ROOT = STATIC_ROOT + 'js/tinymce/tinymce.min.js'
-
 try:
-    from server_settings import *
+    from tiny_mce_settings import *
 except:
     pass
-
-try:
-   from tiny_mce_settings import *
-except:
-   pass
 
 try:
     from local_settings import *
@@ -184,6 +177,14 @@ except:
     pass
 
 try:
+    from server_settings import *
+except:
+    pass
+
+try:
     from bitakora.s3storage.settings_s3boto import *
 except:
     pass
+
+TINYMCE_JS_URL = STATIC_URL + 'js/tinymce/tinymce.min.js'
+TINYMCE_JS_ROOT = STATIC_ROOT + 'js/tinymce/tinymce.min.js'
