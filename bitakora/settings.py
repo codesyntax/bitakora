@@ -112,6 +112,7 @@ INSTALLED_APPS = (
     'bitakora.base',
     'bitakora.rss',
     'bitakora.photologue_custom',
+    'bitakora.contact',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -172,17 +173,18 @@ except:
     pass
 
 try:
-    from local_settings import *
-except:
-    pass
-
-try:
     from server_settings import *
 except:
     pass
 
 try:
-    from bitakora.s3storage.settings_s3boto import *
+    #from bitakora.s3storage.settings_s3boto import *
+    pass
+except:
+    pass
+
+try:
+    from local_settings import *
 except:
     pass
 

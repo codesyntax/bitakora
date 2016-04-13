@@ -1,0 +1,13 @@
+{% extends "base/blog_index.html" %}
+{% load i18n bootstrap %}
+
+{% block blogcontent %}
+<h3>{% trans "Your message was sent" %}</h3>
+<div class="row">
+    <div class="col-sm-12">
+        <p>
+        {% trans "We have sent your message to our administrators. Thank you for contacting us." %} 
+        </p>
+    </div>
+</div>
+{% endblock %}

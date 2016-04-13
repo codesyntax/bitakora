@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Blogak.eus\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-07 09:45+0200\n"
+"POT-Creation-Date: 2016-04-12 17:29+0200\n"
 "PO-Revision-Date: 2016-01-12 12:07+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -438,7 +438,8 @@ msgid "New article"
 msgstr "Artikulu berria"
 
 #: templates/base/add_article.html:57 templates/base/article.html.py:175
-#: templates/base/new_blog.html:94 templates/contact_form/contact_form.html:12
+#: templates/base/new_blog.html:94 templates/contact/blog_contact_form.html:11
+#: templates/contact_form/contact_form.html:11
 #: templates/profile/edit_blog.html:90 templates/profile/edit_pass.html:13
 #: templates/registration/password_reset_confirm.html:14
 #: templates/registration/password_reset_form.html:16
@@ -542,6 +543,11 @@ msgstr ""
 #: templates/base/blog_index.html:119
 msgid "Contents"
 msgstr "Edukiak"
+
+#: templates/base/blog_index.html:122
+#| msgid "Contact"
+msgid "Contact me"
+msgstr "Kontaktua"
 
 #: templates/base/comment.html:24 templates/base/dashboard_comments.html:31
 msgid "Comment status"
@@ -669,24 +675,27 @@ msgstr "Iruzkinaren helbidea"
 msgid "Comment body"
 msgstr "Iruzkina"
 
+#: templates/contact/blog_contact_form.html:5
 #: templates/contact_form/contact_form.html:5
 msgid "Contact"
 msgstr "Harremanetarako"
 
-#: templates/contact_form/contact_form.txt:3
-msgid "This message was send from"
-msgstr "Mezu hau hemendik bialdu da:"
-
+#: templates/contact/blog_contact_form_sent.html:5
 #: templates/contact_form/contact_form_sent.html:5
 msgid "Your message was sent"
 msgstr "Mezua bialdu da"
 
+#: templates/contact/blog_contact_form_sent.html:9
 #: templates/contact_form/contact_form_sent.html:9
 msgid ""
 "We have sent your message to our administrators. Thank you for contacting us."
 msgstr ""
 "Mezua webmasterrak jaso du. Lehenbailehen erantzungo dizu. Eskerrik asko "
 "gurekin harremanetan jartzearren."
+
+#: templates/contact_form/contact_form.txt:3
+msgid "This message was send from"
+msgstr "Mezu hau hemendik bialdu da:"
 
 #: templates/contact_form/contact_form_subject.txt:1
 msgid "Contact mail from"

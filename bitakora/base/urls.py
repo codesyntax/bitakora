@@ -1,6 +1,8 @@
 from django.conf.urls import patterns, url, include
 from bitakora.rss.feeds import BlogEntriesFeed
 from django.views.generic.base import RedirectView
+from django.views.generic import TemplateView
+from bitakora.contact.views import BitakoraContactFormView, BlogContactDetailView
 
 urlpatterns = patterns('bitakora.base.views',
     url(r'^new-blog$', 'new_blog', name='new_blog'),
@@ -10,6 +12,13 @@ urlpatterns = patterns('bitakora.base.views',
     url(r'^(?P<slug>[\-\d\w]+)/archive$','blog_archive', name='blog_archive'),
     url(r'^(?P<slug>[\-\d\w]+)/my-posts$', 'my_posts', name='my_posts'),
     url(r'^(?P<slug>[\-\d\w]+)/my_comments$', 'my_comments', name='my_comments'),
+    url(r'^(?P<slug>[\-\d\w]+)/contact$', BitakoraContactFormView.as_view(
+        template_name = 'contact/blog_contact_form.html'),
+        name='blog_contact_form'),
+    url(r'^(?P<slug>[\-\d\w]+)/contact-sent$', BlogContactDetailView.as_view(
+        template_name='contact/blog_contact_form_sent.html'),
+        name='blog_contact_form_sent'),
+
     url(r'^(?P<blogslug>[\-\d\w]+)/add-article$','add_article', name='add_article'),
     #url(r'^(?P<blogslug>[\-\d\w]+)/rss$', BlogEntriesFeed(), name="blog_rss"),
     url(r'^(?P<blogslug>[\-\d\w]+)/rss$', RedirectView.as_view(pattern_name='blog_rss')),

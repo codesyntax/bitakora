@@ -1,18 +1,15 @@
-{% extends "index_no_header.html" %}
+{% extends "base/blog_index.html" %}
 {% load i18n bootstrap %}
 
-{% block body %}
-<h1>{% trans "Contact" %}</h1>
+{% block blogcontent %}
+<h2>{% trans 'Contact' %}</h2>
 <div class="row">
     <div class="col-sm-12">
-        <form method="post" action=".">
+        <form method="post" action="{% url 'blog_contact_form' blog.slug %}">
           {% csrf_token %}
           {{ form|bootstrap }}
           <input class="btn btn-primary" type="submit" value="{% trans 'Submit' %}" class="submit" />
         </form>
     </div>
 </div>
-{% endblock %}
-
-{% block sidebar %}
 {% endblock %}
