@@ -43,7 +43,7 @@ urlpatterns = patterns('',
 
     (r'^search/', include('haystack.urls')),
 
-    url(r'^about/$', views.flatpage, {'url': '/about/'}, name='about'),
+    url(r'^about$', views.flatpage, {'url': '/about/'}, name='about'),
     url(r'^contact/', include('contact_form.urls')),
 
     (r'^admin/', include(admin.site.urls)),
