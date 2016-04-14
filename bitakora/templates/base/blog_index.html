@@ -114,6 +114,20 @@
 			</div>
 		</div>
 		{% endif %}
+
+        {% if blog.get_external_links %}
+        <div class="row well">
+            <div class="col-sm-12">
+                <h4>{% trans 'Links' %}</h4>
+                <ul class="list-unstyled">
+                {% for link in blog.get_external_links %}
+                    <li><a href="{{link.url}}">{{link.title}}</a></li>
+                {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+
 		<div class="row well">
 			<div class="col-sm-12">
 				<h4>{% trans 'Contents' %}</h4>

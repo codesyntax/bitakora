@@ -93,6 +93,10 @@ class Blog(models.Model):
     def get_last_comments(self):
         return self.get_comments()[:5]
 
+    def get_external_links(self):
+        from bitakora.base.models import External_link
+        return External_link.objects.filter(blog=self).order_by("title")
+
     def get_blog_template(self):
         return "%s/%s/%s" % ("base","css",self.template)
 
@@ -312,3 +316,18 @@ def send_comment_email(sender,instance,**kwargs):
         send_mail("[%s] - %s" % (_("Bitakora"), _("New comment")), message, settings.DEFAULT_FROM_EMAIL, [context_dict['to_email']])
 
 post_save.connect(send_comment_email, sender=Comment)
+
+
+
+class External_link(models.Model):
+    title = models.CharField(max_length=200, verbose_name=_('Title'))
+    url = models.URLField(max_length=1000, verbose_name=_("URL"))
+    blog = models.ForeignKey(Blog, related_name="external_links")
+
+    def __unicode__(self):
+        return u"%s" % self.title
+
+    class Meta:
+        verbose_name = _("External Link")
+        verbose_name_plural = _("External Links")
+        ordering = ("title",)

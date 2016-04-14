@@ -4,8 +4,8 @@ from django.contrib.auth import HASH_SESSION_KEY
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.debug import sensitive_post_parameters
 from django.views.decorators.csrf import csrf_protect
-from bitakora.base.models import Blog
-from bitakora.base.forms import BlogFormNoCaptcha, WPXMLForm
+from bitakora.base.models import Blog, External_link
+from bitakora.base.forms import BlogFormNoCaptcha, WPXMLForm, External_linkForm
 from cssocialuser.forms import ProfileForm, ProfilePhotoForm
 from django.contrib.auth.views import password_change, password_change_done
 from bitakora.utils.images import handle_uploaded_file
@@ -51,6 +51,7 @@ def edit_blog(request):
     if request.method == 'POST':
         form = BlogFormNoCaptcha(request.POST)
         wp_form = WPXMLForm()
+        link_form = External_linkForm(request.POST)
         if form.is_valid():
             blog.name = form.cleaned_data.get('name')
             blog.tagline = form.cleaned_data.get('tagline')
@@ -62,10 +63,21 @@ def edit_blog(request):
             blog.template = form.cleaned_data.get('template')
             blog.save()
             msg = _('New blog data saved')
+        if link_form.is_valid():
+            link = External_link()
+            link.title = link_form.cleaned_data.get('title')
+            link.url = link_form.cleaned_data.get('url')
+            link.blog = blog
+            link.save()
+            form = BlogFormNoCaptcha(instance=blog)
+            link_form = External_linkForm()
+            msg = _('New link saved')
+        if msg:
             messages.add_message(request, messages.SUCCESS, msg, fail_silently=True)
     else:
         form = BlogFormNoCaptcha(instance=blog)
         wp_form = WPXMLForm()
+        link_form = External_linkForm()
     return render_to_response('profile/edit_blog.html', locals(), context_instance=RequestContext(request))
 
 @login_required

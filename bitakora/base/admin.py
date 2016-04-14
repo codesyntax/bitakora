@@ -70,8 +70,15 @@ class CategoryAdmin(admin.ModelAdmin):
     search_fields = ['title','slug']
     ordering = ('title',)
 
+class External_linkAdmin(admin.ModelAdmin):
+    list_display = ('title','url','blog')
+    list_display_links = ('title',)
+    search_fields = ['title','url']
+    ordering = ('title',)
+
 
 admin.site.register(Blog, BlogAdmin)
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(Comment, CommentAdmin)
 admin.site.register(Category, CategoryAdmin)
+admin.site.register(External_link, External_linkAdmin)

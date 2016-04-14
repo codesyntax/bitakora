@@ -1,0 +1,32 @@
+{% load i18n %}
+<table id="link_table" class="table table-striped">
+    <thead>
+        <th>{% trans 'Title' %}</th>
+        <th>{% trans 'URL' %}</th>
+        <th></th>
+    </thead>
+    <tbody>
+        {% for link in blog.get_external_links %}
+        <tr>
+            <td>{{link.title}}</td>
+            <td><a href="{{link.url}}">{{link.url}}</a></td>
+            <td>
+                <a id="link_{{link.id}}" href="#remove_link"><i class="glyphicon glyphicon-remove-circle"></i> {% trans 'Remove' %}</a>
+                <script type="text/javascript">
+                    $('#link_{{link.id}}').click(function(){
+                        $.ajax({
+                            type: "GET",
+                            url: "{% url 'ajax_remove_link' %}",
+                            async: true,
+                            data: { id: {{link.id}}, blog_id: {{blog.id}}},
+                            success: function( strdata ){
+                                $("#link_table").html(strdata);
+                            }
+                        });
+                    });
+                </script>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

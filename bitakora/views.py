@@ -1,12 +1,13 @@
 from django.template import RequestContext
 from django.http import HttpResponse
 from django.shortcuts import render_to_response, get_object_or_404
-from bitakora.base.models import Article, Category, Blog, Comment
+from bitakora.base.models import Article, Category, Blog, Comment, External_link
 from voting.models import Vote
 import json
 from django.views.generic import View
 from bitakora.utils.images import handle_uploaded_file
 from django.utils.translation import ugettext_lazy as _
+from django.template import loader, Context
 
 IMAGE_SIZE = 5242880
 
@@ -90,3 +91,20 @@ def get_categories(request):
         data = []
     mimetype = 'application/json'
     return HttpResponse(data, mimetype)
+
+def remove_link(request):
+    if request.is_ajax():
+        link_id = int(request.GET.get('id', ''))
+        blog_id = int(request.GET.get('blog_id', ''))
+        try:
+            c = {}
+            External_link.objects.get(id=link_id).delete()
+            c['blog'] = Blog.objects.get(id=blog_id)
+            context = Context(c)
+            template = loader.get_template('base/external_links.html')
+            html = template.render(context)
+        except:
+            html = ""
+    else:
+        html = ""
+    return HttpResponse(html)

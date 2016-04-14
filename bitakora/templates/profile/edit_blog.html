@@ -16,6 +16,7 @@
 
   <ul class="nav nav-tabs" role="tablist">
     {% if user.get_blog %}<li role="presentation" class="active"><a href="#config" aria-controls="config" role="tab" data-toggle="tab">{% trans "Blog configuration" %}</a></li>{% endif %}
+    {% if user.get_blog %}<li role="presentation"><a href="#links" aria-controls="links" role="tab" data-toggle="tab">{% trans "External Links" %}</a></li>{% endif %}
     <li role="presentation" {% if not user.get_blog %}class="active"{% endif %}><a href="#import" aria-controls="import" role="tab" data-toggle="tab">{% trans "Import" %}</a></li>
     {% comment %}{% if user.get_blog %}<li role="presentation"><a href="#export" aria-controls="export" role="tab" data-toggle="tab">{% trans "Export" %}</a></li>{% endif %}{% endcomment %}
   </ul>
@@ -91,6 +92,20 @@
             </div>
         	</form>
       </div>
+      <div role="tabpanel" class="tab-pane" id="links">
+          <div class="col-sm-6">
+              <form action="{{request.path}}" method="POST">
+                  {% csrf_token %}
+                  {{link_form|bootstrap}}
+                  <div class="form-group">
+                      <button type="submit" class="btn btn-primary">{% trans 'Submit' %}</button>
+                  </div>
+              </form>
+          </div>
+          <div class="col-sm-12">
+              {% include 'base/external_links.html' with blog=user.get_blog %}
+          </div>
+      </div>
       <div role="tabpanel" class="tab-pane {% if not user.get_blog %}active{% endif %}" id="import">
           {% include 'base/import_new_blog.html' %}
       </div>
@@ -101,9 +116,20 @@
   </div>
 </div>
 
-
 {% endblock %}
 
 {% block footerjs %}
     <script type="text/javascript" src="{{STATIC_URL}}js/lightbox/js/lightbox.js"></script>
+    <script type="text/javascript">
+        // Javascript to enable link to tab
+        var url = document.location.toString();
+        if (url.match('#')) {
+            $('.nav-tabs a[href="#' + url.split('#')[1] + '"]').tab('show');
+        } 
+
+        // Change hash for page-reload
+        $('.nav-tabs a').on('shown.bs.tab', function (e) {
+            window.location.hash = e.target.hash;
+        })
+    </script>
 {% endblock %}

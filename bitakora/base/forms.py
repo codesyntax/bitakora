@@ -127,3 +127,10 @@ class AnonimousCommentForm(forms.ModelForm):
 
 class WPXMLForm(forms.Form):
     wp_xml = forms.FileField(label=_("Wordpress file"), help_text=_("Please, select your Wordpress XML file")) 
+
+
+class External_linkForm(forms.ModelForm):
+
+    class Meta:
+        model = External_link
+        exclude = ['blog',]
