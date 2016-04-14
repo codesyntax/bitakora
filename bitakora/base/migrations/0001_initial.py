@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('photologue', '0012_auto_20160413_1640'),
+        ('photologue', '0008_auto_20150509_1557'),
     ]
 
     operations = [
