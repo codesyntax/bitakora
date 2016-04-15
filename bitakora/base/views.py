@@ -22,6 +22,7 @@ def blog_index(request,slug):
     blog = get_object_or_404(Blog, slug=slug)
     articles = blog.get_articles()[:10]
     categories = [cat for art in articles for cat in art.categories.all()][:8]
+    categories = list(set(categories))
     return render_to_response('base/blog_index.html', locals(), context_instance=RequestContext(request))
 
 def article(request,blogslug,slug):
@@ -43,6 +44,7 @@ def blog_archive(request,slug):
     blog = get_object_or_404(Blog, slug=slug)
     articles = blog.get_articles()
     categories = [cat for art in articles for cat in art.categories.all()][:8]
+    categories = list(set(categories))
     return render_to_response('base/blog_archive.html', locals(), context_instance=RequestContext(request))
 
 def my_posts(request,slug):
