@@ -28,7 +28,7 @@
                 {% if not 'users' in request.path or user.get_blog %}
                     <a class="navbar-brand" href="/" title="{% trans 'Bitakora home page' %}">
                     {% if CUSTOM_MINILOGO %}
-                        <img class="img-responsive" src="{{STATIC_URL}}{{CUSTOM_MINILOGO}}" />
+                        <img class="img-responsive" src="{{STATIC_URL}}{{CUSTOM_MINILOGO}}" alt="{% trans 'Bitakora' %}" title="{% trans 'Bitakora' %}"/>
                     {% else %}
                         <strong>B</strong></a>
                     {% endif %}
@@ -36,7 +36,7 @@
                 {% else %}
                         <a class="navbar-brand" href="/">
                         {% if CUSTOM_LOGO %}
-                            <img class="img-responsive" src="{{STATIC_URL}}{{CUSTOM_LOGO}}" />
+                            <img class="img-responsive" src="{{STATIC_URL}}{{CUSTOM_LOGO}}" alt="{% trans 'Bitakora home page' %}" title="{% trans 'Bitakora home page' %}" />
                         {% else %}
                             {% trans 'Bitakora' %}
                         {% endif %}
@@ -105,7 +105,7 @@
             </div>
             {% if blog %}
             <div class="col-sm-2">
-                <p><a href="{% url 'about' %}#license"><img class="img-responsive" src="{{STATIC_URL}}img/{{blog.license}}.png" /></a></p>
+                <p><a href="{% url 'about' %}#license"><img class="img-responsive" src="{{STATIC_URL}}img/{{blog.license}}.png" alt="{% trans 'Bitakora License' %}" title="{% trans 'Bitakora License' %}" /></a></p>
             </div>
             {% endif %}
         </div>

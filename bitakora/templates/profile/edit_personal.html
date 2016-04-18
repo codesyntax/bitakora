@@ -25,7 +25,7 @@
     	<h4>{% trans "Change your photo" %}</h4>
     	<div class="col-sm-4">
 			{% if user.get_photo %}
-			<img  class="userlogged" src="{{user.get_photo.get_profile_medium_url}}" alt="{% trans "User's photo" %}" />
+			<img  class="userlogged" src="{{user.get_photo.get_profile_medium_url}}" alt="{% trans "User's photo" %}" title="{% trans "User's photo" %}"/>
 			{% else %}
 			<p class="message">{% trans "You don't have a photo yet" %}</p>
 			{% endif %}
@@ -43,11 +43,11 @@
 		<div class="col-sm-12">
 		{% if user.twitter_id %}
     		<a href="http://twitter.com/{{user.twitter_id}}" class="col-sm-4 tw-share-btn">
-                <img src="{{STATIC_URL}}img/share/twitter_white.png" /><span> {{user.twitter_id}}</span>
+                <img src="{{STATIC_URL}}img/share/twitter_white.png" alt="{% trans 'Bitakora twitter' %}" title="{% trans 'Bitakora twitter' %}"/><span> {{user.twitter_id}}</span>
             </a>
 		{% else %}
 			<a rel="nofollow" href="{% url 'social:begin' 'twitter' %}{% if next %}?next={{next}}{% endif %}" class="col-sm-4 tw-share-btn">
-				<img src="{{STATIC_URL}}img/share/twitter_white.png" /><span> {% trans 'Link Twitter for this user' %}</span>
+				<img src="{{STATIC_URL}}img/share/twitter_white.png" alt="{% trans 'Bitakora twitter' %}" title="{% trans 'Bitakora twitter' %}"/><span> {% trans 'Link Twitter for this user' %}</span>
 			</a>
 		{% endif %}
 		</div>
@@ -55,11 +55,11 @@
 		<div class="col-sm-12">
 		{% if user.facebook_id %}
     		<a href="http://facebook.com/profile.php?id={{user.facebook_id}}" class="col-sm-4 fb-share-btn">
-                <img src="{{STATIC_URL}}img/share/facebook_white.png" /><span> {{user.facebook_id}}</span>
+                <img src="{{STATIC_URL}}img/share/facebook_white.png" alt="{% trans 'Bitakora facebook' %}" title="{% trans 'Bitakora facebook' %}"/><span> {{user.facebook_id}}</span>
             </a>
 		{% else %}
 			<a rel="nofollow" href="{% url 'social:begin' 'facebook' %}{% if next %}?next={{next}}{% endif %}" class="col-sm-4 fb-share-btn">
-				<img src="{{STATIC_URL}}img/share/facebook_white.png" /><span> {% trans 'Link Facebook for this user' %}</span>
+				<img src="{{STATIC_URL}}img/share/facebook_white.png" alt="{% trans 'Bitakora facebook' %}" title="{% trans 'Bitakora facebook' %}"/><span> {% trans 'Link Facebook for this user' %}</span>
 			</a>
 		{% endif %}
 		</div>

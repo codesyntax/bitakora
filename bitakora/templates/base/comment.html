@@ -4,12 +4,12 @@
 <div id="{{comment.id}}" class="media anchor" {% if comment.status == 2 %}style="opacity: 0.5;"{% endif %}>
     {% if comment.user.get_blog %}
     <a href="{% url 'blog_index' comment.user.get_blog.slug %}">
-        <img class="pull-left media-object" src="{{comment.user.get_photo.get_profile_url}}" alt="{{comment.user.photo.caption}}">
+        <img class="pull-left media-object" src="{{comment.user.get_photo.get_profile_url}}" alt="{{comment.user.photo.title}}" title="{{comment.user.photo.title}}">
     </a>
     {% elif comment.user %}
-        <img class="pull-left media-object" src="{{comment.user.get_photo.get_profile_url}}" alt="{{comment.user.photo.caption}}">
+        <img class="pull-left media-object" src="{{comment.user.get_photo.get_profile_url}}" alt="{{comment.user.photo.title}}" title="{{comment.user.photo.title}}">
     {% else %}
-        <img class="pull-left media-object" src="{{PROFILE_PHOTO_DEFAULT.get_profile_url}}" alt="{{comment.nickname}}">
+        <img class="pull-left media-object" src="{{PROFILE_PHOTO_DEFAULT.get_profile_url}}" alt="{{comment.nickname}}" title="{{comment.nickname}}">
     {% endif %}
     <div class="media-body">
         <h4 class="media-heading">

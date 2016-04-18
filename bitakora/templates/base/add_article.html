@@ -44,7 +44,7 @@
         {% else %}
             {% if article and article.featured_image %}
             <div class="col-sm-4">
-                <img class="img-responsive" src="{{article.featured_image.get_related_url}}"/>
+                <img class="img-responsive" src="{{article.featured_image.get_related_url}}" alt="{{article.featured_image.title}}" title="{{article.featured_image.title}}"/>
             </div>
             {% endif %}
             <div class="col-sm-8">

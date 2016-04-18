@@ -34,14 +34,14 @@
                     <div class="row">
                         <div class="col-md-2 col-sm-12">
                             {% if result.object.featured_image %}
-                            <img class="img-responsive" src="{{result.object.featured_image.get_related_url}}" />
+                            <img class="img-responsive" src="{{result.object.featured_image.get_related_url}}" alt="{{result.object.featured_image.title}}" title="{{result.object.featured_image.title}}"/>
                             {% endif %}
                         </div>
                         <div class="col-sm-10">
                             <div class="row">
                                 <div class="col-sm-12">
                                     <h4><a href="{{ result.object.get_absolute_url }}">{{ result.object.title }}</a></h4>
-                                    <span><a href="{% url 'blog_index' result.object.blog.slug %}"><img class="img-circle" src="{{result.object.blog.user.get_photo.get_profile_url}}" alt="{{result.object.blog.user.get_photo.caption}}"/> {{result.object.blog.name}}</a></span> | <i class="glyphicon glyphicon-time"></i> {{result.object.publish_date}}
+                                    <span><a href="{% url 'blog_index' result.object.blog.slug %}"><img class="img-circle" src="{{result.object.blog.user.get_photo.get_profile_url}}" alt="{{result.object.blog.user.get_photo.title}}" title="{{result.object.blog.user.get_photo.title}}"/> {{result.object.blog.name}}</a></span> | <i class="glyphicon glyphicon-time"></i> {{result.object.publish_date}}
                                 </div>
                             </div>
                             <div class="row">

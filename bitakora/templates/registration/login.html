@@ -5,12 +5,12 @@
 	<h3>{% trans 'Sign in or create an account' %}</h3>
 	<div class="row">
 		<a rel="nofollow" href="{% url 'social:begin' 'twitter' %}{% if next %}?next={{next}}{% endif %}" class="tw-share-btn">
-			<img src="{{STATIC_URL}}img/share/twitter_white.png" /><span> {% trans 'Sign in with Twitter' %}</span>
+			<img src="{{STATIC_URL}}img/share/twitter_white.png" alt="{% trans 'Bitakora twitter' %}" title="{% trans 'Bitakora twitter' %}"/><span> {% trans 'Sign in with Twitter' %}</span>
 		</a>
 	</div>
 	<div class="row">
 		<a rel="nofollow" href="{% url 'social:begin' 'facebook' %}{% if next %}?next={{next}}{% endif %}" class="fb-share-btn">
-				<img src="{{STATIC_URL}}img/share/facebook_white.png" /><span> {% trans 'Sign in with Facebook' %}</span>
+			<img src="{{STATIC_URL}}img/share/facebook_white.png" alt="{% trans 'Bitakora facebook' %}" title="{% trans 'Bitakora facebook' %}"/><span> {% trans 'Sign in with Facebook' %}</span>
 		</a>
 	</div>
 	<div class="row">

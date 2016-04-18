@@ -29,7 +29,7 @@
 					<td><a href="{% url 'article' post.blog.slug post.slug %}">{{post.title}}</a></td>
 					<td>{{post.get_status_display}}</td>
 					<td>{{post.publish_date}}</td>
-					<td>{% if post.featured_image %}<img class="img-responsive" src="{{post.featured_image.get_admin_thumbnail_url}}">{% endif %}</td>
+					<td>{% if post.featured_image %}<img class="img-responsive" src="{{post.featured_image.get_admin_thumbnail_url}}" alt="{{post.featured_image.title}}" title="{{post.featured_image.title}}">{% endif %}</td>
 				</tr>
 				{% endfor %}
 			</tbody>
