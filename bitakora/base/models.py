@@ -223,7 +223,7 @@ class Article(models.Model):
         current_site = Site.objects.get_current()
         if self.blog.user.twitter_id:
             return "[%s] %s %s%s @%s" % (truncatechars(self.blog.name,20), truncatechars(self.title,40), current_site, self.get_absolute_url(), self.blog.user.twitter_id)
-        return "[%s] %s %s%s" % (truncatechars(self.blog.name,20), truncatechars(self.title,40), current_site, self.get_absolute_url())
+        return "[%s] %s %s%s" % (truncatechars(self.blog.name,20), truncatechars(self.title,50), current_site, self.get_absolute_url())
 
     def get_absolute_url(self):
         return reverse('article',kwargs={'blogslug': self.blog.slug, 'slug': self.slug})

@@ -46,6 +46,9 @@ class BitakoraUser(CSAbstractSocialUser):
     def get_profile(self):
         return self
 
+    def get_absolute_url(self):
+        return "/%s" % (self.username)
+
 
     def email_user(self, subject, message, from_email=None, **kwargs):
         """
