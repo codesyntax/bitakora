@@ -8,6 +8,7 @@ from django.views.generic import View
 from bitakora.utils.images import handle_uploaded_file
 from django.utils.translation import ugettext_lazy as _
 from django.template import loader, Context
+from django.views.decorators.cache import cache_page
 
 IMAGE_SIZE = 5242880
 
@@ -16,6 +17,7 @@ SECTIONS = (
     (2, _('Bookmarks')),
 )
 
+@cache_page(60*60)
 def index(request):
     articles = Article.objects.published()[:25]
     comments = Comment.objects.filter(status=1).order_by('-publish_date')[:10]
@@ -23,6 +25,7 @@ def index(request):
     categories = list(set(categories))
     return render_to_response('index.html', locals(), context_instance=RequestContext(request))
 
+@cache_page(60*60*8)
 def top_stories(request):
     section = SECTIONS[0]
     articles = Article.objects.top_stories()
@@ -33,6 +36,7 @@ def top_stories(request):
         categories = list(set(categories))
     return render_to_response('index_no_header.html', locals(), context_instance=RequestContext(request))
 
+@cache_page(60*60)
 def bookmarks(request):
     section = SECTIONS[1]
     articles = Article.objects.bookmarks(user=request.user)
