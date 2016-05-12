@@ -296,7 +296,7 @@ class Comment(models.Model):
 
 
 def send_comment_email(sender,instance,**kwargs):
-    if kwargs['created'] and instance.email and instance.email != instance.parent.blog.user.email:
+    if kwargs['created'] and instance.parent.blog.user.email and instance.email != instance.parent.blog.user.email:
         context_dict = {}
         if instance.user:
             context_dict['from_user'] = instance.user.get_fullname()
@@ -304,7 +304,7 @@ def send_comment_email(sender,instance,**kwargs):
         else:
             context_dict['from_user'] = instance.nickname
             context_dict['url'] = instance.url
-        context_dict['from_email'] = instance.email
+        context_dict['from_email'] = instance.email or ''
         context_dict['to_email'] = instance.parent.blog.user.email
         context_dict['comment_url'] = "http://%s%s#%d" % (Site.objects.get_current().domain,instance.get_absolute_url(),instance.id)
         context_dict['comment_body'] = instance.text
