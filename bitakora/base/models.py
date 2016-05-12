@@ -300,13 +300,13 @@ def send_comment_email(sender,instance,**kwargs):
         context_dict = {}
         if instance.user:
             context_dict['from_user'] = instance.user.get_fullname()
-            context_dict['url'] = "http://%s%s" % (Site.objects.get_current().domain,instance.user.get_absolute_url())
+            context_dict['url'] = "http://%s%s#%d" % (Site.objects.get_current().domain,instance.user.get_absolute_url(),instance.id)
         else:
             context_dict['from_user'] = instance.nickname
             context_dict['url'] = instance.url
         context_dict['from_email'] = instance.email
         context_dict['to_email'] = instance.parent.blog.user.email
-        context_dict['comment_url'] = "http://%s%s" % (Site.objects.get_current().domain,instance.get_absolute_url())
+        context_dict['comment_url'] = "http://%s%s#%d" % (Site.objects.get_current().domain,instance.get_absolute_url(),instance.id)
         context_dict['comment_body'] = instance.text
 
         template = get_template("comment_email_template.txt")
