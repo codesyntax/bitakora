@@ -296,7 +296,7 @@ class Comment(models.Model):
 
 
 def send_comment_email(sender,instance,**kwargs):
-    if kwargs['created'] and instance.email != instance.parent.blog.user.email:
+    if kwargs['created'] and instance.email and instance.email != instance.parent.blog.user.email:
         context_dict = {}
         if instance.user:
             context_dict['from_user'] = instance.user.get_fullname()
