@@ -300,7 +300,7 @@ def send_comment_email(sender,instance,**kwargs):
         context_dict = {}
         if instance.user:
             context_dict['from_user'] = instance.user.get_fullname()
-            context_dict['url'] = "http://%s%s#%d" % (Site.objects.get_current().domain,instance.user.get_absolute_url(),instance.id)
+            context_dict['url'] = "http://%s%s" % (Site.objects.get_current().domain,instance.user.get_absolute_url())
         else:
             context_dict['from_user'] = instance.nickname
             context_dict['url'] = instance.url
