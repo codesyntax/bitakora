@@ -29,7 +29,7 @@ h2{
 }
 h3{
     font-size:30px;
-    font-weight:600;
+    font-weight:700;
 }
 .btn-primary {
     background-color: #c00;
@@ -224,9 +224,14 @@ ul.config-list li{
     font-weight: 600;
     line-height: 1;
 }
+
+.articletext h2, .articletext h3, .articletext h4{
+   margin: 40px 0 20px;
+}
+
 .articletext p, .articletext ul, .articletext ol{
     font-family:georgia;
-    font-size: 22px;
+    font-size: 20px;
     font-style: normal;
     font-weight: 400;
     letter-spacing: -0.003em;
@@ -234,11 +239,17 @@ ul.config-list li{
     color:#333;
     margin-bottom:20px;
 }
+
+.articletext ul li, .articletext ol li{
+    margin-bottom:10px;
+}
+
 .articlefooter{
     margin-top:20px;
     border-top:1px solid #efefef;
     margin-bottom:30px;
 }
+
 .label {
     border-radius: 0.25em;
     color: #fff;
