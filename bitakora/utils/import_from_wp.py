@@ -1,4 +1,4 @@
-from lxml import etree
+from xml.etree import ElementTree as etree
 import sys
 from cStringIO import StringIO
 from django.template.defaultfilters import slugify
