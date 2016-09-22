@@ -24,7 +24,7 @@ from django.contrib.sites.models import Site
 try:
     from django.utils.timezone import now
 except ImportError:
-    now = datetime.now    
+    now = datetime.now
 
 user_model_name = get_user_model_name()
 
@@ -42,7 +42,8 @@ LICENSE_CHOICES = (
     ("copyright", _("Copyright")),
 )
 
-BLOG_PHOTO_SLUG=getattr(settings,'BLOG_PHOTO_DEFAULT_SLUG','no-blog-photo')
+BLOG_PHOTO_SLUG = getattr(settings, 'BLOG_PHOTO_DEFAULT_SLUG', 'no-blog-photo')
+
 
 class Blog(models.Model):
     name = models.CharField(max_length=200, verbose_name=_('Name'))
@@ -145,7 +146,7 @@ class Article(models.Model):
     text = models.TextField(verbose_name=_('Text'))
 
     blog = models.ForeignKey(Blog)
-    
+
     status = models.IntegerField(_("Status"),
         choices=CONTENT_STATUS_CHOICES, default=CONTENT_STATUS_PUBLISHED,
         help_text=_("With Draft chosen, will only be shown for admin users "
@@ -161,7 +162,7 @@ class Article(models.Model):
                                         blank=True, related_name="blogposts")
     allow_comments = models.BooleanField(verbose_name=_("Allow comments"),
                                          default=True)
-    
+
     featured_image = models.ForeignKey(Photo,verbose_name=_("Featured Image"), null=True, blank=True)
     related_posts = models.ManyToManyField("self",
                                  verbose_name=_("Related posts"), blank=True)
