@@ -10,7 +10,10 @@ from os.path import basename, normpath
 def import_from_wp(file_content, user, debug=False):
     tree = etree.parse(StringIO(file_content))
     root = tree.getroot()
-
+    root.nsmap = {'wp': 'http://wordpress.org/export/1.2/',
+                  'content': 'http://purl.org/rss/1.0/modules/content/'
+    }
+    #import pdb;pdb.set_trace()
     try:
         for blognode in root.findall('channel'):
             if Blog.objects.filter(user=user).exists():
