@@ -69,9 +69,13 @@ class Blog(models.Model):
             return self.header_image
         else:
             try:
-                return Photo.objects.get(slug=BLOG_PHOTO_SLUG+'-'+str(get_pattern(self.user)))
+                return Photo.objects.get(slug=BLOG_PHOTO_SLUG + '-' + str(get_pattern(self.user)))
             except:
                 return None
+
+    def get_all_articles(self):
+        from bitakora.base.models import Article
+        return Article.objects.filter(blog=self)
 
     def get_articles(self):
         from bitakora.base.models import Article
@@ -79,7 +83,7 @@ class Blog(models.Model):
 
     def get_articles_months(self):
         from bitakora.base.models import Article, CONTENT_STATUS_PUBLISHED
-        month_list = Article.objects.filter(blog=self,status=CONTENT_STATUS_PUBLISHED).dates('publish_date','month',order='DESC')
+        month_list = Article.objects.filter(blog=self, status=CONTENT_STATUS_PUBLISHED).dates('publish_date', 'month', order='DESC')
         return month_list
 
     def get_myposts(self):
@@ -99,7 +103,12 @@ class Blog(models.Model):
         return External_link.objects.filter(blog=self).order_by("title")
 
     def get_blog_template(self):
-        return "%s/%s/%s" % ("base","css",self.template)
+        return "%s/%s/%s" % ("base", "css", self.template)
+
+    def get_blog_categories(self):
+        from bitakora.base.models import Category
+        articles = self.get_articles()
+        return Category.objects.filter(blogposts__in=articles)
 
     def get_absolute_url(self):
         return "/%s" % (self.slug)
@@ -110,6 +119,7 @@ class Blog(models.Model):
     class Meta:
         verbose_name = _('Blog')
         verbose_name_plural = _('Blogs')
+
 
 class Category(models.Model):
     title = models.CharField(_("Title"), max_length=500)
@@ -227,7 +237,7 @@ class Article(models.Model):
         return "[%s] %s %s%s" % (truncatechars(self.blog.name,20), truncatechars(self.title,50), current_site, self.get_absolute_url())
 
     def get_absolute_url(self):
-        return reverse('article',kwargs={'blogslug': self.blog.slug, 'slug': self.slug})
+        return reverse('article', kwargs={'blogslug': self.blog.slug, 'slug': self.slug})
 
     def save(self, *args, **kwargs):
         self.text = make_responsive(self.text)

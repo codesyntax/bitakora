@@ -7,18 +7,20 @@ from bitakora.base.models import Article, Blog, Comment, Category, CONTENT_STATU
 from datetime import datetime
 from os.path import basename, normpath
 
+
 def import_from_wp(file_content, user, debug=False):
     tree = etree.parse(StringIO(file_content))
     root = tree.getroot()
-    root.nsmap = {'wp': 'http://wordpress.org/export/1.2/',
-                  'content': 'http://purl.org/rss/1.0/modules/content/'
+    root.nsmap = {
+        'wp': 'http://wordpress.org/export/1.2/',
+        'content': 'http://purl.org/rss/1.0/modules/content/'
     }
-    #import pdb;pdb.set_trace()
+
     try:
         for blognode in root.findall('channel'):
             if Blog.objects.filter(user=user).exists():
                 blog = Blog.objects.get(user=user).delete()
-                
+
             blogdata = {
                 'name': blognode.find('title').text or user.username,
                 'slug': user.username,
@@ -30,7 +32,7 @@ def import_from_wp(file_content, user, debug=False):
 
             for art in blognode.findall('item'):
                 article = Article()
-                article.title = art.find('title').text and art.find('title').text[:200] or art.find('link').text[art.find('link').text.rfind('/')+1:200]
+                article.title = art.find('title').text and art.find('title').text[:200] or art.find('link').text[art.find('link').text.rfind('/') + 1:200]
                 article.slug = basename(normpath(art.find('link').text))
                 article.text = make_responsive(clean_html(art.find('content:encoded', root.nsmap).text))
                 article.publish_date = datetime.strptime(art.find('wp:post_date', root.nsmap).text, "%Y-%m-%d %H:%M:%S")
@@ -49,7 +51,7 @@ def import_from_wp(file_content, user, debug=False):
                 for cmt in art.findall('wp:comment', root.nsmap):
                     cmtdata = {
                         'nickname': cmt.find('wp:comment_author', root.nsmap).text,
-                        'email':  cmt.find('wp:comment_author_email', root.nsmap).text,
+                        'email': cmt.find('wp:comment_author_email', root.nsmap).text,
                         'url': cmt.find('wp:comment_author_url', root.nsmap).text,
                         'parent': article,
                         'text': cmt.find('wp:comment_content', root.nsmap).text,
@@ -69,5 +71,4 @@ def import_from_wp(file_content, user, debug=False):
                         article.categories.add(category)
             return blog
     except Exception as e:
-        raise Exception, "The code is buggy: %s" % e, sys.exc_info()[2]
-
+        raise "The code is buggy: %s" % e, sys.exc_info()[2]

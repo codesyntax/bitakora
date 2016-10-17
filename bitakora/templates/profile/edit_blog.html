@@ -18,7 +18,7 @@
     {% if user.get_blog %}<li role="presentation" class="active"><a href="#config" aria-controls="config" role="tab" data-toggle="tab">{% trans "Blog configuration" %}</a></li>{% endif %}
     {% if user.get_blog %}<li role="presentation"><a href="#links" aria-controls="links" role="tab" data-toggle="tab">{% trans "External Links" %}</a></li>{% endif %}
     <li role="presentation" {% if not user.get_blog %}class="active"{% endif %}><a href="#import" aria-controls="import" role="tab" data-toggle="tab">{% trans "Import" %}</a></li>
-    {% comment %}{% if user.get_blog %}<li role="presentation"><a href="#export" aria-controls="export" role="tab" data-toggle="tab">{% trans "Export" %}</a></li>{% endif %}{% endcomment %}
+    {% if user.get_blog %}<li role="presentation"><a href="#export" aria-controls="export" role="tab" data-toggle="tab">{% trans "Export" %}</a></li>{% endif %}
   </ul>
 
 
@@ -111,7 +111,7 @@
       </div>
       <div role="tabpanel" class="tab-pane" id="export">
           <p>{% trans 'Export your blog data to WordPress XML format' %}</p>
-          <button class="btn btn-default">{% trans 'Export your blog' %}</button>
+          <a href="{% url 'export_blog' user.get_blog.slug %}" class="btn btn-default">{% trans 'Export your blog' %}</a>
       </div>
   </div>
 </div>
@@ -125,7 +125,7 @@
         var url = document.location.toString();
         if (url.match('#')) {
             $('.nav-tabs a[href="#' + url.split('#')[1] + '"]').tab('show');
-        } 
+        }
 
         // Change hash for page-reload
         $('.nav-tabs a').on('shown.bs.tab', function (e) {
