@@ -11,7 +11,6 @@ from bitakora.utils.models import get_user_model_name
 from bitakora.utils.text import make_responsive
 from bitakora.utils.images import get_pattern
 from django.utils.translation import ugettext_lazy as _
-from django.conf import settings
 from datetime import datetime
 from django.template.defaultfilters import removetags, striptags, truncatechars
 from voting.models import Vote
@@ -19,7 +18,6 @@ from django.contrib.contenttypes.models import ContentType
 from django.template.loader import get_template
 from django.template import Context
 from django.core.mail import send_mail
-from django.contrib.sites.models import Site
 
 try:
     from django.utils.timezone import now
@@ -50,8 +48,8 @@ class Blog(models.Model):
     slug = models.SlugField(_("URL"), max_length=300, blank=True, null=True,
             help_text=_("Leave blank to have the URL auto-generated from "
                         "the title."))
-    tagline = models.CharField(max_length=200, verbose_name=_('Tagline'),null=True,blank=True)
-    header_image = models.ForeignKey(Photo,null=True,blank=True)
+    tagline = models.CharField(max_length=200, verbose_name=_('Tagline'), null=True, blank=True)
+    header_image = models.ForeignKey(Photo, null=True, blank=True)
     custom_html = models.TextField(max_length=2000, verbose_name=_('Custom HTML'), null=True, blank=True)
     analytics_code = models.TextField(max_length=1000, verbose_name=_('Analytics code'), null=True, blank=True)
 
@@ -147,6 +145,7 @@ CONTENT_STATUS_CHOICES = (
     (CONTENT_STATUS_PUBLISHED, _("Published")),
 )
 
+
 class Article(models.Model):
     title = models.CharField(max_length=200, verbose_name=_('Title'))
     slug = models.SlugField(_("URL"), max_length=2000, blank=True, null=True,
@@ -173,7 +172,7 @@ class Article(models.Model):
     allow_comments = models.BooleanField(verbose_name=_("Allow comments"),
                                          default=True)
 
-    featured_image = models.ForeignKey(Photo,verbose_name=_("Featured Image"), null=True, blank=True)
+    featured_image = models.ForeignKey(Photo, verbose_name=_("Featured Image"), null=True, blank=True)
     related_posts = models.ManyToManyField("self",
                                  verbose_name=_("Related posts"), blank=True)
 
@@ -217,7 +216,6 @@ class Article(models.Model):
         except IndexError:
             pass
 
-
     def get_next_by_publish_date(self, **kwargs):
         """
         Retrieves next object by publish date.
@@ -233,8 +231,8 @@ class Article(models.Model):
     def getTweetText(self):
         current_site = Site.objects.get_current()
         if self.blog.user.twitter_id:
-            return "[%s] %s %s%s @%s" % (truncatechars(self.blog.name,20), truncatechars(self.title,40), current_site, self.get_absolute_url(), self.blog.user.twitter_id)
-        return "[%s] %s %s%s" % (truncatechars(self.blog.name,20), truncatechars(self.title,50), current_site, self.get_absolute_url())
+            return "[%s] %s %s%s @%s" % (truncatechars(self.blog.name, 20), truncatechars(self.title, 40), current_site, self.get_absolute_url(), self.blog.user.twitter_id)
+        return "[%s] %s %s%s" % (truncatechars(self.blog.name, 20), truncatechars(self.title, 50), current_site, self.get_absolute_url())
 
     def get_absolute_url(self):
         return reverse('article', kwargs={'blogslug': self.blog.slug, 'slug': self.slug})
@@ -276,26 +274,26 @@ COMMENT_STATUS_CHOICES = (
     (COMMENT_STATUS_NOTVISIBLE, _("Not visible")),
 )
 
+
 class Comment(models.Model):
     user = models.ForeignKey(user_model_name, verbose_name=_("Author"),
-        related_name="%(class)ss",null=True,blank=True)
+        related_name="%(class)ss", null=True, blank=True)
 
-    nickname = models.CharField(verbose_name=_('Nick name'),max_length=200,null=True,blank=True)
-    email = models.EmailField(verbose_name=_('Email'),null=True,blank=True)
-    url = models.CharField(verbose_name=_('Url'),max_length=300,null=True,blank=True)
+    nickname = models.CharField(verbose_name=_('Nick name'), max_length=200, null=True, blank=True)
+    email = models.EmailField(verbose_name=_('Email'), null=True, blank=True)
+    url = models.CharField(verbose_name=_('Url'), max_length=300, null=True, blank=True)
 
-    parent = models.ForeignKey(Article, null = True, blank=True, related_name='comments')
-    text = models.TextField(verbose_name=_('Text'), null=True,blank = True)
+    parent = models.ForeignKey(Article, null=True, blank=True, related_name='comments')
+    text = models.TextField(verbose_name=_('Text'), null=True, blank=True)
 
-    ip_address  = models.GenericIPAddressField(verbose_name=_('IP address'), blank=True, null=True)
+    ip_address = models.GenericIPAddressField(verbose_name=_('IP address'), blank=True, null=True)
     status = models.IntegerField(_("Status"),
         choices=COMMENT_STATUS_CHOICES, default=COMMENT_STATUS_VISIBLE)
     publish_date = models.DateTimeField(_("Publish date"),
         blank=True, null=True, db_index=True)
 
-
     def get_absolute_url(self):
-        return reverse('article',kwargs={'blogslug': self.parent.blog.slug, 'slug': self.parent.slug})
+        return reverse('article', kwargs={'blogslug': self.parent.blog.slug, 'slug': self.parent.slug})
 
     def __unicode__(self):
         return u"%s" % self.user
@@ -306,28 +304,27 @@ class Comment(models.Model):
         ordering = ("-publish_date",)
 
 
-def send_comment_email(sender,instance,**kwargs):
+def send_comment_email(sender, instance, **kwargs):
     if kwargs['created'] and instance.parent.blog.user.email and instance.email != instance.parent.blog.user.email:
         context_dict = {}
         if instance.user:
             context_dict['from_user'] = instance.user.get_fullname()
-            context_dict['url'] = "http://%s%s" % (Site.objects.get_current().domain,instance.user.get_absolute_url())
+            context_dict['url'] = "http://%s%s" % (Site.objects.get_current().domain, instance.user.get_absolute_url())
         else:
             context_dict['from_user'] = instance.nickname
             context_dict['url'] = instance.url
         context_dict['from_email'] = instance.email or ''
         context_dict['to_email'] = instance.parent.blog.user.email
-        context_dict['comment_url'] = "http://%s%s#%d" % (Site.objects.get_current().domain,instance.get_absolute_url(),instance.id)
+        context_dict['comment_url'] = "http://%s%s#%d" % (Site.objects.get_current().domain, instance.get_absolute_url(), instance.id)
         context_dict['comment_body'] = instance.text
 
         template = get_template("comment_email_template.txt")
         context = Context(context_dict)
-        message  = template.render(context)
+        message = template.render(context)
 
         send_mail("[%s] - %s" % (_("Bitakora"), _("New comment")), message, settings.DEFAULT_FROM_EMAIL, [context_dict['to_email']])
 
 post_save.connect(send_comment_email, sender=Comment)
-
 
 
 class External_link(models.Model):
