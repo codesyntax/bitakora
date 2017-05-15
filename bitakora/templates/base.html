@@ -71,10 +71,10 @@
             "query-input": "required name=search_term_string"
           }
         }
-    </script> 
+    </script>
 
 
-    {% block extrajs %} 
+    {% block extrajs %}
 
     {% endblock %}
 
@@ -146,7 +146,7 @@
             </script>
             {% endif %}
         {% endblock %}
-        
+
         <!-- Page Content -->
         <div id="maincontainer" class="container">
             <div class="row">
@@ -185,6 +185,10 @@
                         <!-- /.row -->
                     </div>
 
+                    <div class="well">
+                        <iframe src="https://www.lehenhitza.eus/iframe_laukia" width="300" height="250" frameborder="0" scrolling="no"></iframe>
+                    </div>
+
                     <!-- Side Widget Well -->
                     <div class="well">
                         <h4>{% trans 'Last comments' %}</h4>
@@ -204,14 +208,14 @@
 
             </div>
             <!-- /.row -->
-        
+
         {% block mainfooter %}
-        
+
         {% block footerjs %}
             <script type="text/javascript" src="{{STATIC_URL}}js/lightbox/js/lightbox.js"></script>
         {% endblock %}
         <hr>
-        
+
         {% include 'footer.html' %}
 
         {% endblock %}
