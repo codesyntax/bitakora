@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block container %}
-
+{% if blog %}
 <div class="col-sm-9">
 	<h2>{% trans "Your blog data" %}</h2>
 
@@ -115,7 +115,18 @@
       </div>
   </div>
 </div>
-
+{% else %}
+<div class="col-sm-9">
+    <h2>{% trans 'You have not created a blog yet' %} </h2>
+    <div class="tab-content">  
+        <div role="tabpanel" class="tab-pane active">
+            
+                <a class="btn btn-primary" href="{% url 'new_blog' %}">{% trans 'Create a blog' %}</a>
+            
+        </div>
+    </div>
+</div>
+{% endif %}
 {% endblock %}
 
 {% block footerjs %}
