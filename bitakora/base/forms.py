@@ -8,36 +8,57 @@ from captcha.fields import ReCaptchaField
 from django.utils.translation import ugettext_lazy as _
 from django.utils.safestring import mark_safe
 from django.template.defaultfilters import slugify
+import akismet
 
-TINYMCE_DEFAULT_CONFIG = getattr(settings, 'TINYMCE_DEFAULT_CONFIG', {})
-GOOGLE_URL_HTML = _("More information about  <a href='https://www.google.com/intl/es/analytics/features/index.html'>Google Analytics</a>.")
+TINYMCE_DEFAULT_CONFIG = getattr(settings, "TINYMCE_DEFAULT_CONFIG", {})
+GOOGLE_URL_HTML = _(
+    "More information about  <a href='https://www.google.com/intl/es/analytics/features/index.html'>Google Analytics</a>."
+)
+
 
 class ArticleForm(forms.ModelForm):
-    featured_image = forms.FileField(label=_('Featured image'),help_text=_('Valid formats: jpg, png, gif.'),required=False)
-    text = forms.CharField(label=_('Text'),widget=TinyMCE(mce_attrs=TINYMCE_DEFAULT_CONFIG))
-    categories = forms.CharField(label=_('Categories'),widget=forms.SelectMultiple(), required=False)
-    related_posts = forms.CharField(label=_('Related posts'), widget=forms.SelectMultiple(),required=False)
-    status = forms.ChoiceField(label=_('Status'), widget=forms.RadioSelect, choices=CONTENT_STATUS_CHOICES,initial=CONTENT_STATUS_PUBLISHED)
-    send_notification = forms.BooleanField(label=_('Send notification'), initial=False, required=False)
+    featured_image = forms.FileField(
+        label=_("Featured image"),
+        help_text=_("Valid formats: jpg, png, gif."),
+        required=False,
+    )
+    text = forms.CharField(
+        label=_("Text"), widget=TinyMCE(mce_attrs=TINYMCE_DEFAULT_CONFIG)
+    )
+    categories = forms.CharField(
+        label=_("Categories"), widget=forms.SelectMultiple(), required=False
+    )
+    related_posts = forms.CharField(
+        label=_("Related posts"), widget=forms.SelectMultiple(), required=False
+    )
+    status = forms.ChoiceField(
+        label=_("Status"),
+        widget=forms.RadioSelect,
+        choices=CONTENT_STATUS_CHOICES,
+        initial=CONTENT_STATUS_PUBLISHED,
+    )
+    send_notification = forms.BooleanField(
+        label=_("Send notification"), initial=False, required=False
+    )
 
     def clean_featured_image(self):
         try:
-            photo = Photo.objects.get(id=self.cleaned_data['featured_image'])
+            photo = Photo.objects.get(id=self.cleaned_data["featured_image"])
             return photo
         except:
             return None
 
     def clean_categories(self):
-        if self.cleaned_data.get('categories'):
-            categories = self.cleaned_data['categories']
+        if self.cleaned_data.get("categories"):
+            categories = self.cleaned_data["categories"]
             cat_lst = []
             for cat in ast.literal_eval(categories):
                 if not cat.isdigit():
                     cat_name = slugify(cat)
                     cat_qty = Category.objects.filter(slug__icontains=cat_name).count()
                     if cat_qty:
-                        cat_name += '-%s' % (str(cat_qty+1))
-                    cat_ob = Category(title=cat,slug=cat_name)
+                        cat_name += "-%s" % (str(cat_qty + 1))
+                    cat_ob = Category(title=cat, slug=cat_name)
                     cat_ob.save()
                     cat_lst.append(cat_ob.id)
                 else:
@@ -47,28 +68,37 @@ class ArticleForm(forms.ModelForm):
             return []
 
     def clean_related_posts(self):
-        if self.cleaned_data.get('related_posts'):
-            posts = self.cleaned_data['related_posts']
-            return map(int,ast.literal_eval(posts))
+        if self.cleaned_data.get("related_posts"):
+            posts = self.cleaned_data["related_posts"]
+            return map(int, ast.literal_eval(posts))
         else:
             return []
 
     def __init__(self, *args, **kwargs):
-        cat = kwargs.pop('cat', None)
-        rel = kwargs.pop('rel', None)
+        cat = kwargs.pop("cat", None)
+        rel = kwargs.pop("rel", None)
         super(ArticleForm, self).__init__(*args, **kwargs)
         if cat:
-            self.fields['categories'].widget.choices = [(c.id,c.title) for c in cat]
+            self.fields["categories"].widget.choices = [(c.id, c.title) for c in cat]
         if rel:
-            self.fields['related_posts'].widget.choices = [(r.id,r.title) for r in rel]
+            self.fields["related_posts"].widget.choices = [(r.id, r.title) for r in rel]
 
     class Meta:
         model = Article
-        fields = ['title', 'text', 'featured_image', 'status', 'categories','related_posts','publish_date', 'allow_comments']
+        fields = [
+            "title",
+            "text",
+            "featured_image",
+            "status",
+            "categories",
+            "related_posts",
+            "publish_date",
+            "allow_comments",
+        ]
 
 
 class ArticleAdminForm(forms.ModelForm):
-    #text = forms.CharField(label=_('Text'),widget=TinyMCE(mce_attrs=TINYMCE_DEFAULT_CONFIG))
+    # text = forms.CharField(label=_('Text'),widget=TinyMCE(mce_attrs=TINYMCE_DEFAULT_CONFIG))
 
     class Meta:
         model = Article
@@ -76,40 +106,106 @@ class ArticleAdminForm(forms.ModelForm):
 
 
 class BlogForm(forms.ModelForm):
-    header_image = forms.ImageField(label=_('Header image'),help_text=_('Valid formats: jpg, png, gif.'),required=False)
-    template = forms.ChoiceField(label=_('Template'), widget=forms.RadioSelect, choices=TEMPLATE_CHOICES,initial=DEFAULT_TEMPLATE)
-    license = forms.ChoiceField(label=_('License'), widget=forms.RadioSelect, choices=LICENSE_CHOICES,initial=DEFAULT_LICENSE)
-    custom_html = forms.CharField(label=_("Custom HTML"), widget=forms.Textarea, help_text=_('Sidebar extra HTML information'), required=False)
-    analytics_code = forms.CharField(label=_('Analytics code'), widget=forms.Textarea, help_text=GOOGLE_URL_HTML,required=False)
+    header_image = forms.ImageField(
+        label=_("Header image"),
+        help_text=_("Valid formats: jpg, png, gif."),
+        required=False,
+    )
+    template = forms.ChoiceField(
+        label=_("Template"),
+        widget=forms.RadioSelect,
+        choices=TEMPLATE_CHOICES,
+        initial=DEFAULT_TEMPLATE,
+    )
+    license = forms.ChoiceField(
+        label=_("License"),
+        widget=forms.RadioSelect,
+        choices=LICENSE_CHOICES,
+        initial=DEFAULT_LICENSE,
+    )
+    custom_html = forms.CharField(
+        label=_("Custom HTML"),
+        widget=forms.Textarea,
+        help_text=_("Sidebar extra HTML information"),
+        required=False,
+    )
+    analytics_code = forms.CharField(
+        label=_("Analytics code"),
+        widget=forms.Textarea,
+        help_text=GOOGLE_URL_HTML,
+        required=False,
+    )
     captcha = ReCaptchaField()
 
     class Meta:
         model = Blog
-        fields = ['name', 'tagline', 'header_image','template','license','custom_html','analytics_code']
+        fields = [
+            "name",
+            "tagline",
+            "header_image",
+            "template",
+            "license",
+            "custom_html",
+            "analytics_code",
+        ]
+
 
 class BlogFormNoCaptcha(forms.ModelForm):
-    header_image = forms.ImageField(label=_('Header image'),help_text=_('Valid formats: jpg, png, gif.'),required=False)
-    template = forms.ChoiceField(label=_('Template'), widget=forms.RadioSelect, choices=TEMPLATE_CHOICES,initial=DEFAULT_TEMPLATE)
-    license = forms.ChoiceField(label=_('License'), widget=forms.RadioSelect, choices=LICENSE_CHOICES,initial=DEFAULT_LICENSE)
-    custom_html = forms.CharField(label=_("Custom HTML"), widget=forms.Textarea, help_text=_('Sidebar extra HTML information'), required=False)
-    analytics_code = forms.CharField(label=_('Analytics code'), widget=forms.Textarea, help_text=GOOGLE_URL_HTML,required=False)
-    
+    header_image = forms.ImageField(
+        label=_("Header image"),
+        help_text=_("Valid formats: jpg, png, gif."),
+        required=False,
+    )
+    template = forms.ChoiceField(
+        label=_("Template"),
+        widget=forms.RadioSelect,
+        choices=TEMPLATE_CHOICES,
+        initial=DEFAULT_TEMPLATE,
+    )
+    license = forms.ChoiceField(
+        label=_("License"),
+        widget=forms.RadioSelect,
+        choices=LICENSE_CHOICES,
+        initial=DEFAULT_LICENSE,
+    )
+    custom_html = forms.CharField(
+        label=_("Custom HTML"),
+        widget=forms.Textarea,
+        help_text=_("Sidebar extra HTML information"),
+        required=False,
+    )
+    analytics_code = forms.CharField(
+        label=_("Analytics code"),
+        widget=forms.Textarea,
+        help_text=GOOGLE_URL_HTML,
+        required=False,
+    )
+
     class Meta:
         model = Blog
-        fields = ['name', 'tagline', 'header_image','template','license','custom_html','analytics_code']
+        fields = [
+            "name",
+            "tagline",
+            "header_image",
+            "template",
+            "license",
+            "custom_html",
+            "analytics_code",
+        ]
 
-    
+
 class CommentForm(forms.ModelForm):
     text = forms.CharField(label="", widget=forms.Textarea)
 
     class Meta:
         model = Comment
-        fields = ['text',]
+        fields = ["text"]
 
     def clean_body(self):
-        text = self.cleaned_data['text'].strip()
+        text = self.cleaned_data["text"].strip()
         if not text:
-            raise forms.ValidationError(_('Empty comment. Please, write something!'))
+            raise forms.ValidationError(_("Empty comment. Please, write something!"))
+
 
 class AnonimousCommentForm(forms.ModelForm):
     text = forms.CharField(label="", widget=forms.Textarea)
@@ -117,20 +213,41 @@ class AnonimousCommentForm(forms.ModelForm):
 
     class Meta:
         model = Comment
-        fields = ['nickname','email','text',]
+        fields = ["nickname", "email", "text"]
+
+    def is_valid(self, *args, **kwargs):
+        akismet_api = akismet.Akismet(
+            key=settings.AKISMET_API_KEY, blog_url="https://blogak.eus"
+        )
+
+        spam = akismet_api.comment_check(
+            comment=self.data.get("text"),
+            data={
+                "user_ip": "",
+                "user_agent": akismet_api.user_agent,
+                "comment_author": self.data.get("nickname", ""),
+                "comment_author_email": self.data.get("email", ""),
+            },
+        )
+        if spam:
+            return False
+        else:
+            return super(AnonimousCommentForm, self).is_valid(*args, **kwargs)
 
     def clean_body(self):
-        text = self.cleaned_data['text'].strip()
+        text = self.cleaned_data["text"].strip()
         if not text:
-            raise forms.ValidationError(_('Empty comment. Please, write something!'))
+            raise forms.ValidationError(_("Empty comment. Please, write something!"))
 
 
 class WPXMLForm(forms.Form):
-    wp_xml = forms.FileField(label=_("Wordpress file"), help_text=_("Please, select your Wordpress XML file")) 
+    wp_xml = forms.FileField(
+        label=_("Wordpress file"), help_text=_("Please, select your Wordpress XML file")
+    )
 
 
 class External_linkForm(forms.ModelForm):
-
     class Meta:
         model = External_link
-        exclude = ['blog',]
+        exclude = ["blog"]
+
