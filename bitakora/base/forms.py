@@ -221,12 +221,12 @@ class AnonimousCommentForm(forms.ModelForm):
         )
 
         spam = akismet_api.comment_check(
-            comment=self.data.get("text"),
+            comment=self.data.get("text").encode("utf-8"),
             data={
-                "user_ip": "",
+                "user_ip": u"",
                 "user_agent": akismet_api.user_agent,
-                "comment_author": self.data.get("nickname", ""),
-                "comment_author_email": self.data.get("email", ""),
+                "comment_author": self.data.get("nickname", u""),
+                "comment_author_email": self.data.get("email", u""),
             },
         )
         if spam:
