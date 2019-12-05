@@ -3,9 +3,11 @@
 {% block maincontainer %}
 <div id="maincontainer" class="container">
     <div class="row text-center">
+		{% block mainbody %}
 		<div class="col-sm-8 col-sm-offset-2">
 		    {% block body %}{% endblock %}
 		</div>
+		{% endblock %}
 	</div>
     <hr/>
     {% include 'footer.html' %}

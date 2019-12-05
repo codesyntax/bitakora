@@ -1,4 +1,3 @@
-
 /* Create CSS for django-project */
 
 
@@ -9,53 +8,58 @@
  */
 
 body {
-    padding-top: 50px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+  padding-top: 50px;
+  /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
 
 footer {
-    margin: 50px 0;
+  margin: 50px 0;
 }
-iframe{
-  max-width:100%;
+
+iframe {
+  max-width: 100%;
 }
-object{
-  max-width:100%;
-  height:auto;
+
+object {
+  max-width: 100%;
+  height: auto;
 }
-embed{
-  max-width:100%; 
-  height:auto;
+
+embed {
+  max-width: 100%;
+  height: auto;
 }
+
 #maincontainer {
-    padding-top: 20px;
+  padding-top: 20px;
 }
 
 .header-image {
-    display: block;
-    width: 100%;
-    height: 400px;
-    text-align: center;
-    color: #fff;
-    background: url('/static/img/bitakora_header.jpg') no-repeat center center scroll;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-    margin-bottom: 10px;
+  display: block;
+  width: 100%;
+  height: 400px;
+  text-align: center;
+  color: #fff;
+  background: url('/static/img/bitakora_header.jpg') no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  margin-bottom: 10px;
 }
 
 .header-image .container {
-    padding-top: 100px;
+  padding-top: 100px;
 }
 
 .header-image .close {
-    color: #000;
-    float: right;
-    font-size: 36px;
-    font-weight: 700;
-    line-height: 1;
-    opacity: 0.5;
-    text-shadow: 0 1px 0 #fff;
+  color: #000;
+  float: right;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1;
+  opacity: 0.5;
+  text-shadow: 0 1px 0 #fff;
 }
 
 .tw-share-btn {
@@ -69,7 +73,7 @@ embed{
   color: #fff;
   border-radius: 999em;
   box-sizing: border-box;
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Open Sans","Helvetica Neue",sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -90,7 +94,7 @@ embed{
   display: inline-block;
   border-radius: 999em;
   box-sizing: border-box;
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Open Sans","Helvetica Neue",sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -109,112 +113,167 @@ embed{
   margin-top: 10px;
   padding: 5px;
 }
-.signature{
-  line-height:30px;
-}
-.signature img{
-  margin-right:10px;
+
+.signature {
+  line-height: 30px;
 }
 
-.navbar-nav > li > a.btn{
-    background-image: none;
-    border: 1px solid transparent !important;
-    border-radius: 4px;
-    cursor: pointer;
-    display: inline-block !important;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.42857 !important;
-    margin-bottom: 0;
-    padding: 6px 12px !important;
-    text-align: center;
-    vertical-align: middle;
-    white-space: nowrap;
-    margin-top:8px;
-    color:white !important;
+.signature img {
+  margin-right: 10px;
 }
 
-.navbar-nav > li > a.btn:hover{
-  background-color:#333;
-}
-#useroptions > li > a {
-    padding-top: 10px;
-}
-#useroptions .btn-default{
-  background-color:#666;
-}
-.well h4{
-  font-size:22px;
-  border-bottom:1px dotted #ccc;
-  padding-bottom:5px;
-  margin-bottom:10px;
-  margin-top:10px;
-}
-
-h4.media-heading{
-  font-size:16px;
-  border:none;
-  padding:0;
-  margin:0;
-  font-weight:bold;
+.navbar-nav>li>a.btn {
+  background-image: none;
+  border: 1px solid transparent !important;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-block !important;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857 !important;
+  margin-bottom: 0;
+  padding: 6px 12px !important;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  margin-top: 8px;
+  color: white !important;
 }
 
-.social-buttons{
-  margin-top:5px;
-  margin-left:30px;
-}
-.social-buttons > div{
-  display:inline-block;
-  line-height:36px;
-  margin:0 7px;
+.navbar-nav>li>a.btn:hover {
+  background-color: #333;
 }
 
-.social-buttons > div a{
-  display:block;
-  width:34px;
-  text-indent:-1000px;
-  background-color:white;
-  opacity:0.1;
+#useroptions>li>a {
+  padding-top: 10px;
 }
-.tweet-this{
+
+#useroptions .btn-default {
+  background-color: #666;
+}
+
+.well h4 {
+  font-size: 22px;
+  border-bottom: 1px dotted #ccc;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+h4.media-heading {
+  font-size: 16px;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-weight: bold;
+}
+
+.social-buttons {
+  margin-top: 5px;
+  margin-left: 30px;
+}
+
+.social-buttons>div {
+  display: inline-block;
+  line-height: 36px;
+  margin: 0 7px;
+}
+
+.social-buttons>div a {
+  display: block;
+  width: 34px;
+  text-indent: -1000px;
+  background-color: white;
+  opacity: 0.1;
+}
+
+.tweet-this {
   background: url("../img/icon_twitter.gif") no-repeat top left;
 }
-.facebook-this{
+
+.facebook-this {
   background: url("../img/icon_facebook.gif") no-repeat top left;
 }
-.whatsapp-this{
+
+.whatsapp-this {
   background: url("../img/icon_whatsapp.gif") no-repeat top left;
 }
-.telegram-this{
+
+.telegram-this {
   background: url("../img/icon_telegram.gif") no-repeat top left;
 }
-.gplus-this{
+
+.gplus-this {
   background: url("../img/icon_gplus.gif") no-repeat top left;
 }
-.social-buttons > div a:hover{
-  background-color:white;
-  opacity:0.2;
-}
-.blogtitle{
-  margin-bottom:20px;
-}
-.blogtitle h1{
 
-}
-.blogtitle .tagline{
-  font-size:20px;
-  padding:20px;
-  display:inline-block;
-  border-top:1px solid #efefef;
-  border-bottom:1px solid #efefef;
-}
-.tw-share-btn, .fb-share-btn{
-    height: 25px;
-    margin-bottom:10px;
+.social-buttons>div a:hover {
+  background-color: white;
+  opacity: 0.2;
 }
 
+.blogtitle {
+  margin-bottom: 20px;
+}
+
+.blogtitle h1 {}
+
+.blogtitle .tagline {
+  font-size: 20px;
+  padding: 20px;
+  display: inline-block;
+  border-top: 1px solid #efefef;
+  border-bottom: 1px solid #efefef;
+}
+
+.tw-share-btn,
+.fb-share-btn {
+  height: 25px;
+  margin-bottom: 10px;
+}
 
 
+/********ikasbloga***********/
+.divider {
+  width: 100%;
+  height: 3px;
+  background-color: black;
+  clear: both;
+  margin: 3rem 0;
+  display: inline-block;
+}
 
+.divider::after {
+  content: "";
+  background: url(../img/downarrow.png) no-repeat top left;
+  display: block;
+  margin: 10px auto;
+  height: 17px;
+  width: 53px;
+}
 
+.circle {
+  position: relative;
+}
 
+.circle a {
+  color: white !important;
+  text-align: center;
+
+}
+
+.circle a:hover img {
+  opacity: 0.5;
+}
+
+.circle h3:hover {
+  color: #cc0000;
+}
+
+.circle h3.overlay {
+  position: absolute;
+  top: 28%;
+  text-align: center;
+  width: 60%;
+  left: 20%;
+}

@@ -135,7 +135,7 @@ class BlogForm(forms.ModelForm):
         help_text=GOOGLE_URL_HTML,
         required=False,
     )
-    captcha = ReCaptchaField()
+    #captcha = ReCaptchaField()
 
     class Meta:
         model = Blog
@@ -250,4 +250,3 @@ class External_linkForm(forms.ModelForm):
     class Meta:
         model = External_link
         exclude = ["blog"]
-

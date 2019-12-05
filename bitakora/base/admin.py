@@ -1,5 +1,5 @@
-from models import Blog, Article, Category, Comment, External_link
-from forms import ArticleAdminForm
+from .models import Blog, Article, Category, Comment, External_link
+from .forms import ArticleAdminForm
 from django.contrib import admin
 
 

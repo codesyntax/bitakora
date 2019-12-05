@@ -1,8 +1,11 @@
-from django.conf.urls import url, include, patterns
+from django.conf.urls import url, include
+from django.contrib.auth import views as login_views
+from tokikom import views
 
-urlpatterns = patterns('',
-	url(r'^$','django.contrib.auth.views.login', name='erabiltzailea_user_login'),
-    url(r'^useroptions$','tokikom.views.useroptions', name='erabiltzailea_useroptions'),
-    url(r'^change_pass/$','django.contrib.auth.views.password_change', name='pasahitza_aldatu'),
-    (r'^accounts$', include('registration.backends.default.urls')),
-    (r'', include('cssocialuser.urls')),
+urlpatterns = [
+    url(r'^$', login_views.login, name='erabiltzailea_user_login'),
+    url(r'^useroptions$', views.useroptions, name='erabiltzailea_useroptions'),
+    url(r'^change_pass/$', login_views.password_change, name='pasahitza_aldatu'),
+    url(r'^accounts$', include('registration.backends.default.urls')),
+    url(r'', include('cssocialuser.urls')),
+]

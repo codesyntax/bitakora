@@ -46,7 +46,7 @@
                 <img src="{{STATIC_URL}}img/share/twitter_white.png" alt="{% trans 'Bitakora twitter' %}" title="{% trans 'Bitakora twitter' %}"/><span> {{user.twitter_id}}</span>
             </a>
 		{% else %}
-			<a rel="nofollow" href="{% url 'social:begin' 'twitter' %}{% if next %}?next={{next}}{% endif %}" class="col-sm-4 tw-share-btn">
+			<a rel="nofollow" href="" class="col-sm-4 tw-share-btn">
 				<img src="{{STATIC_URL}}img/share/twitter_white.png" alt="{% trans 'Bitakora twitter' %}" title="{% trans 'Bitakora twitter' %}"/><span> {% trans 'Link Twitter for this user' %}</span>
 			</a>
 		{% endif %}
@@ -58,7 +58,7 @@
                 <img src="{{STATIC_URL}}img/share/facebook_white.png" alt="{% trans 'Bitakora facebook' %}" title="{% trans 'Bitakora facebook' %}"/><span> {{user.facebook_id}}</span>
             </a>
 		{% else %}
-			<a rel="nofollow" href="{% url 'social:begin' 'facebook' %}{% if next %}?next={{next}}{% endif %}" class="col-sm-4 fb-share-btn">
+			<a rel="nofollow" href="" class="col-sm-4 fb-share-btn">
 				<img src="{{STATIC_URL}}img/share/facebook_white.png" alt="{% trans 'Bitakora facebook' %}" title="{% trans 'Bitakora facebook' %}"/><span> {% trans 'Link Facebook for this user' %}</span>
 			</a>
 		{% endif %}

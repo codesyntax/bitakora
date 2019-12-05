@@ -1,16 +1,25 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block metadesc %}{{blog.name}}.{% if blog.tagline %} {{blog.tagline}}.{% endif %}{% if blog.user.bio %} {{blog.user.bio|striptags|truncatechars:200}}{% endif %}{% endblock %}
+{% block metadesc %}
+
+{% if blog %}
+    {{blog.name}}.{% if blog.tagline %} {{blog.tagline}}.{% endif %}{% if blog.user.bio %} {{blog.user.bio|striptags|truncatechars:200}}{% endif %}
+{% endif %}
+
+{% endblock %}
 
 {% block extracss %}
 {% if user.get_blog %}
 <link rel="alternate" type="application/atom+xml" title="{{blog.name}} RSS" href="http://{{HOST}}{% url 'blog_index' blog.slug %}/feed.xml" />
 {% endif %}
 <link href="{{STATIC_URL}}js/lightbox/css/lightbox.css" rel="stylesheet">
+
+{% if blog %}
 <style type="text/css">
     {% include blog.get_blog_template with article=article %}
 </style>
+{% endif %}
 {% endblock %}
 
 {% block navigation %}
@@ -25,6 +34,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+
                 {% if not 'users' in request.path or user.get_blog %}
                     <a class="navbar-brand" href="/" title="{% trans 'Bitakora home page' %}">
                     {% if CUSTOM_MINILOGO %}
@@ -32,7 +42,12 @@
                     {% else %}
                         <strong>B</strong></a>
                     {% endif %}
-                    </a> <a class="navbar-brand blog-brand" href="{% url 'blog_index' blog.slug %}" title="{{blog.name}}">{{blog.name}}</a>
+                    </a>
+                    {% if user.school %}
+                        <a class="navbar-brand blog-brand" href="" title="{{user.school.name}}">{{user.school.name}}</a>
+                    {% else %}
+                        <a class="navbar-brand blog-brand" href="{% url 'blog_index' blog.slug %}" title="{{blog.name}}">{{blog.name}}</a>
+                    {% endif %}
                 {% else %}
                         <a class="navbar-brand" href="/">
                         {% if CUSTOM_LOGO %}

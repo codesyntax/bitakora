@@ -2,9 +2,9 @@ from photologue.models import Photo
 from django.conf import settings
 from bitakora.photologue_custom.models import PhotoExtended
 from django.template.defaultfilters import slugify
-from slug import time_slug_string
+from .slug import time_slug_string
 from django.core.files.base import ContentFile
-import urllib2
+from urllib.request import urlopen
 
 
 def handle_uploaded_file(f, author):
@@ -27,7 +27,7 @@ def handle_url_file(url, author):
     photo.slug = u'%s-%s' % (slugify(author), slugify(time_slug_string()))
 
     img_name = photo.slug + url[url.rfind("."):]
-    photo.image.save(img_name, ContentFile(urllib2.urlopen(url).read()))
+    photo.image.save(img_name, ContentFile(urlopen(url).read()))
     photo.save()
     extra.photo = photo
     extra.author = author

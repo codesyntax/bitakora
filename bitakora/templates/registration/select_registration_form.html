@@ -1,0 +1,50 @@
+{% extends "registration/registration_base.html" %}
+{% load i18n bootstrap %}
+
+{% block mainbody %}
+<div class="col-sm-4">
+  <div class="circle"><a href="#pertsonala">
+      <img src="/static/img/circle.png" />
+      <h3 class="overlay">Blog pertsonala nahi dut</h3>
+    </a>
+  </div>
+</div>
+<div class="col-sm-4">
+  <div class="circle"><a href="#irakaslea">
+      <img src="/static/img/circle.png" />
+      <h3 class="overlay">Irakaslea naiz</h3>
+    </a></div>
+</div>
+<div class="col-sm-4">
+  <div class="circle"><a href="#ikaslea">
+      <img src="/static/img/circle.png" />
+      <h3 class="overlay">Ikaslea naiz</h3>
+    </a></div>
+</div>
+<div class="divider"></div>
+<div class="col-sm-8 col-sm-offset-2 text-center">
+  <h3 id="pertsonala">Blog pertsonal bat sortu nahi dut</h3>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dui enim, aliquam sit amet facilisis auctor,
+    ultricies sed lorem. Vivamus aliquet ultrices maximus. Suspendisse vitae lacinia ex, vitae dignissim sapien. Ut ac
+    cursus lectus, ut scelerisque tellus. Quisque lorem nunc, commodo nec ante ut, fermentum condimentum ex. Proin sem
+    felis, vulputate sit amet sem in, eleifend congue mauris. Donec neque est, gravida at mauris vitae, dictum vehicula
+    metus. <a href="{% url 'registration_register' %}">Informazio gehiago >></a></p>
+  <a href="" class="btn btn-primary"><strong>EKIN</strong></a>
+  <hr class="w-100 text-center" />
+  <h3 id="irakaslea">Irakaslea naiz</h3>
+  <p>Mauris eget blandit eros. Praesent sollicitudin, ex sit amet consectetur porttitor, dui nisl fringilla ipsum, ac
+    aliquam libero dui eleifend velit. Nulla a dictum nunc. Duis libero enim, luctus sed tristique nec, ullamcorper eu
+    sapien. Duis vulputate convallis tellus, eget malesuada libero venenatis ut. Aenean lacinia nisi augue, eu elementum
+    ipsum vulputate consequat. Mauris tortor quam, varius a sollicitudin in, maximus ut lorem.<a href="">Informazio
+      gehiago >></a></p>
+  <a href="{% url 'teacher_registration' %}" class="btn btn-primary"><strong>EKIN</strong></a>
+  <hr class="w-100 text-center" />
+  <h3 id="ikaslea">Ikaslea naiz</h3>
+  <p>Quisque nec libero nec enim euismod porta pharetra id ante. Praesent aliquet ligula tristique leo faucibus
+    vehicula. Integer pretium ultrices magna, sed sagittis libero scelerisque id. Duis risus turpis, ultrices ac
+    molestie a, posuere in quam. Ut quis rutrum risus. Aliquam imperdiet erat non orci auctor blandit. <a
+      href="">Informazio gehiago >></a></p>
+  <a href="{% url 'student_registration' %}" class="btn btn-primary"><strong>EKIN</strong></a>
+</div>
+
+{% endblock %}

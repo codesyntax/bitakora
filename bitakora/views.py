@@ -1,6 +1,5 @@
-from django.template import RequestContext
 from django.http import HttpResponse
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import render, get_object_or_404
 from bitakora.base.models import Article, Category, Blog, Comment, External_link
 from voting.models import Vote
 import json
@@ -17,13 +16,15 @@ SECTIONS = (
     (2, _('Bookmarks')),
 )
 
+
 @cache_page(60*60)
 def index(request):
     articles = Article.objects.published()[:25]
     comments = Comment.objects.filter(status=1).order_by('-publish_date')[:10]
     categories = [cat for article in articles for cat in article.categories.all()][:8]
     categories = list(set(categories))
-    return render_to_response('index.html', locals(), context_instance=RequestContext(request))
+    return render(request, 'index.html', locals())
+
 
 @cache_page(60*60*8)
 def top_stories(request):
@@ -34,7 +35,8 @@ def top_stories(request):
     if last_articles:
         categories = [cat for article in last_articles for cat in article.categories.all()][:8]
         categories = list(set(categories))
-    return render_to_response('index_no_header.html', locals(), context_instance=RequestContext(request))
+    return render(request, 'index_no_header.html', locals())
+
 
 @cache_page(60*60)
 def bookmarks(request):
@@ -44,7 +46,8 @@ def bookmarks(request):
     if articles:
         categories = [cat for article in articles for cat in article.categories.all()][:8]
         categories = list(set(categories))
-    return render_to_response('index_no_header.html', locals(), context_instance=RequestContext(request))
+    return render(request, 'index_no_header.html', locals())
+
 
 def category(request,slug):
     category = get_object_or_404(Category, slug=slug)
@@ -54,7 +57,8 @@ def category(request,slug):
     if articles:
         categories = [cat for article in last_articles for cat in article.categories.all()][:8]
         categories = list(set(categories))
-    return render_to_response('index_no_header.html', locals(), context_instance=RequestContext(request))
+    return render(request, 'index_no_header.html', locals())
+
 
 def useroptions(request):
     url = request.GET.get('url','/')
@@ -64,7 +68,8 @@ def useroptions(request):
         blog = Blog.objects.get(slug=blog_slug)
         if request.user == blog.user:
             article = Article.objects.get(slug=article_slug)
-    return render_to_response('useroptions.html', locals(), context_instance=RequestContext(request))
+    return render(request, 'useroptions.html', locals())
+
 
 class DataGetCategories(View):
     def get(self, request):
@@ -78,6 +83,7 @@ class DataGetCategories(View):
         return HttpResponse(
             json.dumps(data), content_type='application/json')
 
+
 def get_related_posts(request):
     results = []
     if request.is_ajax():
@@ -89,6 +95,7 @@ def get_related_posts(request):
     mimetype = 'application/json'
     return HttpResponse(data, mimetype)
 
+
 def get_categories(request):
     results = []
     if request.is_ajax():
@@ -99,6 +106,7 @@ def get_categories(request):
         data = []
     mimetype = 'application/json'
     return HttpResponse(data, mimetype)
+
 
 def remove_link(request):
     if request.is_ajax():

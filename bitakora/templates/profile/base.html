@@ -11,7 +11,11 @@
 		<h3>{% trans "Settings" %}</h3>
 		<ul class="config-list">
 			<li {% if tab == 'personal' %}class="selected">{% trans "User profile" %}{% else %}><a href="{% url 'edit_profile' %}">{% trans "User profile" %}</a>{% endif %}</li>
+			{% if user.school %}
+			<li {% if tab == 'school' %}class="selected">{% trans "Your School" %}{% else %}><a href="{% url 'edit_school' %}">{% trans "Your School" %}</a>{% endif %}</li>
+		    {% else %}
 			<li {% if tab == 'blog' %}class="selected">{% trans "Your Blog" %}{% else %}><a href="{% url 'edit_blog' %}">{% trans "Your Blog" %}</a>{% endif %}</li>
+			{% endif %}
 			<li {% if "/password/change/" in request.path %}class="selected">Aldatu pasahitza{% else %}><a href="/users/accounts/password/change/">Aldatu pasahitza</a>{% endif %}</li>
 		</ul>
 	</div>

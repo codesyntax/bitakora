@@ -7,13 +7,14 @@ from django.utils.translation import ugettext_lazy as _
 
 user_model_name = get_user_model_name()
 
+
 class PhotoExtended(models.Model):
 
     # Link back to Photologue's Photo model.
-    photo = models.OneToOneField(Photo, related_name='extended')
+    photo = models.OneToOneField(Photo, related_name='extended', on_delete=models.CASCADE)
 
     author = models.ForeignKey(user_model_name, verbose_name=_("Author"),
-        related_name="%(class)ss")
+        related_name="%(class)ss", on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = u'Extra fields'

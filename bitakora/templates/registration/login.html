@@ -1,4 +1,4 @@
-{% extends "registration/base.html" %}
+{% extends "registration/registration_base.html" %}
 {% load i18n bootstrap %}
 
 {% block body %}
@@ -15,7 +15,7 @@
 				    {% trans "Forgot your password?" %}
 				</a>
 				<hr/>
-				<p><a class="btn btn-default btn-lg" href="{% url "registration_register" %}"> {% trans 'Create new account' %}</a></p>
+				<p><a class="btn btn-default btn-lg" href="{% url 'select_register' %}"> {% trans 'Create new account' %}</a></p>
 				{% trans 'Any problem?' %} <a href="{% url 'contact_form' %}" class="link">{% trans 'Contact us' %}</a>.
 			</form>
 		</div>

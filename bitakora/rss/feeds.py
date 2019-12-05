@@ -1,5 +1,5 @@
 from django.contrib.syndication.views import Feed
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from bitakora.base.models import Article, Blog
 from django.template.defaultfilters import striptags
 from django.utils.translation import ugettext_lazy as _

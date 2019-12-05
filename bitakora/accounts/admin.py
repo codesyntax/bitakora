@@ -3,7 +3,7 @@ from django.contrib.auth.forms import AdminPasswordChangeForm,UserCreationForm, 
 from django.forms import ModelForm
 from django import forms
 from django.utils.translation import ugettext as _
-from models import BitakoraUser
+from .models import BitakoraUser
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
@@ -16,7 +16,8 @@ class MyUserChangeForm(UserChangeForm):
 
     class Meta(UserChangeForm.Meta):
         model = BitakoraUser
-        fields = ('username','password')
+        fields = ('email','password')
+
 
 class MyUserCreationForm(ModelForm):
     """A form for creating new users. Includes all the required
@@ -26,7 +27,7 @@ class MyUserCreationForm(ModelForm):
 
     class Meta:
         model = BitakoraUser
-        fields = ['username','password1','password2']
+        fields = ['email','password1','password2']
 
     def clean_password2(self):
         # Check that the two password entries match
@@ -44,6 +45,7 @@ class MyUserCreationForm(ModelForm):
             user.save()
         return user
 
+
 class BitakoraUserAdmin(UserAdmin):
     def admin_thumbnail(self,obj):
         if obj.photo:
@@ -52,46 +54,39 @@ class BitakoraUserAdmin(UserAdmin):
     admin_thumbnail.short_description = 'Thumbnail'
     admin_thumbnail.allow_tags = True
 
-
-    def get_email(self, obj):
-        """ """
-        return obj.email
-
-    def fullname(self, obj):
-        """ """
-        return obj.get_fullname()
-
     form = MyUserChangeForm
     change_user_password_template = None
     add_form = MyUserCreationForm
     change_password_form = AdminPasswordChangeForm
 
-    list_display = ('fullname', 'username','get_email', 'date_joined','is_active', 'is_staff','admin_thumbnail')
-    list_display_links = ('fullname','username')
-    ordering = ('-date_joined',)
-    search_fields = ['email','username',]
-    raw_id_fields = ('photo',)
+    list_display = ('email', 'date_joined', 'is_active', 'is_staff', 'admin_thumbnail')
+    list_display_links = ['email']
+    ordering = ['-date_joined']
+    search_fields = ['email']
+    raw_id_fields = ['photo']
 
 
     fieldsets = (
-        (None, {'fields': ('username', 'password')}),
+        (None, {'fields': ('email', 'password', 'usertype')}),
 
         (_('Personal data'),
-        {'fields':('fullname', 'email', 'phone', 'photo')},),
+        {'fields':('first_name', 'last_name', 'phone', 'photo')},),
         (_('Biography'),
         {'fields': ('bio',)}),
+        (_('School blogs'),
+        {'fields': ('school', 'code')}),
         (_('Social networks'), {
             'fields': ('twitter_id', 'facebook_id', 'openid_id', 'googleplus_id')
         }),
         (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser',
-                                       'groups', 'user_permissions','last_login'),
-                            'classes': ['collapse',],}),
+                                       'groups', 'user_permissions', 'last_login'),
+                            'classes': ['collapse', ], }),
     )
 
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('username', 'password1', 'password2')}
+            'fields': ('email', 'password1', 'password2')}
         ),
     )
 

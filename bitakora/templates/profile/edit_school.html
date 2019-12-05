@@ -1,0 +1,60 @@
+{% extends "profile/base.html" %}
+{% load i18n bootstrap %}
+
+{% block metadesc %}{% endblock %}
+
+{% block extracss %}
+    <link href="{{STATIC_URL}}js/lightbox/css/lightbox.css" rel="stylesheet">
+{% endblock %}
+
+{% block extrajs %}
+    {{ form.media }}
+{% endblock %}
+
+{% block container %}
+<div class="col-sm-9">
+	<h2>{% trans "Your school data" %}</h2>
+
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#config" aria-controls="config" role="tab" data-toggle="tab">{% trans "School configuration" %}</a></li>
+        <li role="presentation"><a href="#rooms" aria-controls="rooms" role="tab" data-toggle="tab">{% trans "Rooms" %}</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="config">
+            <form action="{{request.path}}" method="POST" ENCTYPE="multipart/form-data">
+            {% csrf_token %}
+            {{form|bootstrap}}
+            <input type="submit" class="btn btn-primary" name="school" value="{% trans "Save" %}">
+            </form>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="rooms">
+            <form action="{{request.path}}" method="POST" ENCTYPE="multipart/form-data">
+            {% csrf_token %}
+            {{roomform|bootstrap}}
+            <input type="submit" class="btn btn-primary" name="rooms" value="{% trans "Save" %}">
+            </form>
+
+            <table id="link_table" class="table table-striped">
+                <thead>
+                    <th>{% trans 'Room name' %}</th>
+                    <th>{% trans 'Level' %}</th>
+                    <th>{% trans 'Year' %}</th>
+                    <th>{% trans 'Code' %}</th>
+                </thead>
+                <tbody>
+                    {% for room in rooms %}
+                    <tr>
+                        <td>{{room.name}}</td>
+                        <td>{{room.level}}</td>
+                        <td>{{room.year}}</td>
+                        <td>{{room.code}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

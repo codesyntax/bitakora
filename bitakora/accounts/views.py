@@ -1,18 +1,35 @@
-from django.template import RequestContext
-from django.shortcuts import render_to_response, get_object_or_404, HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from django.contrib.auth import HASH_SESSION_KEY
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.debug import sensitive_post_parameters
 from django.views.decorators.csrf import csrf_protect
 from bitakora.base.models import Blog, External_link
 from bitakora.base.forms import BlogFormNoCaptcha, WPXMLForm, External_linkForm
-from cssocialuser.forms import ProfileForm, ProfilePhotoForm
+from bitakora.accounts.forms import ProfileForm, ProfilePhotoForm, StudentRegistrationForm, TeacherRegistrationForm
 from django.contrib.auth.views import password_change, password_change_done
 from bitakora.utils.images import handle_uploaded_file
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.conf import settings
 from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
+from registration.backends.default.views import RegistrationView
+from bitakora.accounts.forms import RegistrationForm
+
+def select_register(request):
+    return render(request, 'registration/select_registration_form.html', locals())
+
+
+def student_registration(request):
+    title = _('Create a student account')
+    form = StudentRegistrationForm()
+    return render(request, 'registration/registration_form.html', locals())
+
+
+def teacher_registration(request):
+    title = _('Create a teacher account')
+    form = TeacherRegistrationForm()
+    return render(request, 'registration/registration_form.html', locals())
+
 
 @login_required
 def edit_profile(request):
@@ -40,7 +57,8 @@ def edit_profile(request):
     else:
         profileform = ProfileForm(instance=user)
         imageform = ProfilePhotoForm()
-    return render_to_response('profile/edit_personal.html', locals(), context_instance=RequestContext(request))
+    return render(request, 'profile/edit_personal.html', locals())
+
 
 @login_required
 def edit_blog(request):
@@ -78,12 +96,34 @@ def edit_blog(request):
         form = BlogFormNoCaptcha(instance=blog)
         wp_form = WPXMLForm()
         link_form = External_linkForm()
-    return render_to_response('profile/edit_blog.html', locals(), context_instance=RequestContext(request))
+    return render(request, 'profile/edit_blog.html', locals())
+
 
 @login_required
 def edit_pass(request):
     return password_change(request,post_change_redirect="/users/accounts/password/change/done/",extra_context={'blog': request.user.get_blog()})
 
+
 @login_required
 def pass_done(request):
     return password_change_done(request,extra_context={'blog': request.user.get_blog()})
+
+
+class BlogRegistrationView(RegistrationView):
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if isinstance(context.get('form'), StudentRegistrationForm):
+            context['title'] = _('Create a student account')
+        elif isinstance(context.get('form'), TeacherRegistrationForm):
+            context['title'] = _('Create a teacher account')
+        return context
+
+    def get_form_class(self):
+        if 'code' in self.request.POST:
+            return StudentRegistrationForm
+        elif 'school' in self.request.POST:
+            return TeacherRegistrationForm
+        else:
+            return RegistrationForm
+        pass

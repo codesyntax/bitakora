@@ -1,6 +1,5 @@
-from django.template import RequestContext
 from django.http import Http404
-from django.shortcuts import render_to_response, get_object_or_404, HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from bitakora.base.models import Article, Blog, Category, Comment, CONTENT_STATUS_PUBLISHED
 from bitakora.base.forms import ArticleForm, BlogForm, CommentForm, AnonimousCommentForm, WPXMLForm
@@ -8,7 +7,7 @@ from bitakora.utils.images import handle_uploaded_file
 from bitakora.utils.slug import time_slug_string
 from bitakora.utils.import_from_wp import import_from_wp
 from django.template.defaultfilters import slugify
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.conf import settings
 from datetime import datetime
 from django.contrib import messages
@@ -19,6 +18,7 @@ from django.template.loader import get_template
 from django.http import HttpResponse
 from django.template import Context
 from django.utils.translation import activate
+from bitakora.ikasbloga.models import Room
 
 
 def blog_index(request, slug):
@@ -26,7 +26,7 @@ def blog_index(request, slug):
     articles = blog.get_articles()[:10]
     categories = [cat for art in articles for cat in art.categories.all()][:8]
     categories = list(set(categories))
-    return render_to_response('base/blog_index.html', locals(), context_instance=RequestContext(request))
+    return render(request, 'base/blog_index.html', locals())
 
 
 def article(request, blogslug, slug):
@@ -38,11 +38,11 @@ def article(request, blogslug, slug):
     elif article.publish_date > datetime.now():
         future_date = True
     blog = article.blog
-    if request.user.is_authenticated():
+    if request.user.is_authenticated:
         form = CommentForm()
     else:
         form = AnonimousCommentForm()
-    return render_to_response('base/article.html', locals(), context_instance=RequestContext(request))
+    return render(request, 'base/article.html', locals())
 
 
 def blog_archive(request, slug):
@@ -50,17 +50,17 @@ def blog_archive(request, slug):
     articles = blog.get_articles()
     categories = [cat for art in articles for cat in art.categories.all()][:8]
     categories = list(set(categories))
-    return render_to_response('base/blog_archive.html', locals(), context_instance=RequestContext(request))
+    return render(request, 'base/blog_archive.html', locals())
 
 
 def my_posts(request, slug):
     blog = get_object_or_404(Blog, slug=slug)
-    return render_to_response('base/dashboard.html', locals(), context_instance=RequestContext(request))
+    return render(request, 'base/dashboard.html', locals())
 
 
 def my_comments(request, slug):
     blog = get_object_or_404(Blog, slug=slug)
-    return render_to_response('base/dashboard_comments.html', locals(), context_instance=RequestContext(request))
+    return render(request, 'base/dashboard_comments.html', locals())
 
 
 @login_required(login_url='/users/login')
@@ -89,7 +89,7 @@ def add_article(request, blogslug):
             return HttpResponseRedirect(reverse('article', kwargs={'blogslug': blogslug, 'slug': article.slug}))
     else:
         form = ArticleForm()
-    return render_to_response('base/add_article.html', locals(), context_instance=RequestContext(request))
+    return render(request, 'base/add_article.html', locals())
 
 
 @login_required(login_url='/users/login')
@@ -116,7 +116,7 @@ def edit_article(request, blogslug, slug):
             form.fields['related_posts'].widget.choices = [(r.id, r.title) for r in Article.objects.filter(id__in=form.cleaned_data['related_posts'])]
     else:
         form = ArticleForm(cat=article.categories.all(), rel=article.related_posts.all(), instance=article)
-    return render_to_response('base/edit_article.html', locals(), context_instance=RequestContext(request))
+    return render(request, 'base/edit_article.html', locals())
 
 
 @login_required(login_url='/users/login')
@@ -134,16 +134,22 @@ def new_blog(request):
         wp_form = WPXMLForm()
         if form.is_valid():
             blog = form.save(commit=False)
-            blog.slug = slugify(request.user.username)
+            blog.slug = slugify(blog.name) # request.user.username
             if request.FILES.get('header_image', ''):
                 blog.header_image = handle_uploaded_file(request.FILES['header_image'], request.user)
             blog.user = request.user
+            if request.user.code:
+                try:
+                    room = Room.objects.get(code=request.user.code)
+                except Exception:
+                    room = None
+                blog.room = room
             blog.save()
             return HttpResponseRedirect(reverse('blog_index', kwargs={'slug': blog.slug}))
     else:
         form = BlogForm()
         wp_form = WPXMLForm()
-    return render_to_response('base/new_blog.html', locals(), context_instance=RequestContext(request))
+    return render(request, 'base/new_blog.html', locals())
 
 
 @login_required(login_url='/users/login')
@@ -160,7 +166,7 @@ def import_blog(request):
                 messages.add_message(request, messages.SUCCESS, msg, fail_silently=True)
     else:
         wp_form = WPXMLForm()
-    return render_to_response('base/new_blog.html', locals(), context_instance=RequestContext(request))
+    return render(request, 'base/new_blog.html', locals())
 
 
 @login_required(login_url='/users/login')
@@ -174,7 +180,7 @@ def export_blog(request, slug):
         response['Content-Disposition'] = 'attachment; filename=wp_export_%s.xml' % (blog.name)
         response.write(template.render(context))
         return response
-    except:
+    except Exception:
         return HttpResponse('ERROR')
 
 
@@ -182,7 +188,7 @@ def add_comment(request, blogslug, slug):
     user = request.user
     article = get_object_or_404(Article, blog__slug=blogslug, slug=slug)
     if request.method == 'POST':
-        if user.is_authenticated():
+        if user.is_authenticated:
             form = CommentForm(request.POST)
             if form.is_valid():
                 comment = form.save(commit=False)
@@ -202,11 +208,11 @@ def add_comment(request, blogslug, slug):
         if form.is_valid:
             return HttpResponseRedirect(reverse('article', kwargs={'blogslug': blogslug, 'slug': article.slug}))
     else:
-        if user.is_authenticated():
+        if user.is_authenticated:
             form = CommentForm()
         else:
             form = AnonimousCommentForm()
-    return render_to_response('base/add_article.html', locals(), context_instance=RequestContext(request))
+    return render(request, 'base/add_article.html', locals())
 
 
 def change_comment_status(request):

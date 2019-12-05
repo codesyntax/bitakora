@@ -25,9 +25,11 @@ setup(
         "setuptools",
         "pytz",
         # -*- Extra requirements: -*-
-        "cssocialuser",
-        "django-storages==1.6.5",
+        "django-storages",
+        "raven",
+        "bleach",
         "akismet",
+        "django-user-agents",
     ],
     entry_points="""
       # -*- Entry points: -*-

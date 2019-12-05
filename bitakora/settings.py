@@ -31,7 +31,7 @@ DATETIME_FORMAT = "Y-m-d H:i"
 LANGUAGE_CODE = "en"
 LANGUAGES = (("en", "English"),)
 
-SITE_ID = 1
+SITE_ID = 2
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
@@ -51,29 +51,18 @@ MEDIA_URL = "/media/"
 STATIC_ROOT = "/django/bitakora/static"
 MEDIA_ROOT = "/django/bitakora/media"
 
-# List of callables that know how to import templates from various sources.
-TEMPLATE_LOADERS = (
-    "django_mobile.loader.Loader",
-    "django.template.loaders.filesystem.Loader",
-    "django.template.loaders.app_directories.Loader",
-)
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "pagination_bootstrap.middleware.PaginationMiddleware",
-    "django_mobile.middleware.MobileDetectionMiddleware",
-    "django_mobile.middleware.SetFlavourMiddleware",
-)
+    "django_user_agents.middleware.UserAgentMiddleware",
+]
 
 ROOT_URLCONF = "bitakora.urls"
-
-TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), "templates"),)
-
-my_media_url = os.path.join(os.path.dirname(__file__), "media")
 
 
 INSTALLED_APPS = (
@@ -86,11 +75,8 @@ INSTALLED_APPS = (
     "django.contrib.humanize",
     "django.contrib.admin",
     "django_social_share",
-    "social.apps.django_app.default",
     "sortedm2m",
     "photologue",
-    "registration",
-    "cssocialuser",
     "voting",
     "captcha",
     "tinymce",
@@ -99,55 +85,61 @@ INSTALLED_APPS = (
     "pagination_bootstrap",
     "contact_form",
     "gunicorn",
-    "django_mobile",
+    "django_user_agents",
     "bitakora",
     "bitakora.accounts",
     "bitakora.base",
     "bitakora.rss",
     "bitakora.photologue_custom",
     "bitakora.contact",
+    "bitakora.ikasbloga",
+    "registration",
 )
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-    "django.contrib.auth.context_processors.auth",
-    "django.core.context_processors.debug",
-    "django.core.context_processors.i18n",
-    "django.core.context_processors.request",
-    "django.core.context_processors.media",
-    "django.core.context_processors.static",
-    "bitakora.context_processors.bitakora_custom",
-    "django_mobile.context_processors.flavour",
-)
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            # insert your TEMPLATE_DIRS here
+        ],
+        'OPTIONS': {
+            'context_processors': [
+                # Insert your TEMPLATE_CONTEXT_PROCESSORS here or use this
+                # list if you haven't customized them:
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.request',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'bitakora.context_processors.bitakora_custom',
+                'django.contrib.messages.context_processors.messages',
+            ],
+            'loaders': [
+                # insert your TEMPLATE_LOADERS here
+                "django.template.loaders.filesystem.Loader",
+                "django.template.loaders.app_directories.Loader",
+            ]
+        },
+    },
+]
 
 ACCOUNT_ACTIVATION_DAYS = 5
 
 AUTH_USER_MODEL = "accounts.BitakoraUser"
 
 REGISTRATION_FORM = "bitakora.accounts.forms.RegistrationForm"
+INCLUDE_REGISTER_URL = False
 
-SECRET_KEY = ""
+SECRET_KEY = "+ajg=l4%nzc&via@*qbb3@oi^awf+6*qc_*4yo##$&*mez#7wu"
 
 RECAPTCHA_PUBLIC_KEY = ""
 RECAPTCHA_PRIVATE_KEY = ""
 NOCAPTCHA = True
 
 AUTHENTICATION_BACKENDS = (
-    "social.backends.twitter.TwitterOAuth",
-    "social.backends.facebook.FacebookOAuth2",
     "django.contrib.auth.backends.ModelBackend",
-)
-
-SOCIAL_AUTH_PIPELINE = (
-    "social.pipeline.social_auth.social_details",
-    "social.pipeline.social_auth.social_uid",
-    "social.pipeline.social_auth.auth_allowed",
-    "social.pipeline.social_auth.social_user",
-    "social.pipeline.user.get_username",
-    "social.pipeline.user.create_user",
-    "cssocialuser.models.get_user_data",
-    "social.pipeline.social_auth.associate_user",
-    "social.pipeline.social_auth.load_extra_data",
-    "social.pipeline.user.user_details",
 )
 
 HAYSTACK_CONNECTIONS = {
@@ -160,12 +152,12 @@ ALLOWED_HOSTS = ("127.0.0.1", "beta.blogak.eus", "blogak.eus", "www.blogak.eus")
 AKISMET_API_KEY = ""
 
 try:
-    from tiny_mce_settings import *
+    from .tiny_mce_settings import *
 except:
     pass
 
 try:
-    from server_settings import *
+    from .server_settings import *
 except:
     pass
 
@@ -175,7 +167,7 @@ except:
     pass
 
 try:
-    from local_settings import *
+    from .local_settings import *
 except:
     pass
 

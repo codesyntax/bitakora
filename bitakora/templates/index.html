@@ -22,13 +22,13 @@
 		{% if user.is_authenticated %}
 			<div class="alert alert-success" role="alert"><strong>{% trans 'Start bookmarking now!' %}</strong> {% blocktrans %}You only need to give a <i class="glyphicon glyphicon-thumbs-up"></i> to some stories{% endblocktrans %}</div>
 		{% else %}
-			<div class="alert alert-warning" role="alert"><strong>{% trans 'Sorry!' %}</strong> {% trans 'You must register in order to have your Bookmark section...' %} <a href="{% url 'cssocialuser_user_login' %}?next={{request.path}}">{% trans 'Sign up' %}</a> {% trans 'now!' %}</div>
+			<div class="alert alert-warning" role="alert"><strong>{% trans 'Sorry!' %}</strong> {% trans 'You must register in order to have your Bookmark section...' %} <a href="{% url 'auth_login' %}?next={{request.path}}">{% trans 'Sign up' %}</a> {% trans 'now!' %}</div>
 		{% endif %}
     {% elif section.0 == 1 %}
         {% if user.is_authenticated %}
             <div class="alert alert-success" role="alert"><strong>{% trans 'Start rating now!' %}</strong> {% blocktrans %}You only need to give a <i class="glyphicon glyphicon-thumbs-up"></i> to some stories{% endblocktrans %}</div>
         {% else %}
-            <div class="alert alert-warning" role="alert"><strong>{% trans 'Sorry!' %}</strong> {% trans 'You must register in order to rate the best stories...' %} <a href="{% url 'cssocialuser_user_login' %}?next={{request.path}}">{% trans 'Sign up' %}</a> {% trans 'now!' %}</div>
+            <div class="alert alert-warning" role="alert"><strong>{% trans 'Sorry!' %}</strong> {% trans 'You must register in order to rate the best stories...' %} <a href="{% url 'auth_login' %}?next={{request.path}}">{% trans 'Sign up' %}</a> {% trans 'now!' %}</div>
         {% endif %}
     {% else %}
         <div class="alert alert-success" role="alert"><strong>{% trans 'Start importing blogs!' %}</strong> {% blocktrans %}Please, execute 'import_blogs_from_api' command line script.{% endblocktrans %}</div>

@@ -1,6 +1,6 @@
 from xml.etree import ElementTree as etree
 import sys
-from cStringIO import StringIO
+from io import StringIO
 from django.template.defaultfilters import slugify
 from bitakora.utils.text import clean_html, make_responsive
 from bitakora.base.models import Article, Blog, Comment, Category, CONTENT_STATUS_DRAFT, COMMENT_STATUS_VISIBLEADMIN
@@ -43,7 +43,7 @@ def import_from_wp(file_content, user, debug=False):
                 article.blog = blog
 
                 if debug:
-                    print article.title
+                    print(article.title)
 
                 article.shared = True
                 article.save()
@@ -71,4 +71,4 @@ def import_from_wp(file_content, user, debug=False):
                         article.categories.add(category)
             return blog
     except Exception as e:
-        raise "The code is buggy: %s" % e, sys.exc_info()[2]
+        raise "The code is buggy: %s" % (e, sys.exc_info()[2])

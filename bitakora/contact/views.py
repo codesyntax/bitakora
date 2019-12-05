@@ -1,11 +1,12 @@
 from django.shortcuts import get_object_or_404
 from django.http import Http404
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from contact_form.views import ContactFormView
 from bitakora.base.models import Blog
 from django.views.generic.edit import FormView
 from contact_form.forms import ContactForm
 from django.views.generic.detail import DetailView
+
 
 class BitakoraContactFormView(ContactFormView):
     template_name = 'contact/blog_contact_form.html'

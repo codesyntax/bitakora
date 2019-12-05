@@ -1,44 +1,49 @@
 {% load i18n %}
 
 {% if user.is_authenticated %}
-
-{% if user.get_blog %}
-<li>
-	<a class="btn btn-primary" href="{% url 'add_article' user.get_blog.slug %}">{% trans 'Write a story' %}</a>
-</li>
-{% if article %}
-<li>
-    <a class="btn btn-default" href="{% url 'edit_article' user.get_blog.slug article.slug %}">{% trans 'Edit' %}</a>
-</li>
-<li>
-    <a class="btn btn-default" href="#delete" data-toggle="modal" data-target="#ModalDelete">{% trans 'Delete' %}</a>
-</li>
-
-{% endif %}
-
-<li>
-    <a class="btn btn-default" href="{% url 'my_posts' user.get_blog.slug  %}">{% trans 'Dashboard' %}</a>
-</li>
-{% else %}
-<li>
-    <a class="btn btn-primary" href="{% url 'new_blog' %}">{% trans 'Create a blog' %}</a>
-</li>
-{% endif %}
+    {% if user.usertype != 3 %}
+        {% if user.get_blog %}
+            <li>
+                <a class="btn btn-primary" href="{% url 'add_article' user.get_blog.slug %}">{% trans 'Write a story' %}</a>
+            </li>
+            {% if article %}
+                <li>
+                    <a class="btn btn-default" href="{% url 'edit_article' user.get_blog.slug article.slug %}">{% trans 'Edit' %}</a>
+                </li>
+                <li>
+                    <a class="btn btn-default" href="#delete" data-toggle="modal" data-target="#ModalDelete">{% trans 'Delete' %}</a>
+                </li>
+            {% endif %}
+            <li>
+                <a class="btn btn-default" href="{% url 'my_posts' user.get_blog.slug  %}">{% trans 'Dashboard' %}</a>
+            </li>
+            {% else %}
+            <li>
+                <a class="btn btn-primary" href="{% url 'new_blog' %}">{% trans 'Create a blog' %}</a>
+            </li>
+        {% endif %}
+    {% else %}
+    <li>
+        <a class="btn btn-default" href="{% url 'school_dashboard' user.school.slug %}">{% trans 'Teacher Dashboard' %}</a>
+    </li>
+    {% endif %}
 <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" title="{% trans 'User options' %}">
 		<img class="img-responsive img-circle pull-left" src="{{user.get_photo.get_profile_url}}" alt="{{user.photo.title}}" title="{{user.photo.title}}"/>
     </a>
     <ul class="dropdown-menu pull-right">
-        {% if user.get_blog %}
+        {% if user.school %}
+        <li><a href=""><i class="glyphicon glyphicon-home"></i> {% trans 'My school' %}</a></li>
+        {% elif user.get_blog %}
             <li><a href="{% url 'blog_index' user.get_blog.slug %}"><i class="glyphicon glyphicon-home"></i> {% trans 'My blog' %}</a></li>
         {% endif %}
-        <li><a href="{% url 'cssocialuser_edit_profile' %}"><i class="glyphicon glyphicon-cog"></i> {% trans 'Settings' %}</a></li>
+        <li><a href="{% url 'edit_profile' %}"><i class="glyphicon glyphicon-cog"></i> {% trans 'Settings' %}</a></li>
         <li role="separator" class="divider"></li>
-        <li><a href="{% url 'cssocialuser_logout' %}?next=/"><i class="glyphicon glyphicon-off"></i> {% trans 'Logout' %}</a></li>
+        <li><a href="{% url 'auth_logout' %}?next=/"><i class="glyphicon glyphicon-off"></i> {% trans 'Logout' %}</a></li>
     </ul>
 </li>
 {% elif not 'login' in url %}
 <li>
-	<a class="btn btn-primary" href="{% url 'cssocialuser_user_login' %}?next={{url}}">{% trans 'Sign in / Sign up' %}</a>
+	<a class="btn btn-primary" href="{% url 'auth_login' %}?next={{url}}">{% trans 'Sign in' %}</a>
 </li>
 {% endif %}

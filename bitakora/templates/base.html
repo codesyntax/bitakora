@@ -100,10 +100,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li {% if 'top_stories' in request.path %}class="active"{% endif %}>
-                        <a href="{% url 'top_stories' %}">{% trans 'Top stories' %}</a>
-                    </li>
-                    <li {% if 'bookmarks' in request.path %}class="active"{% endif %}>
-                        <a href="{% url 'bookmarks' %}">{% trans 'Bookmarks' %}</a>
+                        <a href="{% url 'school_blogs'%}">{% trans 'School blogs' %}</a>
                     </li>
                 </ul>
                 <ul id ="useroptions" class="nav navbar-nav navbar-right"></ul>
@@ -134,7 +131,7 @@
                         <h1>{% trans 'Move thinking forward' %}</h1>
                         <h2>{% trans 'Bitakora is a community of readers and writers offering unique perspectives on ideas large and small' %}</h2>
                         <p>{% trans 'Sign up to read and interact with what matters most to you' %}</p>
-                        <a class="btn btn-primary btn-lg" href="{% url 'cssocialuser_user_login' %}?next=/">{% trans 'Get started' %}</a>
+                        <a class="btn btn-primary btn-lg" href="{% url 'select_register' %}">{% trans 'Create new account' %}</a>
                         <a class="btn btn-default btn-lg" href="{% url 'about' %}">{% trans 'Learn more' %}</a>
                     </div>
                 </div>

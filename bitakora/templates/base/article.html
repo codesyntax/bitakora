@@ -106,7 +106,7 @@ class="col-md-8 col-md-offset-2 articletext"
                         <a href="javascript:document.voting.submit();" name="submit">{% if score.score > 0 %}{{score.score}}{% else %}{% trans 'Like' %}{% endif %} <i class="glyphicon glyphicon-thumbs-up"></i></a>
                     </form>
                     {% else %}
-                    <a href="{% url 'cssocialuser_user_login' %}?next={{request.path}}">{% if score.score > 0 %}{{score.score}}{% else %}{% trans 'Like' %}{% endif %} <i class="glyphicon glyphicon-thumbs-up"></i></a>
+                    <a href="{% url 'auth_login' %}?next={{request.path}}">{% if score.score > 0 %}{{score.score}}{% else %}{% trans 'Like' %}{% endif %} <i class="glyphicon glyphicon-thumbs-up"></i></a>
                     {% endif %}
                 {% endif %}
                 </h4>

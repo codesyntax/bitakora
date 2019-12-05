@@ -1,7 +1,7 @@
 import time
 from django.db import models
 from django.conf import settings
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.db.models.signals import post_save
 from django.http import HttpResponseRedirect
 from photologue.models import Photo
@@ -12,12 +12,13 @@ from bitakora.utils.text import make_responsive
 from bitakora.utils.images import get_pattern
 from django.utils.translation import ugettext_lazy as _
 from datetime import datetime
-from django.template.defaultfilters import removetags, striptags, truncatechars
+from django.template.defaultfilters import striptags, truncatechars
 from voting.models import Vote
 from django.contrib.contenttypes.models import ContentType
 from django.template.loader import get_template
 from django.template import Context
 from django.core.mail import send_mail
+from bitakora.ikasbloga.models import Room
 
 try:
     from django.utils.timezone import now
@@ -49,7 +50,7 @@ class Blog(models.Model):
             help_text=_("Leave blank to have the URL auto-generated from "
                         "the title."))
     tagline = models.CharField(max_length=200, verbose_name=_('Tagline'), null=True, blank=True)
-    header_image = models.ForeignKey(Photo, null=True, blank=True)
+    header_image = models.ForeignKey(Photo, null=True, blank=True, on_delete=models.SET_NULL)
     custom_html = models.TextField(max_length=2000, verbose_name=_('Custom HTML'), null=True, blank=True)
     analytics_code = models.TextField(max_length=1000, verbose_name=_('Analytics code'), null=True, blank=True)
 
@@ -60,7 +61,10 @@ class Blog(models.Model):
         choices=LICENSE_CHOICES, default=DEFAULT_LICENSE)
 
     user = models.ForeignKey(user_model_name, verbose_name=_("Author"),
-        related_name="%(class)ss")
+        related_name="%(class)ss", on_delete=models.CASCADE)
+
+    room = models.ForeignKey(Room, blank=True, null=True, on_delete=models.SET_NULL)
+
 
     def get_photo(self):
         if self.header_image:
@@ -154,7 +158,7 @@ class Article(models.Model):
 
     text = models.TextField(verbose_name=_('Text'))
 
-    blog = models.ForeignKey(Blog)
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
 
     status = models.IntegerField(_("Status"),
         choices=CONTENT_STATUS_CHOICES, default=CONTENT_STATUS_PUBLISHED,
@@ -172,7 +176,7 @@ class Article(models.Model):
     allow_comments = models.BooleanField(verbose_name=_("Allow comments"),
                                          default=True)
 
-    featured_image = models.ForeignKey(Photo, verbose_name=_("Featured Image"), null=True, blank=True)
+    featured_image = models.ForeignKey(Photo, verbose_name=_("Featured Image"), null=True, blank=True, on_delete=models.SET_NULL)
     related_posts = models.ManyToManyField("self",
                                  verbose_name=_("Related posts"), blank=True)
 
@@ -277,13 +281,13 @@ COMMENT_STATUS_CHOICES = (
 
 class Comment(models.Model):
     user = models.ForeignKey(user_model_name, verbose_name=_("Author"),
-        related_name="%(class)ss", null=True, blank=True)
+        related_name="%(class)ss", null=True, blank=True, on_delete=models.CASCADE)
 
     nickname = models.CharField(verbose_name=_('Nick name'), max_length=200, null=True, blank=True)
     email = models.EmailField(verbose_name=_('Email'), null=True, blank=True)
     url = models.CharField(verbose_name=_('Url'), max_length=300, null=True, blank=True)
 
-    parent = models.ForeignKey(Article, null=True, blank=True, related_name='comments')
+    parent = models.ForeignKey(Article, null=True, blank=True, related_name='comments', on_delete=models.CASCADE)
     text = models.TextField(verbose_name=_('Text'), null=True, blank=True)
 
     ip_address = models.GenericIPAddressField(verbose_name=_('IP address'), blank=True, null=True)
@@ -308,7 +312,7 @@ def send_comment_email(sender, instance, **kwargs):
     if kwargs['created'] and instance.parent.blog.user.email and instance.email != instance.parent.blog.user.email:
         context_dict = {}
         if instance.user:
-            context_dict['from_user'] = instance.user.get_fullname()
+            context_dict['from_user'] = instance.user.get_full_name()
             context_dict['url'] = "http://%s%s" % (Site.objects.get_current().domain, instance.user.get_absolute_url())
         else:
             context_dict['from_user'] = instance.nickname
@@ -319,8 +323,8 @@ def send_comment_email(sender, instance, **kwargs):
         context_dict['comment_body'] = instance.text
 
         template = get_template("comment_email_template.txt")
-        context = Context(context_dict)
-        message = template.render(context)
+        # context = Context(context_dict)
+        message = template.render(context_dict)
 
         send_mail("[%s] - %s" % (_("Bitakora"), _("New comment")), message, settings.DEFAULT_FROM_EMAIL, [context_dict['to_email']])
 
@@ -330,7 +334,7 @@ post_save.connect(send_comment_email, sender=Comment)
 class External_link(models.Model):
     title = models.CharField(max_length=200, verbose_name=_('Title'))
     url = models.URLField(max_length=1000, verbose_name=_("URL"))
-    blog = models.ForeignKey(Blog, related_name="external_links")
+    blog = models.ForeignKey(Blog, related_name="external_links", on_delete=models.CASCADE)
 
     def __unicode__(self):
         return u"%s" % self.title
