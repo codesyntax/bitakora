@@ -101,7 +101,7 @@ class BitakoraUser(AbstractBaseUser, PermissionsMixin):
         elif self.first_name:
             return self.first_name
         else:
-            return self.email
+            return ""
 
     def get_photo(self):
         if self.photo:

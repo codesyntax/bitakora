@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block maincontainer %}
+
+{% block header %}
+        <header class="header-image">
+            <div class="headline">
+                <div class="col-sm-12">
+                    <button type="button" class="close" aria-label="Close">
+                        <p style="color:#fff;"><strong>&times;</strong></p>
+                    </button>
+                </div>
+                <div class="container">
+                    <h1>{% trans 'School blogs' %}</h1>
+                    <h2>{% trans 'Description' %}</h2>
+                    <p>{% trans 'Bla bla bla' %}</p>
+                    <a class="btn btn-default btn-lg" href="{% url 'teacher_registration' %}">{% trans 'Teacher account' %}</a>
+                    <a class="btn btn-default btn-lg" href="{% url 'student_registration' %}">{% trans 'Student account' %}</a>
+                </div>
+            </div>
+        </header>
+        <script type="text/javascript">
+            $(".close").click(function() {
+                $(".header-image").hide();
+            });
+        </script>
+{% endblock %}
+
+<div class="container">
+    <div class="row">
+        {% for school in schools %}
+        {% if school.get_blogs %}
+        <h2>{{school.name}}</h2>
+        <div class="col-md-12">
+            <div class="row">
+                {% for blog in school.get_blogs %}
+                <div class="col-md-4">
+                    {% include "ikasbloga/blog_card.html" with blog=blog %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
