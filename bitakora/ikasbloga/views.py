@@ -12,9 +12,6 @@ from bitakora.utils.text import code_generator
 from django.utils.translation import ugettext_lazy as _
 
 
-
-
-
 def index(request):
     schools = School.objects.all()
     return render(request, 'ikasbloga/index.html', locals())

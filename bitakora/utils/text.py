@@ -25,5 +25,6 @@ def make_responsive(text):
     #    text = text.replace('<'+emb_type, EMBED_RESPONSIVE+'<'+emb_type).replace('</'+emb_type+'>','</'+emb_type+'></div>')
     return text
 
+
 def code_generator(size=4, chars=string.digits):
     return ''.join(random.choice(chars) for x in range(size))
