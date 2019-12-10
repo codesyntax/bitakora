@@ -61,7 +61,7 @@ urlpatterns = [
     url(r'^ajax/related_posts/', views.get_related_posts, name='ajax_related_posts'),
     url(r'^ajax/remove_link/', views.remove_link, name='ajax_remove_link'),
 
-    #url(r'^', include('bitakora.base.urls')),
+    url(r'^', include('bitakora.base.urls')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
