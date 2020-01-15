@@ -58,7 +58,7 @@ class Room(models.Model):
         return self.blog_set.all()
 
     def __str__(self):
-        return self.name
+        return "%s%s (%s)" % (self.level, self.name, self.school)
 
     class Meta:
         verbose_name = _("Room")

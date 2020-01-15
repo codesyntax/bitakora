@@ -115,7 +115,7 @@ class Blog(models.Model):
     def get_absolute_url(self):
         return "/%s" % (self.slug)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     class Meta:
@@ -129,7 +129,7 @@ class Category(models.Model):
             help_text=_("Leave blank to have the URL auto-generated from "
                         "the title."))
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
     class Meta:
@@ -261,7 +261,7 @@ class Article(models.Model):
     def get_reverse_timestamp(self):
         return self.get_timestamp() * -1
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
     class Meta:
@@ -299,8 +299,8 @@ class Comment(models.Model):
     def get_absolute_url(self):
         return reverse('article', kwargs={'blogslug': self.parent.blog.slug, 'slug': self.parent.slug})
 
-    def __unicode__(self):
-        return u"%s" % self.user
+    def __str__(self):
+        return u"%s" % (self.user or "")
 
     class Meta:
         verbose_name = _("Comment")
@@ -336,7 +336,7 @@ class External_link(models.Model):
     url = models.URLField(max_length=1000, verbose_name=_("URL"))
     blog = models.ForeignKey(Blog, related_name="external_links", on_delete=models.CASCADE)
 
-    def __unicode__(self):
+    def __str__(self):
         return u"%s" % self.title
 
     class Meta:

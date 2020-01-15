@@ -5,8 +5,8 @@ from django.views.decorators.debug import sensitive_post_parameters
 from django.views.decorators.csrf import csrf_protect
 from bitakora.base.models import Blog, External_link
 from bitakora.base.forms import BlogFormNoCaptcha, WPXMLForm, External_linkForm
-from bitakora.accounts.forms import ProfileForm, ProfilePhotoForm, StudentRegistrationForm, TeacherRegistrationForm
-from django.contrib.auth.views import password_change, password_change_done
+from bitakora.accounts.forms import ProfileForm, ProfilePhotoForm, StudentRegistrationForm, TeacherRegistrationForm, NormalRegistrationForm
+from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView
 from bitakora.utils.images import handle_uploaded_file
 from django.urls import reverse
 from django.conf import settings
@@ -99,14 +99,29 @@ def edit_blog(request):
     return render(request, 'profile/edit_blog.html', locals())
 
 
-@login_required
-def edit_pass(request):
-    return password_change(request,post_change_redirect="/users/accounts/password/change/done/",extra_context={'blog': request.user.get_blog()})
+class BlogPasswordChangeView(PasswordChangeView):
+    success_url = "/users/accounts/password/change/done/"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['blog'] = self.request.user.get_blog()
+        return context
 
 
-@login_required
-def pass_done(request):
-    return password_change_done(request,extra_context={'blog': request.user.get_blog()})
+class BlogPasswordChangeDoneView(PasswordChangeDoneView):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['blog'] = self.request.user.get_blog()
+        return context
+
+# @login_required
+# def edit_pass(request):
+#     return password_change(request,post_change_redirect="/users/accounts/password/change/done/",extra_context={'blog': request.user.get_blog()})
+
+
+# @login_required
+# def pass_done(request):
+#     return password_change_done(request,extra_context={'blog': request.user.get_blog()})
 
 
 class BlogRegistrationView(RegistrationView):
@@ -125,5 +140,5 @@ class BlogRegistrationView(RegistrationView):
         elif 'school' in self.request.POST:
             return TeacherRegistrationForm
         else:
-            return RegistrationForm
+            return NormalRegistrationForm
         pass

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-06 12:21+0100\n"
+"POT-Creation-Date: 2020-01-09 09:33+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,19 +17,24 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: accounts/admin.py:79
+#: accounts/admin.py:72
 msgid "Personal data"
 msgstr ""
 
-#: accounts/admin.py:81
+#: accounts/admin.py:74
 msgid "Biography"
 msgstr ""
 
-#: accounts/admin.py:83 templates/profile/edit_personal.html.py:12
+#: accounts/admin.py:76 templates/base.html:103
+#: templates/ikasbloga/index.html:15
+msgid "School blogs"
+msgstr ""
+
+#: accounts/admin.py:78 templates/profile/edit_personal.html:12
 msgid "Social networks"
 msgstr ""
 
-#: accounts/admin.py:86
+#: accounts/admin.py:81
 msgid "Permissions"
 msgstr ""
 
@@ -37,54 +42,87 @@ msgstr ""
 msgid "User management"
 msgstr ""
 
-#: accounts/forms.py:19
+#: accounts/forms.py:26
+#, python-format
+msgid ""
+"The name of the picture (%s) has an unsupported character. Please rename it "
+"before uploading."
+msgstr ""
+
+#: accounts/forms.py:30
+msgid ""
+"The picture is not in one of our supported formats. We don't support BMP "
+"files. Please change it"
+msgstr ""
+
+#: accounts/forms.py:44
 msgid "Please type your current password."
 msgstr ""
 
-#: accounts/forms.py:24
+#: accounts/forms.py:49
 msgid "The new passwords are not the same"
 msgstr ""
 
-#: accounts/forms.py:31
-msgid "Username"
-msgstr ""
-
-#: accounts/forms.py:32
+#: accounts/forms.py:56
 msgid "E-mail"
 msgstr ""
 
-#: accounts/forms.py:45
-msgid ""
-"This username contains spaces. Please, register an username without spaces."
+#: accounts/forms.py:57 accounts/forms.py:97 ikasbloga/models.py:52
+#: templates/profile/edit_school.html:43
+msgid "Code"
 msgstr ""
 
-#: accounts/forms.py:54
+#: accounts/forms.py:70
 msgid ""
 "This email address is already in use. Please supply a different email "
 "address."
 msgstr ""
 
+#: accounts/models.py:17
+msgid "Normal"
+msgstr ""
+
 #: accounts/models.py:18
-msgid "BitakoraUser"
+msgid "Student"
 msgstr ""
 
 #: accounts/models.py:19
+msgid "Teacher"
+msgstr ""
+
+#: accounts/models.py:64
+msgid "Phone Number"
+msgstr ""
+
+#: accounts/models.py:91
+msgid "BitakoraUser"
+msgstr ""
+
+#: accounts/models.py:92
 msgid "BitakoraUsers"
 msgstr ""
 
-#: accounts/views.py:29
+#: accounts/views.py:23 accounts/views.py:117
+msgid "Create a student account"
+msgstr ""
+
+#: accounts/views.py:29 accounts/views.py:119
+msgid "Create a teacher account"
+msgstr ""
+
+#: accounts/views.py:46
 msgid "New user data saved"
 msgstr ""
 
-#: accounts/views.py:38
+#: accounts/views.py:55
 msgid "New photo saved"
 msgstr ""
 
-#: accounts/views.py:65
+#: accounts/views.py:83
 msgid "New blog data saved"
 msgstr ""
 
-#: accounts/views.py:74
+#: accounts/views.py:92
 msgid "New link saved"
 msgstr ""
 
@@ -92,236 +130,242 @@ msgstr ""
 msgid "Basic elements"
 msgstr ""
 
-#: base/forms.py:13
+#: base/forms.py:15
 msgid ""
 "More information about  <a href='https://www.google.com/intl/es/analytics/"
 "features/index.html'>Google Analytics</a>."
 msgstr ""
 
-#: base/forms.py:16
+#: base/forms.py:21
 msgid "Featured image"
 msgstr ""
 
-#: base/forms.py:16 base/forms.py:79 base/forms.py:91
+#: base/forms.py:22 base/forms.py:111 base/forms.py:156
 msgid "Valid formats: jpg, png, gif."
 msgstr ""
 
-#: base/forms.py:17 base/models.py:155 base/models.py:287
+#: base/forms.py:26 base/models.py:159 base/models.py:291
 msgid "Text"
 msgstr ""
 
-#: base/forms.py:18 base/models.py:133 base/models.py:170
+#: base/forms.py:29 base/models.py:137 base/models.py:174
 msgid "Categories"
 msgstr ""
 
-#: base/forms.py:19 base/models.py:177 templates/base/article.html.py:126
+#: base/forms.py:32 base/models.py:181 templates/base/article.html:126
 msgid "Related posts"
 msgstr ""
 
-#: base/forms.py:20 base/models.py:159 base/models.py:290
+#: base/forms.py:35 base/models.py:163 base/models.py:294
 #: templates/base/dashboard.html:21 templates/base/dashboard_comments.html:22
 msgid "Status"
 msgstr ""
 
-#: base/forms.py:21
+#: base/forms.py:41
 msgid "Send notification"
 msgstr ""
 
-#: base/forms.py:79 base/forms.py:91 templates/base/new_blog.html.py:40
+#: base/forms.py:110 base/forms.py:155 templates/base/new_blog.html:40
 #: templates/profile/edit_blog.html:36
 msgid "Header image"
 msgstr ""
 
-#: base/forms.py:80 base/forms.py:92 base/models.py:56
-#: templates/base/new_blog.html:60 templates/profile/edit_blog.html.py:56
+#: base/forms.py:115 base/forms.py:160 base/models.py:57
+#: templates/base/new_blog.html:60 templates/profile/edit_blog.html:56
 msgid "Template"
 msgstr ""
 
-#: base/forms.py:81 base/forms.py:93 base/models.py:59
-#: templates/base/new_blog.html:76 templates/profile/edit_blog.html.py:72
+#: base/forms.py:121 base/forms.py:166 base/models.py:60
+#: templates/base/new_blog.html:76 templates/profile/edit_blog.html:72
 msgid "License"
 msgstr ""
 
-#: base/forms.py:82 base/forms.py:94 base/models.py:53
+#: base/forms.py:127 base/forms.py:172 base/models.py:54
 msgid "Custom HTML"
 msgstr ""
 
-#: base/forms.py:82 base/forms.py:94
+#: base/forms.py:129 base/forms.py:174
 msgid "Sidebar extra HTML information"
 msgstr ""
 
-#: base/forms.py:83 base/forms.py:95 base/models.py:54
+#: base/forms.py:133 base/forms.py:178 base/models.py:55
 msgid "Analytics code"
 msgstr ""
 
-#: base/forms.py:112 base/forms.py:125
+#: base/forms.py:207 base/forms.py:240
 msgid "Empty comment. Please, write something!"
 msgstr ""
 
-#: base/forms.py:129
+#: base/forms.py:245
 msgid "Wordpress file"
 msgstr ""
 
-#: base/forms.py:129
+#: base/forms.py:245
 msgid "Please, select your Wordpress XML file"
 msgstr ""
 
-#: base/models.py:32
+#: base/models.py:33
 msgid "One page wonder"
 msgstr ""
 
-#: base/models.py:33
+#: base/models.py:34
 msgid "Minimalist"
 msgstr ""
 
-#: base/models.py:39
+#: base/models.py:40
 msgid "CC-BY-SA"
 msgstr ""
 
-#: base/models.py:40
+#: base/models.py:41
 msgid "Copyright"
 msgstr ""
 
-#: base/models.py:47
+#: base/models.py:48
 msgid "Name"
 msgstr ""
 
-#: base/models.py:48 base/models.py:124 base/models.py:151 base/models.py:332
+#: base/models.py:49 base/models.py:128 base/models.py:155 base/models.py:336
+#: ikasbloga/models.py:8 ikasbloga/models.py:34 ikasbloga/models.py:48
 #: templates/base/external_links.html:5
 msgid "URL"
 msgstr ""
 
-#: base/models.py:49 base/models.py:125 base/models.py:152
+#: base/models.py:50 base/models.py:129 base/models.py:156
+#: ikasbloga/models.py:9 ikasbloga/models.py:35 ikasbloga/models.py:49
 msgid "Leave blank to have the URL auto-generated from the title."
 msgstr ""
 
-#: base/models.py:51
+#: base/models.py:52
 msgid "Tagline"
 msgstr ""
 
-#: base/models.py:62 base/models.py:279 photologue_custom/models.py:15
+#: base/models.py:63 base/models.py:283 photologue_custom/models.py:16
 msgid "Author"
 msgstr ""
 
-#: base/models.py:118 templates/footer.html.py:9
+#: base/models.py:122 templates/footer.html:9
 msgid "Blog"
 msgstr ""
 
-#: base/models.py:119
+#: base/models.py:123 templates/ikasbloga/dashboard.html:11
 msgid "Blogs"
 msgstr ""
 
-#: base/models.py:123 base/models.py:150 base/models.py:331
-#: templates/base/dashboard.html:20 templates/base/external_links.html.py:4
+#: base/models.py:127 base/models.py:154 base/models.py:335
+#: templates/base/dashboard.html:20 templates/base/external_links.html:4
+#: templates/ikasbloga/dashboard.html:21 templates/ikasbloga/dashboard.html:37
+#: templates/ikasbloga/dashboard.html:55
 msgid "Title"
 msgstr ""
 
-#: base/models.py:132 templates/index.html.py:8
+#: base/models.py:136 templates/index.html:8
 msgid "Category"
 msgstr ""
 
-#: base/models.py:144
+#: base/models.py:148
 msgid "Draft"
 msgstr ""
 
-#: base/models.py:145
+#: base/models.py:149
 msgid "Published"
 msgstr ""
 
-#: base/models.py:161
+#: base/models.py:165
 msgid "With Draft chosen, will only be shown for admin users on the site."
 msgstr ""
 
-#: base/models.py:163 templates/base/dashboard.html.py:22
+#: base/models.py:167 templates/base/dashboard.html:22
+#: templates/ikasbloga/dashboard.html:38 templates/ikasbloga/dashboard.html:56
 msgid "Published from"
 msgstr ""
 
-#: base/models.py:164
+#: base/models.py:168
 msgid "With Published chosen, won't be shown until this time"
 msgstr ""
 
-#: base/models.py:166
+#: base/models.py:170
 msgid "Expires on"
 msgstr ""
 
-#: base/models.py:167
+#: base/models.py:171
 msgid "With Published chosen, won't be shown after this time"
 msgstr ""
 
-#: base/models.py:172
+#: base/models.py:176
 msgid "Allow comments"
 msgstr ""
 
-#: base/models.py:175
+#: base/models.py:179
 msgid "Featured Image"
 msgstr ""
 
-#: base/models.py:264
+#: base/models.py:268
 msgid "Article"
 msgstr ""
 
-#: base/models.py:265
+#: base/models.py:269
 msgid "Articles"
 msgstr ""
 
-#: base/models.py:272 templates/base/comment.html.py:24
+#: base/models.py:276 templates/base/comment.html:24
 #: templates/base/dashboard_comments.html:31
 msgid "Visible"
 msgstr ""
 
-#: base/models.py:273
+#: base/models.py:277
 msgid "Visible only for the admin"
 msgstr ""
 
-#: base/models.py:274
+#: base/models.py:278
 msgid "Not visible"
 msgstr ""
 
-#: base/models.py:282
+#: base/models.py:286
 msgid "Nick name"
 msgstr ""
 
-#: base/models.py:283
+#: base/models.py:287
 msgid "Email"
 msgstr ""
 
-#: base/models.py:284
+#: base/models.py:288
 msgid "Url"
 msgstr ""
 
-#: base/models.py:289
+#: base/models.py:293
 msgid "IP address"
 msgstr ""
 
-#: base/models.py:292
+#: base/models.py:296
 msgid "Publish date"
 msgstr ""
 
-#: base/models.py:302 templates/base/dashboard_comments.html.py:20
+#: base/models.py:306 templates/base/dashboard_comments.html:20
 msgid "Comment"
 msgstr ""
 
-#: base/models.py:303 templates/base/article.html.py:155
+#: base/models.py:307 templates/base/article.html:155
 #: templates/base/dashboard.html:12 templates/base/dashboard_comments.html:12
+#: templates/ikasbloga/dashboard.html:13
 msgid "Comments"
 msgstr ""
 
-#: base/models.py:325 templates/base.html.py:12 templates/base.html.py:14
-#: templates/base.html:97 templates/base/base.html.py:31
-#: templates/base/base.html:41 templates/base/blog_archive.html.py:4
+#: base/models.py:329 templates/base.html:12 templates/base.html:14
+#: templates/base.html:97 templates/base/base.html:41
+#: templates/base/base.html:56 templates/base/blog_archive.html:4
 #: templates/base/blog_index.html:4
 msgid "Bitakora"
 msgstr ""
 
-#: base/models.py:325
+#: base/models.py:329
 msgid "New comment"
 msgstr ""
 
-#: base/models.py:339
+#: base/models.py:343
 msgid "External Link"
 msgstr ""
 
-#: base/models.py:340 templates/profile/edit_blog.html.py:19
+#: base/models.py:344 templates/profile/edit_blog.html:19
 msgid "External Links"
 msgstr ""
 
@@ -338,15 +382,63 @@ msgstr ""
 msgid "%s wants to publish this article: http://%s%s"
 msgstr ""
 
-#: base/views.py:159
+#: base/views.py:165
 msgid "Importation error. Please, check the XML file and try again."
+msgstr ""
+
+#: ikasbloga/models.py:6
+msgid "School name"
+msgstr ""
+
+#: ikasbloga/models.py:7
+msgid "Description"
+msgstr ""
+
+#: ikasbloga/models.py:28
+msgid "School"
+msgstr ""
+
+#: ikasbloga/models.py:29
+msgid "Schools"
+msgstr ""
+
+#: ikasbloga/models.py:33
+msgid "Level name"
+msgstr ""
+
+#: ikasbloga/models.py:42 templates/profile/edit_school.html:41
+msgid "Level"
+msgstr ""
+
+#: ikasbloga/models.py:43
+msgid "Levels"
+msgstr ""
+
+#: ikasbloga/models.py:47 templates/profile/edit_school.html:40
+msgid "Room name"
+msgstr ""
+
+#: ikasbloga/models.py:64 templates/ikasbloga/dashboard.html:23
+msgid "Room"
+msgstr ""
+
+#: ikasbloga/models.py:65 templates/profile/edit_school.html:20
+msgid "Rooms"
+msgstr ""
+
+#: ikasbloga/views.py:46
+msgid "New school data saved"
+msgstr ""
+
+#: ikasbloga/views.py:53
+msgid "New room data saved"
 msgstr ""
 
 #: rss/feeds.py:19
 msgid "articles feed"
 msgstr ""
 
-#: templates/404.html:5 templates/404.html.py:10
+#: templates/404.html:5 templates/404.html:10
 msgid "This page does not exist!"
 msgstr ""
 
@@ -354,7 +446,7 @@ msgstr ""
 msgid "Please, try again with diffent address or go <a href=\"/\">home</a>."
 msgstr ""
 
-#: templates/500.html:5 templates/500.html.py:10
+#: templates/500.html:5 templates/500.html:10
 msgid "Something went wrong..."
 msgstr ""
 
@@ -363,17 +455,17 @@ msgid ""
 "The server has some errors this moment. Probably we are maintaining it..."
 msgstr ""
 
-#: templates/base.html:11 templates/base.html.py:134
+#: templates/base.html:11 templates/base.html:131
 msgid "Move thinking forward"
 msgstr ""
 
-#: templates/base.html:11 templates/base.html.py:135
+#: templates/base.html:11 templates/base.html:132
 msgid ""
 "Bitakora is a community of readers and writers offering unique perspectives "
 "on ideas large and small"
 msgstr ""
 
-#: templates/base.html:11 templates/base.html.py:136
+#: templates/base.html:11 templates/base.html:133
 msgid "Sign up to read and interact with what matters most to you"
 msgstr ""
 
@@ -393,40 +485,32 @@ msgstr ""
 msgid "Informazio gehiago"
 msgstr ""
 
-#: templates/base.html:103 views.py:16
-msgid "Top stories"
-msgstr ""
-
-#: templates/base.html:106 views.py:17
-msgid "Bookmarks"
-msgstr ""
-
-#: templates/base.html:112 templates/base/base.html.py:67
-#: templates/search/search.html:7 templates/search/search.html.py:22
+#: templates/base.html:109 templates/base/base.html:82
+#: templates/search/search.html:7 templates/search/search.html:22
 msgid "Search"
 msgstr ""
 
-#: templates/base.html:137
-msgid "Get started"
+#: templates/base.html:134 templates/registration/login.html:18
+msgid "Create new account"
 msgstr ""
 
-#: templates/base.html:138
+#: templates/base.html:135
 msgid "Learn more"
 msgstr ""
 
-#: templates/base.html:167 templates/base/blog_index.html.py:83
+#: templates/base.html:164 templates/base/blog_index.html:83
 msgid "Blog Categories"
 msgstr ""
 
-#: templates/base.html:181
+#: templates/base.html:178
 msgid "No categories found yet..."
 msgstr ""
 
-#: templates/base.html:194 templates/base/blog_index.html.py:114
+#: templates/base.html:191 templates/base/blog_index.html:114
 msgid "Last comments"
 msgstr ""
 
-#: templates/base.html:200
+#: templates/base.html:197
 msgid "No comments found yet..."
 msgstr ""
 
@@ -434,7 +518,7 @@ msgstr ""
 msgid "New article"
 msgstr ""
 
-#: templates/base/add_article.html:57 templates/base/article.html.py:175
+#: templates/base/add_article.html:57 templates/base/article.html:175
 #: templates/base/new_blog.html:94 templates/contact/blog_contact_form.html:11
 #: templates/contact_form/contact_form.html:11
 #: templates/profile/edit_blog.html:90 templates/profile/edit_blog.html:101
@@ -461,7 +545,7 @@ msgstr ""
 msgid "This post has still a future date: <strong>%(date)s</strong>"
 msgstr ""
 
-#: templates/base/article.html:106 templates/base/article.html.py:109
+#: templates/base/article.html:106 templates/base/article.html:109
 msgid "Like"
 msgstr ""
 
@@ -473,7 +557,7 @@ msgstr ""
 msgid "Delete article"
 msgstr ""
 
-#: templates/base/article.html:191 templates/base/import_new_blog.html.py:35
+#: templates/base/article.html:191 templates/base/import_new_blog.html:35
 msgid "IMPORTANT!!"
 msgstr ""
 
@@ -485,20 +569,20 @@ msgstr ""
 msgid "If you accept, this article will be DELETED irreversibly"
 msgstr ""
 
-#: templates/base/article.html:196 templates/base/import_new_blog.html.py:19
+#: templates/base/article.html:196 templates/base/import_new_blog.html:19
 #: templates/base/import_new_blog.html:40
 msgid "Close"
 msgstr ""
 
-#: templates/base/article.html:197 templates/base/import_new_blog.html.py:41
+#: templates/base/article.html:197 templates/base/import_new_blog.html:41
 msgid "Yes, I am sure"
 msgstr ""
 
-#: templates/base/base.html:29 templates/base/base.html.py:39
+#: templates/base/base.html:39 templates/base/base.html:54
 msgid "Bitakora home page"
 msgstr ""
 
-#: templates/base/base.html:103
+#: templates/base/base.html:118
 #, python-format
 msgid ""
 "Developed by <a href=\"http://www.codesyntax.com\">CodeSyntax</a>. Software: "
@@ -506,11 +590,11 @@ msgid ""
 "\"https://www.djangoproject.com/\">Django</a> framework."
 msgstr ""
 
-#: templates/base/base.html:108
+#: templates/base/base.html:123
 msgid "Bitakora License"
 msgstr ""
 
-#: templates/base/blog_archive.html:4 templates/base/blog_archive.html.py:8
+#: templates/base/blog_archive.html:4 templates/base/blog_archive.html:8
 #: templates/base/blog_index.html:139
 msgid "Archive"
 msgstr ""
@@ -539,16 +623,12 @@ msgid ""
 msgstr ""
 
 #: templates/base/blog_index.html:74 templates/profile/edit_personal.html:46
-#: templates/profile/edit_personal.html:50 templates/registration/login.html:8
-#: templates/registration/registration_form.html:8
-#: templates/social_buttons.html:5
+#: templates/profile/edit_personal.html:50 templates/social_buttons.html:5
 msgid "Bitakora twitter"
 msgstr ""
 
 #: templates/base/blog_index.html:75 templates/profile/edit_personal.html:58
-#: templates/profile/edit_personal.html:62 templates/registration/login.html:13
-#: templates/registration/registration_form.html:13
-#: templates/social_buttons.html:9
+#: templates/profile/edit_personal.html:62 templates/social_buttons.html:9
 msgid "Bitakora facebook"
 msgstr ""
 
@@ -578,7 +658,7 @@ msgid "Delete"
 msgstr ""
 
 #: templates/base/dashboard.html:8 templates/base/dashboard_comments.html:8
-#: templates/useroptions.html.py:20
+#: templates/useroptions.html:18
 msgid "Dashboard"
 msgstr ""
 
@@ -586,11 +666,12 @@ msgstr ""
 msgid "My articles"
 msgstr ""
 
-#: templates/base/dashboard.html:23
+#: templates/base/dashboard.html:23 templates/ikasbloga/dashboard.html:39
 msgid "Thumbnail"
 msgstr ""
 
 #: templates/base/dashboard_comments.html:21
+#: templates/ikasbloga/dashboard.html:22
 msgid "User"
 msgstr ""
 
@@ -648,25 +729,25 @@ msgstr ""
 msgid "Import from Wordpress"
 msgstr ""
 
-#: templates/base/new_blog.html:45 templates/profile/edit_blog.html.py:41
+#: templates/base/new_blog.html:45 templates/profile/edit_blog.html:41
 msgid ""
 "This is your default header image. If you want to change it, select from "
 "your file system with the button below:"
 msgstr ""
 
-#: templates/base/new_blog.html:47 templates/profile/edit_blog.html.py:43
+#: templates/base/new_blog.html:47 templates/profile/edit_blog.html:43
 msgid "Recommended sizes:"
 msgstr ""
 
-#: templates/base/new_blog.html:49 templates/profile/edit_blog.html.py:45
+#: templates/base/new_blog.html:49 templates/profile/edit_blog.html:45
 msgid "1900x300px (horizontal)"
 msgstr ""
 
-#: templates/base/new_blog.html:50 templates/profile/edit_blog.html.py:46
+#: templates/base/new_blog.html:50 templates/profile/edit_blog.html:46
 msgid "390x400px (vertical)"
 msgstr ""
 
-#: templates/base/new_blog.html:80 templates/profile/edit_blog.html.py:76
+#: templates/base/new_blog.html:80 templates/profile/edit_blog.html:76
 msgid "What is CC-BY-SA license?"
 msgstr ""
 
@@ -714,7 +795,7 @@ msgstr ""
 msgid "Contact mail from"
 msgstr ""
 
-#: templates/footer.html:7 templates/registration/login.html.py:29
+#: templates/footer.html:7 templates/registration/login.html:19
 msgid "Contact us"
 msgstr ""
 
@@ -731,17 +812,41 @@ msgid ""
 "\">Django</a> framework."
 msgstr ""
 
+#: templates/ikasbloga/dashboard.html:8
+msgid "My school Dashboard"
+msgstr ""
+
+#: templates/ikasbloga/dashboard.html:12
+msgid "Last articles"
+msgstr ""
+
+#: templates/ikasbloga/index.html:16
+msgid "Ikastetxeetako blog komunitateak"
+msgstr ""
+
+#: templates/ikasbloga/index.html:17
+msgid "Sortu eta kudeatu zure ikastetxeko blogak"
+msgstr ""
+
+#: templates/ikasbloga/index.html:18
+msgid "Teacher account"
+msgstr ""
+
+#: templates/ikasbloga/index.html:19
+msgid "Student account"
+msgstr ""
+
 #: templates/index.html:23
 msgid "Start bookmarking now!"
 msgstr ""
 
-#: templates/index.html:23 templates/index.html.py:29
+#: templates/index.html:23 templates/index.html:29
 msgid ""
 "You only need to give a <i class=\"glyphicon glyphicon-thumbs-up\"></i> to "
 "some stories"
 msgstr ""
 
-#: templates/index.html:25 templates/index.html.py:31
+#: templates/index.html:25 templates/index.html:31
 msgid "Sorry!"
 msgstr ""
 
@@ -749,11 +854,11 @@ msgstr ""
 msgid "You must register in order to have your Bookmark section..."
 msgstr ""
 
-#: templates/index.html:25 templates/index.html.py:31
+#: templates/index.html:25 templates/index.html:31
 msgid "Sign up"
 msgstr ""
 
-#: templates/index.html:25 templates/index.html.py:31
+#: templates/index.html:25 templates/index.html:31
 msgid "now!"
 msgstr ""
 
@@ -777,15 +882,19 @@ msgstr ""
 msgid "Edit profile"
 msgstr ""
 
-#: templates/profile/base.html:11 templates/useroptions.html.py:35
+#: templates/profile/base.html:11 templates/useroptions.html:40
 msgid "Settings"
 msgstr ""
 
-#: templates/profile/base.html:13 templates/profile/edit_personal.html.py:7
+#: templates/profile/base.html:13 templates/profile/edit_personal.html:7
 msgid "User profile"
 msgstr ""
 
-#: templates/profile/base.html:14
+#: templates/profile/base.html:15
+msgid "Your School"
+msgstr ""
+
+#: templates/profile/base.html:17
 msgid "Your Blog"
 msgstr ""
 
@@ -813,7 +922,7 @@ msgstr ""
 msgid "You have not created a blog yet"
 msgstr ""
 
-#: templates/profile/edit_blog.html:124 templates/useroptions.html.py:24
+#: templates/profile/edit_blog.html:124 templates/useroptions.html:22
 msgid "Create a blog"
 msgstr ""
 
@@ -837,6 +946,7 @@ msgstr ""
 
 #: templates/profile/edit_personal.html:21
 #: templates/profile/edit_personal.html:37
+#: templates/profile/edit_school.html:28 templates/profile/edit_school.html:35
 msgid "Save"
 msgstr ""
 
@@ -858,6 +968,18 @@ msgstr ""
 
 #: templates/profile/edit_personal.html:62
 msgid "Link Facebook for this user"
+msgstr ""
+
+#: templates/profile/edit_school.html:16
+msgid "Your school data"
+msgstr ""
+
+#: templates/profile/edit_school.html:19
+msgid "School configuration"
+msgstr ""
+
+#: templates/profile/edit_school.html:42
+msgid "Year"
 msgstr ""
 
 #: templates/registration/activation_email.html:6
@@ -921,29 +1043,15 @@ msgstr ""
 msgid "Sign in or create an account"
 msgstr ""
 
-#: templates/registration/login.html:8
-#: templates/registration/registration_form.html:8
-msgid "Sign in with Twitter"
-msgstr ""
-
 #: templates/registration/login.html:13
-#: templates/registration/registration_form.html:13
-msgid "Sign in with Facebook"
-msgstr ""
-
-#: templates/registration/login.html:23
 msgid "Sign in "
 msgstr ""
 
-#: templates/registration/login.html:25
+#: templates/registration/login.html:15
 msgid "Forgot your password?"
 msgstr ""
 
-#: templates/registration/login.html:28
-msgid "Create new account"
-msgstr ""
-
-#: templates/registration/login.html:29
+#: templates/registration/login.html:19
 msgid "Any problem?"
 msgstr ""
 
@@ -1085,7 +1193,7 @@ msgstr ""
 msgid "Create an account"
 msgstr ""
 
-#: templates/registration/registration_form.html:21
+#: templates/registration/registration_form.html:18
 msgid "Create"
 msgstr ""
 
@@ -1117,18 +1225,34 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: templates/useroptions.html:28
+#: templates/useroptions.html:27
+msgid "Teacher Dashboard"
+msgstr ""
+
+#: templates/useroptions.html:31
 msgid "User options"
 msgstr ""
 
-#: templates/useroptions.html:33
+#: templates/useroptions.html:36
+msgid "My school"
+msgstr ""
+
+#: templates/useroptions.html:38
 msgid "My blog"
 msgstr ""
 
-#: templates/useroptions.html:37
+#: templates/useroptions.html:42
 msgid "Logout"
 msgstr ""
 
-#: templates/useroptions.html:42
-msgid "Sign in / Sign up"
+#: templates/useroptions.html:47
+msgid "Sign in"
+msgstr ""
+
+#: views.py:15
+msgid "Top stories"
+msgstr ""
+
+#: views.py:16
+msgid "Bookmarks"
 msgstr ""

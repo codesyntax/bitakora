@@ -14,7 +14,7 @@ class PhotoExtendedInline(admin.StackedInline):
 
 class PhotoAdmin(PhotoAdminDefault):
 
-    def admin_thumbnail(self,obj):
+    def admin_thumbnail(self, obj):
         if obj:
             return u'<img src="%s" />' % (obj.get_admin_thumbnail_url())
         else:
@@ -22,19 +22,18 @@ class PhotoAdmin(PhotoAdminDefault):
     admin_thumbnail.short_description = 'Thumbnail'
     admin_thumbnail.allow_tags = True
 
-
-    def author(self,obj):
-        try: 
-            return obj.extended.author or ""
-        except:
+    def author(self, obj):
+        try:
+            return obj.extended.author.email or ""
+        except Exception:
             return ""
 
-
-    list_display = ('title','author','date_taken','date_added','is_public','admin_thumbnail')
+    list_display = ('title', 'author', 'date_taken', 'date_added', 'is_public', 'admin_thumbnail')
     list_display_links = ('title',)
-    search_fields = ['title','caption']
+    search_fields = ['title', 'caption']
 
-    inlines = [PhotoExtendedInline, ]
+    inlines = [PhotoExtendedInline]
+
 
 admin.site.unregister(Photo)
 admin.site.register(Photo, PhotoAdmin)

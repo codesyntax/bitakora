@@ -82,6 +82,17 @@ class RegistrationForm(UserCreationForm):
         return user
 
 
+class NormalRegistrationForm(RegistrationForm):
+    def __init__(self, *args, **kwargs):
+        super(NormalRegistrationForm, self).__init__(*args, **kwargs)
+        self.fields.pop('school')
+        self.fields.pop('code')
+
+    class Meta:
+        model = BitakoraUser
+        fields = ("email", )
+
+
 class StudentRegistrationForm(RegistrationForm):
     code = forms.CharField(label=_("Code"), required=True)
 

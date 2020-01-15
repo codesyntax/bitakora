@@ -85,7 +85,7 @@ class BitakoraUser(AbstractBaseUser, PermissionsMixin):
     modified = models.DateTimeField(auto_now=True, editable=False)
 
     def __str__(self):
-        return self.email
+        return self.email or ""
 
     class Meta:
         verbose_name = _('BitakoraUser')

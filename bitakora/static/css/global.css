@@ -277,3 +277,67 @@ h4.media-heading {
   width: 60%;
   left: 20%;
 }
+
+.ikasblogak-sideblock {
+  background: url(../img/custom/ikasbloga_right.jpg) no-repeat top left;
+  background-size: cover;
+  padding: 3rem 0.5rem;
+  text-align: center;
+  color: white;
+  min-height: 100px;
+}
+
+.ikasblogak-sideblock h3 {
+  text-transform: uppercase;
+}
+
+.ikasblogak-sideblock h3::after {
+  content: "";
+  display: block;
+  height: 5px;
+  width: 80%;
+  margin: 1rem auto;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.ikasblogak-blog-grid {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 2px solid #ad6130;
+  border-top: 2px solid black;
+  margin-bottom: 2rem;
+}
+
+.ikasblogak-blog-grid .col-md-4:nth-child(3n+1) {
+  clear: both;
+
+}
+
+.card {
+  background-color: #efefef;
+  padding: 2rem;
+  border-radius: 6px;
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.card h5.card-title {
+  border-top: 1px dotted #ccc;
+  border-bottom: 1px dotted black;
+  padding: 1rem 0;
+  font-size: 2rem;
+  font-family: 'Kanit', sans-serif;
+}
+
+.card h5.card-title a {
+  color: black !important;
+}
+
+.card img {
+  border-radius: 50%;
+  border: 2px solid#666;
+  padding: 4px;
+  background-color:
+    #fff;
+
+}

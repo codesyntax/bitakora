@@ -2,7 +2,8 @@ from django.conf.urls import url, include
 from django.http import HttpResponse
 from django.views.generic.base import RedirectView
 from django.views.generic import TemplateView
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf import settings
+from django.conf.urls.static import static
 from bitakora.views import DataGetCategories
 from bitakora.base.models import Article
 from voting.views import vote_on_object
@@ -43,6 +44,7 @@ urlpatterns = [
     url(r'^users/edit-school$', ikasbloga_views.edit_school, name='edit_school'),
     url(r'^accounts/profile/$', RedirectView.as_view(url='/users/edit-profile', permanent=False), name='users_profile'),
     url(r'^ikasblogak', include('bitakora.ikasbloga.urls')),
+    url(r'^ikasblogak/info$', flatpage_views.flatpage, {'url': '/ikasblogak/info/'}, name='ikasblogak_info'),
     url(r'^voting/(?P<object_id>\d+)/(?P<direction>up|down|clear)?$', vote_on_object, article_dict, name="vote_on_object"),
     url(r'^photologue/', include('photologue.urls', namespace='photologue')),
 
@@ -62,6 +64,6 @@ urlpatterns = [
     url(r'^ajax/remove_link/', views.remove_link, name='ajax_remove_link'),
 
     url(r'^', include('bitakora.base.urls')),
-]
 
-urlpatterns += staticfiles_urlpatterns()
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

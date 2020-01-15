@@ -11,14 +11,15 @@ user_model_name = get_user_model_name()
 class PhotoExtended(models.Model):
 
     # Link back to Photologue's Photo model.
-    photo = models.OneToOneField(Photo, related_name='extended', on_delete=models.CASCADE)
+    photo = models.OneToOneField(Photo, related_name='extended',
+        on_delete=models.CASCADE)
 
     author = models.ForeignKey(user_model_name, verbose_name=_("Author"),
         related_name="%(class)ss", on_delete=models.CASCADE)
 
-    class Meta:
-        verbose_name = u'Extra fields'
-        verbose_name_plural = u'Extra fields'
-
     def __str__(self):
-        return self.photo.title
+        return self.photo.title or ""
+
+    class Meta:
+        verbose_name = 'Extra fields'
+        verbose_name_plural = 'Extra fields'

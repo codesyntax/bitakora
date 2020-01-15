@@ -1,8 +1,7 @@
-<div class="card" style="width: 18rem;">
-    <a href="{% url 'blog_index' blog.slug %}"><img src="{{blog.header_image.get_related_url}}" class="card-img-top" alt="{{blog.name}} image"></a>
+<div class="card">
+    <a href="{% url 'blog_index' blog.slug %}"><img src="{{blog.user.get_photo.get_blog_user_url}}" class="card-img-top" alt="{{blog.user.get_photo}} image"></a>
     <div class="card-body">
         <h5 class="card-title"><a href="{% url 'blog_index' blog.slug %}">{{blog.name}}</a></h5>
         <p class="card-text">{{blog.tagline|default:""}}</p>
-        <p><img class="img-responsive img-circle pull-left" src="{{user.get_photo.get_profile_url}}" alt="{{user.photo.title}}" title="{{user.photo.title}}"/>{{blog.user.get_full_name}}</p>
     </div>
 </div>

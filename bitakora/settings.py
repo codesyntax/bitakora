@@ -74,7 +74,7 @@ INSTALLED_APPS = (
     "django.contrib.flatpages",
     "django.contrib.humanize",
     "django.contrib.admin",
-    "django_social_share",
+    #"django_social_share",
     "sortedm2m",
     "photologue",
     "voting",
@@ -161,10 +161,10 @@ try:
 except:
     pass
 
-try:
-    from bitakora.s3storage.settings_s3boto import *
-except:
-    pass
+# try:
+#     from bitakora.s3storage.settings_s3boto import *
+# except:
+#     pass
 
 try:
     from .local_settings import *
